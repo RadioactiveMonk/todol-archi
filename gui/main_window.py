@@ -4,12 +4,14 @@ from PyQt6.QtWidgets import (
     QWidget,
     QVBoxLayout,
     QHBoxLayout,
-    QPushButton,
     QTableWidget,
     QTableWidgetItem,
     QHeaderView,
+    QPushButton,
+    QLineEdit,
 )
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QFont, QIcon
+from PyQt6.QtCore import QDir
 import sys
 
 
@@ -30,17 +32,31 @@ class MainWindow(QMainWindow):
 
         main_layout: QVBoxLayout = QVBoxLayout()  # Layout principal (vertical)
 
+        icon_path = QDir.current().filePath(
+            "gui/icons/"
+        )  # Dossier qui range les icônes
+
+        # Barre de recherche
+        self.search_bar: QLineEdit = QLineEdit()
+        self.search_bar.setPlaceholderText("🔍 Search tasks ...")
+        main_layout.addWidget(self.search_bar)
+
         # Création du tableau pour afficher les tâches
         self.task_table: QTableWidget = QTableWidget()
         self.task_table.setColumnCount(
-            5
-        )  # Nombre de colonnes (Statut, Titre, Expiration)
+            7
+        )  # On prépare 6 colonnes, dont une pour les actions
         self.task_table.setHorizontalHeaderLabels(
-            ["Statut", "Titre", "Priorité", "Notes", "Expiration"]
+            [
+                "Status",
+                "Priority",
+                "Category",
+                "Expiration",
+                "Title",
+                "Notes",
+                "Actions",
+            ]
         )
-
-        # Ajustement des colones en fonction du texte header (titre des colones)
-        self.task_table.resizeColumnsToContents()
 
         # Vérification avant d'appliquer setSectionResizeMode
         header = self.task_table.horizontalHeader()
@@ -50,23 +66,27 @@ class MainWindow(QMainWindow):
         self.task_table.setFont(QFont("Arial", 12))  # Style du tableau
         main_layout.addWidget(self.task_table)
 
-        # Layout horizontal pour organiser les boutons
+        # Layout pour les boutons Ajouter et Filtrer
         button_layout: QHBoxLayout = QHBoxLayout()
 
-        # Création des boutons
-        self.add_task_button: QPushButton = QPushButton("➕ Ajouter")
-        self.edit_task_button: QPushButton = QPushButton("✏ Modifier")
-        self.toggle_status_button: QPushButton = QPushButton("✔ Basculer Statut")
-        self.delete_task_button: QPushButton = QPushButton("🗑 Supprimer")
-
-        # Ajout des boutons au layout horizontal
+        # Bouton "Ajouter" avec icône
+        self.add_task_button: QPushButton = QPushButton(" New task")
+        self.add_task_button.setIcon(QIcon(icon_path + "add.png"))
         button_layout.addWidget(self.add_task_button)
-        button_layout.addWidget(self.edit_task_button)
-        button_layout.addWidget(self.toggle_status_button)
-        button_layout.addWidget(self.delete_task_button)
 
-        # Ajout du layout des boutons au layout principal
-        main_layout.addLayout(button_layout)
+        # Bouton "Ajouter" une catégorie
+        self.filter_task_button: QPushButton = QPushButton(" New category")
+        self.filter_task_button.setIcon(QIcon(icon_path + "add-category.png"))
+        button_layout.addWidget(self.filter_task_button)
+
+        # Bouton "Filtrer" avec icône
+        self.filter_task_button: QPushButton = QPushButton(" Filter tasks")
+        self.filter_task_button.setIcon(QIcon(icon_path + "filter.png"))
+        button_layout.addWidget(self.filter_task_button)
+
+        main_layout.addLayout(
+            button_layout
+        )  # Ajout du layout des boutons dans le layout principal
 
         central_widget.setLayout(main_layout)
 
