@@ -24,6 +24,15 @@ class MainWindow(QMainWindow):
         self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
 
         self.init_ui()  # Initialisation de l'interface
+        self.load_stylesheet()  # Chargement du fichier QSS après l'init UI
+
+    def load_stylesheet(self) -> None:
+        """Charge et applique le fichier QSS."""
+        try:
+            with open("gui/styles.qss", "r") as f:
+                self.setStyleSheet(f.read())
+        except FileNotFoundError:
+            print("⚠️ Fichier styles.qss introuvable, le style ne sera pas appliqué.")
 
     def init_ui(self) -> None:
         """Initialise l'interface graphique."""
