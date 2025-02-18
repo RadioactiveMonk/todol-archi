@@ -20,7 +20,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("Task Manager")  # Définition du titre de la fenêtre
+        self.setWindowTitle("Todol - Task manager")  # Définition du titre de la fenêtre
         self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
 
         self.init_ui()  # Initialisation de l'interface
@@ -32,20 +32,39 @@ class MainWindow(QMainWindow):
 
         main_layout: QVBoxLayout = QVBoxLayout()  # Layout principal (vertical)
 
-        icon_path = QDir.current().filePath(
-            "gui/icons/"
-        )  # Dossier qui range les icônes
+        icon_path = QDir.current().filePath("gui/icons/")  # Dossier des icônes
+
+        # Layout pour la barre de recherche et les boutons associés
+        search_layout: QHBoxLayout = QHBoxLayout()
 
         # Barre de recherche
         self.search_bar: QLineEdit = QLineEdit()
         self.search_bar.setPlaceholderText("🔍 Search tasks ...")
-        main_layout.addWidget(self.search_bar)
+        search_layout.addWidget(self.search_bar)
+
+        # Bouton "Ajouter" avec icône
+        self.add_task_button: QPushButton = QPushButton()
+        self.add_task_button.setIcon(QIcon(icon_path + "add.png"))
+        self.add_task_button.setToolTip("Add new task")
+        search_layout.addWidget(self.add_task_button)
+
+        # Bouton "Ajouter une catégorie" avec icône
+        self.add_category_button: QPushButton = QPushButton()
+        self.add_category_button.setIcon(QIcon(icon_path + "add-category.png"))
+        self.add_category_button.setToolTip("Add new category")
+        search_layout.addWidget(self.add_category_button)
+
+        # Bouton "Filtrer" avec icône
+        self.filter_task_button: QPushButton = QPushButton()
+        self.filter_task_button.setIcon(QIcon(icon_path + "filter.png"))
+        self.filter_task_button.setToolTip("Filter tasks")
+        search_layout.addWidget(self.filter_task_button)
+
+        main_layout.addLayout(search_layout)  # Ajout du layout de recherche et boutons
 
         # Création du tableau pour afficher les tâches
         self.task_table: QTableWidget = QTableWidget()
-        self.task_table.setColumnCount(
-            7
-        )  # On prépare 6 colonnes, dont une pour les actions
+        self.task_table.setColumnCount(7)  # Colonnes préparées
         self.task_table.setHorizontalHeaderLabels(
             [
                 "Status",
@@ -65,28 +84,6 @@ class MainWindow(QMainWindow):
 
         self.task_table.setFont(QFont("Arial", 12))  # Style du tableau
         main_layout.addWidget(self.task_table)
-
-        # Layout pour les boutons Ajouter et Filtrer
-        button_layout: QHBoxLayout = QHBoxLayout()
-
-        # Bouton "Ajouter" avec icône
-        self.add_task_button: QPushButton = QPushButton(" New task")
-        self.add_task_button.setIcon(QIcon(icon_path + "add.png"))
-        button_layout.addWidget(self.add_task_button)
-
-        # Bouton "Ajouter" une catégorie
-        self.filter_task_button: QPushButton = QPushButton(" New category")
-        self.filter_task_button.setIcon(QIcon(icon_path + "add-category.png"))
-        button_layout.addWidget(self.filter_task_button)
-
-        # Bouton "Filtrer" avec icône
-        self.filter_task_button: QPushButton = QPushButton(" Filter tasks")
-        self.filter_task_button.setIcon(QIcon(icon_path + "filter.png"))
-        button_layout.addWidget(self.filter_task_button)
-
-        main_layout.addLayout(
-            button_layout
-        )  # Ajout du layout des boutons dans le layout principal
 
         central_widget.setLayout(main_layout)
 
