@@ -10,17 +10,9 @@ class TaskManager:
 
     def add_task(self, task_data):
         """Ajoute une tâche et la sauvegarde"""
-
-        task = {
-            "id": str(uuid4()),  # Génération d'un UUID unique
-            "title": task_data["title"],
-            "priority": task_data["priority"],
-            "due_date": task_data["due_date"],
-            "status": "Pending",
-        }
-        self.storage.save_task(task)
+        self.storage.save_task(task_data)
 
     def get_all_tasks(self):
         """Retourne toutes les tâches"""
         tasks = self.storage.load_tasks()
-        return tasks if tasks else []
+        return [task.to_dict() for task in tasks]
