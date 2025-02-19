@@ -7,6 +7,7 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QComboBox,
     QTextEdit,
+    QMessageBox,
 )
 from gui.selectors import DateSelector, PrioritySelector
 
@@ -56,19 +57,36 @@ class AddTaskDialog(BaseDialog):
     def __init__(self, parent=None) -> None:
         super().__init__("Add New Task", parent)
 
-        self.title_input = QLineEdit()
-        self.title_input.setPlaceholderText("Task title")
-        self.add_form_field("Title:", self.title_input)
+        # Champs de saisie
+        self.title_input = QLineEdit(self)
+        self.priority_selector = PrioritySelector()  # Medium par défaut
+        self.date_selector = DateSelector(self)
 
-        self.priority_combo = PrioritySelector()
-        self.add_form_field("Priority:", self.priority_combo)
+        # Ajout des champs dans le layout
+        self.add_form_field("Titre: ", self.title_input)
+        self.add_form_field("Priority :", self.priority_selector)
+        self.add_form_field("Expiration date :", self.date_selector)
 
-        self.expiration_date = DateSelector()
-        self.add_form_field("Expiration Date:", self.expiration_date)
+        # Connexion du boutton 'OK'
+        self.ok_button.clicked.connect(self.validate_and_accept)
 
-        self.notes_field = QTextEdit()
-        self.notes_field.setPlaceholderText("Additional notes...")
-        self.add_form_field("Notes:", self.notes_field)
+    def validate_and_accept(self):
+        """Vérifie les champs et retourne les données si valides"""
+        
+        title = self.title_input.text().strip()
+        priority = self.priority_selector.currentText()
+        due_date = self.date_selector.date().toString("yyyy-MM-dd")
+
+        if not title:
+            QMessageBox.warning(self, "Erreur", "Le titre ne peut pas être vide.")
+            return  # Bloque la fermeture du dialogue
+
+        self.task_data = {
+            "title": title,
+            "priority": priority,
+            "due_date": due_date,
+        }
+        self.accept()  # Ferme le dialogue si les données sont correctes
 
 
 class EditTaskDialog(BaseDialog):
