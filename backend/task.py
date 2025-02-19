@@ -3,7 +3,6 @@ from datetime import datetime
 import uuid
 from collections import namedtuple
 from backend.validators import BaseValidator, DateValidator, validate_fields
-
 from typing import Optional
 
 # Creation d'un namedtuple pour les priorités de tâches.
@@ -54,19 +53,21 @@ class Task:
 
         instance = cls(
             title=data["title"],
-            status=data["status"],
+            status=data.get("status", False),
             priority=data.get("priority"),
             description=data.get("description"),
             expiration=(
                 datetime.fromisoformat(data["expiration"])
-                if data["expiration"]
+                if data.get("expiration")
                 else None  # Si expiration n'est pas renseigné fromisoformat ne fonctionne pas, on ajoute une condition
             ),
         )
 
         # Mise à jour des champs non initialisés (init=False)
-        instance.task_uuid = data["task_uuid"]
-        instance.created_at = datetime.fromisoformat(data["created_at"])
+        instance.task_uuid = data.get("task_uuid", str(uuid.uuid4()))
+        instance.created_at = datetime.fromisoformat(
+            data.get("created_ad", datetime.now().isoformat())
+        )
 
         return instance
 
