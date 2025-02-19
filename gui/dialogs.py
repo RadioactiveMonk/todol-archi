@@ -29,7 +29,7 @@ class BaseDialog(QDialog):
         button_layout = QHBoxLayout()
         button_layout.addWidget(self.ok_button)
         button_layout.addWidget(self.cancel_button)
-        self.layout.addLayout(button_layout)
+        self.main_layout.addLayout(button_layout)
 
     def add_form_field(self, label: str, widget) -> None:
         """Ajoute un champ de formulaire avec une étiquette.
