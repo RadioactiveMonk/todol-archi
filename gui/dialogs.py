@@ -43,8 +43,8 @@ class BaseDialog(QDialog):
         des éléments du formulaire.
         """
 
-        self.layout.insertWidget(self.layout.count() - 2, QLabel(label))
-        self.layout.insertWidget(self.layout.count() - 2, widget)
+        self.main_layout.insertWidget(self.main_layout.count() - 2, QLabel(label))
+        self.main_layout.insertWidget(self.main_layout.count() - 2, widget)
 
 
 class AddTaskDialog(BaseDialog):
