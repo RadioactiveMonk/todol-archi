@@ -21,9 +21,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        window_title = self.setWindowTitle(
-            "Todol - Task Manager"
-        )  # Définition du titre de la fenêtre
+        self.setWindowTitle("Todol - Task Manager")  # Définition du titre de la fenêtre
         self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
         self.setWindowIcon(
             QIcon("gui/icons/app_icon.png")
