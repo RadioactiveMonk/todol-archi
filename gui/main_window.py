@@ -65,7 +65,7 @@ class MainWindow(QMainWindow):
         """Ouvre une boite de dialogue d'ajout de tâche et ajoute si validée"""
 
         dialog = AddTaskDialog(self)
-        if dialog.exec_() == QDialog.accepted:
+        if dialog.exec() == QDialog.DialogCode.Accepted:
             task_data = dialog.task_data
             self.task_manager.add_task(task_data)
             self.refresh_task_list()
@@ -74,7 +74,6 @@ class MainWindow(QMainWindow):
         """Met à jour l'affichâge des tâches"""
 
         self.task_table.load_tasks(self.task_manager.get_all_tasks())
-        pass
 
     def load_stylesheet(self) -> None:
         """Charge et applique le fichier QSS."""

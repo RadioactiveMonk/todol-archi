@@ -22,5 +22,4 @@ class TaskManager:
 
     def get_all_tasks(self):
         """Retourne toutes les tâches"""
-
         return self.storage.load_tasks()
