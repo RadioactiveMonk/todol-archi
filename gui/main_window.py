@@ -4,16 +4,10 @@ from PyQt6.QtWidgets import (
     QWidget,
     QVBoxLayout,
     QHBoxLayout,
-    QTableWidget,
-    QTableWidgetItem,
-    QHeaderView,
-    QPushButton,
-    QLineEdit,
-    QLabel,
 )
-from PyQt6.QtGui import QFont, QIcon
-from PyQt6.QtCore import QDir, Qt
+from PyQt6.QtGui import QIcon
 import sys
+from gui.widgets import CustomButton, SearchBar, TaskTable
 
 
 class MainWindow(QMainWindow):
@@ -22,6 +16,7 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle("Todol - Task Manager")  # Définition du titre de la fenêtre
+
         self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
         self.setWindowIcon(
             QIcon("gui/icons/app_icon.png")
@@ -45,58 +40,27 @@ class MainWindow(QMainWindow):
 
         main_layout: QVBoxLayout = QVBoxLayout()  # Layout principal (vertical)
 
-        icon_path = QDir.current().filePath("gui/icons/")  # Dossier des icônes
-
         # Layout pour la barre de recherche et les boutons associés
         search_layout: QHBoxLayout = QHBoxLayout()
 
-        # Barre de recherche avec icône personnalisée
-        self.search_bar: QLineEdit = QLineEdit()
-        self.search_bar.setPlaceholderText(" Search tasks ...")
-
+        # Barre de recherche personnalisée
+        self.search_bar = SearchBar()
         search_layout.addWidget(self.search_bar)
 
-        # Bouton "Ajouter" avec icône
-        self.add_task_button: QPushButton = QPushButton()
-        self.add_task_button.setIcon(QIcon(icon_path + "add.png"))
-        self.add_task_button.setToolTip("Add new task")
+        # Boutons personnalisés
+        self.add_task_button = CustomButton("add.png", "Add new task")
         search_layout.addWidget(self.add_task_button)
 
-        # Bouton "Ajouter une catégorie" avec icône
-        self.add_category_button: QPushButton = QPushButton()
-        self.add_category_button.setIcon(QIcon(icon_path + "add-category.png"))
-        self.add_category_button.setToolTip("Add new category")
+        self.add_category_button = CustomButton("add-category.png", "Add new category")
         search_layout.addWidget(self.add_category_button)
 
-        # Bouton "Filtrer" avec icône
-        self.filter_task_button: QPushButton = QPushButton()
-        self.filter_task_button.setIcon(QIcon(icon_path + "filter.png"))
-        self.filter_task_button.setToolTip("Filter tasks")
+        self.filter_task_button = CustomButton("filter.png", "Filter tasks")
         search_layout.addWidget(self.filter_task_button)
 
         main_layout.addLayout(search_layout)  # Ajout du layout de recherche et boutons
 
-        # Création du tableau pour afficher les tâches
-        self.task_table: QTableWidget = QTableWidget()
-        self.task_table.setColumnCount(7)  # Colonnes préparées
-        self.task_table.setHorizontalHeaderLabels(
-            [
-                "Status",
-                "Priority",
-                "Category",
-                "Expiration",
-                "Title",
-                "Notes",
-                "Actions",
-            ]
-        )
-
-        # Vérification avant d'appliquer setSectionResizeMode
-        header = self.task_table.horizontalHeader()
-        if header:
-            header.setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
-
-        self.task_table.setFont(QFont("Arial", 12))  # Style du tableau
+        # Création du tableau des tâches personnalisé
+        self.task_table = TaskTable()
         main_layout.addWidget(self.task_table)
 
         central_widget.setLayout(main_layout)

@@ -11,7 +11,6 @@ class CustomButton(QPushButton):
         icon_path = QDir.current().filePath(f"gui/icons/{icon_name}")
         self.setIcon(QIcon(icon_path))
         self.setToolTip(tooltip)
-        self.setFixedSize(40, 40)  # Taille uniforme des boutons
 
 
 class SearchBar(QLineEdit):
@@ -20,15 +19,7 @@ class SearchBar(QLineEdit):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.setPlaceholderText(" Search tasks ...")
-        self.setFixedHeight(30)
-        icon_path = QDir.current().filePath("gui/icons/search.png")
-        self.setStyleSheet(
-            f"background-image: url({icon_path}); "
-            "background-position: left center; "
-            "background-repeat: no-repeat; "
-            "padding-left: 25px; "
-            "color: black; "
-        )
+        self.setFixedHeight(40)
 
 
 class TaskTable(QTableWidget):

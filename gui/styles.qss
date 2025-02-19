@@ -1,6 +1,6 @@
 /* ==================== GENERAL ==================== */
 QWidget {
-    background-color: #f4f4f4;
+    background-color:rgb(230, 230, 230);
     font-family: Arial, sans-serif;
     font-size: 14px;
 }
