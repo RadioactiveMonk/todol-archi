@@ -8,6 +8,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtGui import QIcon
 import sys
 from gui.widgets import CustomButton, SearchBar, TaskTable
+from backend.task_manager import TaskManager
 
 
 class MainWindow(QMainWindow):
@@ -16,7 +17,7 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle("Todol - Task Manager")  # Définition du titre de la fenêtre
-
+        self.task_manager = TaskManager()
         self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
         self.setWindowIcon(
             QIcon("gui/icons/app_icon.png")
