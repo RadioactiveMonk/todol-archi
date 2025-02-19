@@ -4,9 +4,11 @@ from PyQt6.QtWidgets import (
     QWidget,
     QVBoxLayout,
     QHBoxLayout,
+    QDialog,
 )
 from PyQt6.QtGui import QIcon
 import sys
+from gui.dialogs import AddTaskDialog
 from gui.widgets import CustomButton, SearchBar, TaskTable
 from backend.task_manager import TaskManager
 
@@ -17,22 +19,14 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle("Todol - Task Manager")  # Définition du titre de la fenêtre
-        self.task_manager = TaskManager()
         self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
         self.setWindowIcon(
             QIcon("gui/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
 
+        self.task_manager = TaskManager()
         self.init_ui()  # Initialisation de l'interface
         self.load_stylesheet()  # Chargement du fichier QSS après l'init UI
-
-    def load_stylesheet(self) -> None:
-        """Charge et applique le fichier QSS."""
-        try:
-            with open("gui/styles.qss", "r") as f:
-                self.setStyleSheet(f.read())
-        except FileNotFoundError:
-            print("⚠️ Fichier styles.qss introuvable, le style ne sera pas appliqué.")
 
     def init_ui(self) -> None:
         """Initialise l'interface graphique."""
@@ -50,6 +44,7 @@ class MainWindow(QMainWindow):
 
         # Boutons personnalisés
         self.add_task_button = CustomButton("add.png", "Add new task")
+        self.add_task_button.clicked.connect(self.open_add_task_dialog)
         search_layout.addWidget(self.add_task_button)
 
         self.add_category_button = CustomButton("add-category.png", "Add new category")
@@ -65,6 +60,29 @@ class MainWindow(QMainWindow):
         main_layout.addWidget(self.task_table)
 
         central_widget.setLayout(main_layout)
+
+    def open_add_task_dialog(self):
+        """Ouvre une boite de dialogue d'ajout de tâche et ajoute si validée"""
+
+        dialog = AddTaskDialog(self)
+        if dialog.exec_() == QDialog.accepted:
+            task_data = dialog.task_data
+            self.task_manager.add_task(task_data)
+            self.refresh_task_list()
+
+    def refresh_task_list(self):
+        """Met à jour l'affichâge des tâches"""
+
+        self.task_table.load_tasks(self.task_manager.get_all_tasks())
+        pass
+
+    def load_stylesheet(self) -> None:
+        """Charge et applique le fichier QSS."""
+        try:
+            with open("gui/styles.qss", "r") as f:
+                self.setStyleSheet(f.read())
+        except FileNotFoundError:
+            print("⚠️ Fichier styles.qss introuvable, le style ne sera pas appliqué.")
 
 
 if __name__ == "__main__":
