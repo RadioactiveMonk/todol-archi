@@ -9,9 +9,10 @@ from PyQt6.QtWidgets import (
     QHeaderView,
     QPushButton,
     QLineEdit,
+    QLabel,
 )
 from PyQt6.QtGui import QFont, QIcon
-from PyQt6.QtCore import QDir
+from PyQt6.QtCore import QDir, Qt
 import sys
 
 
@@ -20,8 +21,13 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("Todol - Task manager")  # Définition du titre de la fenêtre
+        window_title = self.setWindowTitle(
+            "Todol - Task Manager"
+        )  # Définition du titre de la fenêtre
         self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
+        self.setWindowIcon(
+            QIcon("gui/icons/app_icon.png")
+        )  # Ajout d'une icône personnalisée
 
         self.init_ui()  # Initialisation de l'interface
         self.load_stylesheet()  # Chargement du fichier QSS après l'init UI
@@ -46,9 +52,10 @@ class MainWindow(QMainWindow):
         # Layout pour la barre de recherche et les boutons associés
         search_layout: QHBoxLayout = QHBoxLayout()
 
-        # Barre de recherche
+        # Barre de recherche avec icône personnalisée
         self.search_bar: QLineEdit = QLineEdit()
-        self.search_bar.setPlaceholderText("🔍 Search tasks ...")
+        self.search_bar.setPlaceholderText(" Search tasks ...")
+
         search_layout.addWidget(self.search_bar)
 
         # Bouton "Ajouter" avec icône
