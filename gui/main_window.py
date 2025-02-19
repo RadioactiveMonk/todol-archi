@@ -64,7 +64,7 @@ class MainWindow(QMainWindow):
     def open_add_task_dialog(self):
         """Ouvre une boite de dialogue d'ajout de tâche et ajoute si validée"""
 
-        dialog = AddTaskDialog(self)
+        dialog = AddTaskDialog()
         if dialog.exec() == QDialog.DialogCode.Accepted:
             task_data = dialog.task_data
             self.task_manager.add_task(task_data)

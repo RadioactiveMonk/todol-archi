@@ -34,7 +34,7 @@ class TaskTable(QTableWidget):
     def __init__(self, parent=None) -> None:
         """Construit le tableau de tâches"""
         super().__init__(parent)
-        self.setColumnCount(6)
+        self.setColumnCount(7)
         self.setHorizontalHeaderLabels(
             [
                 "Status",

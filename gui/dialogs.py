@@ -20,8 +20,8 @@ class BaseDialog(QDialog):
         self.setWindowTitle(title)
         self.setFixedSize(400, 350)
 
-        layout = QVBoxLayout()
-        self.setLayout(layout)
+        self.main_layout = QVBoxLayout()
+        self.setLayout(self.main_layout)
 
         self.ok_button = QPushButton("OK")
         self.cancel_button = QPushButton("Cancel")
@@ -29,7 +29,7 @@ class BaseDialog(QDialog):
         button_layout = QHBoxLayout()
         button_layout.addWidget(self.ok_button)
         button_layout.addWidget(self.cancel_button)
-        layout.addLayout(button_layout)
+        self.layout.addLayout(button_layout)
 
     def add_form_field(self, label: str, widget) -> None:
         """Ajoute un champ de formulaire avec une étiquette.
@@ -43,12 +43,8 @@ class BaseDialog(QDialog):
         des éléments du formulaire.
         """
 
-        self.layout.insertWidget(
-            self.layout.count() - 1, QLabel(label)
-        )  # Ajoute l'étiquette
-        self.layout.insertWidget(
-            self.layout.count() - 1, widget
-        )  # Ajoute le champ correspondant
+        self.layout.insertWidget(self.layout.count() - 2, QLabel(label))
+        self.layout.insertWidget(self.layout.count() - 2, widget)
 
 
 class AddTaskDialog(BaseDialog):
@@ -60,7 +56,7 @@ class AddTaskDialog(BaseDialog):
         # Champs de saisie
         self.title_input = QLineEdit(self)
         self.priority_selector = PrioritySelector()  # Medium par défaut
-        self.date_selector = DateSelector(self)
+        self.date_selector = DateSelector()
 
         # Ajout des champs dans le layout
         self.add_form_field("Titre: ", self.title_input)
@@ -72,7 +68,7 @@ class AddTaskDialog(BaseDialog):
 
     def validate_and_accept(self):
         """Vérifie les champs et retourne les données si valides"""
-        
+
         title = self.title_input.text().strip()
         priority = self.priority_selector.currentText()
         due_date = self.date_selector.date().toString("yyyy-MM-dd")
