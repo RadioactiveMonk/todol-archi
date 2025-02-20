@@ -70,6 +70,7 @@ class TaskTable(QTableWidget):
 
             # Ajout des boutons Modifier/Supprimer
             button_layout = QHBoxLayout()
+            button_layout.setContentsMargins(0, 0, 0, 0)
 
             edit_button = CustomButton("edit.png", "Modifier")
             edit_button.setObjectName("taskButton")

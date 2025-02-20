@@ -43,9 +43,8 @@ QPushButton {
 #taskButton {
     border: none;
     background-color: transparent;
-    padding: 2px;
-    min-width: 20px;
-    min-height: 20px;
+    min-width: 10px;
+    min-height: 0px;
     border-radius: 5px;  /* ✅ Coins arrondis */
 }
 
