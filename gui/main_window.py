@@ -85,10 +85,3 @@ class MainWindow(QMainWindow):
                 self.setStyleSheet(f.read())
         except FileNotFoundError:
             print("⚠️ Fichier styles.qss introuvable, le style ne sera pas appliqué.")
-
-
-if __name__ == "__main__":
-    app: QApplication = QApplication(sys.argv)
-    window: MainWindow = MainWindow()
-    window.show()
-    sys.exit(app.exec())
