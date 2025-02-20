@@ -28,7 +28,7 @@ class Task:
     )
     priority: Optional[str] = field(default=None)
     description: Optional[str] = field(default=None)
-    expiration: Optional[datetime] = field(
+    due_date: Optional[datetime] = field(
         default=None,
         metadata={"validator": DateValidator(allow_past=False)},
     )
@@ -41,8 +41,8 @@ class Task:
             "priority": self.priority,
             "description": self.description,
             "created_at": self.created_at.isoformat(),
-            "expiration": (
-                self.expiration.isoformat() if self.expiration else None
+            "due_date": (
+                self.due_date.isoformat() if self.due_date else None
             ),  # Si expiration n'est pas renseigné, isoformat ne fonctionne pas sur None.
             "task_uuid": self.task_uuid,
         }
@@ -56,9 +56,9 @@ class Task:
             status=data.get("status", False),
             priority=data.get("priority"),
             description=data.get("description"),
-            expiration=(
-                datetime.fromisoformat(data["expiration"])
-                if data.get("expiration")
+            due_date=(
+                datetime.fromisoformat(data["due_date"])
+                if data.get("due_date")
                 else None  # Si expiration n'est pas renseigné fromisoformat ne fonctionne pas, on ajoute une condition
             ),
         )

@@ -68,14 +68,19 @@ class TaskTable(QTableWidget):
             self.setItem(row, 4, QTableWidgetItem(task.get("title", "No Title")))
             self.setItem(row, 5, QTableWidgetItem(task.get("notes", "")))
 
-        # Ajout des boutons Modifier/Supprimer
-        button_layout = QHBoxLayout()
-        edit_button = CustomButton("edit.png", "Modifier")
-        delete_button = CustomButton("delete.png", "Supprimer")
-        button_widget = QWidget()
-        button_layout.addWidget(edit_button)
-        button_layout.addWidget(delete_button)
-        button_widget.setLayout(button_layout)
-        self.setCellWidget(row, 6, button_widget)
+            # Ajout des boutons Modifier/Supprimer
+            button_layout = QHBoxLayout()
+
+            edit_button = CustomButton("edit.png", "Modifier")
+            edit_button.setObjectName("taskButton")
+
+            delete_button = CustomButton("delete.png", "Supprimer")
+            delete_button.setObjectName("taskButton")
+
+            button_widget = QWidget()
+            button_layout.addWidget(edit_button)
+            button_layout.addWidget(delete_button)
+            button_widget.setLayout(button_layout)
+            self.setCellWidget(row, 6, button_widget)
 
         self.update()  # ✅ Force l’affichage (méthode PyQt)

@@ -40,12 +40,25 @@ QPushButton {
     min-width: 36px;
     min-height: 36px;
 }
+#taskButton {
+    border: none;
+    background-color: transparent;
+    padding: 2px;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 5px;  /* ✅ Coins arrondis */
+}
+
+#taskButton:hover {
+    background-color: rgba(0, 120, 215, 0.2);  /* ✅ Effet au survol */
+}
 
 /* ==================== TABLE ==================== */
 QTableWidget {
-    background-color: white;
-    border-radius: 8px;
-    gridline-color: #ddd;
+    color: black;  /* ✅ Force la couleur du texte */
+    background-color: white;  /* ✅ Évite un contraste invisible */
+    gridline-color: #ccc;
+    selection-background-color: #0078D7;  /* ✅ Améliore la sélection */
 }
 QHeaderView::section {
     background-color: #0078D7;

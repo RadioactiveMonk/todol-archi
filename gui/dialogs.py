@@ -81,7 +81,9 @@ class AddTaskDialog(BaseDialog):
 
         title = self.title_input.text().strip()
         priority = self.priority_selector.currentText()
-        due_date = self.date_selector.date().toString("yyyy-MM-dd")
+        due_date = (
+            self.date_selector.date().toPyDate().isoformat()
+        )  # ✅ Fix pour récupérer une vraie date
 
         if not title:
             QMessageBox.warning(self, "Erreur", "Le titre ne peut pas être vide.")
