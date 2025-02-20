@@ -4,6 +4,8 @@ from PyQt6.QtWidgets import (
     QTableWidget,
     QHeaderView,
     QTableWidgetItem,
+    QHBoxLayout,
+    QWidget,
 )
 from PyQt6.QtGui import QIcon, QFont
 from PyQt6.QtCore import QDir
@@ -76,5 +78,14 @@ class TaskTable(QTableWidget):
             self.setItem(row, 5, QTableWidgetItem(task.get("notes", "")))
 
             # Ajout d'un bouton d'action pour modifier/supprimer la tâche
-            action_button = CustomButton("edit.png", "Modifier", self)
-            self.setCellWidget(row, 6, action_button)
+            button_layout = QHBoxLayout()
+            edit_button = CustomButton("edit.png", "Edit task")
+            delete_button = CustomButton("delete.png", "Delete task")
+            button_widget = QWidget()
+            button_layout.addWidget(edit_button)
+            button_layout.addWidget(delete_button)
+            button_widget.setLayout(button_layout)
+            self.setCellWidget(
+                row, 6, button_widget
+            )  # Placement adapté des boutons d'action de tâches
+        self.update()  # Forcer mise à jour visuelle (méthode PyQt)
