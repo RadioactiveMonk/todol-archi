@@ -81,7 +81,7 @@ class MainWindow(QMainWindow):
     def load_stylesheet(self) -> None:
         """Charge et applique le fichier QSS."""
         try:
-            with open("gui/styles.qss", "r") as f:
+            with open("gui/stylesheets/styles.qss", "r") as f:
                 self.setStyleSheet(f.read())
         except FileNotFoundError:
             print("⚠️ Fichier styles.qss introuvable, le style ne sera pas appliqué.")
