@@ -30,6 +30,9 @@ class MainWindow(QMainWindow):
 
     def init_ui(self) -> None:
         """Initialise l'interface graphique."""
+
+        self.refresh_task_list()  # ✅ Charge les tâches dès l’ouverture de l’appli
+
         central_widget: QWidget = QWidget(self)
         self.setCentralWidget(central_widget)
 

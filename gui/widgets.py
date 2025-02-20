@@ -56,36 +56,26 @@ class TaskTable(QTableWidget):
     def load_tasks(self, tasks):
         """Charge et affiche les tâches dans la table"""
 
-        self.setRowCount(
-            len(tasks)
-        )  # Définit le nombre de rangées par nombre de tâches
+        self.clearContents()  # ✅ Vide la table avant de recharger
+        self.setRowCount(len(tasks))  # ✅ Ajuste le nombre de lignes
+
         for row, task in enumerate(tasks):
-            self.setItem(
-                row, 0, QTableWidgetItem(str(task.get("status", "Pending")))
-            )  # ✅ Fix KeyError
-            self.setItem(
-                row, 1, QTableWidgetItem(task.get("priority", "Medium"))
-            )  # ✅ Valeur par défaut cohérente
-            self.setItem(
-                row, 2, QTableWidgetItem(task.get("category", "No Category"))
-            )  # ✅ Fix KeyError
-            self.setItem(
-                row, 3, QTableWidgetItem(task.get("due_date", "No Date"))
-            )  # ✅ Fix KeyError
-            self.setItem(
-                row, 4, QTableWidgetItem(task.get("title", "No Title"))
-            )  # ✅ Fix KeyError
+            status_text = "✅ Done" if task.get("status", False) else "⏳ Pending"
+            self.setItem(row, 0, QTableWidgetItem(status_text))
+            self.setItem(row, 1, QTableWidgetItem(task.get("priority", "Medium")))
+            self.setItem(row, 2, QTableWidgetItem(task.get("category", "No Category")))
+            self.setItem(row, 3, QTableWidgetItem(task.get("due_date", "No Date")))
+            self.setItem(row, 4, QTableWidgetItem(task.get("title", "No Title")))
             self.setItem(row, 5, QTableWidgetItem(task.get("notes", "")))
 
-            # Ajout d'un bouton d'action pour modifier/supprimer la tâche
-            button_layout = QHBoxLayout()
-            edit_button = CustomButton("edit.png", "Edit task")
-            delete_button = CustomButton("delete.png", "Delete task")
-            button_widget = QWidget()
-            button_layout.addWidget(edit_button)
-            button_layout.addWidget(delete_button)
-            button_widget.setLayout(button_layout)
-            self.setCellWidget(
-                row, 6, button_widget
-            )  # Placement adapté des boutons d'action de tâches
-        self.update()  # Forcer mise à jour visuelle (méthode PyQt)
+        # Ajout des boutons Modifier/Supprimer
+        button_layout = QHBoxLayout()
+        edit_button = CustomButton("edit.png", "Modifier")
+        delete_button = CustomButton("delete.png", "Supprimer")
+        button_widget = QWidget()
+        button_layout.addWidget(edit_button)
+        button_layout.addWidget(delete_button)
+        button_widget.setLayout(button_layout)
+        self.setCellWidget(row, 6, button_widget)
+
+        self.update()  # ✅ Force l’affichage (méthode PyQt)
