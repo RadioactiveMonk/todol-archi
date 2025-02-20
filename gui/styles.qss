@@ -15,12 +15,12 @@ QLineEdit {
     color: black;
 }
 QLineEdit:focus {
-    border: 2px solid #0078D7;
+    border: 2px solid #F29F05;
 }
 
 /* ==================== BUTTONS ==================== */
 QPushButton {
-    background-color: #0078D7;
+    background-color: #F29F05;
     color: white;
     border-radius: 8px;
     padding: 8px 12px;
@@ -29,10 +29,10 @@ QPushButton {
     transition: background-color 0.3s;
 }
 QPushButton:hover {
-    background-color: #005bb5;
+    background-color: #F2B705;
 }
 QPushButton:pressed {
-    background-color: #003f7f;
+    background-color: #F29F05;
 }
 
 /* Icônes des boutons (pas de texte affiché) */
@@ -41,7 +41,7 @@ QPushButton {
     min-height: 36px;
 }
 #taskButton {
-    border: none;
+    border: #C2D7F2;
     background-color: transparent;
     min-width: 10px;
     min-height: 0px;
@@ -49,7 +49,7 @@ QPushButton {
 }
 
 #taskButton:hover {
-    background-color: rgba(0, 120, 215, 0.2);  /* ✅ Effet au survol */
+    background-color: #77B9F2;  /* ✅ Effet au survol */
 }
 
 /* ==================== TABLE ==================== */
@@ -57,10 +57,10 @@ QTableWidget {
     color: black;  /* ✅ Force la couleur du texte */
     background-color: white;  /* ✅ Évite un contraste invisible */
     gridline-color: #ccc;
-    selection-background-color: #0078D7;  /* ✅ Améliore la sélection */
+    selection-background-color: #F29F05;  /* ✅ Améliore la sélection */
 }
 QHeaderView::section {
-    background-color: #0078D7;
+    background-color: #F2B705;
     color: white;
     padding: 6px;
     font-size: 14px;
@@ -72,6 +72,6 @@ QTableWidget::item {
     border-bottom: 1px solid #ddd;
 }
 QTableWidget::item:selected {
-    background-color: #cce7ff;
+    background-color: #C2D7F2;
     color: black;
 }
