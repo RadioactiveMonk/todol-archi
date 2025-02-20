@@ -8,6 +8,7 @@ from PyQt6.QtWidgets import (
     QComboBox,
     QTextEdit,
     QMessageBox,
+    QFormLayout,
 )
 from gui.selectors import DateSelector, PrioritySelector
 
@@ -53,17 +54,26 @@ class AddTaskDialog(BaseDialog):
     def __init__(self, parent=None) -> None:
         super().__init__("Add New Task", parent)
 
+        # Layout propre pour aligner les champs
+        form_layout = QFormLayout()
+
         # Champs de saisie
         self.title_input = QLineEdit(self)
+        self.title_input.setPlaceholderText("Enter task title ...")
         self.priority_selector = PrioritySelector()  # Medium par défaut
         self.date_selector = DateSelector()
 
-        # Ajout des champs dans le layout
-        self.add_form_field("Titre: ", self.title_input)
-        self.add_form_field("Priority :", self.priority_selector)
-        self.add_form_field("Expiration date :", self.date_selector)
+        # Ajout des champs dans le layout FORM
+        form_layout.addRow("Title:", self.title_input)
+        form_layout.addRow("Priority:", self.priority_selector)
+        form_layout.addRow("Expiration date:", self.date_selector)
 
-        # Connexion du boutton 'OK'
+        # Ajout du form_layout au main_layout avant les boutons
+        self.main_layout.insertLayout(
+            0, form_layout
+        )  # ✅ Ajoute bien le layout FORM en haut
+
+        # Connexion du bouton 'OK'
         self.ok_button.clicked.connect(self.validate_and_accept)
 
     def validate_and_accept(self):

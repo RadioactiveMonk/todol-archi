@@ -58,14 +58,22 @@ class TaskTable(QTableWidget):
             len(tasks)
         )  # Définit le nombre de rangées par nombre de tâches
         for row, task in enumerate(tasks):
-            self.setItem(row, 0, QTableWidgetItem(task["status"]))  # Correction ici
-            self.setItem(row, 1, QTableWidgetItem(task["priority"]))
-            self.setItem(row, 2, QTableWidgetItem(task["category"]))
-            self.setItem(row, 3, QTableWidgetItem(task["due_date"]))
-            self.setItem(row, 4, QTableWidgetItem(task["title"]))
             self.setItem(
-                row, 5, QTableWidgetItem(task.get("notes", ""))
-            )  # Notes optionnelles
+                row, 0, QTableWidgetItem(str(task.get("status", "Pending")))
+            )  # ✅ Fix KeyError
+            self.setItem(
+                row, 1, QTableWidgetItem(task.get("priority", "Medium"))
+            )  # ✅ Valeur par défaut cohérente
+            self.setItem(
+                row, 2, QTableWidgetItem(task.get("category", "No Category"))
+            )  # ✅ Fix KeyError
+            self.setItem(
+                row, 3, QTableWidgetItem(task.get("due_date", "No Date"))
+            )  # ✅ Fix KeyError
+            self.setItem(
+                row, 4, QTableWidgetItem(task.get("title", "No Title"))
+            )  # ✅ Fix KeyError
+            self.setItem(row, 5, QTableWidgetItem(task.get("notes", "")))
 
             # Ajout d'un bouton d'action pour modifier/supprimer la tâche
             action_button = CustomButton("edit.png", "Modifier", self)
