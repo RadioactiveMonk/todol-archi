@@ -11,6 +11,7 @@ from PyQt6.QtWidgets import (
     QFormLayout,
 )
 from gui.selectors import DateSelector, PrioritySelector
+from gui.stylesheets.styles import load_stylesheet
 
 
 class BaseDialog(QDialog):
@@ -18,11 +19,13 @@ class BaseDialog(QDialog):
 
     def __init__(self, title: str, parent=None) -> None:
         super().__init__(parent)
+
         self.setWindowTitle(title)
         self.setFixedSize(400, 350)
 
         self.main_layout = QVBoxLayout()
         self.setLayout(self.main_layout)
+        self.setStyleSheet(load_stylesheet("default"))
 
         self.ok_button = QPushButton("OK")
         self.cancel_button = QPushButton("Cancel")
@@ -64,7 +67,7 @@ class AddTaskDialog(BaseDialog):
         self.date_selector = DateSelector()
 
         # Ajout des champs dans le layout FORM
-        form_layout.addRow("Title:", self.title_input)
+        form_layout.addRow("", self.title_input)
         form_layout.addRow("Priority:", self.priority_selector)
         form_layout.addRow("Expiration date:", self.date_selector)
 
