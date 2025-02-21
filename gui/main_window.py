@@ -75,11 +75,3 @@ class MainWindow(QMainWindow):
         """Met à jour l'affichâge des tâches"""
 
         self.task_table.load_tasks(self.task_manager.get_all_tasks())
-
-    def load_stylesheet(self) -> None:
-        """Charge et applique le fichier QSS."""
-        try:
-            with open("gui/stylesheets/styles.qss", "r") as f:
-                self.setStyleSheet(f.read())
-        except FileNotFoundError:
-            print("⚠️ Fichier styles.qss introuvable, le style ne sera pas appliqué.")

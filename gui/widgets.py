@@ -60,8 +60,8 @@ class TaskTable(QTableWidget):
         self.setRowCount(len(tasks))  # ✅ Ajuste le nombre de lignes
 
         for row, task in enumerate(tasks):
-            status_text = "✅ Done" if task.get("status", False) else "⏳ Pending"
-            self.setItem(row, 0, QTableWidgetItem(status_text))
+            status = "🎯" if task.get("status", False) else "🕔"
+            self.setItem(row, 0, QTableWidgetItem(status))
             self.setItem(row, 1, QTableWidgetItem(task.get("priority", "Medium")))
             self.setItem(row, 2, QTableWidgetItem(task.get("category", "No Category")))
             self.setItem(row, 3, QTableWidgetItem(task.get("due_date", "No Date")))
