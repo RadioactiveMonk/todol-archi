@@ -7,7 +7,6 @@ from PyQt6.QtWidgets import (
     QDialog,
 )
 from PyQt6.QtGui import QIcon
-import sys
 from gui.dialogs import AddTaskDialog
 from gui.widgets import CustomButton, SearchBar, TaskTable
 from backend.task_manager import TaskManager
@@ -26,7 +25,6 @@ class MainWindow(QMainWindow):
 
         self.task_manager = TaskManager()
         self.init_ui()  # Initialisation de l'interface
-        self.load_stylesheet()  # Chargement du fichier QSS après l'init UI
 
     def init_ui(self) -> None:
         """Initialise l'interface graphique."""
