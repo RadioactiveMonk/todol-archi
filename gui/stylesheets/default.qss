@@ -74,3 +74,15 @@ QTableWidget::item:selected {
     background-color: #C2D7F2;
     color: black;
 }
+QTableWidget::item[priority="High"] {
+    color: red;
+    font-weight: bold;
+}
+
+QTableWidget::item[priority="Medium"] {
+    color: orange;
+}
+
+QTableWidget::item[priority="Low"] {
+    color: green;
+}

@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 from PyQt6.QtGui import QIcon, QFont
-from PyQt6.QtCore import QDir
+from PyQt6.QtCore import QDir, Qt
 
 
 class CustomButton(QPushButton):
@@ -61,8 +61,20 @@ class TaskTable(QTableWidget):
 
         for row, task in enumerate(tasks):
             status = "🎯" if task.get("status", False) else "🕔"
+
+            priority = task.get(
+                "priority", "Medium"
+            )  # Si une priorité n'est pas définie, 'Medium'
+            priority_item = QTableWidgetItem(priority)
+            priority_item.setData(
+                Qt.ItemDataRole.UserRole, priority
+            )  # ✅ Permet au QSS de récupérer la valeur
+            priority_item.setForeground(
+                Qt.GlobalColor.transparent
+            )  # Pour laisser le QSS gérer
+
             self.setItem(row, 0, QTableWidgetItem(status))
-            self.setItem(row, 1, QTableWidgetItem(task.get("priority", "Medium")))
+            self.setItem(row, 1, priority_item)
             self.setItem(row, 2, QTableWidgetItem(task.get("category", "No Category")))
             self.setItem(row, 3, QTableWidgetItem(task.get("due_date", "No Date")))
             self.setItem(row, 4, QTableWidgetItem(task.get("title", "No Title")))
