@@ -72,5 +72,5 @@ class Task:
         return instance
 
     def validate(self) -> bool:
-        """Valide les champs en appelant validate_fields (validation.py)"""
+        """Valide les champs en appelant validate_fields (validators.py)"""
         return validate_fields(self)
