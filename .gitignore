@@ -5,3 +5,4 @@ __pycache__/
 dyd/
 *.pyc
 *.pyo
+coder.py
