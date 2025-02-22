@@ -1,8 +1,7 @@
 venv/
-.venv
-venv
 .Venv/
 .env/
 __pycache__/
+dyd/
 *.pyc
 *.pyo
