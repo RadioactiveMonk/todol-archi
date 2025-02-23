@@ -7,6 +7,7 @@ from PyQt6.QtGui import QIcon, QFont
 from PyQt6.QtCore import QDir, Qt
 from gui.task_table_model import TaskTableModel
 from typing import List, Dict, Any, Optional, Union
+from backend.constants import TASK_HEADERS
 
 
 class CustomButton(QPushButton):

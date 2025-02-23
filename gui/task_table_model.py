@@ -1,18 +1,19 @@
 from PyQt6.QtCore import Qt, QAbstractTableModel, QModelIndex
 from typing import List, Dict, Any, Optional, Union
+from backend.constants import (
+    TASK_HEADERS,
+    STATUS_DONE,
+    STATUS_PENDING,
+    PRIORITY_HIGH,
+    PRIORITY_MEDIUM,
+    PRIORITY_LOW,
+)
 
 
 class TaskTableModel(QAbstractTableModel):
     """Modèle de données pour afficher les tâches dans un QTableView"""
 
-    HEADERS = [
-        "Status",
-        "Priority",
-        "Category",
-        "Expiration",
-        "Title",
-        "Notes",
-    ]  # Titres des sections
+    HEADERS = TASK_HEADERS  # Intégration des constantes
 
     def __init__(self, tasks: Optional[List[Dict[str, Any]]] = None) -> None:
         """
@@ -65,8 +66,8 @@ class TaskTableModel(QAbstractTableModel):
 
         if role == Qt.ItemDataRole.DisplayRole:
             return {
-                0: "✅" if task.get("status", False) else "⏳",
-                1: task.get("priority", "Medium"),
+                0: STATUS_DONE if task.get("status", False) else STATUS_PENDING,
+                1: task.get("priority", PRIORITY_MEDIUM),
                 2: task.get("category", "No Category"),
                 3: task.get("due_date", "No Date"),
                 4: task.get("title", "No Title"),

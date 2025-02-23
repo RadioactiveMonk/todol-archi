@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QComboBox, QDateEdit
 from PyQt6.QtCore import QDate
+from backend.constants import PRIORITY_MEDIUM, task_priorities
 
 
 class DateSelector(QDateEdit):
@@ -14,7 +15,7 @@ class DateSelector(QDateEdit):
 class PrioritySelector(QComboBox):
     """Menu déroulant pour la sélection de la priorité, réutilisable."""
 
-    def __init__(self, default_priority="Medium", parent=None) -> None:
+    def __init__(self, default_priority=PRIORITY_MEDIUM, parent=None) -> None:
         super().__init__(parent)
-        self.addItems(["Low", "Medium", "High"])
+        self.addItems(task_priorities)
         self.setCurrentText(default_priority)

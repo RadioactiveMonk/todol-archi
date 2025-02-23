@@ -12,6 +12,7 @@ from PyQt6.QtWidgets import (
 )
 from gui.selectors import DateSelector, PrioritySelector
 from gui.stylesheets.styles import load_stylesheet
+from backend.constants import task_priorities
 
 
 class BaseDialog(QDialog):
