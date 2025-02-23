@@ -3,6 +3,7 @@ QWidget {
     background-color:rgb(230, 230, 230);
     font-family: Arial, sans-serif;
     font-size: 14px;
+    color: black;  /* ✅ Ajout pour éviter les contrastes faibles */
 }
 
 /* ==================== SEARCH BAR ==================== */
@@ -45,17 +46,19 @@ QPushButton {
     background-color: #F2B705;
     min-width: 10px;
     min-height: 0px;
-    border-radius: 5px;  /* ✅ Coins arrondis */
+    border-radius: 5px;
 }
 
 #taskButton:hover {
-    background-color: #F29F05;  /* ✅ Effet au survol */
+    background-color: #F29F05;
 }
 
 /* ==================== TABLE ==================== */
-QTableWidget {
-    color: rgb(119, 119, 119);  /* ✅ Force la couleur du texte */
-    background-color: white;  /* ✅ Évite un contraste invisible */
+QTableView {
+    color: black;  /* ✅ Changement pour améliorer la lisibilité */
+    background-color: white;
+    gridline-color: #bbb;
+    selection-background-color: #C2D7F2;
 }
 QHeaderView::section {
     background-color: #F2B705;
@@ -65,27 +68,30 @@ QHeaderView::section {
     font-weight: bold;
     border: none;
 }
-QTableWidget::item {
+QTableView::item {
     padding: 6px;
     font-size: 14px;
     border-bottom: 1px solid #ddd;
+    color: black;  /* ✅ Assurer la visibilité du texte */
 }
-QTableWidget::item:selected {
+QTableView::item:selected {
     background-color: #C2D7F2;
     color: black;
 }
-QTableWidget::item[priority="High"] {
+QTableView::item[priority="High"] {
     color: red;
     font-weight: bold;
 }
 
-QTableWidget::item[priority="Medium"] {
+QTableView::item[priority="Medium"] {
     color: orange;
 }
 
-QTableWidget::item[priority="Low"] {
+QTableView::item[priority="Low"] {
     color: green;
 }
+
+/* ==================== DIALOG ==================== */
 QDialog {
     background-color: white;
     color: black;

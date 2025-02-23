@@ -67,9 +67,9 @@ class AddTaskDialog(BaseDialog):
         self.date_selector = DateSelector()
 
         # Ajout des champs dans le layout FORM
-        form_layout.addRow("", self.title_input)
-        form_layout.addRow("Priority:", self.priority_selector)
-        form_layout.addRow("Expiration date:", self.date_selector)
+        form_layout.addRow("Titre: ", self.title_input)
+        form_layout.addRow("Priority: ", self.priority_selector)
+        form_layout.addRow("Expiration date: ", self.date_selector)
 
         # Ajout du form_layout au main_layout avant les boutons
         self.main_layout.insertLayout(
