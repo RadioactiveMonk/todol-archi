@@ -1,65 +1,11 @@
 [
     {
-        "title": "Cool it",
-        "status": false,
-        "priority": "High",
-        "description": null,
-        "created_at": "2025-02-23T19:06:15.417306",
-        "due_date": "2025-02-20T00:00:00",
-        "task_uuid": "972f446a-8b5e-4aca-9f49-e923b0f468e9"
-    },
-    {
-        "title": "Sortir linge grenier",
+        "title": "Title",
         "status": false,
         "priority": "Medium",
         "description": null,
-        "created_at": "2025-02-23T19:06:15.417370",
-        "due_date": "2025-02-21T00:00:00",
-        "task_uuid": "9c599519-1fa1-459e-93b9-9f8ca0f3ac4b"
-    },
-    {
-        "title": "Tasker",
-        "status": false,
-        "priority": "High",
-        "description": null,
-        "created_at": "2025-02-23T19:06:15.417414",
-        "due_date": "2025-02-21T00:00:00",
-        "task_uuid": "b7fc9a09-c5e3-4c2c-9ce7-c2848ac94624"
-    },
-    {
-        "title": "ddd",
-        "status": false,
-        "priority": "Low",
-        "description": null,
-        "created_at": "2025-02-23T19:06:15.417456",
-        "due_date": "2025-03-02T00:00:00",
-        "task_uuid": "e0e0aed8-9dd5-4a10-a2e5-d14c87d8a104"
-    },
-    {
-        "title": "tttt",
-        "status": false,
-        "priority": "Low",
-        "description": null,
-        "created_at": "2025-02-23T19:06:15.417496",
-        "due_date": "2025-03-05T00:00:00",
-        "task_uuid": "e97e3d0c-93be-426d-afcd-f709a17bd2a0"
-    },
-    {
-        "title": "dddddsd",
-        "status": false,
-        "priority": "Low",
-        "description": null,
-        "created_at": "2025-02-23T19:06:15.417541",
-        "due_date": "2025-02-23T00:00:00",
-        "task_uuid": "7b746440-e0ac-4a2f-bbf3-4a32cee9f1e7"
-    },
-    {
-        "title": "fdgd",
-        "status": false,
-        "priority": "High",
-        "description": null,
-        "created_at": "2025-02-23T19:06:15.417627",
-        "due_date": "2025-02-23T00:00:00",
-        "task_uuid": "45fd312a-9b50-4639-9ae8-4377f374c2a5"
+        "created_at": "2025-02-24T00:00:38.133947",
+        "due_date": "2025-02-24T00:00:00",
+        "task_uuid": "33a94e56-f0be-4536-a9a9-0d43ed4ea579"
     }
 ]

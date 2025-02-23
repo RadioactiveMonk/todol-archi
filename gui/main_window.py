@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
     QDialog,
 )
 from PyQt6.QtGui import QIcon
-from gui.dialogs import AddTaskDialog
+from gui.add_task_dialog import AddTaskDialog
 from gui.widgets import CustomButton, SearchBar, TaskTable
 from backend.task_manager import TaskManager
 

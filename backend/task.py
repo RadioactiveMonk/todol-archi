@@ -1,37 +1,37 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 import uuid
-from collections import namedtuple
-from backend.validators import BaseValidator, DateValidator, validate_fields
+from backend.validators import Validators
 from typing import Optional
-
-# Creation d'un namedtuple pour les priorités de tâches.
-Priority = namedtuple("Priority", ["urgent", "important", "secondary"])
-PRIORITY = Priority(urgent="Urgent", important="Important", secondary="Secondaire")
+from PyQt6.QtCore import QDate
 
 
 @dataclass
 class Task:
     """Modèle de tâche avec validation automatique."""
 
-    title: str = field(metadata={"validator": BaseValidator(str, "")})
+    title: str
     task_uuid: str = field(default_factory=lambda: str(uuid.uuid4()), init=False)
     created_at: datetime = field(default_factory=datetime.now, init=False)
 
     # Valeurs optionnelles
+    status: bool = False
+    priority: Optional[str] = None
+    description: Optional[str] = None
+    due_date: Optional[datetime] = None
 
-    status: bool = field(
-        default=False,
-        metadata={
-            "validator": BaseValidator(bool, False)
-        },  # Attend un bool False par défaut.
-    )
-    priority: Optional[str] = field(default=None)
-    description: Optional[str] = field(default=None)
-    due_date: Optional[datetime] = field(
-        default=None,
-        metadata={"validator": DateValidator(allow_past=False)},
-    )
+    def __post_init__(self):
+        """Valide automatiquement les champs après l'initialisation."""
+        Validators.validate_title(self.title)
+
+        if self.due_date:
+            qdate_due = QDate(
+                self.due_date.year, self.due_date.month, self.due_date.day
+            )  # ✅ Conversion
+            Validators.validate_due_date(qdate_due)  # ✅ Maintenant `QDate` est valide
+
+        if self.priority:  # ✅ Vérifie la priorité si elle est définie
+            Validators.validate_priority(self.priority)
 
     def to_dict(self) -> dict:
         """Convertit une instance de Task en dictionnaire pour la sauvegarde JSON."""
@@ -41,16 +41,13 @@ class Task:
             "priority": self.priority,
             "description": self.description,
             "created_at": self.created_at.isoformat(),
-            "due_date": (
-                self.due_date.isoformat() if self.due_date else None
-            ),  # Si expiration n'est pas renseigné, isoformat ne fonctionne pas sur None.
+            "due_date": self.due_date.isoformat() if self.due_date else None,
             "task_uuid": self.task_uuid,
         }
 
     @classmethod
     def from_dict(cls, data: dict) -> "Task":
         """Crée une instance de Task à partir d'un dictionnaire JSON."""
-
         instance = cls(
             title=data["title"],
             status=data.get("status", False),
@@ -59,18 +56,14 @@ class Task:
             due_date=(
                 datetime.fromisoformat(data["due_date"])
                 if data.get("due_date")
-                else None  # Si expiration n'est pas renseigné fromisoformat ne fonctionne pas, on ajoute une condition
+                else None
             ),
         )
 
         # Mise à jour des champs non initialisés (init=False)
         instance.task_uuid = data.get("task_uuid", str(uuid.uuid4()))
         instance.created_at = datetime.fromisoformat(
-            data.get("created_ad", datetime.now().isoformat())
+            data.get("created_at", datetime.now().isoformat())
         )
 
         return instance
-
-    def validate(self) -> bool:
-        """Valide les champs en appelant validate_fields (validators.py)"""
-        return validate_fields(self)
