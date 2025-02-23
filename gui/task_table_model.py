@@ -1,4 +1,4 @@
-from PyQt6.QtCore import Qt, QAbstractTableModel
+from PyQt6.QtCore import Qt, QAbstractTableModel, QModelIndex
 from typing import List, Dict, Any, Optional, Union
 
 
@@ -27,25 +27,25 @@ class TaskTableModel(QAbstractTableModel):
         super().__init__()
         self.tasks: List[Dict[str, Any]] = tasks or []  # Les tâches ou une liste vide
 
-    def rowCount(self, parent=None) -> int:
+    def rowCount(self, parent: QModelIndex = QModelIndex()) -> int:
         """
-        Retourne le nombre de lignes.
+        Retourne le nombre de lignes (tâches).
         """
         return len(self.tasks)
 
-    def columnCount(self, parent=None) -> int:
+    def columnCount(self, parent: QModelIndex = QModelIndex()) -> int:
         """
         Retourne le nombre de colonnes (sections)
         """
         return len(self.HEADERS)
 
-    def data(self, index: int, role: Qt.ItemDataRole) -> Optional[str]:
+    def data(self, index: QModelIndex, role: Qt.ItemDataRole) -> Optional[str]:
         """
         Retourne la donnée à afficher selon l'index et le rôle.
 
         Parameters
         ----------
-        index : int
+        index : Qt.ModelIndex
             Index de la tâche
         role : Qt.ItemDataRole
             Le rôle de l'objet (un status, une date ...)
@@ -59,4 +59,60 @@ class TaskTableModel(QAbstractTableModel):
 
         if not index.isValid():
             return None
-        
+
+        task = self.tasks[index.row()]
+        column = index.column()
+
+        if role == Qt.ItemDataRole.DisplayRole:
+            return {
+                0: "✅" if task.get("status", False) else "⏳",
+                1: task.get("priority", "Medium"),
+                2: task.get("category", "No Category"),
+                3: task.get("due_date", "No Date"),
+                4: task.get("title", "No Title"),
+                5: task.get("notes", ""),
+            }.get(
+                column, None
+            )  # ✅ Type `Optional[str]` car `None` est possible
+
+        return None
+
+    def headerData(
+        self, section: int, orientation: Qt.Orientation, role: int
+    ) -> Optional[str]:
+        """
+        Retourne les headers de colonnes.
+
+        Parameters
+        ----------
+        section : int
+            l'index de la section dans la liste HEADER
+        orientation: Qt.Orientation
+            l'orientation (horizontale ou verticale) des headers
+
+        Returns
+        -------
+        Optional[str]
+            la valeur de la section OU None
+        """
+
+        if (
+            orientation == Qt.Orientation.Horizontal
+            and role == Qt.ItemDataRole.DisplayRole
+        ):  # SI orientation horizontale et rôle existant
+            return self.HEADERS[section]  # retourne la valeur de l'header
+        return None  # Si conditions pas remplies, return None
+
+    def update_data(self, tasks: List[Dict[str, Any]]) -> None:
+        """
+        Met à jour les données du modèle
+
+        Parameters
+        ----------
+        tasks : List
+            La liste de tâches
+        """
+
+        self.beginResetModel()  # Phase de mise à jour ??
+        self.tasks = tasks  # Objet mis à jour ??
+        self.endResetModel  # Fin de mise à jour ??
