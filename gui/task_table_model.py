@@ -53,7 +53,7 @@ class TaskTableModel(QAbstractTableModel):
 
         Returns
         -------
-        role OR None: bool
+        role OR None:
             Si le role est précisé -> Role, sinon -> None
         """
 
@@ -86,7 +86,7 @@ class TaskTableModel(QAbstractTableModel):
         Parameters
         ----------
         section : int
-            l'index de la section dans la liste HEADER
+            l'index de la section dans la liste HEADERS
         orientation: Qt.Orientation
             l'orientation (horizontale ou verticale) des headers
 
@@ -113,6 +113,6 @@ class TaskTableModel(QAbstractTableModel):
             La liste de tâches
         """
 
-        self.beginResetModel()  # Phase de mise à jour ??
-        self.tasks = tasks  # Objet mis à jour ??
-        self.endResetModel  # Fin de mise à jour ??
+        self.beginResetModel()  # Phase de mise à jour
+        self.tasks = tasks  # Objet mis à jour
+        self.endResetModel()  # Fin de mise à jour
