@@ -11,7 +11,9 @@ class Task:
 
     title: str
     task_uuid: str = field(default_factory=lambda: str(uuid.uuid4()), init=False)
-    due_date: Optional[QDate] = None  # ✅ Stocké directement en `QDate`
+    due_date: Optional[QDate] = field(
+        default_factory=QDate.currentDate
+    )  # ✅ Stocké directement en `QDate`
     status: Optional[bool] = False
     priority: Optional[str] = None
     description: Optional[str] = None
@@ -20,7 +22,7 @@ class Task:
         """Valide automatiquement les champs après l'initialisation."""
         Validators.validate_title(self.title)
 
-        if isinstance(self.due_date, QDate):  # ✅ Vérifie si c'est bien un `QDate`
+        if isinstance(self.due_date, QDate):  # ✅ Vérifie que ce n'est pas `None`
             Validators.validate_due_date(self.due_date)
 
         if self.priority:
