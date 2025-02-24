@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from datetime import datetime
 import uuid
 from backend.validators import Validators
 from typing import Optional
@@ -12,25 +11,19 @@ class Task:
 
     title: str
     task_uuid: str = field(default_factory=lambda: str(uuid.uuid4()), init=False)
-    created_at: datetime = field(default_factory=datetime.now, init=False)
-
-    # Valeurs optionnelles
-    status: bool = False
+    due_date: Optional[QDate] = None  # ✅ Stocké directement en `QDate`
+    status: Optional[bool] = False
     priority: Optional[str] = None
     description: Optional[str] = None
-    due_date: Optional[datetime] = None
 
     def __post_init__(self):
         """Valide automatiquement les champs après l'initialisation."""
         Validators.validate_title(self.title)
 
-        if self.due_date:
-            qdate_due = QDate(
-                self.due_date.year, self.due_date.month, self.due_date.day
-            )  # ✅ Conversion
-            Validators.validate_due_date(qdate_due)  # ✅ Maintenant `QDate` est valide
+        if isinstance(self.due_date, QDate):  # ✅ Vérifie si c'est bien un `QDate`
+            Validators.validate_due_date(self.due_date)
 
-        if self.priority:  # ✅ Vérifie la priorité si elle est définie
+        if self.priority:
             Validators.validate_priority(self.priority)
 
     def to_dict(self) -> dict:
@@ -40,8 +33,11 @@ class Task:
             "status": self.status,
             "priority": self.priority,
             "description": self.description,
-            "created_at": self.created_at.isoformat(),
-            "due_date": self.due_date.isoformat() if self.due_date else None,
+            "due_date": (
+                self.due_date.toString("yyyy-MM-dd")
+                if isinstance(self.due_date, QDate)
+                else None
+            ),  # ✅ Plus propre
             "task_uuid": self.task_uuid,
         }
 
@@ -54,16 +50,12 @@ class Task:
             priority=data.get("priority"),
             description=data.get("description"),
             due_date=(
-                datetime.fromisoformat(data["due_date"])
+                QDate.fromString(data["due_date"], "yyyy-MM-dd")
                 if data.get("due_date")
                 else None
-            ),
+            ),  # ✅ QDate directement
         )
 
-        # Mise à jour des champs non initialisés (init=False)
+        # ✅ Mise à jour des champs non initialisés (init=False)
         instance.task_uuid = data.get("task_uuid", str(uuid.uuid4()))
-        instance.created_at = datetime.fromisoformat(
-            data.get("created_at", datetime.now().isoformat())
-        )
-
         return instance
