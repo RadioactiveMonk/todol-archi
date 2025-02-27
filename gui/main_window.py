@@ -43,17 +43,17 @@ class MainWindow(QMainWindow):
 
         # Boutons personnalisés
         self.add_task_button = CustomButton("add.png", "Add new task")
-        self.add_task_button.clicked.connect('')
+        self.add_task_button.clicked.connect(self.open_add_task_dialog)
         action_layout.addWidget(self.add_task_button)
 
         self.add_category_button = CustomButton("add-category.png", "Add new category")
-        # func
+        self.add_category_button.clicked.connect(self.open_add_category_dialog)
         action_layout.addWidget(self.add_category_button)
 
         self.edit_parameters_button = CustomButton(
             "app-parameters.png", "Edit parameters"
         )
-        # func
+        self.edit_parameters_button.clicked.connect(self.open_edit_parameters_dialog)
         action_layout.addWidget(self.edit_parameters_button)
 
         main_layout.addLayout(action_layout)  # Ajout du layout de recherche et boutons
@@ -67,8 +67,6 @@ class MainWindow(QMainWindow):
         central_widget.setLayout(main_layout)
 
     def open_add_task_dialog(self):
-        """Ouvre une boite de dialogue d'ajout de tâche et ajoute si validée"""
-
         pass
 
     def open_add_category_dialog(self):
@@ -79,5 +77,4 @@ class MainWindow(QMainWindow):
 
     def refresh_task_list(self):
         """Met à jour l'affichâge des tâches"""
-
         pass
