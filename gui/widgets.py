@@ -19,7 +19,7 @@ class CustomButton(QPushButton):
 
 
 class SearchBar(QLineEdit):
-    """Barre de recherche stylisée avec icône."""
+    """Barre de recherche"""
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -27,6 +27,7 @@ class SearchBar(QLineEdit):
         self.setFixedHeight(40)
 
 
-class TaskTable():
+class TaskTable:
     """Tableau des tâches avec configuration personnalisée."""
+
     pass
