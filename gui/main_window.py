@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import (
     QDialog,
 )
 from PyQt6.QtGui import QIcon
-from gui.add_task_dialog import AddTaskDialog
+from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.widgets import CustomButton, SearchTasks, TaskTable
 from backend.task_manager import TaskManager
 
@@ -69,6 +69,12 @@ class MainWindow(QMainWindow):
     def open_add_task_dialog(self):
         """Ouvre une boite de dialogue d'ajout de tâche et ajoute si validée"""
 
+        pass
+
+    def open_add_category_dialog(self):
+        pass
+
+    def open_edit_parameters_dialog(self):
         pass
 
     def refresh_task_list(self):
