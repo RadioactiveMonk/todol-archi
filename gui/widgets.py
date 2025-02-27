@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QLineEdit,
     QHeaderView,
+    QTableView,
 )
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import QDir
@@ -27,7 +28,7 @@ class SearchBar(QLineEdit):
         self.setFixedHeight(40)
 
 
-class TaskTable:
+class TaskTable(QTableView):
     """Tableau des tâches avec configuration personnalisée."""
 
     pass
