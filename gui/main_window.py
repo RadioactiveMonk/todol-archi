@@ -1,5 +1,4 @@
 from PyQt6.QtWidgets import (
-    QApplication,
     QMainWindow,
     QWidget,
     QVBoxLayout,
@@ -17,10 +16,10 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("Todol - Task Manager")  # Définition du titre de la fenêtre
+        self.setWindowTitle("Todol")  # Définition du titre de la fenêtre
         self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
         self.setWindowIcon(
-            QIcon("gui/icons/app_icon.png")
+            QIcon("resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
 
         self.task_manager = TaskManager()
@@ -49,8 +48,7 @@ class MainWindow(QMainWindow):
         self.add_category_button = CustomButton("add-category.png", "Add new category")
         search_layout.addWidget(self.add_category_button)
 
-        self.filter_task_button = CustomButton("filter.png", "Filter tasks")
-        search_layout.addWidget(self.filter_task_button)
+        self.change_parameters = CustomButton("app-parameters.png", "Edit parameters")
 
         main_layout.addLayout(search_layout)  # Ajout du layout de recherche et boutons
 
