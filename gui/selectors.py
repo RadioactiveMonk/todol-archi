@@ -1,20 +1,20 @@
 from PyQt6.QtWidgets import QComboBox, QDateEdit
-from PyQt6.QtCore import QDate
+from backend.constants import CATEGORIES, DEFAULT_CATEGORY, DEFAULT_EXPIRATION
 
 
 class DateSelector(QDateEdit):
     """Sélecteur de date générique utilisé dans plusieurs dialogues."""
 
-    def __init__(self, default_date=None, parent=None) -> None:
+    def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.setCalendarPopup(True)
-        self.setDate(default_date if default_date else QDate.currentDate())
+        self.setDate(DEFAULT_EXPIRATION)
 
 
-class PrioritySelector(QComboBox):
-    """Menu déroulant pour la sélection de la priorité, réutilisable."""
+class CategorySelector(QComboBox):
+    """Menu déroulant pour la sélection de catégorie."""
 
-    def __init__(self, default_priority="Medium", parent=None) -> None:
+    def __init__(self, default=DEFAULT_CATEGORY, parent=None) -> None:
         super().__init__(parent)
-        self.addItems(["Low", "Medium", "High"])
-        self.setCurrentText(default_priority)
+        self.addItems(CATEGORIES)
+        self.setCurrentText(default)

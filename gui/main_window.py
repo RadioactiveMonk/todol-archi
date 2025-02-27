@@ -33,24 +33,30 @@ class MainWindow(QMainWindow):
 
         main_layout: QVBoxLayout = QVBoxLayout()  # Layout principal (vertical)
 
-        # Layout pour la barre de recherche et les boutons associés
-        search_layout: QHBoxLayout = QHBoxLayout()
+        # Layout supérieur
+        action_layout: QHBoxLayout = QHBoxLayout()
 
         # Barre de recherche personnalisée
         self.search_bar = SearchBar()
-        search_layout.addWidget(self.search_bar)
+        # func
+        action_layout.addWidget(self.search_bar)
 
         # Boutons personnalisés
         self.add_task_button = CustomButton("add.png", "Add new task")
         self.add_task_button.clicked.connect(self.open_add_task_dialog)
-        search_layout.addWidget(self.add_task_button)
+        action_layout.addWidget(self.add_task_button)
 
         self.add_category_button = CustomButton("add-category.png", "Add new category")
-        search_layout.addWidget(self.add_category_button)
+        # func
+        action_layout.addWidget(self.add_category_button)
 
-        self.change_parameters = CustomButton("app-parameters.png", "Edit parameters")
+        self.edit_parameters_button = CustomButton(
+            "app-parameters.png", "Edit parameters"
+        )
+        # func
+        action_layout.addWidget(self.edit_parameters_button)
 
-        main_layout.addLayout(search_layout)  # Ajout du layout de recherche et boutons
+        main_layout.addLayout(action_layout)  # Ajout du layout de recherche et boutons
 
         # Création du tableau des tâches personnalisé
         self.task_table = TaskTable()
@@ -72,4 +78,4 @@ class MainWindow(QMainWindow):
     def refresh_task_list(self):
         """Met à jour l'affichâge des tâches"""
 
-        self.task_table.load_tasks(self.task_manager.get_all_tasks())
+        pass
