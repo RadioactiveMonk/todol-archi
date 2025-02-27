@@ -82,4 +82,5 @@ class MainWindow(QMainWindow):
         pass
 
     def search_tasks(self):
+        """Affiche les tâches recherchées (à définir comment)"""
         pass
