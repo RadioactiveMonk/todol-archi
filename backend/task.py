@@ -1,46 +1,29 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 import uuid
-from collections import namedtuple
-from backend.validators import BaseValidator, DateValidator, validate_fields
-from typing import Optional
+from PyQt6.QtCore import QDate
 
 
 @dataclass
 class Task:
-    """Modèle de tâche avec validation automatique."""
+    """Représente une tâche dans la To-Do List."""
 
-    title: str = field(metadata={"validator": BaseValidator(str, "")})
-    task_uuid: str = field(default_factory=lambda: str(uuid.uuid4()), init=False)
-    created_at: datetime = field(default_factory=datetime.now, init=False)
-
-    # Valeurs optionnelles
-
-    status: bool = field(
-        default=False,
-        metadata={
-            "validator": BaseValidator(bool, False)
-        },  # Attend un bool False par défaut.
-    )
-    priority: Optional[str] = field(default=None)
-    description: Optional[str] = field(default=None)
-    due_date: Optional[datetime] = field(
-        default=None,
-        metadata={"validator": DateValidator(allow_past=False)},
-    )
+    status: bool = False
+    category: str = ""
+    title: str = ""
+    notes: str = ""
+    expiration: QDate = field(default_factory=lambda: QDate.currentDate().addDays(1))
+    task_id: str = field(default_factory=lambda: str(uuid.uuid4()), init=False)
 
     def to_dict(self) -> dict:
         """Convertit une instance de Task en dictionnaire pour la sauvegarde JSON."""
         return {
-            "title": self.title,
+            "task_id": self.task_id,
             "status": self.status,
-            "priority": self.priority,
-            "description": self.description,
-            "created_at": self.created_at.isoformat(),
-            "due_date": (
-                self.due_date.isoformat() if self.due_date else None
-            ),  # Si expiration n'est pas renseigné, isoformat ne fonctionne pas sur None.
-            "task_uuid": self.task_uuid,
+            "category": self.category,
+            "title": self.title,
+            "notes": self.notes,
+            "expiration": self.expiration,
         }
 
     @classmethod
@@ -48,25 +31,15 @@ class Task:
         """Crée une instance de Task à partir d'un dictionnaire JSON."""
 
         instance = cls(
-            title=data["title"],
+            task_id=data.get("task_id"),
+            title=data.get("title", "Task title not found."),
             status=data.get("status", False),
-            priority=data.get("priority"),
-            description=data.get("description"),
-            due_date=(
-                datetime.fromisoformat(data["due_date"])
-                if data.get("due_date")
-                else None  # Si expiration n'est pas renseigné fromisoformat ne fonctionne pas, on ajoute une condition
-            ),
+            notes=data.get("notes"),
+            expiration=data.get("expiration"),
         )
+    
 
         # Mise à jour des champs non initialisés (init=False)
-        instance.task_uuid = data.get("task_uuid", str(uuid.uuid4()))
-        instance.created_at = datetime.fromisoformat(
-            data.get("created_ad", datetime.now().isoformat())
-        )
+        instance.task_id = data.get("task_id", str(uuid.uuid4()))
 
         return instance
-
-    def validate(self) -> bool:
-        """Valide les champs en appelant validate_fields (validators.py)"""
-        return validate_fields(self)
