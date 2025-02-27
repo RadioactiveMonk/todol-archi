@@ -8,6 +8,10 @@ CATEGORIES = ["General", "Work", "Home", "Personnal", "Family", "Pets",]
 
 TASK_HEADERS = ["Status", "Category", "Expiration", "Title", "Notes"]
 
+# ==================== THÊMES ====================
+
+APP_THEMES = ["Default", "Dark mode"]
+
 # ==================== STATUTS DES TÂCHES ====================
 
 STATUS_DONE = "✅"
@@ -20,3 +24,4 @@ DEFAULT_TITLE = "TASK"
 DEFAULT_NOTES = ""
 DEFAULT_STATUS = STATUS_PENDING
 DEFAULT_CATEGORY = CATEGORIES[0]
+DEFAULT_THEME = APP_THEMES[0]
