@@ -6,8 +6,8 @@ from PyQt6.QtWidgets import (
     QDialog,
 )
 from PyQt6.QtGui import QIcon
-from gui.dialogs import AddTaskDialog
-from gui.widgets import CustomButton, SearchBar, TaskTable
+from gui.add_task_dialog import AddTaskDialog
+from gui.widgets import CustomButton, SearchTasks, TaskTable
 from backend.task_manager import TaskManager
 
 
@@ -37,13 +37,13 @@ class MainWindow(QMainWindow):
         action_layout: QHBoxLayout = QHBoxLayout()
 
         # Barre de recherche personnalisée
-        self.search_bar = SearchBar()
+        self.search_bar = SearchTasks()
         # func
         action_layout.addWidget(self.search_bar)
 
         # Boutons personnalisés
         self.add_task_button = CustomButton("add.png", "Add new task")
-        self.add_task_button.clicked.connect(self.open_add_task_dialog)
+        self.add_task_button.clicked.connect('')
         action_layout.addWidget(self.add_task_button)
 
         self.add_category_button = CustomButton("add-category.png", "Add new category")
@@ -69,11 +69,7 @@ class MainWindow(QMainWindow):
     def open_add_task_dialog(self):
         """Ouvre une boite de dialogue d'ajout de tâche et ajoute si validée"""
 
-        dialog = AddTaskDialog()
-        if dialog.exec() == QDialog.DialogCode.Accepted:
-            task_data = dialog.task_data
-            self.task_manager.add_task(task_data)
-            self.refresh_task_list()
+        pass
 
     def refresh_task_list(self):
         """Met à jour l'affichâge des tâches"""

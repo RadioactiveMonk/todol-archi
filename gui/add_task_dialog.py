@@ -8,6 +8,7 @@ class AddTaskDialog(QDialog):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.setWindowTitle("Add New Task")
+        self.setGeometry(100, 100, 400, 200)
 
         # Layout propre pour aligner les champs
         form_layout = QFormLayout()

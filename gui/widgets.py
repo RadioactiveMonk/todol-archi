@@ -2,7 +2,6 @@ from typing import Optional
 from PyQt6.QtWidgets import (
     QPushButton,
     QLineEdit,
-    QHeaderView,
     QTableView,
     QWidget,
 )
@@ -23,7 +22,7 @@ class CustomButton(QPushButton):
         self.setToolTip(tooltip)
 
 
-class SearchBar(QLineEdit):
+class SearchTasks(QLineEdit):
     """Barre de recherche"""
 
     def __init__(self, parent: Optional[QWidget] = None) -> None:
