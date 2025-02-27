@@ -1,19 +1,24 @@
 from dataclasses import dataclass, field
 import uuid
 from PyQt6.QtCore import QDate
-from typing import Optional
-from backend.constants import DEFAULT_CATEGORY, DEFAULT_STATUS
+from backend.constants import (
+    DEFAULT_CATEGORY,
+    DEFAULT_STATUS,
+    DEFAULT_EXPIRATION,
+    DEFAULT_TITLE,
+    DEFAULT_NOTES,
+)
 
 
 @dataclass
 class Task:
     """Représente une tâche dans la To-Do List."""
 
-    status: Optional[str] = DEFAULT_STATUS
-    category: Optional[str] = DEFAULT_CATEGORY
-    title: str = ""
-    notes: Optional[str] = ""
-    expiration: QDate = field(default_factory=lambda: QDate.currentDate().addDays(1))
+    status: str = field(default=DEFAULT_STATUS)
+    category: str = field(default=DEFAULT_CATEGORY)
+    title: str = field(default=DEFAULT_TITLE)
+    notes: str = field(default=DEFAULT_NOTES)
+    expiration: QDate = field(default=DEFAULT_EXPIRATION)
     task_id: str = field(default_factory=lambda: str(uuid.uuid4()), init=False)
 
     def to_dict(self) -> dict:
@@ -23,7 +28,7 @@ class Task:
             "category": self.category,
             "title": self.title,
             "notes": self.notes,
-            "expiration": QDate.toString(self.expiration),
+            "expiration": self.expiration.toString("yyyy-MM-dd"),
             "task_id": self.task_id,
         }
 
@@ -34,9 +39,9 @@ class Task:
         instance = cls(
             status=data.get("status", DEFAULT_STATUS),
             category=data.get("category", DEFAULT_CATEGORY),
-            title=data.get("title", ""),
-            notes=data.get("notes", ""),
-            expiration=data.get("expiration", ""),
+            title=data.get("title", DEFAULT_TITLE),
+            notes=data.get("notes", DEFAULT_NOTES),
+            expiration=QDate.fromString(data.get("expiration"), "yyyy-MM-dd"),
         )
         # Mise à jour des champs non initialisés (init=False)
         instance.task_id = data.get("task_id", str(uuid.uuid4()))
