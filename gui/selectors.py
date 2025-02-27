@@ -1,20 +1,41 @@
-from PyQt6.QtWidgets import QComboBox, QDateEdit
-from backend.constants import CATEGORIES, DEFAULT_CATEGORY, DEFAULT_EXPIRATION
+from typing import Optional
+from PyQt6.QtWidgets import QComboBox, QWidget, QDateTimeEdit
+from PyQt6.QtCore import QDateTime
+from backend.constants import (
+    APP_THEMES,
+    CATEGORIES,
+    DEFAULT_CATEGORY,
+    DEFAULT_DATETIME,
+    DEFAULT_THEME,
+)
 
 
-class DateSelector(QDateEdit):
-    """Sélecteur de date générique utilisé dans plusieurs dialogues."""
+class DateTimeSelector(QDateTimeEdit):
+    """Sélecteur de date"""
 
-    def __init__(self, parent=None) -> None:
+    def __init__(
+        self, default: QDateTime = DEFAULT_DATETIME, parent: Optional[QWidget] = None
+    ) -> None:
         super().__init__(parent)
         self.setCalendarPopup(True)
-        self.setDate(DEFAULT_EXPIRATION)
+        self.setDateTime(default)
 
 
 class CategorySelector(QComboBox):
     """Menu déroulant pour la sélection de catégorie."""
 
-    def __init__(self, default=DEFAULT_CATEGORY, parent=None) -> None:
+    def __init__(
+        self, default: str = DEFAULT_CATEGORY, parent: Optional[QWidget] = None
+    ) -> None:
         super().__init__(parent)
         self.addItems(CATEGORIES)
+        self.setCurrentText(default)
+
+
+class ThemeSelector(QComboBox):
+    """Menu déroulant pour les thèmes"""
+
+    def __init__(self, default: str = DEFAULT_THEME, parent: Optional[QWidget] = None) -> None:
+        super().__init__(parent)
+        self.addItems(APP_THEMES)
         self.setCurrentText(default)

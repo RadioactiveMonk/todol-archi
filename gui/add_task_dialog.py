@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QDialog, QFormLayout, QLineEdit, QPushButton
-from gui.selectors import CategorySelector, DateSelector
+from gui.selectors import CategorySelector, DateTimeSelector
 
 
 class AddTaskDialog(QDialog):
@@ -16,7 +16,7 @@ class AddTaskDialog(QDialog):
         self.title_input = QLineEdit(self)
         self.title_input.setPlaceholderText("Enter task title ...")
         self.category_selector = CategorySelector()
-        self.date_selector = DateSelector()
+        self.date_selector = DateTimeSelector()
 
         # Ajout des champs dans le layout FORM
         form_layout.addRow("Title: ", self.title_input)

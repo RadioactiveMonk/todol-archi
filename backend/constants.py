@@ -1,4 +1,4 @@
-from PyQt6.QtCore import QDate
+from PyQt6.QtCore import QDateTime
 
 # ==================== CATEGORIES DES TÂCHES ====================
 
@@ -19,7 +19,7 @@ STATUS_PENDING = "⏳"
 
 # ==================== VALEURS PAR DEFAUT ====================
 
-DEFAULT_EXPIRATION = QDate.currentDate().addDays(1)
+DEFAULT_DATETIME = QDateTime.currentDateTime().addDays(1)
 DEFAULT_TITLE = "TASK"
 DEFAULT_NOTES = ""
 DEFAULT_STATUS = STATUS_PENDING
