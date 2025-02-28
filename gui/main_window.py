@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import (
     QHBoxLayout,
     QDialog,
 )
+from typing import List, Dict, Any, Optional, Union
 from PyQt6.QtGui import QIcon
 from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.dialogs.add_category_dialog import AddCategoryDialog
@@ -69,13 +70,17 @@ class MainWindow(QMainWindow):
 
         central_widget.setLayout(main_layout)
 
-    def open_add_task_dialog(self):
-        pass
+    def open_add_task_dialog(self) -> None:
+        """Ouvre la boîte de dialogue d'ajout de tâche"""
+
+        dialog = AddTaskDialog(self)
 
     def open_add_category_dialog(self):
+        """Ouvre la boite d'ajout de catégorie"""
         pass
 
     def open_edit_parameters_dialog(self):
+        """Ouvre la boite d'édition des paramètres"""
         pass
 
     def refresh_task_list(self):
@@ -85,9 +90,3 @@ class MainWindow(QMainWindow):
     def search_tasks(self):
         """Affiche les tâches recherchées (à définir comment)"""
         pass
-
-
-""" def buggy():
-    return 1 / 0
-
-buggy() """

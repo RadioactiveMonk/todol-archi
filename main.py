@@ -4,7 +4,6 @@ from rich.traceback import install
 from PyQt6.QtWidgets import QApplication
 from gui.main_window import MainWindow
 
-install()  # Active les tracebacks améliorés avec rich
 
 def main():
     """Point d'entrée principal de l'application"""
@@ -18,4 +17,5 @@ def main():
 
 
 if __name__ == "__main__":
+    install()  # Active les tracebacks améliorés avec rich
     main()
