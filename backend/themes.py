@@ -1,1 +1,0 @@
-# Logic for selected theme

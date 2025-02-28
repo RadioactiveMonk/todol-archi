@@ -11,6 +11,7 @@ from gui.dialogs.add_category_dialog import AddCategoryDialog
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
 from gui.widgets import CustomButton, SearchTasks, TaskTable
 from backend.task_manager import TaskManager
+from backend.config import WINDOW_TITLE, WINDOW_GEOMETRY
 
 
 class MainWindow(QMainWindow):
@@ -18,8 +19,8 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("Todol")  # Définition du titre de la fenêtre
-        self.setGeometry(100, 100, 800, 600)  # Position et taille de la fenêtre
+        self.setWindowTitle(WINDOW_TITLE)  # Définition du titre de la fenêtre
+        self.setGeometry(WINDOW_GEOMETRY)  # Position et taille de la fenêtre
         self.setWindowIcon(
             QIcon("resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée

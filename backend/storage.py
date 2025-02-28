@@ -1,6 +1,7 @@
 import json
 import os
 from backend.task import Task
+from backend.config import DATA_FILE, DB_FILE
 
 
 class Storage:

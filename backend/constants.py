@@ -1,27 +1,30 @@
 from PyQt6.QtCore import QDateTime
 
-# ==================== CATEGORIES DES TÂCHES ====================
 
-CATEGORIES = ["General", "Work", "Home", "Personnal", "Family", "Pets",]
+# Catégories des tâches
+# =====================================
+CATEGORIES = [
+    "General",
+    "Home",
+    "Health",
+    "Personnal",
+    "Family",
+    "Pets",
+]
 
-# ==================== HEADERS DU TABLEAU DES TÂCHES ====================
-
+# Headers du tableau des tâches
+# =====================================
 TASK_HEADERS = ["Status", "Category", "Expiration", "Title", "Notes"]
 
-# ==================== THÊMES ====================
-
-APP_THEMES = ["Default", "Dark mode"]
-
-# ==================== STATUTS DES TÂCHES ====================
-
+# Status des tâches
+# =====================================
 STATUS_DONE = "✅"
 STATUS_PENDING = "⏳"
 
-# ==================== VALEURS PAR DEFAUT ====================
-
+# Valeurs par défaut
+# =====================================
 DEFAULT_DATETIME = QDateTime.currentDateTime().addDays(1)
 DEFAULT_TITLE = "TASK"
 DEFAULT_NOTES = ""
 DEFAULT_STATUS = STATUS_PENDING
 DEFAULT_CATEGORY = CATEGORIES[0]
-DEFAULT_THEME = APP_THEMES[0]
