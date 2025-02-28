@@ -10,7 +10,7 @@ DEBUG = True
 # Fenêtre principale
 # =====================================
 WINDOW_TITLE = "Todol Pro"
-WINDOW_GEOMETRY = 100, 100, 800, 600
+WINDOW_GEOMETRY = (100, 100, 800, 600)
 
 # Fichiers et stockage
 # =====================================

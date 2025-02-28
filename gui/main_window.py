@@ -20,7 +20,7 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle(WINDOW_TITLE)  # Définition du titre de la fenêtre
-        self.setGeometry(WINDOW_GEOMETRY)  # Position et taille de la fenêtre
+        self.setGeometry(*WINDOW_GEOMETRY)  # Position et taille de la fenêtre
         self.setWindowIcon(
             QIcon("resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
