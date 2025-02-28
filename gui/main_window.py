@@ -74,6 +74,7 @@ class MainWindow(QMainWindow):
         """Ouvre la boîte de dialogue d'ajout de tâche"""
 
         dialog = AddTaskDialog(self)
+        dialog.exec()
 
     def open_add_category_dialog(self):
         """Ouvre la boite d'ajout de catégorie"""
