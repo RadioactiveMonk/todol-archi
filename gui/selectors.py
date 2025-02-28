@@ -2,12 +2,11 @@ from typing import Optional
 from PyQt6.QtWidgets import QComboBox, QWidget, QDateTimeEdit
 from PyQt6.QtCore import QDateTime
 from backend.constants import (
-    APP_THEMES,
     CATEGORIES,
     DEFAULT_CATEGORY,
     DEFAULT_DATETIME,
-    DEFAULT_THEME,
 )
+from backend.config import DEFAULT_THEME, APP_THEMES
 
 
 class DateTimeSelector(QDateTimeEdit):

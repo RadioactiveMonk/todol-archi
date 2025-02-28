@@ -85,3 +85,9 @@ class MainWindow(QMainWindow):
     def search_tasks(self):
         """Affiche les tâches recherchées (à définir comment)"""
         pass
+
+
+""" def buggy():
+    return 1 / 0
+
+buggy() """

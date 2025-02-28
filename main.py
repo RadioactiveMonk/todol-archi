@@ -1,9 +1,10 @@
 # Importing packages and modules
 import sys
+from rich.traceback import install
 from PyQt6.QtWidgets import QApplication
 from gui.main_window import MainWindow
-# from backend.themes import 
 
+install()  # Active les tracebacks améliorés avec rich
 
 def main():
     """Point d'entrée principal de l'application"""
