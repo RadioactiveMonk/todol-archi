@@ -25,8 +25,3 @@ class BaseDialog(QDialog):
         button_layout.addWidget(self.ok_button)
         button_layout.addWidget(self.cancel_button)
         self.main_layout.addLayout(button_layout)
-
-    def validate_and_accept(self):
-        """Vérifie les champs et retourne les données si valides"""
-
-        pass

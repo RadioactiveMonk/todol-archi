@@ -8,11 +8,10 @@ from PyQt6.QtWidgets import (
 from typing import List, Dict, Any, Optional, Union
 from PyQt6.QtGui import QIcon
 from gui.dialogs.add_task_dialog import AddTaskDialog
-from gui.dialogs.add_category_dialog import AddCategoryDialog
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
 from gui.widgets import CustomButton, SearchTasks, TaskTable
 from backend.task_manager import TaskManager
-from backend.config import WINDOW_TITLE, WINDOW_GEOMETRY
+from backend.config import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
 
 
 class MainWindow(QMainWindow):
@@ -20,8 +19,8 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle(WINDOW_TITLE)  # Définition du titre de la fenêtre
-        self.setGeometry(*WINDOW_GEOMETRY)  # Position et taille de la fenêtre
+        self.setWindowTitle(MAIN_WINDOW_TITLE)  # Définition du titre de la fenêtre
+        self.setGeometry(*MAIN_WINDOW_GEOMETRY)  # Position et taille de la fenêtre
         self.setWindowIcon(
             QIcon("resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
@@ -47,12 +46,8 @@ class MainWindow(QMainWindow):
 
         # Boutons personnalisés
         self.add_task_button = CustomButton("add.png", "Add new task")
-        self.add_task_button.clicked.connect(self.open_add_task_dialog)  # ️🚩
+        self.add_task_button.clicked.connect(self.open_add_task_dialog)
         action_layout.addWidget(self.add_task_button)
-
-        self.add_category_button = CustomButton("add-category.png", "Add new category")
-        self.add_category_button.clicked.connect(self.open_add_category_dialog)
-        action_layout.addWidget(self.add_category_button)
 
         self.edit_parameters_button = CustomButton(
             "app-parameters.png", "Edit parameters"
@@ -75,10 +70,6 @@ class MainWindow(QMainWindow):
 
         dialog = AddTaskDialog(self)
         dialog.exec()
-
-    def open_add_category_dialog(self):
-        """Ouvre la boite d'ajout de catégorie"""
-        pass
 
     def open_edit_parameters_dialog(self):
         """Ouvre la boite d'édition des paramètres"""
