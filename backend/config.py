@@ -18,7 +18,6 @@ TASK_DIALOG_TITLE = "New task"
 TASK_DIALOG_GEOMETRY = (130, 130, 400, 350)
 
 
-
 # Fichiers et stockage
 # =====================================
 DATA_FILE = "data/tasks.json"
