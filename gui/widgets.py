@@ -51,8 +51,6 @@ class TaskTable(QTableView):
 
     def setup_ui(self):
         """Configuration de l'affichage de la table"""
-        self.setColumnHidden(0, True)
-        self.resizeColumnsToContents()
         self.setSortingEnabled(True)
 
 
