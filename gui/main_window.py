@@ -65,8 +65,6 @@ class MainWindow(QMainWindow):
         self.task_table = TaskTable(self)
         main_layout.addWidget(self.task_table)
 
-        self.refresh_task_list()  # ✅ Charge les tâches dès l’ouverture de l’appli
-
         central_widget.setLayout(main_layout)
 
     def open_add_task_dialog(self) -> None:
@@ -77,13 +75,9 @@ class MainWindow(QMainWindow):
 
     def open_edit_parameters_dialog(self):
         """Ouvre la boite d'édition des paramètres"""
-        
+
         dialog = EditParametersDialog(self)
         dialog.exec()
-
-    def refresh_task_list(self):
-        """Met à jour l'affichâge des tâches"""
-        pass
 
     def search_tasks(self):
         """Affiche les tâches recherchées (à définir comment)"""
