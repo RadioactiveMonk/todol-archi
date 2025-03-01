@@ -34,34 +34,35 @@ class EditParametersDialog(QDialog):
         main_layout = QVBoxLayout(self)
 
         # Layout pour aligner les éléments
-        form_layout = QFormLayout()
+        form_layout = QFormLayout(self)
 
-        # Parametres
+        # Instanciation des sélécteurs
 
         self.category_selector = CategorySelector()
         self.theme_selector = ThemeSelector()
 
-        category_layout = QHBoxLayout()  # Ajout d'un layout interne pour aligner les bouttons sur une ligne
+        add_category_layout = QHBoxLayout(self)  # Layout pour add_category()
         self.add_category_input = QLineEdit(self)
         self.add_category_input.setPlaceholderText("Category name ...")
 
         self.add_category_button = QPushButton("➕ Add", self)
         self.add_category_button.clicked.connect(self.add_category)
-        category_layout.addWidget(self.add_category_input)
-        category_layout.addWidget(self.add_category_button)
 
+        add_category_layout.addWidget(self.add_category_input)
+        add_category_layout.addWidget(self.add_category_button)
+
+        remove_category_layout = QHBoxLayout()  # Layout pour remove_category()
         self.remove_category_button = QPushButton("❌ Remove", self)
         self.remove_category_button.clicked.connect(self.remove_category)
 
+        remove_category_layout.addWidget(self.category_selector)
+        remove_category_layout.addWidget(self.remove_category_button)
+
         # Affichage par ligne
 
-        form_layout.addRow("Add new category: ", self.add_category_input)
-        form_layout.addRow(self.add_category_button)
-        form_layout.spacerItem()
+        form_layout.addRow("Add new category: ", add_category_layout)
 
-        form_layout.addRow("Categories: ", self.category_selector)
-        form_layout.addRow(self.remove_category_button)
-        form_layout.spacerItem()
+        form_layout.addRow("Categories: ", remove_category_layout)
 
         form_layout.addRow("Theme: ", self.theme_selector)
 
@@ -91,5 +92,5 @@ class EditParametersDialog(QDialog):
         category_name = self.category_selector.currentText()
 
         if category_name in CATEGORIES:
-            self.category_selector.removeItem(CATEGORIES.index(category_name))
-            CATEGORIES.remove(category_name)
+            index = CATEGORIES.index(category_name)
+            del CATEGORIES[index]
