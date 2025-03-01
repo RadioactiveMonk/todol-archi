@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QVBoxLayout,
     QTextEdit,
+    QWidget,
 )
 from gui.selectors import CategorySelector, DateTimeSelector
 from backend.config import TASK_DIALOG_TITLE, TASK_DIALOG_GEOMETRY
@@ -13,7 +14,7 @@ from backend.config import TASK_DIALOG_TITLE, TASK_DIALOG_GEOMETRY
 class AddTaskDialog(QDialog):
     """Fenêtre pour ajouter une nouvelle tâche."""
 
-    def __init__(self, parent=None) -> None:
+    def __init__(self, parent: QWidget) -> None:
         super().__init__(parent)
         self.setWindowTitle(TASK_DIALOG_TITLE)
         self.setGeometry(*TASK_DIALOG_GEOMETRY)

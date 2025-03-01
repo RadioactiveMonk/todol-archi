@@ -25,8 +25,10 @@ class MainWindow(QMainWindow):
             QIcon("resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
 
-        self.task_manager = TaskManager()
-        
+        self.task_manager = (
+            TaskManager()
+        )  # Gestion des tâches en backend via le stockage
+
         self.setMenuBar(MenuBar(self))
         self.init_ui()  # Initialisation de l'interface
 
@@ -75,6 +77,7 @@ class MainWindow(QMainWindow):
 
     def open_edit_parameters_dialog(self):
         """Ouvre la boite d'édition des paramètres"""
+        
         dialog = EditParametersDialog(self)
         dialog.exec()
 

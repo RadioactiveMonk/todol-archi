@@ -17,6 +17,10 @@ MAIN_WINDOW_GEOMETRY = (100, 100, 800, 600)
 TASK_DIALOG_TITLE = "New task"
 TASK_DIALOG_GEOMETRY = (130, 130, 400, 350)
 
+# Boite de paramètres
+# =====================================
+EDIT_PARAMETERS_DIALOG_TITLE = "Parameters"
+EDIT_PARAMETERS_DIALOG_GEOMETRY = (200, 200, 400, 350)
 
 # Fichiers et stockage
 # =====================================
