@@ -33,6 +33,17 @@ LOG_FILE = "logs/app.log"
 APP_THEMES = ["Default", "Dark", "Night blue"]
 DEFAULT_THEME = APP_THEMES[0]
 
+# Catégories des tâches
+# =====================================
+CATEGORIES = [
+    "General",
+    "Home",
+    "Health",
+    "Personnal",
+    "Family",
+    "Pets",
+]
+DEFAULT_CATEGORY = CATEGORIES[0]
 # Autres paramètres
 # =====================================
 AUTO_SAVE_INTERVAL = 5

@@ -2,11 +2,9 @@ from typing import Optional
 from PyQt6.QtWidgets import QComboBox, QWidget, QDateTimeEdit
 from PyQt6.QtCore import QDateTime
 from backend.constants import (
-    CATEGORIES,
-    DEFAULT_CATEGORY,
     DEFAULT_DATETIME,
 )
-from backend.config import DEFAULT_THEME, APP_THEMES
+from backend.config import DEFAULT_THEME, APP_THEMES, DEFAULT_CATEGORY, CATEGORIES
 
 
 class DateTimeSelector(QDateTimeEdit):
@@ -34,7 +32,9 @@ class CategorySelector(QComboBox):
 class ThemeSelector(QComboBox):
     """Menu déroulant pour les thèmes"""
 
-    def __init__(self, default: str = DEFAULT_THEME, parent: Optional[QWidget] = None) -> None:
+    def __init__(
+        self, default: str = DEFAULT_THEME, parent: Optional[QWidget] = None
+    ) -> None:
         super().__init__(parent)
         self.addItems(APP_THEMES)
         self.setCurrentText(default)

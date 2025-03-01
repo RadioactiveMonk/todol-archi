@@ -2,12 +2,12 @@ from dataclasses import dataclass, field
 import uuid
 from PyQt6.QtCore import QDateTime
 from backend.constants import (
-    DEFAULT_CATEGORY,
     DEFAULT_STATUS,
     DEFAULT_DATETIME,
     DEFAULT_TITLE,
     DEFAULT_NOTES,
 )
+from backend.config import DEFAULT_CATEGORY
 
 
 @dataclass
