@@ -63,4 +63,4 @@ class EditParametersDialog(QDialog):
 
     def add_category(self, category: str) -> None:
         """Alonge la liste des catégories"""
-        CATEGORIES.append(category)
+        pass
