@@ -20,7 +20,7 @@ TASK_DIALOG_GEOMETRY = (130, 130, 400, 350)
 # Boite de paramètres
 # =====================================
 EDIT_PARAMETERS_DIALOG_TITLE = "Parameters"
-EDIT_PARAMETERS_DIALOG_GEOMETRY = (200, 200, 400, 350)
+EDIT_PARAMETERS_DIALOG_GEOMETRY = (200, 200, 400, 250)
 
 # Fichiers et stockage
 # =====================================
