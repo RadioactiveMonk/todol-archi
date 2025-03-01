@@ -61,6 +61,12 @@ class EditParametersDialog(QDialog):
 
         self.setLayout(main_layout)
 
-    def add_category(self, category: str) -> None:
-        """Alonge la liste des catégories"""
-        pass
+    def add_category(self) -> None:
+        """Ajoute une catégorie et met à jour le sélecteur."""
+
+        category_name = self.add_category_input.text().strip()
+
+        if category_name and category_name not in CATEGORIES:
+            CATEGORIES.append(category_name)  # Ajout dans les constantes
+            self.category_selector.addItem(category_name)  # Mise à jour UI
+            self.add_category_input.clear()  # Réinitialise le champ après ajout
