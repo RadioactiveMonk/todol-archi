@@ -9,7 +9,6 @@ def main():
     """Point d'entrée principal de l'application"""
 
     app = QApplication(sys.argv)  # Convention: initialisation de QApplication
-    # app.setStyleSheet(load_stylesheet("default"))
     window = MainWindow()  # Récupération de la fenêtre principale
     window.show()  # A la manière de 'plot', la fenêtre est crée mais doit être affichée
 
