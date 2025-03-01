@@ -62,7 +62,7 @@ class EditParametersDialog(QDialog):
 
         # Affichage par ligne
 
-        form_layout.addRow("New selector_category: ", add_category_layout)
+        form_layout.addRow("New category: ", add_category_layout)
 
         form_layout.addRow("Categories: ", remove_category_layout)
 
