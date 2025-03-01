@@ -3,7 +3,15 @@ from PyQt6.QtCore import QDateTime
 
 # Headers du tableau des tâches
 # =====================================
-TASK_HEADERS = ["Status", "Category", "Expiration", "Title", "Notes"]
+TASK_TABLE_HEADERS = ["Status", "Category", "Expiration", "Title", "Notes"]
+COLUMN_MAPPING = {
+    "Status": "status",
+    "Category": "category",
+    "Expiration": "expiration",
+    "Title": "title",
+    "Notes": "notes",
+}
+
 
 # Status des tâches
 # =====================================
@@ -16,4 +24,3 @@ DEFAULT_DATETIME = QDateTime.currentDateTime().addDays(1)
 DEFAULT_TITLE = "TASK"
 DEFAULT_NOTES = ""
 DEFAULT_STATUS = STATUS_PENDING
-

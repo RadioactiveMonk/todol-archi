@@ -1,6 +1,8 @@
 from uuid import uuid4
 from backend.storage import Storage
-# Pourquoi ne pas faire hériter TaskManager de Storage ?
+from backend.task import Task
+from typing import List, Dict, Any, Optional, Union
+
 
 class TaskManager:
     """Gère les tâches depuis storage"""
@@ -12,7 +14,7 @@ class TaskManager:
         """Ajoute une tâche et la sauvegarde"""
         self.storage.save_task(task_data)
 
-    def get_all_tasks(self):
+    def get_all_tasks(self) -> List[Task]:
         """Retourne toutes les tâches"""
-        tasks = self.storage.load_tasks()
-        return [task.to_dict() for task in tasks]
+        
+        return self.storage.load_tasks()

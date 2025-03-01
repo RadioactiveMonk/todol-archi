@@ -1,23 +1,53 @@
 from typing import List, Dict, Any, Optional, Union
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
+from backend.task_manager import TaskManager
+from backend.task import Task
+from backend.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING
 
 
 class TaskTableModel(QAbstractTableModel):
     """Modèle de donnée a afficher dans TaskTable (widgets.py)"""
 
-    def __init__(self, parent: QObject) -> None:
+    def __init__(self, parent: QObject, task_manager: TaskManager) -> None:
+        """Initialise les données à afficher pour chaque tâche"""
+
         super().__init__(parent)
 
-    def rowCount(self, parent: QModelIndex) -> int:
-        return super().rowCount(parent)
-    
-    def columnCount(self, parent: QModelIndex) -> int:
-        return super().columnCount(parent)
-    
-    def headerData(self, section: int, orientation: Qt.Orientation, role: int) -> Any:
-        return super().headerData(section, orientation, role)
-    
-    def data(self, index: QModelIndex, role: int) -> Any:
-        return super().data(index, role)
+        self.task_manager = task_manager
+        self.tasks: List[Task] = self.task_manager.get_all_tasks()
 
-    pass
+    def rowCount(self, parent: QModelIndex) -> int:
+        """Retourne le nombre de lignes en fonction du nombre de tâches stoquées."""
+
+        return len(self.tasks)
+
+    def columnCount(self, parent: QModelIndex) -> int:
+        """Retourne le nombre de colone en fonction du nombre de sections dans le header"""
+
+        return len(TASK_TABLE_HEADERS)
+
+    def headerData(self, section: int, orientation: Qt.Orientation, role: int) -> Any:
+        """Retourne le nom des colones"""
+
+        if (
+            orientation == Qt.Orientation.Horizontal
+            and role == Qt.ItemDataRole.DisplayRole
+        ):
+            return TASK_TABLE_HEADERS[section]  # retourne le titre du header
+        return None
+
+    def data(self, index: QModelIndex, role: int) -> Any:
+        """Retourne les données dans chaque cellule"""
+
+        if not index.isValid():
+            return None
+
+        task = self.tasks[index.row()]  # Récupère la tâche par l'index de la ligne
+        columns = TASK_TABLE_HEADERS
+
+        if role == Qt.ItemDataRole.DisplayRole:
+            column_name = TASK_TABLE_HEADERS[index.column()]  # Ex: "Title"
+            attribute = COLUMN_MAPPING.get(column_name, "")  # Ex: "title"
+            return getattr(task, attribute, None)  # ✅ Récupère la valeur sans erreur
+
+        return None
