@@ -10,7 +10,6 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import QDir
-from backend.constants import TASK_HEADERS
 
 
 class CustomButton(QPushButton):
