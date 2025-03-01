@@ -34,25 +34,27 @@ class EditParametersDialog(QDialog):
         main_layout = QVBoxLayout(self)
 
         # Layout pour aligner les éléments
-        form_layout = QFormLayout(self)
+        form_layout = QFormLayout()
 
         # Instanciation des sélécteurs
 
         self.category_selector = CategorySelector()
         self.theme_selector = ThemeSelector()
 
-        add_category_layout = QHBoxLayout(self)  # Layout pour add_category()
+        add_category_layout = QHBoxLayout()  # Layout pour add_category()
         self.add_category_input = QLineEdit(self)
         self.add_category_input.setPlaceholderText("Category name ...")
 
-        self.add_category_button = QPushButton("➕ Add", self)
+        self.add_category_button = QPushButton("➕", self)
+        self.add_category_button.setMaximumWidth(40)
         self.add_category_button.clicked.connect(self.add_category)
 
         add_category_layout.addWidget(self.add_category_input)
         add_category_layout.addWidget(self.add_category_button)
 
         remove_category_layout = QHBoxLayout()  # Layout pour remove_category()
-        self.remove_category_button = QPushButton("❌ Remove", self)
+        self.remove_category_button = QPushButton("➖", self)
+        self.remove_category_button.setMaximumWidth(40)
         self.remove_category_button.clicked.connect(self.remove_category)
 
         remove_category_layout.addWidget(self.category_selector)
@@ -60,7 +62,7 @@ class EditParametersDialog(QDialog):
 
         # Affichage par ligne
 
-        form_layout.addRow("Add new category: ", add_category_layout)
+        form_layout.addRow("New selector_category: ", add_category_layout)
 
         form_layout.addRow("Categories: ", remove_category_layout)
 
@@ -92,5 +94,7 @@ class EditParametersDialog(QDialog):
         category_name = self.category_selector.currentText()
 
         if category_name in CATEGORIES:
-            index = CATEGORIES.index(category_name)
-            del CATEGORIES[index]
+            CATEGORIES.remove(category_name)
+
+            selector_category = self.category_selector.findText(category_name)
+            self.category_selector.removeItem(selector_category)
