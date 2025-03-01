@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import (
     QWidget,
     QFormLayout,
     QLineEdit,
+    QHBoxLayout,
 )
 from gui.selectors import CategorySelector, ThemeSelector
 from backend.config import EDIT_PARAMETERS_DIALOG_GEOMETRY, EDIT_PARAMETERS_DIALOG_TITLE
@@ -39,16 +40,29 @@ class EditParametersDialog(QDialog):
 
         self.category_selector = CategorySelector()
         self.theme_selector = ThemeSelector()
+
+        category_layout = QHBoxLayout()  # Ajout d'un layout interne pour aligner les bouttons sur une ligne
         self.add_category_input = QLineEdit(self)
         self.add_category_input.setPlaceholderText("Category name ...")
+
         self.add_category_button = QPushButton("➕ Add", self)
         self.add_category_button.clicked.connect(self.add_category)
+        category_layout.addWidget(self.add_category_input)
+        category_layout.addWidget(self.add_category_button)
+
+        self.remove_category_button = QPushButton("❌ Remove", self)
+        self.remove_category_button.clicked.connect(self.remove_category)
 
         # Affichage par ligne
 
         form_layout.addRow("Add new category: ", self.add_category_input)
         form_layout.addRow(self.add_category_button)
+        form_layout.spacerItem()
+
         form_layout.addRow("Categories: ", self.category_selector)
+        form_layout.addRow(self.remove_category_button)
+        form_layout.spacerItem()
+
         form_layout.addRow("Theme: ", self.theme_selector)
 
         # Ajout des lignes au layout principal
@@ -70,3 +84,12 @@ class EditParametersDialog(QDialog):
             CATEGORIES.append(category_name)  # Ajout dans les constantes
             self.category_selector.addItem(category_name)  # Mise à jour UI
             self.add_category_input.clear()  # Réinitialise le champ après ajout
+
+    def remove_category(self) -> None:
+        """Supprime une catégorie."""
+
+        category_name = self.category_selector.currentText()
+
+        if category_name in CATEGORIES:
+            self.category_selector.removeItem(CATEGORIES.index(category_name))
+            CATEGORIES.remove(category_name)
