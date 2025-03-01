@@ -26,6 +26,7 @@ class MainWindow(QMainWindow):
         )  # Ajout d'une icône personnalisée
 
         self.task_manager = TaskManager()
+        
         self.setMenuBar(MenuBar(self))
         self.init_ui()  # Initialisation de l'interface
 
@@ -42,7 +43,7 @@ class MainWindow(QMainWindow):
 
         # Barre de recherche personnalisée
         self.search_tasks_bar = SearchTasks(self)
-        # ️🚩 self.search_tasks ......
+        # ️🚩 connect......
         action_layout.addWidget(self.search_tasks_bar)
 
         # Boutons personnalisés

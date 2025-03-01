@@ -1,6 +1,6 @@
 from uuid import uuid4
 from backend.storage import Storage
-
+# Pourquoi ne pas faire hériter TaskManager de Storage ?
 
 class TaskManager:
     """Gère les tâches depuis storage"""
