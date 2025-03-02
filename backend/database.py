@@ -39,6 +39,24 @@ class DatabaseManager:
         conn.commit()
         conn.close()
 
+
+    def _request(self, db_path: str, request: str, params: tuple = ()) -> Optional[list]:
+        """Exécute une requête SQL et retourne les résultats si nécessaire."""
+
+        self.db_path = db_path
+        conn = self._connect()
+        cursor = conn.cursor()
+        cursor.execute(request, params)
+
+        data = (
+            cursor.fetchall() if request.strip().upper().startswith("SELECT") else None
+        )  # 🔥 Récupère les résultats si SELECT
+
+        conn.commit()
+        conn.close()
+
+        return data
+
     def add_task(
         self, status: bool, category: str, expiration: str, title: str, notes: str
     ) -> Task:
