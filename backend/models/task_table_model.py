@@ -43,7 +43,6 @@ class TaskTableModel(QAbstractTableModel):
             return None
 
         task = self.tasks[index.row()]  # Récupère la tâche par l'index de la ligne
-        columns = TASK_TABLE_HEADERS
 
         if role == Qt.ItemDataRole.DisplayRole:
             column_name = TASK_TABLE_HEADERS[index.column()]  # Ex: "Title"
