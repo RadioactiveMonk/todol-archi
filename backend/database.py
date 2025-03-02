@@ -15,10 +15,10 @@ class DatabaseManager:
     def _create_table(self):
         pass
 
-    def add_task(self, title: str):
-        pass
+    def add_task(self, title: str) -> Task:
+        return Task()
 
-    def update_task(self, task_id: str):
+    def update_task(self, task_id: str) -> None:
         pass
 
     def del_task(self, task_id: str) -> None:
