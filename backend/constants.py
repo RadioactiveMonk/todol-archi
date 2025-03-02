@@ -15,8 +15,8 @@ COLUMN_MAPPING = {
 
 # Status des tâches
 # =====================================
-STATUS_DONE = "✅"
-STATUS_PENDING = "⏳"
+STATUS_DONE = True
+STATUS_PENDING = False
 
 # Valeurs par défaut
 # =====================================
