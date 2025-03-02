@@ -25,4 +25,4 @@ class DatabaseManager:
         pass
 
     def get_tasks(self) -> List[Task]:
-        pass
+        return []
