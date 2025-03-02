@@ -44,6 +44,7 @@ CATEGORIES = [
     "Pets",
 ]
 DEFAULT_CATEGORY = CATEGORIES[0]
+
 # Autres paramètres
 # =====================================
 AUTO_SAVE_INTERVAL = 5
