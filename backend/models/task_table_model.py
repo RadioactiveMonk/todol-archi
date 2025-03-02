@@ -47,6 +47,6 @@ class TaskTableModel(QAbstractTableModel):
         if role == Qt.ItemDataRole.DisplayRole:
             column_name = TASK_TABLE_HEADERS[index.column()]  # Ex: "Title"
             attribute = COLUMN_MAPPING.get(column_name, "")  # Ex: "title"
-            return getattr(task, attribute, None)  # ✅ Récupère la valeur sans erreur
+            return getattr(task, attribute, None)  # Récupère la valeur sans erreur
 
         return None

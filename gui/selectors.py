@@ -7,7 +7,7 @@ from backend.constants import (
 from backend.config import DEFAULT_THEME, APP_THEMES, DEFAULT_CATEGORY, CATEGORIES
 
 
-class DateTimeSelector(QDateTimeEdit):
+class ExpirationSelector(QDateTimeEdit):
     """Sélecteur de date"""
 
     def __init__(

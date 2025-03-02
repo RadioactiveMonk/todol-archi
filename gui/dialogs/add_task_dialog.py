@@ -7,8 +7,8 @@ from PyQt6.QtWidgets import (
     QTextEdit,
     QWidget,
 )
-from PyQt6.QtCore import QDateTime, pyqtSignal
-from gui.selectors import CategorySelector, DateTimeSelector
+from PyQt6.QtCore import pyqtSignal
+from gui.selectors import CategorySelector, ExpirationSelector
 from backend.config import TASK_DIALOG_TITLE, TASK_DIALOG_GEOMETRY
 from backend.database import DatabaseManager
 
@@ -35,7 +35,7 @@ class AddTaskDialog(QDialog):
         self.title_input = QLineEdit(self)
         self.title_input.setPlaceholderText("Enter task title ...")
         self.category_selector = CategorySelector()
-        self.datetime_selector = DateTimeSelector()
+        self.datetime_selector = ExpirationSelector()
         self.notes_input = QTextEdit(self)
         self.notes_input.setPlaceholderText("Enter task notes ...")
 
