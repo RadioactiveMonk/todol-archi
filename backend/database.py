@@ -2,6 +2,7 @@ import sqlite3
 from typing import List, Dict, Any, Optional, Union
 from backend.task import Task
 from backend.config import DB_PATH
+from backend.constants import DEFAULT_STATUS
 
 
 class DatabaseManager:
@@ -27,7 +28,7 @@ class DatabaseManager:
             """
             CREATE TABLE IF NOT EXISTS tasks (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            status BOOLEAN DEFAULT 0,
+            status BOOLEAN,
             category TEXT,
             expiration TEXT,
             title TEXT NOT NULL,
