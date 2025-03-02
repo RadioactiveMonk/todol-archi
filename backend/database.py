@@ -31,7 +31,7 @@ class DatabaseManager:
             category TEXT,
             expiration TEXT,
             title TEXT NOT NULL,
-            notes TEXT
+            notes TEXT)
             """
         )
 
@@ -45,7 +45,7 @@ class DatabaseManager:
         conn = self._connect()
         cursor = conn.cursor()
         cursor.execute(
-            "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?)",
+            "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?, ?)",
             (status, category, expiration, title, notes),
         )
 
@@ -61,7 +61,6 @@ class DatabaseManager:
             expiration=expiration,
             title=title,
             notes=notes,
-            
         )
 
     def update_task(self, task_id: int) -> None:
@@ -71,4 +70,25 @@ class DatabaseManager:
         pass
 
     def get_tasks(self) -> List[Task]:
-        return []
+        """Récupère toutes les tâches de la BDD"""
+
+        conn = self._connect()
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT id, status, category, expiration, title, notes FROM tasks"
+        )
+
+        rows = cursor.fetchall()
+        conn.close()
+
+        return [
+            Task(
+                tid=row[0],
+                status=bool(row[1]),
+                category=row[2],
+                expiration=row[3],
+                title=row[4],
+                notes=row[5],
+            )
+            for row in rows
+        ]
