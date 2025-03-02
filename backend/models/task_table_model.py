@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Optional, Union
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
-from backend.task_manager import TaskManager
+from backend.database import DatabaseManager
 from backend.task import Task
 from backend.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING
 
@@ -8,13 +8,13 @@ from backend.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING
 class TaskTableModel(QAbstractTableModel):
     """Modèle de donnée a afficher dans TaskTable (widgets.py)"""
 
-    def __init__(self, parent: QObject, task_manager: TaskManager) -> None:
+    def __init__(self, parent: QObject, database: DatabaseManager) -> None:
         """Initialise les données à afficher pour chaque tâche"""
 
         super().__init__(parent)
 
-        self.task_manager = task_manager
-        self.tasks: List[Task] = self.task_manager.get_all_tasks()
+        self.database = database
+        self.tasks: List[Task] = self.database.get_tasks()
 
     def rowCount(self, parent: QModelIndex) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stoquées."""

@@ -24,7 +24,7 @@ EDIT_PARAMETERS_DIALOG_GEOMETRY = (200, 200, 400, 250)
 
 # Fichiers et stockage
 # =====================================
-DATA_FILE = "data/tasks.json"
+CFG_FILE = "data/config.json"
 DB_FILE = "data/tasks.db"
 LOG_FILE = "logs/app.log"
 

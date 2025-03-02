@@ -10,7 +10,7 @@ from PyQt6.QtGui import QIcon
 from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
 from gui.widgets import CustomButton, SearchTasks, TaskTable, MenuBar
-from backend.task_manager import TaskManager
+from backend.database import DatabaseManager
 from backend.config import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
 
 
@@ -25,8 +25,8 @@ class MainWindow(QMainWindow):
             QIcon("resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
 
-        self.task_manager = (
-            TaskManager()
+        self.database = (
+            DatabaseManager()
         )  # Gestion des tâches en backend via le stockage
 
         self.setMenuBar(MenuBar(self))

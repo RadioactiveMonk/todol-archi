@@ -10,7 +10,7 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import QDir
-from backend.task_manager import TaskManager
+from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
 
 
@@ -39,11 +39,11 @@ class TaskTable(QTableView):
     def __init__(self, parent: QWidget) -> None:
         super().__init__(parent)
 
-        self.task_manager = (
-            TaskManager()
+        self.database = (
+            DatabaseManager()
         )  # On amene le gestionnaire partout ou il faut gerer les tâches
         self.table_model = TaskTableModel(
-            self, self.task_manager
+            self, self.database
         )  # Connexion de la logique
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)

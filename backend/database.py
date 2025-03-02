@@ -24,5 +24,5 @@ class DatabaseManager:
     def del_task(self, task_id: str) -> None:
         pass
 
-    def get_tasks(self):
+    def get_tasks(self) -> List[Task]:
         pass
