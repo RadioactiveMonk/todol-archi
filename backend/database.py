@@ -45,7 +45,7 @@ class DatabaseManager:
         conn = self._connect()
         cursor = conn.cursor()
         cursor.execute(
-            "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)",
             (status, category, expiration, title, notes),
         )
 

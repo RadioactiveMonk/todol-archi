@@ -86,9 +86,7 @@ class MainWindow(QMainWindow):
         """Affiche les tâches recherchées (à définir comment)"""
         pass
 
-
     def refresh_task_list(self):
         """Recharge les tâches et met à jour l'affichage du tableau"""
-        self.task_table.model.tasks = self.task_table.database.get_tasks()
-        self.task_table.model.layoutChanged.emit()  # 🔥 Met à jour l'affichage
-
+        self.task_table.table_model.tasks = self.database.get_tasks()
+        self.task_table.table_model.layoutChanged.emit()  # 🔥 Met à jour l'affichage

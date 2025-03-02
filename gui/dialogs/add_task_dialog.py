@@ -59,7 +59,7 @@ class AddTaskDialog(QDialog):
         title = self.title_input.text().strip()
         category = self.category_selector.currentText()
         expiration = self.datetime_selector.dateTime().toString(
-            "yyy-MM-dd HH:mm"
+            "yyyy-MM-dd HH:mm"
         )  # Convertit en str la date séléctionnée
         notes = self.notes_input.toPlainText().strip()
 
