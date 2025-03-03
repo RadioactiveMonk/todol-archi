@@ -19,30 +19,10 @@ class DatabaseManager:
 
         return sqlite3.connect(self.db_path)
 
-    def _create_table(self):
-        """Crée la table des tâches si elle n'existe pas"""
-
-        conn = self._connect()
-        cursor = conn.cursor()
-        cursor.execute(
-            """
-            CREATE TABLE IF NOT EXISTS tasks (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            status BOOLEAN,
-            category TEXT,
-            expiration TEXT,
-            title TEXT NOT NULL,
-            notes TEXT)
-            """
-        )
-
-        conn.commit()
-        conn.close()
-
     def _request(
         self, db_path: str, request: str, params: tuple = ()
     ) -> Optional[list]:
-        """Exécute une requête SQL et retourne les résultats si nécessaire."""
+        """Exécute une requête SQL et retourne les résultats si nécessaire(ex: SELECT)."""
 
         self.db_path = db_path
         conn = self._connect()
@@ -58,22 +38,38 @@ class DatabaseManager:
 
         return data
 
+    def _create_table(self):
+        """Crée la table des tâches si elle n'existe pas"""
+
+        self._request(
+            self.db_path,
+            """
+            CREATE TABLE IF NOT EXISTS tasks (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            status BOOLEAN,
+            category TEXT,
+            expiration TEXT,
+            title TEXT NOT NULL,
+            notes TEXT)
+            """,
+        )
+
     def add_task(
         self, status: bool, category: str, expiration: str, title: str, notes: str
     ) -> Task:
-        """Ajoute ue tâche à la base"""
+        """Ajoute une tâche à la base et retourne l'objet Task correspondant."""
+
+        request = "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)"
+
+        # 🔥 On exécute la requête et récupère l'ID de la tâche insérée
         conn = self._connect()
         cursor = conn.cursor()
-        cursor.execute(
-            "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)",
-            (status, category, expiration, title, notes),
-        )
-
+        cursor.execute(request, (status, category, expiration, title, notes))
+        task_id = cursor.lastrowid  # Récupère l'ID de la tâche ajoutée
         conn.commit()
-
-        task_id = cursor.lastrowid
-
         conn.close()
+
+        # 🔥 On retourne une instance Task avec l'ID récupéré
         return Task(
             tid=task_id,
             status=status,
@@ -92,25 +88,25 @@ class DatabaseManager:
         self._request(self.db_path, "DELETE FROM tasks WHERE id = ?", (task_id,))
 
     def get_tasks(self) -> List[Task]:
-        """Récupère toutes les tâches de la BDD"""
+        """Récupère toutes les tâches de la BDD en utilisant _request()"""
 
-        conn = self._connect()
-        cursor = conn.cursor()
-        cursor.execute(
-            "SELECT id, status, category, expiration, title, notes FROM tasks"
+        rows = self._request(
+            self.db_path,
+            "SELECT id, status, category, expiration, title, notes FROM tasks",
         )
 
-        rows = cursor.fetchall()
-        conn.close()
-
-        return [
-            Task(
-                tid=row[0],
-                status=bool(row[1]),
-                category=row[2],
-                expiration=row[3],
-                title=row[4],
-                notes=row[5],
-            )
-            for row in rows
-        ]
+        return (
+            [
+                Task(
+                    tid=row[0],
+                    status=bool(row[1]),
+                    category=row[2],
+                    expiration=row[3],
+                    title=row[4],
+                    notes=row[5],
+                )
+                for row in rows
+            ]
+            if rows
+            else []
+        )
