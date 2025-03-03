@@ -79,8 +79,27 @@ class DatabaseManager:
             notes=notes,
         )
 
-    def update_task(self, task_id: int) -> None:
-        pass
+    def update_task(self, task: Task) -> None:
+        """Met à jour une tâche existante dans la base de données."""
+
+        request = """
+            UPDATE tasks 
+            SET status = ?, category = ?, expiration = ?, title = ?, notes = ?
+            WHERE id = ?
+        """
+
+        self._request(
+            self.db_path,
+            request,
+            (
+                task.status,
+                task.category,
+                task.expiration,
+                task.title,
+                task.notes,
+                task.tid,
+            ),
+        )
 
     def del_task(self, task_id: int) -> None:
         """Supprime une tâche"""

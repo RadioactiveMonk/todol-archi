@@ -21,4 +21,21 @@ def test_delete_task():
 
 
 if __name__ == "__main__":
-    test_delete_task()
+    db = DatabaseManager()
+
+    print("\n🔍 Tâches avant modification:")
+    for task in db.get_tasks():
+        print(task)
+
+    task_id = int(input("\n✏️ Entrez l'ID de la tâche à modifier : "))
+    new_title = input("📝 Nouveau titre : ")
+
+    task = db.get_tasks()[task_id - 1]  # On récupère la tâche existante
+    task.title = new_title  # On modifie uniquement le titre pour le test
+
+    db.update_task(task)
+
+    print("\n✅ Tâche mise à jour avec succès !")
+    print("\n🔍 Tâches après modification:")
+    for task in db.get_tasks():
+        print(task)
