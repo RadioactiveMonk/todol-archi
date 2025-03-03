@@ -39,8 +39,9 @@ class DatabaseManager:
         conn.commit()
         conn.close()
 
-
-    def _request(self, db_path: str, request: str, params: tuple = ()) -> Optional[list]:
+    def _request(
+        self, db_path: str, request: str, params: tuple = ()
+    ) -> Optional[list]:
         """Exécute une requête SQL et retourne les résultats si nécessaire."""
 
         self.db_path = db_path
@@ -86,7 +87,9 @@ class DatabaseManager:
         pass
 
     def del_task(self, task_id: int) -> None:
-        pass
+        """Supprime une tâche"""
+
+        self._request(self.db_path, "DELETE FROM tasks WHERE id = ?", (task_id,))
 
     def get_tasks(self) -> List[Task]:
         """Récupère toutes les tâches de la BDD"""

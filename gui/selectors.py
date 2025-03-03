@@ -15,6 +15,8 @@ class ExpirationSelector(QDateTimeEdit):
     ) -> None:
         super().__init__(parent)
         self.setCalendarPopup(True)
+        self.setDisplayFormat("yyyy-MM-dd HH:mm")
+        self.setCurrentSection(QDateTimeEdit.Section.HourSection)
         self.setDateTime(default)
 
 

@@ -18,3 +18,5 @@ def main():
 if __name__ == "__main__":
     install()  # Active les tracebacks améliorés avec rich
     main()
+
+    
