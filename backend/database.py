@@ -6,18 +6,23 @@ from backend.constants import DEFAULT_STATUS
 
 
 class DatabaseManager:
-    """Gestion de la base de donnée."""
+    """Gestion de la base de donnée en utilisant un Singleton"""
 
-    def __init__(self, db_path: str = DB_PATH) -> None:
-        """Initialise la connexion et crée une table si besoin"""
+    _instance = None  # Stoque l'instance unique
+    _conn: sqlite3.Connection | None = None
 
-        self.db_path = db_path
-        self._create_table()
+    def __new__(cls, db_path: str = DB_PATH):
+        if cls._instance is None:
+            cls._instance = super(DatabaseManager, cls).__new__(cls)
+            cls._instance.db_path = db_path
+            cls._instance._conn = sqlite3.connect(db_path)
+            cls._instance._create_table()
+        return cls._instance
 
-    def _connect(self):
-        """Etablit la connexion avec SQLite"""
-
-        return sqlite3.connect(self.db_path)
+    def _connect(self) -> sqlite3.Connection:
+        """Etablit la connexion avec SQLite. Condition pour détecter la connexion"""
+        assert self._conn, "Connection to database not initialized"
+        return self._conn
 
     def _request(
         self, db_path: str, request: str, params: tuple = ()
@@ -33,8 +38,7 @@ class DatabaseManager:
             cursor.fetchall() if request.strip().upper().startswith("SELECT") else None
         )  # 🔥 Récupère les résultats si SELECT
 
-        conn.commit()
-        conn.close()
+        conn.commit()  # ON NE FERME PAS LA CONNEXION, on la ferme a la fermeture de l'appli (main.py)
 
         return data
 
@@ -54,6 +58,12 @@ class DatabaseManager:
             """,
         )
 
+    def close_connection(self):
+        """Ferme la connexion a la db si ouverte"""
+        if self._conn:
+            self._conn.close()
+            self._conn = None
+
     def add_task(
         self, status: bool, category: str, expiration: str, title: str, notes: str
     ) -> Task:
@@ -67,7 +77,6 @@ class DatabaseManager:
         cursor.execute(request, (status, category, expiration, title, notes))
         task_id = cursor.lastrowid  # Récupère l'ID de la tâche ajoutée
         conn.commit()
-        conn.close()
 
         # 🔥 On retourne une instance Task avec l'ID récupéré
         return Task(

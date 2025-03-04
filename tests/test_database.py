@@ -21,7 +21,7 @@ def test_delete_task():
 
 
 if __name__ == "__main__":
-    db = DatabaseManager()
+    """    db = DatabaseManager()
 
     print("\n🔍 Tâches avant modification:")
     for task in db.get_tasks():
@@ -38,4 +38,7 @@ if __name__ == "__main__":
     print("\n✅ Tâche mise à jour avec succès !")
     print("\n🔍 Tâches après modification:")
     for task in db.get_tasks():
-        print(task)
+        print(task) """
+
+
+   
