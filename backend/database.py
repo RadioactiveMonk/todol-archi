@@ -58,7 +58,7 @@ class DatabaseManager:
             """,
         )
 
-    def close_connection(self):
+    def _close_connection(self):
         """Ferme la connexion a la db si ouverte"""
         if self._conn:
             self._conn.close()

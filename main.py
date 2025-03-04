@@ -14,7 +14,7 @@ def main():
     window = MainWindow()  # Récupération de la fenêtre principale
     window.show()  # A la manière de 'plot', la fenêtre est crée mais doit être affichée
     db = DatabaseManager()
-    atexit.register(db.close_connection)
+    atexit.register(db._close_connection)
 
     sys.exit(app.exec())  # Convention: boucle principale de l'application
 
