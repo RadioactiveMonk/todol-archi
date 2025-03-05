@@ -16,12 +16,12 @@ class TaskTableModel(QAbstractTableModel):
         self.database = database
         self.tasks: List[Task] = self.database.get_tasks()
 
-    def rowCount(self, parent: QModelIndex) -> int:
+    def rowCount(self, parent: int) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stoquées."""
 
         return len(self.tasks)
 
-    def columnCount(self, parent: QModelIndex) -> int:
+    def columnCount(self, parent: int) -> int:
         """Retourne le nombre de colone en fonction du nombre de sections dans le header"""
 
         return (

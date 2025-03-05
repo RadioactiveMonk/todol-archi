@@ -1,3 +1,4 @@
+from operator import index
 from typing import List, Dict, Any, Optional, Union
 from PyQt6.QtWidgets import (
     QPushButton,
@@ -50,7 +51,7 @@ class TaskTable(QTableView):
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
         self.setItemDelegateForColumn(
-            self.table_model.columnCount(None) - 1, DeleteButtonDelegate(self)
+            self.table_model.columnCount(len(TASK_TABLE_HEADERS) + 1), DeleteButtonDelegate(self)
         )
         self.setup_ui()
 
