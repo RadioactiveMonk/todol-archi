@@ -24,3 +24,4 @@ DEFAULT_DATETIME = QDateTime.currentDateTime().addDays(1)
 DEFAULT_TITLE = "TASK"
 DEFAULT_NOTES = ""
 DEFAULT_STATUS = False
+NO_ID = -1
