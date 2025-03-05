@@ -7,9 +7,11 @@ from PyQt6.QtWidgets import (
     QMenuBar,
     QMessageBox,
     QMenu,
+    QStyledItemDelegate,
 )
 from PyQt6.QtGui import QIcon, QAction
-from PyQt6.QtCore import QDir
+from PyQt6.QtCore import QDir, QModelIndex, Qt
+from backend.constants import NO_ID, TASK_TABLE_HEADERS
 from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
 
@@ -47,11 +49,35 @@ class TaskTable(QTableView):
         )  # Connexion de la logique
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
+        self.setItemDelegateForColumn(
+            self.table_model.columnCount(None) - 1, DeleteButtonDelegate(self)
+        )
         self.setup_ui()
 
     def setup_ui(self):
         """Configuration de l'affichage de la table"""
         self.setSortingEnabled(True)
+
+
+class DeleteButtonDelegate(QStyledItemDelegate):
+    """Délégué pour afficher un boutton 'supprimer dans 'actions'"""
+
+    def createEditor(self, parent, option, index: QModelIndex):
+        """Crée le boutton supprimer"""
+        model = index.model()
+        row = index.row()
+
+        btn = QPushButton("🗑️", parent)
+        btn.clicked.connect(lambda: self.delete_task(model, row))
+        return btn
+
+    def delete_task(self, model, row):
+        """Supprime la tâche du modèle et rafraîchit la table"""
+        task = model.tasks[row]  # 🔥 Récupère la tâche de la ligne
+        if task.tid != NO_ID:  # 🔥 Vérifie que l'ID est valide
+            model.database.del_task(task.tid)  # 🔥 Supprime la tâche en base
+            model.tasks.pop(row)  # 🔥 Supprime du modèle
+            model.layoutChanged.emit()  # 🔥 Rafraîchit l'affichage
 
 
 class MenuBar(QMenuBar):

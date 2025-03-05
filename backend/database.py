@@ -2,7 +2,7 @@ import sqlite3
 from typing import List, Dict, Any, Optional, Union
 from backend.task import Task
 from backend.config import DB_PATH
-from backend.constants import DEFAULT_STATUS
+from backend.constants import DEFAULT_STATUS, NO_ID
 
 
 class DatabaseManager:
@@ -75,7 +75,7 @@ class DatabaseManager:
         conn = self._connect()
         cursor = conn.cursor()
         cursor.execute(request, (status, category, expiration, title, notes))
-        task_id = cursor.lastrowid  # Récupère l'ID de la tâche ajoutée
+        task_id = cursor.lastrowid or NO_ID  # Récupère l'ID de la tâche ajoutée
         conn.commit()
 
         # 🔥 On retourne une instance Task avec l'ID récupéré
@@ -112,8 +112,9 @@ class DatabaseManager:
 
     def del_task(self, task_id: int) -> None:
         """Supprime une tâche"""
-
-        self._request(self.db_path, "DELETE FROM tasks WHERE id = ?", (task_id,))
+        request = "DELETE FROM tasks WHERE id = ?"
+        if task_id != NO_ID:
+            self._request(self.db_path, request, (task_id,))
 
     def get_tasks(self) -> List[Task]:
         """Récupère toutes les tâches de la BDD en utilisant _request()"""
