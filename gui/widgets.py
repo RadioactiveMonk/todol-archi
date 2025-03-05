@@ -51,7 +51,7 @@ class TaskTable(QTableView):
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
         self.setItemDelegateForColumn(
-            self.table_model.columnCount(len(TASK_TABLE_HEADERS) + 1), DeleteButtonDelegate(self)
+            self.table_model.columnCount() - 1, DeleteButtonDelegate(self)
         )
         self.setup_ui()
 
