@@ -8,7 +8,7 @@ from backend.constants import DEFAULT_STATUS
 class DatabaseManager:
     """Gestion de la base de donnée en utilisant un Singleton"""
 
-    _instance = None  # Stoque l'instance unique
+    _instance = None  # Stocke l'instance unique
     _conn: sqlite3.Connection | None = None
 
     def __new__(cls, db_path: str = DB_PATH):
