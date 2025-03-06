@@ -1,5 +1,5 @@
 import sqlite3
-from typing import List, Dict, Any, Optional
+from typing import List
 from backend.task import Task
 from backend.config.configs import DB_PATH
 from backend.config.constants import DEFAULT_STATUS, NO_ID
