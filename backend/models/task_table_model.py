@@ -1,5 +1,6 @@
 from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
+from PyQt6.QtGui import QIcon
 from backend.database import DatabaseManager
 from backend.task import Task
 from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
@@ -47,24 +48,30 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
-    def data(self, index: QModelIndex = QModelIndex(), role: int = int()) -> Any:
+    def data(
+        self,
+        index: QModelIndex = QModelIndex(),
+        role: int = Qt.ItemDataRole.DisplayRole,
+    ) -> Any:
         """Retourne les données dans chaque cellule"""
 
-        index = index or QModelIndex()
         if not index.isValid():
             return None
 
-        task = self.tasks[index.row()]  # Récupère la tâche par l'index de la ligne
+        # ✅ Si c'est la colonne Actions, on affiche une icône supprimer
+        if index.column() == len(TASK_TABLE_HEADERS):  # Dernière colonne
+            if role == Qt.ItemDataRole.DecorationRole:
+                del_task_btn = QIcon("resources/icons/delete_task.png")
+                return del_task_btn
+            return None  # On évite de faire d'autres traitements
 
-        if index.column() == len(
-            TASK_TABLE_HEADERS
-        ):  # SI c'est la dernière colone, pas de texte (colone 'actions')
-            return None
+        # ✅ Affichage normal pour les autres colonnes
+        if index.column() < len(TASK_TABLE_HEADERS):
+            if role == Qt.ItemDataRole.DisplayRole:
+                column_name = TASK_TABLE_HEADERS[index.column()]
+                attribute = COLUMN_MAPPING.get(column_name, "")
 
-        if role == Qt.ItemDataRole.DisplayRole:
-            column_name = TASK_TABLE_HEADERS[index.column()]  # Ex: "Title"
-            attribute = COLUMN_MAPPING.get(column_name, "")  # Ex: "title"
-            return getattr(task, attribute, None)  # Récupère la valeur sans erreur
+                return getattr(self.tasks[index.row()], attribute, None)
 
         return None
 

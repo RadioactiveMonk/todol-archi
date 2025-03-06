@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QStyledItemDelegate, QPushButton
-from PyQt6.QtCore import QModelIndex, Qt
+from PyQt6.QtCore import QModelIndex, Qt, QEvent
 from backend.config.constants import DELETE_BUTTON_DELEGATE_SIZE
 
 
@@ -19,14 +19,6 @@ class DeleteButtonDelegate(QStyledItemDelegate):
             btn.clicked.connect(lambda: self.delete_task(task_model, index.row()))
 
         return btn
-
-    def editorEvent(self, event, model, option, index):
-        """Permet de rendre le bouton interactif."""
-        if event.type() == Qt.EventType.MouseButtonPress:
-            self.createEditor(
-                None, option, index
-            ).click()  # 🔥 Simule un clic sur le bouton
-        return True  # ✅ Permet à PyQt d'afficher correctement le bouton
 
     def delete_task(self, task_model, row: int):
         """Supprime une tâche via 'TaskTableModel'."""
