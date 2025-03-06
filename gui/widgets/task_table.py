@@ -27,4 +27,4 @@ class TaskTable(QTableView):
         self.setColumnWidth(2, 150)  # Colonne 'Expiration'
         self.setColumnWidth(3, 250)  # Colonne 'Title'
         self.setColumnWidth(4, 350)  # Colonne 'Notes'
-        self.setColumnWidth(5, 124)  # Colonne 'Actions'
+        self.setColumnWidth(5, 124)  # Colonne 'Edit'

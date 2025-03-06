@@ -50,7 +50,7 @@ class MainWindow(QMainWindow):
         action_layout.addWidget(self.search_tasks_bar)
 
         # Boutons personnalisés
-        self.add_task_button = CustomButton("add.png", "Add new task", self)
+        self.add_task_button = CustomButton("new_task.png", "Add new task", self)
         self.add_task_button.clicked.connect(self.open_add_task_dialog)
         action_layout.addWidget(self.add_task_button)
 

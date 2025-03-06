@@ -44,7 +44,7 @@ class TaskTableModel(QAbstractTableModel):
             if section < len(TASK_TABLE_HEADERS):
                 return TASK_TABLE_HEADERS[section]  # ✅ Retourne les colonnes normales
 
-            return "Actions"  # ✅ Dernière colonne = Boutons d'action
+            return "Edit"  # ✅ Dernière colonne = Boutons d'action
 
         return None
 
@@ -82,7 +82,7 @@ class TaskTableModel(QAbstractTableModel):
             return (
                 "✅"
                 if getattr(self.tasks[index.row()], "status", None) == True
-                else "❌"
+                else "🟨"
             )
 
         return None
