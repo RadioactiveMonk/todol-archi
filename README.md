@@ -1,4 +1,4 @@
 # todol-pro
 
-Todol Pro: The next level version of Todol.
+Todol Pro: A task manager project with Python, SQLite, PyQt6
 
