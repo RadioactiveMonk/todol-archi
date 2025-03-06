@@ -128,7 +128,7 @@ class DatabaseManager:
             [
                 Task(
                     tid=row[0],
-                    status=bool(row[1]),
+                    status=row[1],
                     category=row[2],
                     expiration=row[3],
                     title=row[4],

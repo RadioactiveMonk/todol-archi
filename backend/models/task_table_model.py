@@ -70,12 +70,20 @@ class TaskTableModel(QAbstractTableModel):
         if (
             index.column() < len(TASK_TABLE_HEADERS)
             and role == Qt.ItemDataRole.DisplayRole
+            and index.column() != 0
         ):
 
             column_name = TASK_TABLE_HEADERS[index.column()]
             attribute = COLUMN_MAPPING.get(column_name, "")
 
             return getattr(self.tasks[index.row()], attribute, None)
+
+        if index.column() == 0 and role == Qt.ItemDataRole.DisplayRole:
+            return (
+                "✅"
+                if getattr(self.tasks[index.row()], "status", None) == True
+                else "❌"
+            )
 
         return None
 
