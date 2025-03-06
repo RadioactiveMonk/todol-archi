@@ -18,6 +18,10 @@ COLUMN_MAPPING = {
 STATUS_DONE = True
 STATUS_PENDING = False
 
+# Tailles et positions de boutons
+# =====================================
+DELETE_BUTTON_DELEGATE_SIZE = (30, 30)
+
 # Valeurs par défaut
 # =====================================
 DEFAULT_DATETIME = QDateTime.currentDateTime().addDays(1)

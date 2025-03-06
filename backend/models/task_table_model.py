@@ -8,7 +8,11 @@ from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
 class TaskTableModel(QAbstractTableModel):
     """Modèle de donnée a afficher dans TaskTable (widgets.py)"""
 
-    def __init__(self, parent: QObject | None = None, database: DatabaseManager = DatabaseManager()) -> None:
+    def __init__(
+        self,
+        parent: QObject | None = None,
+        database: DatabaseManager = DatabaseManager(),
+    ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
 
         super().__init__(parent or QObject())
@@ -25,7 +29,6 @@ class TaskTableModel(QAbstractTableModel):
     def columnCount(self, parent: QModelIndex | None = QModelIndex()) -> int:
         """Retourne le nombre de colone en fonction du nombre de sections dans le header"""
 
-        parent = parent or QModelIndex()
         return (
             len(TASK_TABLE_HEADERS) + 1
         )  # Sépararation des données et des actions (+ 1 pour actions)
@@ -39,8 +42,8 @@ class TaskTableModel(QAbstractTableModel):
         ):
             if section < len(TASK_TABLE_HEADERS):
                 return TASK_TABLE_HEADERS[section]  # ✅ Retourne les colonnes normales
-            else:
-                return "Actions"  # ✅ Dernière colonne = Boutons d'action
+
+            return "Actions"  # ✅ Dernière colonne = Boutons d'action
 
         return None
 
@@ -65,19 +68,13 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
-    def setData(self, index: QModelIndex | None = None, value: Any = None, role: int = int()) -> bool:
-        """Supprime une tâche lorsqu'on clique sur le bouton 'Supprimer'."""
+    def delete_task(self, row: int = int()) -> None:
+        """Supprime visuellement une tâche, supprime dans la DB et rafraichit le tableau"""
 
-        index = index or QModelIndex()
-        if role == Qt.ItemDataRole.EditRole and index.column() == len(
-            TASK_TABLE_HEADERS
-        ):
-            task = self.tasks[index.row()]
+        task = self.tasks[row]
 
-            if task.tid != NO_ID:  # 🔥 Vérification avant suppression
-                self.database.del_task(task.tid)  # Suppression dans la DB
-                self.tasks.pop(index.row())  # Suppression dans le modèle
-                self.layoutChanged.emit()  # 🔥 Mise à jour de l'affichage
-                return True
+        if task.tid != NO_ID:  # Vérifie que la tâche est dans la DB
+            self.database.del_task(task.tid)
 
-        return False
+        del self.tasks[row]  # Supprime du modèle
+        self.layoutChanged.emit()
