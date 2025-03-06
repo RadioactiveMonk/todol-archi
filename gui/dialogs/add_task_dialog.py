@@ -9,22 +9,22 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import pyqtSignal
 from gui.selectors import CategorySelector, ExpirationSelector
-from backend.config import TASK_DIALOG_TITLE, TASK_DIALOG_GEOMETRY
+from backend.config import TASK_DIALOG_TITLE, TASK_DIALOG_GEOMETRY, CATEGORIES
 from backend.database import DatabaseManager
 
 
 class AddTaskDialog(QDialog):
     """Fenêtre pour ajouter une nouvelle tâche."""
 
-    task_added = (
+    task_added: pyqtSignal = (
         pyqtSignal()
     )  # Envoie un signal, pour éviter d'incorporer logique métier
 
-    def __init__(self, parent: QWidget) -> None:
-        super().__init__(parent)
+    def __init__(self, parent: QWidget | None = None) -> None:
+        super().__init__(parent or QWidget())
         self.setWindowTitle(TASK_DIALOG_TITLE)
         self.setGeometry(*TASK_DIALOG_GEOMETRY)
-        self.db_manager = DatabaseManager()
+        self.db = DatabaseManager()
 
         # Layout principal
         main_layout = QVBoxLayout(self)
@@ -67,7 +67,7 @@ class AddTaskDialog(QDialog):
             return
 
         # 🔥 On appelle directement DatabaseManager.add_task() pour ajouter la tâche
-        self.db_manager.add_task(
+        self.db.add_task(
             status=False,
             category=category,
             expiration=expiration,

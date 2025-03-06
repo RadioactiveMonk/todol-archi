@@ -3,10 +3,10 @@ from PyQt6.QtWidgets import (
     QWidget,
     QVBoxLayout,
     QHBoxLayout,
-    QDialog,
 )
-from typing import List, Dict, Any, Optional, Union
+
 from PyQt6.QtGui import QIcon
+from backend.database import DatabaseManager
 from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
 from gui.widgets import CustomButton, SearchTasks, TaskTable, MenuBar
@@ -25,9 +25,7 @@ class MainWindow(QMainWindow):
             QIcon("resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
 
-        self.database = (
-            DatabaseManager()
-        )  # Gestion des tâches en backend via le stockage
+        self.db = DatabaseManager()  # Gestion des tâches en backend via le stockage
 
         self.setMenuBar(MenuBar(self))
         self.init_ui()  # Initialisation de l'interface
@@ -88,5 +86,5 @@ class MainWindow(QMainWindow):
 
     def refresh_task_list(self):
         """Recharge les tâches et met à jour l'affichage du tableau"""
-        self.task_table.table_model.tasks = self.database.get_tasks()
+        self.task_table.table_model.tasks = self.db.get_tasks()
         self.task_table.table_model.layoutChanged.emit()  # 🔥 Met à jour l'affichage

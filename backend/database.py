@@ -1,5 +1,5 @@
 import sqlite3
-from typing import List, Dict, Any, Optional, Union
+from typing import List, Dict, Any, Optional
 from backend.task import Task
 from backend.config import DB_PATH
 from backend.constants import DEFAULT_STATUS, NO_ID
@@ -25,8 +25,8 @@ class DatabaseManager:
         return self._conn
 
     def _request(
-        self, db_path: str, request: str, params: tuple = ()
-    ) -> Optional[list]:
+        self, db_path: str = DB_PATH, request: str = "", params: tuple = ()
+    ) -> list | None:
         """Exécute une requête SQL et retourne les résultats si nécessaire(ex: SELECT)."""
 
         self.db_path = db_path
@@ -42,7 +42,7 @@ class DatabaseManager:
 
         return data
 
-    def _create_table(self):
+    def _create_table(self) -> None:
         """Crée la table des tâches si elle n'existe pas"""
 
         self._request(
@@ -58,7 +58,7 @@ class DatabaseManager:
             """,
         )
 
-    def _close_connection(self):
+    def _close_connection(self) -> None:
         """Ferme la connexion a la db si ouverte"""
         if self._conn:
             self._conn.close()
@@ -116,7 +116,7 @@ class DatabaseManager:
         if task_id != NO_ID:
             self._request(self.db_path, request, (task_id,))
 
-    def get_tasks(self) -> List[Task]:
+    def get_tasks(self) -> List[Task] | List:
         """Récupère toutes les tâches de la BDD en utilisant _request()"""
 
         rows = self._request(

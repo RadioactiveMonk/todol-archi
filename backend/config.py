@@ -41,7 +41,7 @@ CATEGORIES = [
     "Health",
     "Personnal",
     "Family",
-    "Pets",
+    "Pets"
 ]
 DEFAULT_CATEGORY = CATEGORIES[0]
 

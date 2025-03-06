@@ -8,14 +8,17 @@ from PyQt6.QtWidgets import (
     QHBoxLayout,
 )
 from gui.selectors import CategorySelector, ThemeSelector
-from backend.config import EDIT_PARAMETERS_DIALOG_GEOMETRY, EDIT_PARAMETERS_DIALOG_TITLE, CATEGORIES
-
+from backend.config import (
+    EDIT_PARAMETERS_DIALOG_GEOMETRY,
+    EDIT_PARAMETERS_DIALOG_TITLE,
+    CATEGORIES,
+)
 
 
 class EditParametersDialog(QDialog):
     """Fenêtre d'édition des paramètres"""
 
-    def __init__(self, parent: QWidget) -> None:
+    def __init__(self, parent: QWidget | None = None) -> None:
         """
         Layouts de la fenêtre de paramètres
 
@@ -26,7 +29,7 @@ class EditParametersDialog(QDialog):
 
         """
 
-        super().__init__(parent)
+        super().__init__(parent or QWidget())
         self.setWindowTitle(EDIT_PARAMETERS_DIALOG_TITLE)
         self.setGeometry(*EDIT_PARAMETERS_DIALOG_GEOMETRY)
 
@@ -63,9 +66,7 @@ class EditParametersDialog(QDialog):
         # Affichage par ligne
 
         form_layout.addRow("New category: ", add_category_layout)
-
         form_layout.addRow("Categories: ", remove_category_layout)
-
         form_layout.addRow("Theme: ", self.theme_selector)
 
         # Ajout des lignes au layout principal
