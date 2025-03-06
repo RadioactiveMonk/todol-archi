@@ -10,7 +10,7 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import QDir, QModelIndex, Qt
-from backend.constants import NO_ID, TASK_TABLE_HEADERS
+from backend.config.constants import NO_ID, TASK_TABLE_HEADERS
 from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
 

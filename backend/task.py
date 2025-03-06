@@ -1,12 +1,12 @@
 from dataclasses import dataclass, field
-from backend.constants import (
+from backend.config.constants import (
     DEFAULT_STATUS,
     DEFAULT_DATETIME,
     DEFAULT_TITLE,
     DEFAULT_NOTES,
+    NO_ID
 )
-from backend.config import DEFAULT_CATEGORY
-from backend.constants import NO_ID
+from backend.config.configs import DEFAULT_CATEGORY
 
 
 @dataclass

@@ -2,7 +2,7 @@ from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
 from backend.task import Task
-from backend.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
+from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
 
 
 class TaskTableModel(QAbstractTableModel):

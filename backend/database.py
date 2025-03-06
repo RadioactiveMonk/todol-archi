@@ -1,8 +1,8 @@
 import sqlite3
 from typing import List, Dict, Any, Optional
 from backend.task import Task
-from backend.config import DB_PATH
-from backend.constants import DEFAULT_STATUS, NO_ID
+from backend.config.configs import DB_PATH
+from backend.config.constants import DEFAULT_STATUS, NO_ID
 
 
 class DatabaseManager:

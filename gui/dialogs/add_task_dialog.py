@@ -9,7 +9,7 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import pyqtSignal
 from gui.selectors import CategorySelector, ExpirationSelector
-from backend.config import TASK_DIALOG_TITLE, TASK_DIALOG_GEOMETRY, CATEGORIES
+from backend.config.configs import TASK_DIALOG_TITLE, TASK_DIALOG_GEOMETRY, CATEGORIES
 from backend.database import DatabaseManager
 
 

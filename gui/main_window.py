@@ -11,7 +11,7 @@ from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
 from gui.widgets import CustomButton, SearchTasks, TaskTable, MenuBar
 from backend.database import DatabaseManager
-from backend.config import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
+from backend.config.configs import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
 
 
 class MainWindow(QMainWindow):

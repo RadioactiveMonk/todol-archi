@@ -1,9 +1,9 @@
 from PyQt6.QtWidgets import QComboBox, QWidget, QDateTimeEdit
 from PyQt6.QtCore import QDateTime
-from backend.constants import (
+from backend.config.constants import (
     DEFAULT_DATETIME,
 )
-from backend.config import DEFAULT_THEME, APP_THEMES, DEFAULT_CATEGORY, CATEGORIES
+from backend.config.configs import DEFAULT_THEME, APP_THEMES, DEFAULT_CATEGORY, CATEGORIES
 
 
 class ExpirationSelector(QDateTimeEdit):

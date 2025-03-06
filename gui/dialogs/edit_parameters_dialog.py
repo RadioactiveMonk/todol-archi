@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import (
     QHBoxLayout,
 )
 from gui.selectors import CategorySelector, ThemeSelector
-from backend.config import (
+from backend.config.configs import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
     CATEGORIES,
