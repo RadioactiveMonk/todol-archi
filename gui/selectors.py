@@ -12,7 +12,7 @@ class ExpirationSelector(QDateTimeEdit):
     def __init__(
         self, default: QDateTime = DEFAULT_DATETIME, parent: QWidget | None = None
     ) -> None:
-        super().__init__(parent or QWidget())
+        super().__init__(parent)
         self.setCalendarPopup(True)
         self.setDisplayFormat("yyyy-MM-dd HH:mm")
         self.setCurrentSection(QDateTimeEdit.Section.HourSection)
@@ -25,7 +25,7 @@ class CategorySelector(QComboBox):
     def __init__(
         self, default: str = DEFAULT_CATEGORY, parent: QWidget | None = None
     ) -> None:
-        super().__init__(parent or QWidget())
+        super().__init__(parent)
         self.addItems(CATEGORIES)
         self.setCurrentText(default)
 
@@ -36,6 +36,6 @@ class ThemeSelector(QComboBox):
     def __init__(
         self, default: str = DEFAULT_THEME, parent: QWidget | None = None
     ) -> None:
-        super().__init__(parent or QWidget())
+        super().__init__(parent)
         self.addItems(APP_THEMES)
         self.setCurrentText(default)
