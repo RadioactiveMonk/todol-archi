@@ -1,4 +1,4 @@
-from typing import List, Dict, Any, Optional, Union
+from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
 from backend.task import Task
@@ -8,22 +8,24 @@ from backend.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
 class TaskTableModel(QAbstractTableModel):
     """Modèle de donnée a afficher dans TaskTable (widgets.py)"""
 
-    def __init__(self, parent: QObject, database: DatabaseManager) -> None:
+    def __init__(self, parent: QObject | None = None, database: DatabaseManager = DatabaseManager()) -> None:
         """Initialise les données à afficher pour chaque tâche"""
 
-        super().__init__(parent)
+        super().__init__(parent or QObject())
 
-        self.database = database
+        self.database: DatabaseManager = database
         self.tasks: List[Task] = self.database.get_tasks()
 
-    def rowCount(self, parent: QModelIndex) -> int:
+    def rowCount(self, parent: QModelIndex | None = None) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stoquées."""
 
+        parent = parent or QModelIndex()
         return len(self.tasks)
 
-    def columnCount(self, parent: QModelIndex = QModelIndex()) -> int:
+    def columnCount(self, parent: QModelIndex | None = QModelIndex()) -> int:
         """Retourne le nombre de colone en fonction du nombre de sections dans le header"""
 
+        parent = parent or QModelIndex()
         return (
             len(TASK_TABLE_HEADERS) + 1
         )  # Sépararation des données et des actions (+ 1 pour actions)
@@ -42,9 +44,10 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
-    def data(self, index: QModelIndex, role: int) -> Any:
+    def data(self, index: QModelIndex | None = None, role: int = int()) -> Any:
         """Retourne les données dans chaque cellule"""
 
+        index = index or QModelIndex()
         if not index.isValid():
             return None
 
@@ -62,8 +65,10 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
-    def setData(self, index: QModelIndex, value, role: int) -> bool:
+    def setData(self, index: QModelIndex | None = None, value: Any = None, role: int = int()) -> bool:
         """Supprime une tâche lorsqu'on clique sur le bouton 'Supprimer'."""
+
+        index = index or QModelIndex()
         if role == Qt.ItemDataRole.EditRole and index.column() == len(
             TASK_TABLE_HEADERS
         ):
