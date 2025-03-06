@@ -20,3 +20,11 @@ class TaskTable(QTableView):
     def setup_ui(self):
         """Configuration de l'affichage de la table"""
         self.setSortingEnabled(True)
+        self.setAlternatingRowColors(True)
+        self.setColumnWidth(0, 50)  # Colonne 'Status'
+        self.setColumnWidth(1, 100)  # Colonne 'Category'
+        self.setColumnWidth(2, 150)  # Colonne 'Expiration'
+        self.setColumnWidth(3, 250)  # Colonne 'Title'
+        self.setColumnWidth(4, 350)  # Colonne 'Notes'
+        self.setColumnWidth(5, 124)  # Colonne 'Actions'
+
