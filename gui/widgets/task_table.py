@@ -1,3 +1,4 @@
+from sqlite3 import Row
 from PyQt6.QtWidgets import QTableView, QWidget
 from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
@@ -27,4 +28,3 @@ class TaskTable(QTableView):
         self.setColumnWidth(3, 250)  # Colonne 'Title'
         self.setColumnWidth(4, 350)  # Colonne 'Notes'
         self.setColumnWidth(5, 124)  # Colonne 'Actions'
-
