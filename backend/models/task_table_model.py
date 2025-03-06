@@ -15,7 +15,7 @@ class TaskTableModel(QAbstractTableModel):
     ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
 
-        super().__init__(parent or QObject())
+        super().__init__(parent)
 
         self.database: DatabaseManager = database
         self.tasks: List[Task] = self.database.get_tasks()
@@ -47,7 +47,7 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
-    def data(self, index: QModelIndex | None = None, role: int = int()) -> Any:
+    def data(self, index: QModelIndex = QModelIndex(), role: int = int()) -> Any:
         """Retourne les données dans chaque cellule"""
 
         index = index or QModelIndex()
@@ -68,7 +68,7 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
-    def delete_task(self, row: int = int()) -> None:
+    def delete_task(self, row: int) -> None:
         """Supprime visuellement une tâche, supprime dans la DB et rafraichit le tableau"""
 
         task = self.tasks[row]
