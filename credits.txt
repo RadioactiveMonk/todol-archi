@@ -14,4 +14,9 @@
     Author: Creative Squad
     Link: https://www.flaticon.com/fr/auteurs/creative-squad
 
+# Edit parameters icon
+
+    Author: Freepik
+    Link: https://www.freepik.com/
+
 # Many thanks to the artists for sharing their artworks. Check the links to see more.

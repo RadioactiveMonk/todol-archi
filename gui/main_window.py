@@ -55,7 +55,7 @@ class MainWindow(QMainWindow):
         action_layout.addWidget(self.add_task_button)
 
         self.edit_parameters_button = CustomButton(
-            "app-parameters.png", "Edit parameters", self
+            "edit_settings.png", "Settings", self
         )
         self.edit_parameters_button.clicked.connect(self.open_edit_parameters_dialog)
         action_layout.addWidget(self.edit_parameters_button)
