@@ -9,4 +9,9 @@
     Author: Md Tanvirul Haque
     Link: https://www.flaticon.com/fr/auteurs/md-tanvirul-haque
 
+# Add task button icon
+
+    Author: Creative Squad
+    Link: https://www.flaticon.com/fr/auteurs/creative-squad
+
 # Many thanks to the artists for sharing their artworks. Check the links to see more.
