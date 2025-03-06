@@ -59,19 +59,23 @@ class TaskTableModel(QAbstractTableModel):
             return None
 
         # ✅ Si c'est la colonne Actions, on affiche une icône supprimer
-        if index.column() == len(TASK_TABLE_HEADERS):  # Dernière colonne
-            if role == Qt.ItemDataRole.DecorationRole:
-                del_task_btn = QIcon("resources/icons/delete_task.png")
-                return del_task_btn
-            return None  # On évite de faire d'autres traitements
+        if (
+            index.column() == len(TASK_TABLE_HEADERS)
+            and role == Qt.ItemDataRole.DecorationRole
+        ):  # Dernière colonne
+            del_task_btn = QIcon("resources/icons/delete_task.png")
+            return del_task_btn
 
         # ✅ Affichage normal pour les autres colonnes
-        if index.column() < len(TASK_TABLE_HEADERS):
-            if role == Qt.ItemDataRole.DisplayRole:
-                column_name = TASK_TABLE_HEADERS[index.column()]
-                attribute = COLUMN_MAPPING.get(column_name, "")
+        if (
+            index.column() < len(TASK_TABLE_HEADERS)
+            and role == Qt.ItemDataRole.DisplayRole
+        ):
 
-                return getattr(self.tasks[index.row()], attribute, None)
+            column_name = TASK_TABLE_HEADERS[index.column()]
+            attribute = COLUMN_MAPPING.get(column_name, "")
+
+            return getattr(self.tasks[index.row()], attribute, None)
 
         return None
 

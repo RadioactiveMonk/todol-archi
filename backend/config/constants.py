@@ -20,7 +20,7 @@ STATUS_PENDING = False
 
 # Tailles et positions de boutons
 # =====================================
-DELETE_BUTTON_DELEGATE_SIZE = (30, 30)
+
 
 # Valeurs par défaut
 # =====================================

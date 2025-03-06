@@ -1,7 +1,6 @@
 from PyQt6.QtWidgets import QTableView, QWidget
 from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
-from gui.widgets.delete_button_delegate import DeleteButtonDelegate
 
 
 class TaskTable(QTableView):
@@ -16,9 +15,6 @@ class TaskTable(QTableView):
         self.table_model = TaskTableModel(self, self.db)  # Connexion de la logique
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
-        self.setItemDelegateForColumn(
-            self.table_model.columnCount() - 1, DeleteButtonDelegate(self)
-        )
         self.setup_ui()
 
     def setup_ui(self):
