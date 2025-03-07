@@ -4,6 +4,7 @@ from PyQt6.QtGui import QIcon
 from backend.database import DatabaseManager
 from backend.task import Task
 from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
+from gui.widgets.edit_section_icons import get_icons
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -20,6 +21,7 @@ class TaskTableModel(QAbstractTableModel):
 
         self.database: DatabaseManager = database
         self.tasks: List[Task] = self.database.get_tasks()
+        self.edit_icons = get_icons()
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stoquées."""
@@ -63,8 +65,8 @@ class TaskTableModel(QAbstractTableModel):
             index.column() == len(TASK_TABLE_HEADERS)
             and role == Qt.ItemDataRole.DecorationRole
         ):  # Dernière colonne
-            del_task_btn = QIcon("resources/icons/delete_task.png")
-            return del_task_btn
+
+            return self.edit_icons["delete"]
 
         # ✅ Affichage normal pour les autres colonnes
         if (
