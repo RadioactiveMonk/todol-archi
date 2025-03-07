@@ -1,6 +1,5 @@
 from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
-from PyQt6.QtGui import QIcon
 from backend.database import DatabaseManager
 from backend.task import Task
 from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
