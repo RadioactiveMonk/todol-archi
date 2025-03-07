@@ -89,27 +89,27 @@ class TaskTableModel(QAbstractTableModel):
         return None
 
     def setData(self, index: QModelIndex, value, role=Qt.ItemDataRole.EditRole) -> bool:
-        """Gère l'interaction avec une cellule (ici suppression de tâche)"""
+        """Gère l'interaction avec une cellule (suppression ou autre action future)"""
+
         if not index.isValid():
             return False
 
-        # ✅ Si on clique sur la colonne "Edit", on supprime la tâche
-        if (
-            index.column() == len(TASK_TABLE_HEADERS)
-            and role == Qt.ItemDataRole.EditRole
-        ):
-            task = self.tasks[index.row()]
-            task_id = task.tid  # Assure-toi que `tid` est bien l'ID stocké
+        # ✅ Dictionnaire d'actions en fonction de la colonne cliquée
+        actions = {
+            len(TASK_TABLE_HEADERS): self.delete_task,
+        }  # setData avec dict dispatch: les méthodes sont stoquées dans un dict.
+        # Ici les actions de la colone 'edit'.
 
-            # ✅ Supprimer la tâche de la base de données
-            self.database.del_task(task_id)  # Suppression SQL
-            self.delete_task(index.row())  # Supprimer la tâche de la liste locale
-
-            # ✅ Rafraîchir l'affichage
-            self.layoutChanged.emit()  # Force la mise à jour du tableau
+        # Si l'index de la colone est une clé dans 'actions', on appelle la méthode avec cette clé,
+        # sur la tâche de la rangée ou l'action est située
+        if index.column() in actions and role == Qt.ItemDataRole.EditRole:
+            actions[index.column()](index.row())  # = self.delete_task(rangée)
             return True
 
-        return super().setData(index, value, role)
+        return super().setData(
+            index, value, role
+        )  #  super().setData() permet de garder le comportement natif de PyQt pour les cellules
+        # qui ne font pas partie du dict dispatch.
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Définit les propriétés des cellules (éditable, sélectionnable, etc.)"""
