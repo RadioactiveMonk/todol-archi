@@ -1,13 +1,17 @@
 # App icon:
 
-    Author: KOKOTA
-    Link: https://icon-icons.com/fr/users/mFkT4BFTZWo8vHAoU7RCd/icon-sets/
-    Facebook: https://www.facebook.com/Iconko-1093341900698327/
+    Author: Boris Farias
+    Link: https://www.flaticon.com/authors/boris-farias
 
 # Delete task icon:
 
     Author: Md Tanvirul Haque
     Link: https://www.flaticon.com/fr/auteurs/md-tanvirul-haque
+
+# Edit task button:
+
+    Author: Pixel perfect
+    Link: https://www.flaticon.com/fr/auteurs/pixel-perfect
 
 # Add task button icon
 
