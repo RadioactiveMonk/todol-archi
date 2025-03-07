@@ -89,6 +89,43 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
+    def setData(self, index: QModelIndex, value, role=Qt.ItemDataRole.EditRole) -> bool:
+        """Gère l'interaction avec une cellule (ici suppression de tâche)"""
+        if not index.isValid():
+            return False
+
+        # ✅ Si on clique sur la colonne "Edit", on supprime la tâche
+        if (
+            index.column() == len(TASK_TABLE_HEADERS)
+            and role == Qt.ItemDataRole.EditRole
+        ):
+            task = self.tasks[index.row()]
+            task_id = task.tid  # Assure-toi que `tid` est bien l'ID stocké
+
+            # ✅ Supprimer la tâche de la base de données
+            self.database.del_task(task_id)  # Suppression SQL
+            self.delete_task(index.row())  # Supprimer la tâche de la liste locale
+
+            # ✅ Rafraîchir l'affichage
+            self.layoutChanged.emit()  # Force la mise à jour du tableau
+            return True
+
+        return super().setData(index, value, role)
+
+    def flags(self, index: QModelIndex) -> Qt.ItemFlag:
+        """Définit les propriétés des cellules (éditable, sélectionnable, etc.)"""
+        if not index.isValid():
+            return Qt.ItemFlag.NoItemFlags  # ✅ Correction ici
+
+        if index.column() == len(TASK_TABLE_HEADERS):  # Colonne Edit
+            return (
+                Qt.ItemFlag.ItemIsEnabled
+                | Qt.ItemFlag.ItemIsSelectable
+                | Qt.ItemFlag.ItemIsEditable
+            )  # ✅ Correction ici
+
+        return super().flags(index)
+
     def delete_task(self, row: int) -> None:
         """Supprime visuellement une tâche, supprime dans la DB et rafraichit le tableau"""
 

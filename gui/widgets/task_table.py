@@ -1,7 +1,9 @@
-from sqlite3 import Row
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QTableView, QWidget
 from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
+from backend.config.constants import TASK_TABLE_HEADERS
 
 
 class TaskTable(QTableView):
@@ -28,3 +30,22 @@ class TaskTable(QTableView):
         self.setColumnWidth(3, 250)  # Colonne 'Title'
         self.setColumnWidth(4, 350)  # Colonne 'Notes'
         self.setColumnWidth(5, 124)  # Colonne 'Edit'
+
+    def mousePressEvent(self, event: QMouseEvent):
+        """Intercepte le clic sur une cellule et déclenche une action si nécessaire"""
+
+        index = self.indexAt(
+            event.position().toPoint()
+        )  # ✅ Récupère la cellule cliquée
+
+        if index.isValid() and index.column() == len(
+            TASK_TABLE_HEADERS
+        ):  # ✅ Si colonne "Edit"
+            self.table_model.setData(
+                index, None, Qt.ItemDataRole.EditRole
+            )  # 🔥 Supprime la tâche
+            return  # ✅ Empêche le clic d’être traité une deuxième fois
+
+        super().mousePressEvent(
+            event
+        )  # ✅ Continue le comportement normal pour le reste
