@@ -8,10 +8,15 @@
     Author: Md Tanvirul Haque
     Link: https://www.flaticon.com/fr/auteurs/md-tanvirul-haque
 
-# Edit task button:
+# Edit task icon:
 
     Author: Pixel perfect
     Link: https://www.flaticon.com/fr/auteurs/pixel-perfect
+
+# Check task icon
+
+    Author: OCTOPOCTO
+    Link: https://www.flaticon.com/authors/octopocto
 
 # Add task button icon
 
