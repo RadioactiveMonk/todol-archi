@@ -4,6 +4,7 @@ from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
 from backend.task import Task
 from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
+from gui.widgets import edit_section_icons
 from gui.widgets.edit_section_icons import get_icons
 
 
@@ -50,7 +51,6 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
-
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
         """Retourne les données à afficher dans une cellule"""
 
@@ -59,18 +59,16 @@ class TaskTableModel(QAbstractTableModel):
 
         # ✅ Dictionnaire qui gère les données affichées selon le rôle (texte, icônes...)
         data_dispatch = {
-            Qt.ItemDataRole.DecorationRole: {
-                len(TASK_TABLE_HEADERS): lambda i: self.edit_icons[
-                    "delete"
-                ],  # Icône de suppression
-            },
+            Qt.ItemDataRole.DecorationRole: {len(TASK_TABLE_HEADERS): self.edit_icons},
             Qt.ItemDataRole.DisplayRole: {
                 0: lambda i: (
                     "✅" if getattr(self.tasks[i], "status", None) else "🟨"
                 ),  # Statut visuel
                 **{
                     col: lambda i, col=col: getattr(
-                        self.tasks[i], COLUMN_MAPPING.get(TASK_TABLE_HEADERS[col], ""), None
+                        self.tasks[i],
+                        COLUMN_MAPPING.get(TASK_TABLE_HEADERS[col], ""),
+                        None,
                     )
                     for col in range(
                         1, len(TASK_TABLE_HEADERS)

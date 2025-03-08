@@ -31,25 +31,4 @@ class TaskTable(QTableView):
         self.setColumnWidth(4, 350)  # Colonne 'Notes'
         self.setColumnWidth(5, 124)  # Colonne 'Edit'
 
-    def mousePressEvent(self, event: QMouseEvent):
-        """Intercepte le clic sur une cellule et applique l'action associée."""
-
-        index = self.indexAt(
-            event.position().toPoint()
-        )  # ✅ Récupère la cellule cliquée
-
-        # ✅ Dictionnaire des actions disponibles
-        actions = {
-            len(
-                TASK_TABLE_HEADERS
-            ): self.table_model.delete_task,  # Suppression de tâche
-            # Ici, on pourra ajouter d'autres actions plus tard (ex: "edit_task")
-        }
-
-        if index.isValid() and index.column() in actions:
-            actions[index.column()](index.row())  # ✅ Exécute l'action correspondante
-            return  # ✅ Empêche le clic d’être traité deux fois
-
-        super().mousePressEvent(
-            event
-        )  # ✅ Continue le comportement normal pour le reste
+    

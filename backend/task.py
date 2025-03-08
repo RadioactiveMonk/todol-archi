@@ -11,9 +11,9 @@ from backend.config.configs import DEFAULT_CATEGORY
 
 @dataclass
 class Task:
-    """Représente une tâche dans la To-Do List."""
+    """Représente une tâche"""
 
-    tid: int = field(default=NO_ID)  # maintenant géré par SQL (None est remplacé par -1)
+    tid: int = field(default=NO_ID) 
     status: bool = field(default=DEFAULT_STATUS)
     category: str = field(default=DEFAULT_CATEGORY)
     title: str = field(default=DEFAULT_TITLE)
