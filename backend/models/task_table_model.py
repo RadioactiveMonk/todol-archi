@@ -1,3 +1,4 @@
+from encodings.punycode import T
 from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
@@ -49,44 +50,41 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
-    def data(
-        self,
-        index: QModelIndex = QModelIndex(),
-        role: int = Qt.ItemDataRole.DisplayRole,
-    ) -> Any:
-        """Retourne les données dans chaque cellule"""
+
+    def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
+        """Retourne les données à afficher dans une cellule"""
 
         if not index.isValid():
             return None
 
-        # ✅ Si c'est la colonne Actions, on affiche une icône supprimer
-        if (
-            index.column() == len(TASK_TABLE_HEADERS)
-            and role == Qt.ItemDataRole.DecorationRole
-        ):  # Dernière colonne
+        # ✅ Dictionnaire qui gère les données affichées selon le rôle (texte, icônes...)
+        data_dispatch = {
+            Qt.ItemDataRole.DecorationRole: {
+                len(TASK_TABLE_HEADERS): lambda i: self.edit_icons[
+                    "delete"
+                ],  # Icône de suppression
+            },
+            Qt.ItemDataRole.DisplayRole: {
+                0: lambda i: (
+                    "✅" if getattr(self.tasks[i], "status", None) else "🟨"
+                ),  # Statut visuel
+                **{
+                    col: lambda i, col=col: getattr(
+                        self.tasks[i], COLUMN_MAPPING.get(TASK_TABLE_HEADERS[col], ""), None
+                    )
+                    for col in range(
+                        1, len(TASK_TABLE_HEADERS)
+                    )  # ✅ Colonnes normales (Titre, Notes...)
+                },
+            },
+        }
 
-            return self.edit_icons["delete"]
+        # ✅ Récupère le sous-dictionnaire correspondant au rôle (DisplayRole ou DecorationRole)
+        column_dispatch = data_dispatch.get(Qt.ItemDataRole(role), {})
 
-        # ✅ Affichage normal pour les autres colonnes
-        if (
-            index.column() < len(TASK_TABLE_HEADERS)
-            and role == Qt.ItemDataRole.DisplayRole
-            and index.column() != 0
-        ):
+        # ✅ Vérifie que la colonne existe bien dans le sous-dictionnaire, sinon retourne None
 
-            column_name = TASK_TABLE_HEADERS[index.column()]
-            attribute = COLUMN_MAPPING.get(column_name, "")
-
-            return getattr(self.tasks[index.row()], attribute, None)
-
-        if index.column() == 0 and role == Qt.ItemDataRole.DisplayRole:
-            return (
-                "✅"
-                if getattr(self.tasks[index.row()], "status", None) == True
-                else "🟨"
-            )
-
-        return None
+        return column_dispatch.get(index.column(), lambda i: None)(index.row())
 
     def setData(self, index: QModelIndex, value, role=Qt.ItemDataRole.EditRole) -> bool:
         """Gère l'interaction avec une cellule (suppression ou autre action future)"""
