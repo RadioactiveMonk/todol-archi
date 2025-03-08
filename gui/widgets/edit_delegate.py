@@ -23,15 +23,13 @@ class EditDelegate(QStyledItemDelegate):
         """Affiche les icônes dans la colonne 'edit'"""
 
         icon_size = option.rect.height() - 4
-        spacing = 6
+        spacing = 10
         positions = ["check", "edit", "delete"]
 
         for i, icon_name in enumerate(positions):
             x_offset = option.rect.left() + spacing + (icon_size + spacing) * i
             icon_rect = QRect(x_offset, option.rect.top() + 2, icon_size, icon_size)
             self.icons[icon_name].paint(painter, icon_rect)
-
-    from PyQt6.QtGui import QMouseEvent
 
 
     def editorEvent(self, event, model, option, index):
@@ -43,15 +41,30 @@ class EditDelegate(QStyledItemDelegate):
         if event.type() == QEvent.Type.MouseButtonRelease:
             mouse_pos = event.position().toPoint()  # ✅ Utilisation correcte en PyQt6
             icon_size = option.rect.height() - 4
-            spacing = 6
+            spacing = 6  # ✅ Retour aux valeurs de départ
             positions = ["check", "edit", "delete"]
-            signals = [self.checkClicked, self.editClicked, self.deleteClicked]
+            signals = [
+                self.checkClicked,
+                self.editClicked,
+                self.deleteClicked,
+            ]  # ✅ Vérifie bien ces assignations !
+
+            print(
+                f"🔍 Clic détecté à {mouse_pos}"
+            )  # ✅ Debugging pour voir où le clic est détecté
 
             for i, signal in enumerate(signals):
                 x_offset = option.rect.left() + spacing + (icon_size + spacing) * i
                 icon_rect = QRect(x_offset, option.rect.top() + 2, icon_size, icon_size)
 
+                print(
+                    f"📌 Zone {positions[i]} : {icon_rect}"
+                )  # ✅ Debugging des zones de clic
+
                 if icon_rect.contains(mouse_pos):
+                    print(
+                        f"✅ Clic détecté sur : {positions[i]}"
+                    )  # ✅ Confirme quelle icône est cliquée
                     signal.emit(index.row())
                     return True  # ✅ Stoppe dès qu'un clic est détecté
 

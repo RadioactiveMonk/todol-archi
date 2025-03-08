@@ -36,7 +36,7 @@ class TaskTable(QTableView):
         self.setItemDelegateForColumn(len(TASK_TABLE_HEADERS), delegate)
 
         # Connexion des signaux
-        delegate.editClicked.connect(self.handle_check)
+        delegate.checkClicked.connect(self.handle_check)
         delegate.editClicked.connect(self.handle_edit)
         delegate.deleteClicked.connect(self.handle_delete)
 
