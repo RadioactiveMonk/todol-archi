@@ -15,12 +15,12 @@ MAIN_WINDOW_GEOMETRY = (100, 100, 1200, 600)
 # Boite d'ajout de tâche
 # =====================================
 TASK_DIALOG_TITLE = "New task"
-TASK_DIALOG_GEOMETRY = (130, 130, 400, 350)
+TASK_DIALOG_GEOMETRY = (1150, 200, 400, 350)
 
 # Boite de paramètres
 # =====================================
 EDIT_PARAMETERS_DIALOG_TITLE = "Parameters"
-EDIT_PARAMETERS_DIALOG_GEOMETRY = (200, 200, 400, 250)
+EDIT_PARAMETERS_DIALOG_GEOMETRY = (1150, 200, 400, 200)
 
 # Fichiers et stockage
 # =====================================
@@ -35,14 +35,7 @@ DEFAULT_THEME = APP_THEMES[0]
 
 # Catégories des tâches
 # =====================================
-CATEGORIES = [
-    "General",
-    "Home",
-    "Health",
-    "Personnal",
-    "Family",
-    "Pets"
-]
+CATEGORIES = ["General", "Home", "Health", "Personnal", "Family", "Pets"]
 DEFAULT_CATEGORY = CATEGORIES[0]
 
 # Autres paramètres
