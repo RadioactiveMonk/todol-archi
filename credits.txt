@@ -3,20 +3,10 @@
     Author: Boris Farias
     Link: https://www.flaticon.com/authors/boris-farias
 
-# Delete task icon:
+# Interface icons
 
-    Author: Md Tanvirul Haque
-    Link: https://www.flaticon.com/fr/auteurs/md-tanvirul-haque
-
-# Edit task icon:
-
-    Author: Pixel perfect
-    Link: https://www.flaticon.com/fr/auteurs/pixel-perfect
-
-# Check task icon
-
-    Author: OCTOPOCTO
-    Link: https://www.flaticon.com/authors/octopocto
+    Author: UIcons
+    Link: https://www.flaticon.com/uicons/interface-icons
 
 # Add task button icon
 

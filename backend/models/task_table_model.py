@@ -2,6 +2,7 @@ from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
 from backend.task import Task
+from gui.widgets.cell_properties import get_flags
 from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
 
 
@@ -70,14 +71,8 @@ class TaskTableModel(QAbstractTableModel):
         return super().setData(index, value, role)
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
-        """Définit les propriétés des cellules (éditable, sélectionnable, etc.)"""
-        if not index.isValid():
-            return Qt.ItemFlag.NoItemFlags
-
-        if index.column() == len(TASK_TABLE_HEADERS):  # Colonne Edit
-            return Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable
-
-        return super().flags(index)
+        """Appelle les propriétés de cellules"""
+        return get_flags(index, len(TASK_TABLE_HEADERS))
 
     def delete_task(self, row: int) -> None:
         """Supprime visuellement une tâche, supprime dans la DB et rafraîchit le tableau"""

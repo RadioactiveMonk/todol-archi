@@ -21,6 +21,12 @@ STATUS_PENDING = False
 # Tailles et positions de boutons
 # =====================================
 
+# Icônes de tâches
+EDIT_ICON_SIZE = 18  
+EDIT_ICON_SPACING = 4 
+EDIT_ICON_TOP_OFFSET = 2  
+EDIT_SECTION_POSITIONS = ["delete", "edit", "check"]
+
 
 # Valeurs par défaut
 # =====================================
