@@ -1,15 +1,12 @@
-from encodings.punycode import T
 from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
 from backend.task import Task
 from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
-from gui.widgets import edit_section_icons
-from gui.widgets.edit_section_icons import get_icons
 
 
 class TaskTableModel(QAbstractTableModel):
-    """Modèle de donnée a afficher dans TaskTable (widgets.py)"""
+    """Modèle de données à afficher dans TaskTable (widgets.py)"""
 
     def __init__(
         self,
@@ -17,113 +14,73 @@ class TaskTableModel(QAbstractTableModel):
         database: DatabaseManager = DatabaseManager(),
     ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
-
         super().__init__(parent)
-
         self.database: DatabaseManager = database
         self.tasks: List[Task] = self.database.get_tasks()
-        self.edit_icons = get_icons()
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
-        """Retourne le nombre de lignes en fonction du nombre de tâches stoquées."""
-
-        parent = parent or QModelIndex()
+        """Retourne le nombre de lignes en fonction du nombre de tâches stockées."""
         return len(self.tasks)
 
     def columnCount(self, parent: QModelIndex | None = QModelIndex()) -> int:
-        """Retourne le nombre de colone en fonction du nombre de sections dans le header"""
-
-        return (
-            len(TASK_TABLE_HEADERS) + 1
-        )  # Sépararation des données et des actions (+ 1 pour actions)
+        """Retourne le nombre de colonnes en fonction du nombre de sections dans le header"""
+        return len(TASK_TABLE_HEADERS) + 1  # +1 pour la colonne "Edit"
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int) -> Any:
         """Retourne les noms des colonnes affichées dans le header du tableau."""
-
         if (
             orientation == Qt.Orientation.Horizontal
             and role == Qt.ItemDataRole.DisplayRole
         ):
-            if section < len(TASK_TABLE_HEADERS):
-                return TASK_TABLE_HEADERS[section]  # ✅ Retourne les colonnes normales
-
-            return "Edit"  # ✅ Dernière colonne = Boutons d'action
-
+            return (
+                TASK_TABLE_HEADERS[section]
+                if section < len(TASK_TABLE_HEADERS)
+                else "Edit"
+            )
         return None
 
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
         """Retourne les données à afficher dans une cellule"""
-
         if not index.isValid():
             return None
 
-        # ✅ Dictionnaire qui gère les données affichées selon le rôle (texte, icônes...)
-        data_dispatch = {
-            Qt.ItemDataRole.DecorationRole: {len(TASK_TABLE_HEADERS): self.edit_icons},
-            Qt.ItemDataRole.DisplayRole: {
-                0: lambda i: (
-                    "✅" if getattr(self.tasks[i], "status", None) else "🟨"
-                ),  # Statut visuel
-                **{
-                    col: lambda i, col=col: getattr(
-                        self.tasks[i],
-                        COLUMN_MAPPING.get(TASK_TABLE_HEADERS[col], ""),
-                        None,
-                    )
-                    for col in range(
-                        1, len(TASK_TABLE_HEADERS)
-                    )  # ✅ Colonnes normales (Titre, Notes...)
-                },
-            },
-        }
+        if role == Qt.ItemDataRole.DisplayRole:
+            if index.column() == 0:  # Statut ✅ / 🟨
+                return (
+                    "✅" if getattr(self.tasks[index.row()], "status", None) else "🟨"
+                )
 
-        # ✅ Récupère le sous-dictionnaire correspondant au rôle (DisplayRole ou DecorationRole)
-        column_dispatch = data_dispatch.get(Qt.ItemDataRole(role), {})
+            if index.column() < len(TASK_TABLE_HEADERS):  # Colonnes normales
+                column_name = TASK_TABLE_HEADERS[index.column()]
+                attribute = COLUMN_MAPPING.get(column_name, "")
+                return getattr(self.tasks[index.row()], attribute, None)
 
-        # ✅ Vérifie que la colonne existe bien dans le sous-dictionnaire, sinon retourne None
-
-        return column_dispatch.get(index.column(), lambda i: None)(index.row())
+        return None  # La colonne "Edit" est gérée par `EditDelegate`
 
     def setData(self, index: QModelIndex, value, role=Qt.ItemDataRole.EditRole) -> bool:
         """Gère l'interaction avec une cellule (suppression ou autre action future)"""
-
         if not index.isValid():
             return False
 
-        # ✅ Dictionnaire d'actions en fonction de la colonne cliquée
-        actions = {
-            len(TASK_TABLE_HEADERS): self.delete_task,
-        }  # setData avec dict dispatch: les méthodes sont stoquées dans un dict.
-        # Ici les actions de la colone 'edit'.
+        if role == Qt.ItemDataRole.EditRole and index.column() == len(
+            TASK_TABLE_HEADERS
+        ):
+            return False  # Toutes les actions sont maintenant gérées par `EditDelegate`
 
-        # Si l'index de la colone est une clé dans 'actions', on appelle la méthode avec cette clé,
-        # sur la tâche de la rangée ou l'action est située
-        if index.column() in actions and role == Qt.ItemDataRole.EditRole:
-            actions[index.column()](index.row())  # = self.delete_task(rangée)
-            return True
-
-        return super().setData(
-            index, value, role
-        )  #  super().setData() permet de garder le comportement natif de PyQt pour les cellules
-        # qui ne font pas partie du dict dispatch.
+        return super().setData(index, value, role)
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Définit les propriétés des cellules (éditable, sélectionnable, etc.)"""
         if not index.isValid():
-            return Qt.ItemFlag.NoItemFlags  # ✅ Correction ici
+            return Qt.ItemFlag.NoItemFlags
 
         if index.column() == len(TASK_TABLE_HEADERS):  # Colonne Edit
-            return (
-                Qt.ItemFlag.ItemIsEnabled
-                | Qt.ItemFlag.ItemIsSelectable
-                | Qt.ItemFlag.ItemIsEditable
-            )  # ✅ Correction ici
+            return Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable
 
         return super().flags(index)
 
     def delete_task(self, row: int) -> None:
-        """Supprime visuellement une tâche, supprime dans la DB et rafraichit le tableau"""
-
+        """Supprime visuellement une tâche, supprime dans la DB et rafraîchit le tableau"""
         task = self.tasks[row]
 
         if task.tid != NO_ID:  # Vérifie que la tâche est dans la DB

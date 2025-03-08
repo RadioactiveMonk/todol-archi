@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QTableView, QWidget
 from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
 from backend.config.constants import TASK_TABLE_HEADERS
+from gui.widgets.edit_delegate import EditDelegate
 
 
 class TaskTable(QTableView):
@@ -29,6 +30,25 @@ class TaskTable(QTableView):
         self.setColumnWidth(2, 150)  # Colonne 'Expiration'
         self.setColumnWidth(3, 250)  # Colonne 'Title'
         self.setColumnWidth(4, 350)  # Colonne 'Notes'
-        self.setColumnWidth(5, 124)  # Colonne 'Edit'
+        self.setColumnWidth(5, 100)  # Colonne 'Edit'
 
-    
+        delegate = EditDelegate(self)
+        self.setItemDelegateForColumn(len(TASK_TABLE_HEADERS), delegate)
+
+        # Connexion des signaux
+        delegate.editClicked.connect(self.handle_check)
+        delegate.editClicked.connect(self.handle_edit)
+        delegate.deleteClicked.connect(self.handle_delete)
+
+    def handle_check(self, row):
+        """Change le status de la tâche"""
+        print("change le status")
+
+    def handle_edit(self, row):
+        """Ouvre le dialogue d'édition pour la tâche sélectionnée."""
+        print(f"Édition de la ligne {row}")
+        # Ici, tu peux ouvrir une fenêtre de modification (AddTaskDialog en mode édition)
+
+    def handle_delete(self, row):
+        """Supprime la tâche sélectionnée."""
+        self.table_model.delete_task(row)  # Appelle la méthode de suppression
