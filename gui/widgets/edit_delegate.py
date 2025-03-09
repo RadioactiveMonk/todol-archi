@@ -54,12 +54,20 @@ class EditDelegate(QStyledItemDelegate):
             signals = [self.deleteClicked, self.editClicked, self.checkClicked]
 
             for i, signal in enumerate(signals):
-                x_offset = option.rect.left() + EDIT_ICON_SPACING + (EDIT_ICON_SIZE + EDIT_ICON_SPACING) * i
-                icon_rect = QRect(x_offset, option.rect.top() + EDIT_ICON_TOP_OFFSET, EDIT_ICON_SIZE, EDIT_ICON_SIZE)
+                x_offset = (
+                    option.rect.left()
+                    + EDIT_ICON_SPACING
+                    + (EDIT_ICON_SIZE + EDIT_ICON_SPACING) * i
+                )
+                icon_rect = QRect(
+                    x_offset,
+                    option.rect.top() + EDIT_ICON_TOP_OFFSET,
+                    EDIT_ICON_SIZE,
+                    EDIT_ICON_SIZE,
+                )
 
                 if icon_rect.contains(mouse_pos):
                     signal.emit(index.row())
                     return True  # ✅ Stoppe dès qu'un clic est détecté
 
         return super().editorEvent(event, model, option, index)
-

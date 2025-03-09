@@ -1,7 +1,7 @@
 from PyQt6.QtCore import QDateTime
 
 
-# Headers du tableau des tâches
+# Tableau des tâches
 # =====================================
 TASK_TABLE_HEADERS = ["Status", "Category", "Expiration", "Title", "Notes"]
 COLUMN_MAPPING = {
@@ -11,6 +11,7 @@ COLUMN_MAPPING = {
     "Title": "title",
     "Notes": "notes",
 }
+EDIT_COLUMN_INDEX = len(TASK_TABLE_HEADERS)
 
 
 # Status des tâches
