@@ -1,9 +1,6 @@
-from encodings.punycode import T
-from typing import List, Any
+from typing import Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
-from backend.database_controler import DatabaseControler
-from backend.task import Task
 from gui.widgets.cell_properties import get_flags
 from backend.config.constants import (
     TASK_TABLE_HEADERS,
@@ -79,16 +76,6 @@ class TaskTableModel(QAbstractTableModel):
         """Appelle les propriétés de cellules"""
         return get_flags(index, EDIT_COLUMN_INDEX)
 
-    def delete_task(self, row: int) -> None:
-        """Supprime visuellement une tâche, supprime dans la DB et rafraîchit le tableau"""
-        task = self.tasks[row]
-
-        if task.tid != NO_ID:  # Vérifie que la tâche est dans la DB
-            self.db_manager.execute("delete_task", task.tid)
-
-        del self.tasks[row]  # Supprime du modèle
-        self.layoutChanged.emit()
-
     def handle_check(self, row: int) -> None:
         """Inverse le statut de la tâche (✅ ↔️ 🟨) et met à jour la DB."""
         task = self.tasks[row]
@@ -106,5 +93,11 @@ class TaskTableModel(QAbstractTableModel):
         )  # ✅ Placeholder (connecter l’UI plus tard)
 
     def handle_delete(self, row):
-        """Supprime la tâche sélectionnée."""
-        self.delete_task(row)  # Appelle la méthode de suppression
+        """Supprime visuellement une tâche, supprime dans la DB et rafraîchit le tableau"""
+        task = self.tasks[row]
+
+        if task.tid != NO_ID:  # Vérifie que la tâche est dans la DB
+            self.db_manager.execute("delete_task", task.tid)
+
+        del self.tasks[row]  # Supprime du modèle
+        self.layoutChanged.emit()
