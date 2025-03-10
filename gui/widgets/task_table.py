@@ -3,7 +3,7 @@ from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QTableView, QWidget
 from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
-from backend.config.constants import TASK_TABLE_HEADERS
+from backend.config.constants import EDIT_COLUMN_INDEX, TASK_TABLE_HEADERS
 from gui.widgets.edit_delegate import EditDelegate
 
 
@@ -33,7 +33,7 @@ class TaskTable(QTableView):
         self.setColumnWidth(5, 100)  # Colonne 'Edit'
 
         delegate = EditDelegate(self)
-        self.setItemDelegateForColumn(len(TASK_TABLE_HEADERS), delegate)
+        self.setItemDelegateForColumn(EDIT_COLUMN_INDEX, delegate)
 
         # Connexion des signaux
         delegate.checkClicked.connect(self.handle_check)

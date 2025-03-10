@@ -3,7 +3,12 @@ from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
 from backend.task import Task
 from gui.widgets.cell_properties import get_flags
-from backend.config.constants import TASK_TABLE_HEADERS, COLUMN_MAPPING, NO_ID
+from backend.config.constants import (
+    TASK_TABLE_HEADERS,
+    COLUMN_MAPPING,
+    NO_ID,
+    EDIT_COLUMN_INDEX,
+)
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -25,7 +30,7 @@ class TaskTableModel(QAbstractTableModel):
 
     def columnCount(self, parent: QModelIndex | None = QModelIndex()) -> int:
         """Retourne le nombre de colonnes en fonction du nombre de sections dans le header"""
-        return len(TASK_TABLE_HEADERS) + 1  # +1 pour la colonne "Edit"
+        return EDIT_COLUMN_INDEX + 1  # +1 pour la colonne "Edit"
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int) -> Any:
         """Retourne les noms des colonnes affichées dans le header du tableau."""
@@ -34,9 +39,7 @@ class TaskTableModel(QAbstractTableModel):
             and role == Qt.ItemDataRole.DisplayRole
         ):
             return (
-                TASK_TABLE_HEADERS[section]
-                if section < len(TASK_TABLE_HEADERS)
-                else "Edit"
+                TASK_TABLE_HEADERS[section] if section < EDIT_COLUMN_INDEX else "Edit"
             )
         return None
 
@@ -51,7 +54,7 @@ class TaskTableModel(QAbstractTableModel):
                     "✅" if getattr(self.tasks[index.row()], "status", None) else "🟨"
                 )
 
-            if index.column() < len(TASK_TABLE_HEADERS):  # Colonnes normales
+            if index.column() < EDIT_COLUMN_INDEX:  # Colonnes normales
                 column_name = TASK_TABLE_HEADERS[index.column()]
                 attribute = COLUMN_MAPPING.get(column_name, "")
                 return getattr(self.tasks[index.row()], attribute, None)
@@ -72,7 +75,7 @@ class TaskTableModel(QAbstractTableModel):
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
-        return get_flags(index, len(TASK_TABLE_HEADERS))
+        return get_flags(index, EDIT_COLUMN_INDEX)
 
     def delete_task(self, row: int) -> None:
         """Supprime visuellement une tâche, supprime dans la DB et rafraîchit le tableau"""
