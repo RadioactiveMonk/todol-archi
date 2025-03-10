@@ -32,7 +32,7 @@ class AddTaskDialog(QDialog):
     def setup_ui(self):
         """Creation du de la fenetre et du formulaire"""
 
-        self.setWindowTitle(EDIT_TASK_DIALOG_TITLE if self.task else TASK_DIALOG_TITLE)
+        self.setWindowTitle(TASK_DIALOG_TITLE if not self.task else EDIT_TASK_DIALOG_TITLE)
         self.setGeometry(*TASK_DIALOG_GEOMETRY)
 
         # Layout principal
