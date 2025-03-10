@@ -63,7 +63,7 @@ class DatabaseManager:
             "update_task_status",
             (
                 task_id,
-                status,
+                int(status),
             ),
         )  # ✅ Correction de l'ordre des paramètres
 

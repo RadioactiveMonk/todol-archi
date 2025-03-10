@@ -11,7 +11,7 @@ class DatabaseControler:
     _queries = {
         "create_table": """CREATE TABLE IF NOT EXISTS tasks (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        status BOOLEAN,
+                        status INTEGER DEFAULT 0,
                         category TEXT,
                         expiration TEXT,
                         title TEXT NOT NULL,

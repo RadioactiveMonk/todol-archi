@@ -80,6 +80,7 @@ class TaskTableModel(QAbstractTableModel):
         """Inverse le statut de la tâche (✅ ↔️ 🟨) et met à jour la DB."""
         task = self.tasks[row]
         task.status = not task.status  # ✅ Toggle le statut
+        print(f"📌 Mise à jour du statut : task_id={task.tid}, status={task.status}")
         self.db_manager.execute(
             "update_task_status", task.tid, task.status
         )  # ✅ Mise à jour DB
@@ -101,3 +102,4 @@ class TaskTableModel(QAbstractTableModel):
 
         del self.tasks[row]  # Supprime du modèle
         self.layoutChanged.emit()
+        print ("yo")

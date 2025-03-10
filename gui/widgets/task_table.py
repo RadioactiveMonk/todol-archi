@@ -40,5 +40,3 @@ class TaskTable(QTableView):
         delegate.checkClicked.connect(self.table_model.handle_check)
         delegate.editClicked.connect(self.table_model.handle_edit)
         delegate.deleteClicked.connect(self.table_model.handle_delete)
-
-
