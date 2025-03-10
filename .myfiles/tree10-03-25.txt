@@ -1,0 +1,116 @@
+Desktop/Projects/todol-pro/
+├── backend
+│   ├── api.py
+│   ├── config
+│   │   ├── configs.py
+│   │   ├── constants.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── configs.cpython-312.pyc
+│   │   │   ├── constants.cpython-312.pyc
+│   │   │   └── __init__.cpython-312.pyc
+│   │   ├── settings.json
+│   │   └── theme.py
+│   ├── database_controler.py
+│   ├── database.py
+│   ├── __init__.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── task_table_model.cpython-312.pyc
+│   │   └── task_table_model.py
+│   ├── __pycache__
+│   │   ├── config.cpython-312.pyc
+│   │   ├── constants.cpython-312.pyc
+│   │   ├── database_controler.cpython-312.pyc
+│   │   ├── database.cpython-312.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── storage.cpython-312.pyc
+│   │   ├── task.cpython-312.pyc
+│   │   ├── task_manager.cpython-312.pyc
+│   │   └── validators.cpython-312.pyc
+│   ├── task.py
+│   └── validators.py
+├── credits.txt
+├── data
+│   └── tasks.db
+├── exercices
+│   ├── exercices.py
+│   └── exercices.txt
+├── gui
+│   ├── dialogs
+│   │   ├── add_task_dialog.py
+│   │   ├── edit_parameters_dialog.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── add_category_dialog.cpython-312.pyc
+│   │       ├── add_task_dialog.cpython-312.pyc
+│   │       ├── edit_parameters_dialog.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── __init__.py
+│   ├── main_window.py
+│   ├── __pycache__
+│   │   ├── add_task_dialog.cpython-312.pyc
+│   │   ├── dialogs.cpython-312.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── main_window.cpython-312.pyc
+│   │   ├── selectors.cpython-312.pyc
+│   │   └── widgets.cpython-312.pyc
+│   ├── selectors.py
+│   ├── style_loader.py
+│   └── widgets
+│       ├── cell_properties.py
+│       ├── custom_button.py
+│       ├── edit_delegate.py
+│       ├── __init__.py
+│       ├── menu_bar.py
+│       ├── __pycache__
+│       │   ├── cell_properties.cpython-312.pyc
+│       │   ├── custom_button.cpython-312.pyc
+│       │   ├── delete_button_delegate.cpython-312.pyc
+│       │   ├── edit_delegate.cpython-312.pyc
+│       │   ├── edit_section_icons.cpython-312.pyc
+│       │   ├── __init__.cpython-312.pyc
+│       │   ├── menu_bar.cpython-312.pyc
+│       │   ├── search_tasks.cpython-312.pyc
+│       │   └── task_table.cpython-312.pyc
+│       ├── search_tasks.py
+│       └── task_table.py
+├── LICENSE
+├── logs
+│   └── app.log
+├── main.py
+├── __pycache__
+│   └── main.cpython-312.pyc
+├── README.md
+├── requirements.txt
+├── resources
+│   ├── fonts
+│   ├── icons
+│   │   ├── app_icon.png
+│   │   ├── check_task.png
+│   │   ├── check_task.svg
+│   │   ├── delete_task.png
+│   │   ├── delete_task.svg
+│   │   ├── edit_settings.png
+│   │   ├── edit_task.png
+│   │   ├── edit_task.svg
+│   │   └── new_task.png
+│   ├── images
+│   ├── stylesheets
+│   │   ├── default.qss
+│   │   └── __pycache__
+│   │       └── styles.cpython-312.pyc
+│   └── translations
+├── scripting.py
+└── tests
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-312.pyc
+    │   └── test_database.cpython-312.pyc
+    ├── test_backend.py
+    ├── test_database.py
+    └── test_gui.py
+
+26 directories, 88 files

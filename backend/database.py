@@ -65,7 +65,7 @@ class DatabaseManager:
                 task_id,
                 int(status),
             ),
-        )  # ✅ Correction de l'ordre des paramètres
+        )  
 
     def del_task_db(self, task_id: int) -> None:
         """Supprime une tâche"""
@@ -74,6 +74,6 @@ class DatabaseManager:
             self.db._request("delete_task", (task_id,))
 
     def get_tasks(self) -> List[Task] | List:
-        """Récupère toutes les tâches de la BDD en utilisant _request()"""
+        """Récupère toutes les tâches de la BDD en utilisant DatabaseControler._request()"""
         rows = self.db._request("get_tasks")
         return [Task(*row) for row in rows] if rows else []

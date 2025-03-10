@@ -60,18 +60,6 @@ class TaskTableModel(QAbstractTableModel):
 
         return None  # La colonne "Edit" est gérée par `EditDelegate`
 
-    def setData(self, index: QModelIndex, value, role=Qt.ItemDataRole.EditRole) -> bool:
-        """Gère l'interaction avec une cellule (suppression ou autre action future)"""
-        if not index.isValid():
-            return False
-
-        if role == Qt.ItemDataRole.EditRole and index.column() == len(
-            TASK_TABLE_HEADERS
-        ):
-            return False  # Toutes les actions sont maintenant gérées par `EditDelegate`
-
-        return super().setData(index, value, role)
-
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
         return get_flags(index, EDIT_COLUMN_INDEX)
@@ -79,12 +67,12 @@ class TaskTableModel(QAbstractTableModel):
     def handle_check(self, row: int) -> None:
         """Inverse le statut de la tâche (✅ ↔️ 🟨) et met à jour la DB."""
         task = self.tasks[row]
-        task.status = not task.status  # ✅ Toggle le statut
-        print(f"📌 Mise à jour du statut : task_id={task.tid}, status={task.status}")
-        self.db_manager.execute(
-            "update_task_status", task.tid, task.status
-        )  # ✅ Mise à jour DB
-        self.layoutChanged.emit()  # ✅ Rafraîchit l'affichage
+        task.status = not task.status
+        print(
+            f"📌 Mise à jour du statut (vérifier après redémarrage) : task_id={task.tid}, status={task.status}"
+        )
+        self.db_manager.execute("update_task_status", task.tid, task.status)
+        self.layoutChanged.emit()
 
     def handle_edit(self, row: int) -> None:
         """Ouvre le formulaire d'édition pour une tâche."""
@@ -102,4 +90,3 @@ class TaskTableModel(QAbstractTableModel):
 
         del self.tasks[row]  # Supprime du modèle
         self.layoutChanged.emit()
-        print ("yo")
