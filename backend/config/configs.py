@@ -15,6 +15,7 @@ MAIN_WINDOW_GEOMETRY = (100, 100, 1200, 600)
 # Boite d'ajout de tâche
 # =====================================
 TASK_DIALOG_TITLE = "New task"
+EDIT_TASK_DIALOG_TITLE = "Edit task"
 TASK_DIALOG_GEOMETRY = (1150, 200, 400, 350)
 
 # Boite de paramètres
