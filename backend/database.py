@@ -19,6 +19,18 @@ class DatabaseManager:
             cls._instance._create_table()
         return cls._instance
 
+    def __init__(self) -> None:
+        self.actions = {
+            "add_task": self.add_task,
+            "update_task": self.update_task,
+            "delete_task": self.del_task,
+            "get_tasks": self.get_tasks,
+        }
+
+    def execute(self, action: str, *args, **kwargs):
+        """Execute une action sur la base de donnée"""
+        return self.actions.get(action, lambda *a, **kw: None)(*args, **kwargs)
+
     def _connect(self) -> sqlite3.Connection:
         """Etablit la connexion avec SQLite. Condition pour détecter la connexion"""
         assert self._conn, "Connection to database not initialized"
