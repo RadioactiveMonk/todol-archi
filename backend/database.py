@@ -13,6 +13,7 @@ class DatabaseManager:
         self.actions = {
             "add_task": self.add_task,
             "update_task": self.update_task,
+            "update_task_status": self.update_task_status,
             "delete_task": self.del_task_db,
             "get_tasks": self.get_tasks,
         }
@@ -21,15 +22,14 @@ class DatabaseManager:
     def execute(self, action: str, *args, **kwargs):
         """Exécute une action sur la base de données via dict dispatch."""
         if action not in self.actions:
-            raise ValueError(f"Action inconnue: {action}"
-                             )
+            raise ValueError(f"Action inconnue: {action}")
         return self.actions[action](*args, **kwargs)
 
     def add_task(
         self, status: bool, category: str, expiration: str, title: str, notes: str
     ) -> Task:
         """Ajoute une tâche à la base et retourne l'objet Task correspondant."""
-        query = self.db.queries["insert_task"]
+        query = self.db._queries["insert_task"]
         params = (status, category, expiration, title, notes)
 
         task_id = self.db._exec_query(query, params)
@@ -45,7 +45,7 @@ class DatabaseManager:
 
     def update_task(self, task: Task) -> None:
         """Met à jour une tâche existante dans la base de données."""
-        query = self.db.queries["update_task"]
+        query = self.db._queries["update_task"]
         params = (
             task.status,
             task.category,
@@ -57,15 +57,23 @@ class DatabaseManager:
 
         self.db._request(query, params)
 
+    def update_task_status(self, task_id: int, status: bool) -> None:
+        """Met à jour le statut d'une tâche dans la DB"""
+        self.db._request(
+            "update_task_status",
+            (
+                task_id,
+                status,
+            ),
+        )  # ✅ Correction de l'ordre des paramètres
+
     def del_task_db(self, task_id: int) -> None:
         """Supprime une tâche"""
 
-        query = self.db.queries["delete_task"]
         if task_id != NO_ID:
-            self.db._request(query, (task_id,))
+            self.db._request("delete_task", (task_id,))
 
     def get_tasks(self) -> List[Task] | List:
         """Récupère toutes les tâches de la BDD en utilisant _request()"""
-        query = self.db.queries["get_tasks"]
-        rows = self.db._request(query)
+        rows = self.db._request("get_tasks")
         return [Task(*row) for row in rows] if rows else []

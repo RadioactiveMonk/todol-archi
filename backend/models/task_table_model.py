@@ -23,8 +23,8 @@ class TaskTableModel(QAbstractTableModel):
     ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
         super().__init__(parent)
-        self.db_manager = DatabaseManager()
-        self.tasks = db_manager.execute("get_tasks")
+        self.db_manager = db_manager
+        self.tasks = self.db_manager.get_tasks()
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stockées."""
@@ -94,7 +94,7 @@ class TaskTableModel(QAbstractTableModel):
         task = self.tasks[row]
         task.status = not task.status  # ✅ Toggle le statut
         self.db_manager.execute(
-            "update_task_status", (task.tid, task.status)
+            "update_task_status", task.tid, task.status
         )  # ✅ Mise à jour DB
         self.layoutChanged.emit()  # ✅ Rafraîchit l'affichage
 
