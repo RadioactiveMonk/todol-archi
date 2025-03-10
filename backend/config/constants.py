@@ -12,6 +12,7 @@ COLUMN_MAPPING = {
     "Notes": "notes",
 }
 EDIT_COLUMN_INDEX = len(TASK_TABLE_HEADERS)
+# TASKS_ROWS = ??
 
 
 # Status des tâches

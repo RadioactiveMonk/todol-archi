@@ -1,3 +1,4 @@
+from encodings.punycode import T
 from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
@@ -18,13 +19,12 @@ class TaskTableModel(QAbstractTableModel):
     def __init__(
         self,
         parent: QObject | None = None,
-        database: DatabaseManager = DatabaseManager(),
+        db_manager: DatabaseManager = DatabaseManager(),
     ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
         super().__init__(parent)
-        self.database: DatabaseManager = database
-        self.db_controler: DatabaseControler = DatabaseControler()
-        self.tasks: List[Task] = self.database.get_tasks()
+        self.db_manager = DatabaseManager()
+        self.tasks = db_manager.execute("get_tasks")
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stockées."""
@@ -84,7 +84,7 @@ class TaskTableModel(QAbstractTableModel):
         task = self.tasks[row]
 
         if task.tid != NO_ID:  # Vérifie que la tâche est dans la DB
-            self.database.del_task(task.tid)
+            self.db_manager.execute("delete_task", task.tid)
 
         del self.tasks[row]  # Supprime du modèle
         self.layoutChanged.emit()
@@ -93,7 +93,7 @@ class TaskTableModel(QAbstractTableModel):
         """Inverse le statut de la tâche (✅ ↔️ 🟨) et met à jour la DB."""
         task = self.tasks[row]
         task.status = not task.status  # ✅ Toggle le statut
-        self.db_controler._request(
+        self.db_manager.execute(
             "update_task_status", (task.tid, task.status)
         )  # ✅ Mise à jour DB
         self.layoutChanged.emit()  # ✅ Rafraîchit l'affichage

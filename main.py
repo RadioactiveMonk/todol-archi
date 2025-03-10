@@ -3,8 +3,8 @@ import atexit
 import sys
 from rich.traceback import install
 from PyQt6.QtWidgets import QApplication
-from gui.main_window import MainWindow
 from backend.database import DatabaseManager
+from gui.main_window import MainWindow
 
 
 def main():
@@ -14,7 +14,6 @@ def main():
     window = MainWindow()  # Récupération de la fenêtre principale
     window.show()  # A la manière de 'plot', la fenêtre est crée mais doit être affichée
     db = DatabaseManager()
-    atexit.register(db._close_connection)
 
     sys.exit(app.exec())  # Convention: boucle principale de l'application
 

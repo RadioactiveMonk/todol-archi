@@ -13,21 +13,27 @@ class DatabaseManager:
         self.actions = {
             "add_task": self.add_task,
             "update_task": self.update_task,
-            "delete_task": self.del_task,
+            "delete_task": self.del_task_db,
             "get_tasks": self.get_tasks,
         }
         self.db = DatabaseControler()
 
     def execute(self, action: str, *args, **kwargs):
         """Exécute une action sur la base de données via dict dispatch."""
-        return self.actions.get(action, lambda *a, **kw: None)(*args, **kwargs)
+        if action not in self.actions:
+            raise ValueError(f"Action inconnue: {action}"
+                             )
+        return self.actions[action](*args, **kwargs)
 
     def add_task(
         self, status: bool, category: str, expiration: str, title: str, notes: str
     ) -> Task:
         """Ajoute une tâche à la base et retourne l'objet Task correspondant."""
         query = self.db.queries["insert_task"]
-        params = 
+        params = (status, category, expiration, title, notes)
+
+        task_id = self.db._exec_query(query, params)
+
         return Task(
             tid=task_id,
             status=status,
@@ -40,19 +46,18 @@ class DatabaseManager:
     def update_task(self, task: Task) -> None:
         """Met à jour une tâche existante dans la base de données."""
         query = self.db.queries["update_task"]
-        self.db._request(
-            query,
-            (
-                task.status,
-                task.category,
-                task.expiration,
-                task.title,
-                task.notes,
-                task.tid,
-            ),
+        params = (
+            task.status,
+            task.category,
+            task.expiration,
+            task.title,
+            task.notes,
+            task.tid,
         )
 
-    def del_task(self, task_id: int) -> None:
+        self.db._request(query, params)
+
+    def del_task_db(self, task_id: int) -> None:
         """Supprime une tâche"""
 
         query = self.db.queries["delete_task"]
