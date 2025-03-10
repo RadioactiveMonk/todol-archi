@@ -1,6 +1,7 @@
 from typing import List, Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database import DatabaseManager
+from backend.database_controler import DatabaseControler
 from backend.task import Task
 from gui.widgets.cell_properties import get_flags
 from backend.config.constants import (
@@ -22,6 +23,7 @@ class TaskTableModel(QAbstractTableModel):
         """Initialise les données à afficher pour chaque tâche"""
         super().__init__(parent)
         self.database: DatabaseManager = database
+        self.db_controler: DatabaseControler = DatabaseControler()
         self.tasks: List[Task] = self.database.get_tasks()
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
@@ -86,3 +88,23 @@ class TaskTableModel(QAbstractTableModel):
 
         del self.tasks[row]  # Supprime du modèle
         self.layoutChanged.emit()
+
+    def handle_check(self, row: int) -> None:
+        """Inverse le statut de la tâche (✅ ↔️ 🟨) et met à jour la DB."""
+        task = self.tasks[row]
+        task.status = not task.status  # ✅ Toggle le statut
+        self.db_controler._execute(
+            "update_task_status", (task.tid, task.status)
+        )  # ✅ Mise à jour DB
+        self.layoutChanged.emit()  # ✅ Rafraîchit l'affichage
+
+    def handle_edit(self, row: int) -> None:
+        """Ouvre le formulaire d'édition pour une tâche."""
+        task = self.tasks[row]
+        print(
+            f"📌 Édition de la tâche : {task.title}"
+        )  # ✅ Placeholder (connecter l’UI plus tard)
+
+    def handle_delete(self, row):
+        """Supprime la tâche sélectionnée."""
+        self.delete_task(row)  # Appelle la méthode de suppression

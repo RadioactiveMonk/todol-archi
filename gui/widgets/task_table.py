@@ -3,7 +3,7 @@ from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QTableView, QWidget
 from backend.database import DatabaseManager
 from backend.models.task_table_model import TaskTableModel
-from backend.config.constants import EDIT_COLUMN_INDEX, TASK_TABLE_HEADERS
+from backend.config.constants import EDIT_COLUMN_INDEX
 from gui.widgets.edit_delegate import EditDelegate
 
 
@@ -36,19 +36,8 @@ class TaskTable(QTableView):
         self.setItemDelegateForColumn(EDIT_COLUMN_INDEX, delegate)
 
         # Connexion des signaux
-        delegate.checkClicked.connect(self.handle_check)
-        delegate.editClicked.connect(self.handle_edit)
-        delegate.deleteClicked.connect(self.handle_delete)
+        delegate.checkClicked.connect(self.table_model.handle_check)
+        delegate.editClicked.connect(self.table_model.handle_edit)
+        delegate.deleteClicked.connect(self.table_model.handle_delete)
 
-    def handle_check(self, row):
-        """Change le status de la tâche"""
-        print("change le status")
 
-    def handle_edit(self, row):
-        """Ouvre le dialogue d'édition pour la tâche sélectionnée."""
-        print(f"Édition de la ligne {row}")
-        # Ici, tu peux ouvrir une fenêtre de modification (AddTaskDialog en mode édition)
-
-    def handle_delete(self, row):
-        """Supprime la tâche sélectionnée."""
-        self.table_model.delete_task(row)  # Appelle la méthode de suppression
