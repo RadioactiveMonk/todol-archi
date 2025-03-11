@@ -14,7 +14,7 @@ class Task:
     """Représente une tâche"""
 
     tid: int = field(default=NO_ID)
-    status: bool = field(default=DEFAULT_STATUS)
+    status: int = field(default=DEFAULT_STATUS)
     category: str = field(default=DEFAULT_CATEGORY)
     expiration: str = field(
         default_factory=lambda: DEFAULT_DATETIME.toString("yyyy-MM-dd HH:mm")

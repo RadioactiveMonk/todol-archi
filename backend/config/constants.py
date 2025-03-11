@@ -17,8 +17,8 @@ EDIT_COLUMN_INDEX = len(TASK_TABLE_HEADERS)
 
 # Status des tâches
 # =====================================
-STATUS_DONE = True
-STATUS_PENDING = False
+STATUS_DONE = 1
+STATUS_PENDING = 0
 
 # Tailles et positions de boutons
 # =====================================
@@ -35,5 +35,5 @@ EDIT_SECTION_POSITIONS = ["delete", "edit", "check"]
 DEFAULT_DATETIME = QDateTime.currentDateTime().addDays(1)
 DEFAULT_TITLE = "TASK"
 DEFAULT_NOTES = ""
-DEFAULT_STATUS = False
+DEFAULT_STATUS = STATUS_PENDING
 NO_ID = -1

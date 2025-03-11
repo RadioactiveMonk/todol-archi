@@ -49,12 +49,12 @@ class DatabaseManager:
         self.db._request(
             "update_task",
             (
-                task.tid,
                 task.status,
                 task.category,
                 task.expiration,
                 task.title,
                 task.notes,
+                task.tid,
             ),
         )
 
