@@ -58,7 +58,7 @@ class DatabaseManager:
             ),
         )
 
-    def update_task_status(self, task_id: int, status: int) -> None:
+    def update_task_status(self, status: bool, task_id: int) -> None:
         """Met à jour le statut d'une tâche dans la DB"""
 
         print(f"📌 Mise à jour du statut : {task_id}, {int(status)}")  # ✅ Debug

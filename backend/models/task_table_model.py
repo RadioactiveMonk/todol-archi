@@ -73,7 +73,7 @@ class TaskTableModel(QAbstractTableModel):
         print(
             f"📌 Mise à jour du statut (vérifier après redémarrage) : task_id={task.tid}, status={task.status}"
         )
-        self.db_manager.execute("update_task_status", task.tid, task.status)
+        self.db_manager.execute("update_task_status", task.status, task.tid)
         self.layoutChanged.emit()
 
     def handle_edit(self, row: int) -> None:
