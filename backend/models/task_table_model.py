@@ -1,3 +1,4 @@
+from asyncio import Task
 from typing import Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtWidgets import QWidget
@@ -25,6 +26,15 @@ class TaskTableModel(QAbstractTableModel):
         super().__init__(parent)
         self.db_manager = db_manager
         self.tasks = self.db_manager.get_tasks()
+
+    def _update_task(self, task) -> None:
+        """Mise à jour en DB et rafraichit l'affichage"""
+        self.db_manager.execute("update_task", task)
+        logger.info(
+            f"Task {task.tid} updated: {task.title}, {task.category}, {task.expiration}, {task.status}"
+        )
+
+        self.layoutChanged.emit()
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stockées."""
@@ -75,7 +85,7 @@ class TaskTableModel(QAbstractTableModel):
         logger.info(f"Task {task.tid} status changed to {task.status}")
 
         self.db_manager.execute("update_task_status", task.status, task.tid)
-        self.layoutChanged.emit()
+        self._update_task(task)
 
     def handle_edit(self, row: int) -> None:
         """Ouvre le formulaire d'édition pour une tâche."""
@@ -90,8 +100,7 @@ class TaskTableModel(QAbstractTableModel):
                 "yyyy-MM-dd HH:mm"
             )
             task.notes = dialog.notes_input.toPlainText().strip()
-            self.db_manager.execute("update_task", task)
-            self.layoutChanged.emit()
+            self._update_task(task)
 
     def handle_delete(self, row):
         """Supprime visuellement une tâche, supprime dans la DB et rafraîchit le tableau"""
@@ -99,6 +108,7 @@ class TaskTableModel(QAbstractTableModel):
 
         if task.tid != NO_ID:  # Vérifie que la tâche est dans la DB
             self.db_manager.execute("delete_task", task.tid)
+            logger.info(f"Task {task.tid} deleted: {task.title}")
 
         del self.tasks[row]  # Supprime du modèle
         self.layoutChanged.emit()
