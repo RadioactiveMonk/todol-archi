@@ -49,7 +49,7 @@ class DatabaseManager:
         self.db._request(
             "update_task",
             (
-                task.status,
+                int(task.status),
                 task.category,
                 task.expiration,
                 task.title,
@@ -58,13 +58,16 @@ class DatabaseManager:
             ),
         )
 
-    def update_task_status(self, task_id: int, status: bool) -> None:
+    def update_task_status(self, task_id: int, status: int) -> None:
         """Met à jour le statut d'une tâche dans la DB"""
+
+        print(f"📌 Mise à jour du statut : {task_id}, {int(status)}")  # ✅ Debug
         self.db._request(
             "update_task_status",
             (
-                task_id,
+                
                 int(status),
+                task_id
             ),
         )
 
@@ -75,6 +78,16 @@ class DatabaseManager:
             self.db._request("delete_task", (task_id,))
 
     def get_tasks(self) -> List[Task] | List:
-        """Récupère toutes les tâches de la BDD en utilisant DatabaseControler._request()"""
+        """Récupère toutes les tâches de la BDD et convertit `status` en bool"""
         rows = self.db._request("get_tasks")
-        return [Task(*row) for row in rows] if rows else []
+        return [
+            Task(
+                tid=row[0],
+                status=bool(row[1]),  # Convertit `0/1` en `False/True`
+                category=row[2],
+                expiration=row[3],
+                title=row[4],
+                notes=row[5],
+            )
+            for row in rows
+        ] if rows else []

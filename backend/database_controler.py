@@ -28,7 +28,6 @@ class DatabaseControler:
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
-            cls._instance._queries
             cls._instance._create_table()
         return cls._instance
 
@@ -53,10 +52,10 @@ class DatabaseControler:
 
     def _request(self, query_key: str, params: tuple = ()):
         """Execute une requête SQL du dict dispatch 'self.queries'"""
-        if query_key not in self._queries:
+        if query_key not in DatabaseControler._queries:
             raise ValueError(f"Requête inconnue: {query_key}")
 
-        return self._exec_query(self._queries.get(query_key, ""), params)
+        return self._exec_query(DatabaseControler._queries.get(query_key, ""), params)
 
     def _create_table(self) -> None:
         """Crée la table des tâches si elle n'existe pas"""

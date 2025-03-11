@@ -17,8 +17,8 @@ EDIT_COLUMN_INDEX = len(TASK_TABLE_HEADERS)
 
 # Status des tâches
 # =====================================
-STATUS_DONE = 1
-STATUS_PENDING = 0
+STATUS_DONE = True
+STATUS_PENDING = False
 
 # Tailles et positions de boutons
 # =====================================
