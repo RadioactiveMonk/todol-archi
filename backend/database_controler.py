@@ -1,5 +1,6 @@
 import sqlite3
 from typing import Any
+from backend.logger import logger
 
 from backend.config.configs import DB_PATH
 
@@ -35,7 +36,8 @@ class DatabaseControler:
         self, query: str, params: tuple = (), return_lastrowid: bool = False
     ) -> Any:
         """Execute une requête SQL avec gestion de la connexion automatique"""
-
+        logger.debug(f"Exécution SQL: {query} | PARAMS: {params}")
+        
         with sqlite3.connect(DB_PATH) as conn:
             cursor = conn.cursor()
             cursor.execute(query, params)

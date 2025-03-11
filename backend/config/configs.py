@@ -27,7 +27,7 @@ EDIT_PARAMETERS_DIALOG_GEOMETRY = (1150, 200, 400, 200)
 # =====================================
 CFG_PATH = "data/config.json"
 DB_PATH = "data/tasks.db"
-LOG_PATH = "logs/app.log"
+LOG_PATH = "logs"
 
 # Thèmes
 # =====================================

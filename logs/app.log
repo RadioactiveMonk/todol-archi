@@ -1,0 +1,14 @@
+2025-03-11 21:38:44,849 - DEBUG - Exécution SQL: CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                 | PARAMS: ()
+2025-03-11 21:38:44,879 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 21:38:48,335 - INFO - Task 13 status changed to False
+2025-03-11 21:38:48,335 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 13)
+2025-03-11 21:38:49,903 - INFO - Task 15 status changed to False
+2025-03-11 21:38:49,903 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 15)

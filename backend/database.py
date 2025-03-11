@@ -2,7 +2,7 @@ import sqlite3
 from typing import List
 from backend.database_controler import DatabaseControler
 from backend.task import Task
-from backend.config.configs import DB_PATH
+from backend.logger import logger
 from backend.config.constants import NO_ID
 
 
@@ -46,6 +46,7 @@ class DatabaseManager:
     def update_task(self, task: Task) -> None:
         """Met à jour une tâche existante dans la base de données."""
 
+        logger.info(f"Mise à jour de la tâche: {task.tid}, {task.title}, status={task.status}")
         self.db._request(
             "update_task",
             (
@@ -61,7 +62,6 @@ class DatabaseManager:
     def update_task_status(self, status: bool, task_id: int) -> None:
         """Met à jour le statut d'une tâche dans la DB"""
 
-        print(f"📌 Mise à jour du statut : {task_id}, {int(status)}")  # ✅ Debug
         self.db._request(
             "update_task_status",
             (

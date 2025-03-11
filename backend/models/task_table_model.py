@@ -2,6 +2,7 @@ from typing import Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtWidgets import QWidget
 from backend.database import DatabaseManager
+from backend.logger import logger
 from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.widgets.cell_properties import get_flags
 from backend.config.constants import (
@@ -70,9 +71,9 @@ class TaskTableModel(QAbstractTableModel):
         """Inverse le statut de la tâche (✅ ↔️ 🟨) et met à jour la DB."""
         task = self.tasks[row]
         task.status = not task.status
-        print(
-            f"📌 Mise à jour du statut (vérifier après redémarrage) : task_id={task.tid}, status={task.status}"
-        )
+
+        logger.info(f"Task {task.tid} status changed to {task.status}")
+
         self.db_manager.execute("update_task_status", task.status, task.tid)
         self.layoutChanged.emit()
 
