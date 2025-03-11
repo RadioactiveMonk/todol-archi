@@ -46,7 +46,9 @@ class DatabaseManager:
     def update_task(self, task: Task) -> None:
         """Met à jour une tâche existante dans la base de données."""
 
-        logger.info(f"Mise à jour de la tâche: {task.tid}, {task.title}, status={task.status}")
+        logger.info(
+            f"Mise à jour de la tâche: ID={task.tid}, Title={task.title}, Status={task.status}"
+        )
         self.db._request(
             "update_task",
             (
@@ -64,11 +66,7 @@ class DatabaseManager:
 
         self.db._request(
             "update_task_status",
-            (
-                
-                int(status),
-                task_id
-            ),
+            (int(status), task_id),
         )
 
     def del_task_db(self, task_id: int) -> None:
@@ -80,14 +78,18 @@ class DatabaseManager:
     def get_tasks(self) -> List[Task] | List:
         """Récupère toutes les tâches de la BDD et convertit `status` en bool"""
         rows = self.db._request("get_tasks")
-        return [
-            Task(
-                tid=row[0],
-                status=bool(row[1]),  # Convertit `0/1` en `False/True`
-                category=row[2],
-                expiration=row[3],
-                title=row[4],
-                notes=row[5],
-            )
-            for row in rows
-        ] if rows else []
+        return (
+            [
+                Task(
+                    tid=row[0],
+                    status=bool(row[1]),  # Convertit `0/1` en `False/True`
+                    category=row[2],
+                    expiration=row[3],
+                    title=row[4],
+                    notes=row[5],
+                )
+                for row in rows
+            ]
+            if rows
+            else []
+        )

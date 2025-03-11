@@ -12,3 +12,41 @@
 2025-03-11 21:38:48,335 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 13)
 2025-03-11 21:38:49,903 - INFO - Task 15 status changed to False
 2025-03-11 21:38:49,903 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 15)
+2025-03-11 21:47:06,556 - DEBUG - Exécution SQL: CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                 | PARAMS: ()
+2025-03-11 21:47:06,589 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 21:47:14,290 - INFO - Task 15 status changed to True
+2025-03-11 21:47:14,290 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (1, 15)
+2025-03-11 21:47:15,461 - INFO - Task 13 status changed to True
+2025-03-11 21:47:15,461 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (1, 13)
+2025-03-11 21:47:18,655 - DEBUG - Exécution SQL: CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                 | PARAMS: ()
+2025-03-11 21:47:18,685 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 21:47:26,211 - INFO - Mise à jour de la tâche: ID=13, Title=bool(13) == True, Status=True
+2025-03-11 21:47:26,211 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'Personnal', '2025-03-12 19:57', 'bool(13) == True', 'status == tid', 13)
+2025-03-11 21:47:26,219 - INFO - Mise à jour de la tâche: ID=13, Title=bool(13) == True, Status=True
+2025-03-11 21:47:26,219 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'Personnal', '2025-03-12 19:57', 'bool(13) == True', 'status == tid', 13)
+2025-03-11 21:47:29,335 - DEBUG - Exécution SQL: CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                 | PARAMS: ()
+2025-03-11 21:47:29,367 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
