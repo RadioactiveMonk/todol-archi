@@ -47,7 +47,7 @@ class DatabaseManager:
         """Met à jour une tâche existante dans la base de données."""
 
         logger.info(
-            f"Mise à jour de la tâche: ID={task.tid}, Title={task.title}, Status={task.status}"
+            f"Mise à jour de la tâche: ID={task.tid}, Title='{task.title}', Status={task.status}"
         )
         self.db._request(
             "update_task",

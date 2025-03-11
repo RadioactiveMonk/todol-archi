@@ -50,3 +50,137 @@
                     )
                  | PARAMS: ()
 2025-03-11 21:47:29,367 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 22:09:20,583 - DEBUG - Exécution SQL: CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                 | PARAMS: ()
+2025-03-11 22:09:20,613 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 22:09:38,671 - DEBUG - Exécution SQL: INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?) | PARAMS: (False, 'Family', '2025-03-12 22:09', 'New task', 'new notes')
+2025-03-11 22:09:38,690 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 22:09:40,815 - INFO - Task 16 status changed to True
+2025-03-11 22:09:40,815 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (1, 16)
+2025-03-11 22:09:40,836 - INFO - Mise à jour de la tâche: ID=16, Title=New task, Status=True
+2025-03-11 22:09:40,836 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'Family', '2025-03-12 22:09', 'New task', 'new notes', 16)
+2025-03-11 22:09:40,836 - INFO - Task 16 updated: New task, Family, 2025-03-12 22:09, True
+2025-03-11 22:09:41,962 - INFO - Task 15 status changed to False
+2025-03-11 22:09:41,962 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 15)
+2025-03-11 22:09:41,989 - INFO - Mise à jour de la tâche: ID=15, Title=13 == 1, Status=False
+2025-03-11 22:09:41,989 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (0, 'General', '2025-03-12 20:56', '13 == 1', "et ca c'est beau", 15)
+2025-03-11 22:09:41,990 - INFO - Task 15 updated: 13 == 1, General, 2025-03-12 20:56, False
+2025-03-11 22:09:42,749 - INFO - Task 13 status changed to False
+2025-03-11 22:09:42,749 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 13)
+2025-03-11 22:09:42,766 - INFO - Mise à jour de la tâche: ID=13, Title=bool(13) == True, Status=False
+2025-03-11 22:09:42,766 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (0, 'Personnal', '2025-03-12 19:57', 'bool(13) == True', 'status == tid', 13)
+2025-03-11 22:09:42,766 - INFO - Task 13 updated: bool(13) == True, Personnal, 2025-03-12 19:57, False
+2025-03-11 22:09:43,626 - INFO - Task 15 status changed to True
+2025-03-11 22:09:43,626 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (1, 15)
+2025-03-11 22:09:43,654 - INFO - Mise à jour de la tâche: ID=15, Title=13 == 1, Status=True
+2025-03-11 22:09:43,654 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'General', '2025-03-12 20:56', '13 == 1', "et ca c'est beau", 15)
+2025-03-11 22:09:43,654 - INFO - Task 15 updated: 13 == 1, General, 2025-03-12 20:56, True
+2025-03-11 22:09:44,700 - INFO - Task 16 status changed to False
+2025-03-11 22:09:44,700 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 16)
+2025-03-11 22:09:44,728 - INFO - Mise à jour de la tâche: ID=16, Title=New task, Status=False
+2025-03-11 22:09:44,729 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (0, 'Family', '2025-03-12 22:09', 'New task', 'new notes', 16)
+2025-03-11 22:09:44,729 - INFO - Task 16 updated: New task, Family, 2025-03-12 22:09, False
+2025-03-11 22:10:07,103 - INFO - Mise à jour de la tâche: ID=16, Title=edit task, Status=False
+2025-03-11 22:10:07,103 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (0, 'Family', '2025-03-16 22:09', 'edit task', 'edit notes and changinf expiration', 16)
+2025-03-11 22:10:07,121 - INFO - Mise à jour de la tâche: ID=16, Title=edit task, Status=False
+2025-03-11 22:10:07,122 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (0, 'Family', '2025-03-16 22:09', 'edit task', 'edit notes and changinf expiration', 16)
+2025-03-11 22:10:07,123 - INFO - Task 16 updated: edit task, Family, 2025-03-16 22:09, False
+2025-03-11 22:10:20,249 - DEBUG - Exécution SQL: CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                 | PARAMS: ()
+2025-03-11 22:10:20,280 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 22:10:27,033 - INFO - Task 16 status changed to True
+2025-03-11 22:10:27,034 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (1, 16)
+2025-03-11 22:10:27,049 - INFO - Mise à jour de la tâche: ID=16, Title=edit task, Status=True
+2025-03-11 22:10:27,049 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'Family', '2025-03-16 22:09', 'edit task', 'edit notes and changinf expiration', 16)
+2025-03-11 22:10:27,049 - INFO - Task 16 updated: edit task, Family, 2025-03-16 22:09, True
+2025-03-11 22:10:29,544 - DEBUG - Exécution SQL: CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                 | PARAMS: ()
+2025-03-11 22:10:29,588 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 22:23:49,896 - DEBUG - Exécution SQL: CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                 | PARAMS: ()
+2025-03-11 22:23:49,927 - DEBUG - Exécution SQL: SELECT id, status, category, expiration, title, notes FROM tasks | PARAMS: ()
+2025-03-11 22:23:53,978 - INFO - Mise à jour de la tâche: ID=16, Title=dfg, Status=True
+2025-03-11 22:23:53,978 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'Family', '2025-03-16 22:09', 'dfg', 'edit notes and changinf expiration', 16)
+2025-03-11 22:23:53,997 - INFO - Mise à jour de la tâche: ID=16, Title=dfg, Status=True
+2025-03-11 22:23:53,997 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'Family', '2025-03-16 22:09', 'dfg', 'edit notes and changinf expiration', 16)
+2025-03-11 22:23:53,997 - INFO - Task 16 updated: dfg, Family, 2025-03-16 22:09, True
+2025-03-11 22:24:06,068 - INFO - Mise à jour de la tâche: ID=16, Title=trying debug mode false, Status=True
+2025-03-11 22:24:06,068 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'General', '2025-03-16 22:09', 'trying debug mode false', 'edit notes and changinf expiration', 16)
+2025-03-11 22:24:06,087 - INFO - Mise à jour de la tâche: ID=16, Title=trying debug mode false, Status=True
+2025-03-11 22:24:06,087 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (1, 'General', '2025-03-16 22:09', 'trying debug mode false', 'edit notes and changinf expiration', 16)
+2025-03-11 22:24:06,087 - INFO - Task 16 updated: trying debug mode false, General, 2025-03-16 22:09, True
+2025-03-11 22:24:08,535 - INFO - Task 15 status changed to False
+2025-03-11 22:24:08,535 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 15)
+2025-03-11 22:24:08,563 - INFO - Mise à jour de la tâche: ID=15, Title=13 == 1, Status=False
+2025-03-11 22:24:08,564 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (0, 'General', '2025-03-12 20:56', '13 == 1', "et ca c'est beau", 15)
+2025-03-11 22:24:08,564 - INFO - Task 15 updated: 13 == 1, General, 2025-03-12 20:56, False
+2025-03-11 22:24:09,458 - INFO - Task 16 status changed to False
+2025-03-11 22:24:09,458 - DEBUG - Exécution SQL: UPDATE tasks SET status = ? WHERE id = ? | PARAMS: (0, 16)
+2025-03-11 22:24:09,485 - INFO - Mise à jour de la tâche: ID=16, Title=trying debug mode false, Status=False
+2025-03-11 22:24:09,486 - DEBUG - Exécution SQL: UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ? | PARAMS: (0, 'General', '2025-03-16 22:09', 'trying debug mode false', 'edit notes and changinf expiration', 16)
+2025-03-11 22:24:09,486 - INFO - Task 16 updated: trying debug mode false, General, 2025-03-16 22:09, False
+2025-03-11 22:25:58,614 - INFO - Mise à jour de la tâche: ID=16, Title=dfgdfg, Status=False
+2025-03-11 22:25:58,643 - INFO - Mise à jour de la tâche: ID=16, Title=dfgdfg, Status=False
+2025-03-11 22:25:58,644 - INFO - Task 16 updated: dfgdfg, General, 2025-03-16 22:09, False
+2025-03-11 22:26:00,009 - INFO - Task 15 status changed to True
+2025-03-11 22:26:00,028 - INFO - Mise à jour de la tâche: ID=15, Title=13 == 1, Status=True
+2025-03-11 22:26:00,029 - INFO - Task 15 updated: 13 == 1, General, 2025-03-12 20:56, True
+2025-03-11 22:26:00,692 - INFO - Task 13 status changed to True
+2025-03-11 22:26:00,711 - INFO - Mise à jour de la tâche: ID=13, Title=bool(13) == True, Status=True
+2025-03-11 22:26:00,712 - INFO - Task 13 updated: bool(13) == True, Personnal, 2025-03-12 19:57, True
+2025-03-11 22:26:02,087 - INFO - Task 16 status changed to True
+2025-03-11 22:26:02,115 - INFO - Mise à jour de la tâche: ID=16, Title=dfgdfg, Status=True
+2025-03-11 22:26:02,115 - INFO - Task 16 updated: dfgdfg, General, 2025-03-16 22:09, True
+2025-03-11 22:26:03,197 - INFO - Task 16 deleted: dfgdfg
+2025-03-11 22:26:09,816 - INFO - Task 15 status changed to False
+2025-03-11 22:26:09,844 - INFO - Mise à jour de la tâche: ID=15, Title=13 == 1, Status=False
+2025-03-11 22:26:09,844 - INFO - Task 15 updated: 13 == 1, General, 2025-03-12 20:56, False
+2025-03-11 22:26:10,334 - INFO - Task 13 status changed to False
+2025-03-11 22:26:10,353 - INFO - Mise à jour de la tâche: ID=13, Title=bool(13) == True, Status=False
+2025-03-11 22:26:10,354 - INFO - Task 13 updated: bool(13) == True, Personnal, 2025-03-12 19:57, False
+2025-03-11 22:26:19,880 - INFO - Task 17 deleted: dfgdfgdfgdfg
+2025-03-11 22:29:56,454 - INFO - Task 15 status changed to True
+2025-03-11 22:29:56,491 - INFO - Mise à jour de la tâche: ID=15, Title='13 == 1', Status=True
+2025-03-11 22:29:56,491 - INFO - Task 15 updated: 13 == 1, General, 2025-03-12 20:56, True
+2025-03-11 22:29:57,264 - INFO - Task 13 status changed to True
+2025-03-11 22:29:57,292 - INFO - Mise à jour de la tâche: ID=13, Title='bool(13) == True', Status=True
+2025-03-11 22:29:57,293 - INFO - Task 13 updated: bool(13) == True, Personnal, 2025-03-12 19:57, True
+2025-03-11 22:29:58,103 - INFO - Task 15 status changed to False
+2025-03-11 22:29:58,130 - INFO - Mise à jour de la tâche: ID=15, Title='13 == 1', Status=False
+2025-03-11 22:29:58,131 - INFO - Task 15 updated: 13 == 1, General, 2025-03-12 20:56, False
+2025-03-11 22:29:58,747 - INFO - Task 13 status changed to False
+2025-03-11 22:29:58,774 - INFO - Mise à jour de la tâche: ID=13, Title='bool(13) == True', Status=False
+2025-03-11 22:29:58,775 - INFO - Task 13 updated: bool(13) == True, Personnal, 2025-03-12 19:57, False
+2025-03-11 22:30:02,549 - INFO - Task 13 deleted: bool(13) == True
+2025-03-11 22:30:02,965 - INFO - Task 15 deleted: 13 == 1
+2025-03-11 22:30:13,974 - INFO - Task 18 status changed to True
+2025-03-11 22:30:13,992 - INFO - Mise à jour de la tâche: ID=18, Title='SQL and logs', Status=True
+2025-03-11 22:30:13,992 - INFO - Task 18 updated: SQL and logs, General, 2025-03-12 22:29, True
