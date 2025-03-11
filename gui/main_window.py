@@ -72,7 +72,7 @@ class MainWindow(QMainWindow):
         """Ouvre la boîte de dialogue d'ajout de tâche"""
 
         dialog = AddTaskDialog(self)
-        dialog.task_added.connect(
+        dialog.ok_signal.connect(
             self.refresh_task_list
         )  # Récupère le signal 'task_added' depuis AddTaskDialog
         dialog.exec()

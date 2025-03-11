@@ -9,7 +9,13 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import pyqtSignal, QDateTime
 from gui.selectors import CategorySelector, ExpirationSelector
-from backend.config.configs import EDIT_TASK_DIALOG_TITLE, TASK_DIALOG_TITLE, TASK_DIALOG_GEOMETRY, CATEGORIES
+from backend.config.configs import (
+    EDIT_TASK_DIALOG_TITLE,
+    TASK_DIALOG_TITLE,
+    TASK_DIALOG_GEOMETRY,
+    CATEGORIES,
+)
+from backend.config.constants import DEFAULT_STATUS
 from backend.database import DatabaseManager
 from backend.task import Task
 
@@ -17,7 +23,7 @@ from backend.task import Task
 class AddTaskDialog(QDialog):
     """Fenêtre pour ajouter une nouvelle tâche."""
 
-    task_added: pyqtSignal = (
+    ok_signal: pyqtSignal = (
         pyqtSignal()
     )  # Envoie un signal, pour éviter d'incorporer logique métier
 
@@ -32,12 +38,13 @@ class AddTaskDialog(QDialog):
     def setup_ui(self):
         """Creation du de la fenetre et du formulaire"""
 
-        self.setWindowTitle(TASK_DIALOG_TITLE if not self.task else EDIT_TASK_DIALOG_TITLE)
+        self.setWindowTitle(
+            TASK_DIALOG_TITLE if not self.task else EDIT_TASK_DIALOG_TITLE
+        )
         self.setGeometry(*TASK_DIALOG_GEOMETRY)
 
         # Layout principal
         main_layout = QVBoxLayout(self)
-        # Layout propre pour aligner les champs
         form_layout = QFormLayout()
 
         # Champs de saisie
@@ -56,23 +63,24 @@ class AddTaskDialog(QDialog):
 
         main_layout.addLayout(form_layout)  # Ajout du formulaire au layout principal
 
-        self.ok_button = QPushButton("➕ Add" if not self.task else "Apply", self)
-        self.ok_button.clicked.connect(self.add_task if not self.task else self.db.update_task(self.task))  
+        self.ok_button = QPushButton("➕ Add" if not self.task else "✔️ Apply", self)
+        self.ok_button.clicked.connect(self.save_task)
         main_layout.addWidget(self.ok_button)
 
         self.setLayout(main_layout)
 
     def populate_fields(self):
         """Pré-rempli les champs si une tâche est passée en paramètre"""
-        
+
         if self.task:
             self.title_input.setText(self.task.title)
             self.category_selector.setCurrentText(self.task.category)
-            self.expiration_dt = QDateTime.fromString(self.task.expiration, "yyyy-MM-dd HH:mm")
-            self.expiration_selector.setDateTime(self.expiration_dt)
+            self.expiration_selector.setDateTime(
+                QDateTime.fromString(self.task.expiration, "yyyy-MM-dd HH:mm")
+            )
             self.notes_input.setPlainText(self.task.notes)
 
-    def add_task(self):
+    def save_task(self):
         """Récupère les données du formulaire et les enregistre dans la base de données"""
 
         title = self.title_input.text().strip()
@@ -85,14 +93,20 @@ class AddTaskDialog(QDialog):
         if not title:  # Vérifie qu'un titre est saisi
             return
 
-        # 🔥 On appelle directement DatabaseManager.add_task() pour ajouter la tâche
-        self.db.add_task(
-            status=False,
-            category=category,
-            expiration=expiration,
-            title=title,
-            notes=notes,
-        )
+        if self.task:
+            self.task.title = title
+            self.task.category = category
+            self.task.expiration = expiration
+            self.task.notes = notes
+            self.db.update_task(self.task)
 
-        self.task_added.emit()  # 🔥 Émet le signal pour prévenir MainWindow
+        else:
+            self.db.add_task(
+                status=DEFAULT_STATUS,
+                category=category,
+                expiration=expiration,
+                title=title,
+                notes=notes,
+            )
+        self.ok_signal.emit()  # 🔥 Émet le signal pour prévenir MainWindow
         self.accept()  # 🔥 Ferme la boîte de dialogue

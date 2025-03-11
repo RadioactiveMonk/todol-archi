@@ -45,17 +45,18 @@ class DatabaseManager:
 
     def update_task(self, task: Task) -> None:
         """Met à jour une tâche existante dans la base de données."""
-        query = self.db._queries["update_task"]
-        params = (
-            task.status,
-            task.category,
-            task.expiration,
-            task.title,
-            task.notes,
-            task.tid,
-        )
 
-        self.db._request(query, params)
+        self.db._request(
+            "update_task",
+            (
+                task.tid,
+                task.status,
+                task.category,
+                task.expiration,
+                task.title,
+                task.notes,
+            ),
+        )
 
     def update_task_status(self, task_id: int, status: bool) -> None:
         """Met à jour le statut d'une tâche dans la DB"""
@@ -65,7 +66,7 @@ class DatabaseManager:
                 task_id,
                 int(status),
             ),
-        )  
+        )
 
     def del_task_db(self, task_id: int) -> None:
         """Supprime une tâche"""

@@ -1,6 +1,8 @@
 from typing import Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
+from PyQt6.QtWidgets import QWidget
 from backend.database import DatabaseManager
+from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.widgets.cell_properties import get_flags
 from backend.config.constants import (
     TASK_TABLE_HEADERS,
@@ -77,9 +79,17 @@ class TaskTableModel(QAbstractTableModel):
     def handle_edit(self, row: int) -> None:
         """Ouvre le formulaire d'édition pour une tâche."""
         task = self.tasks[row]
-        print(
-            f"📌 Édition de la tâche : {task.title}"
-        )  # ✅ Placeholder (connecter l’UI plus tard)
+        dialog = AddTaskDialog(parent=QWidget(), task=task)
+
+        if dialog.exec():
+            task.title = dialog.title_input.text().strip()
+            task.category = dialog.category_selector.currentText()
+            task.expiration = dialog.expiration_selector.dateTime().toString(
+                "yyyy-MM-dd HH:mm"
+            )
+            task.notes = dialog.notes_input.toPlainText().strip()
+            self.db_manager.execute("update_task", task)
+            self.layoutChanged.emit()
 
     def handle_delete(self, row):
         """Supprime visuellement une tâche, supprime dans la DB et rafraîchit le tableau"""
