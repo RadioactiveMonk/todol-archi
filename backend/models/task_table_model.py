@@ -79,7 +79,8 @@ class TaskTableModel(QAbstractTableModel):
     def handle_edit(self, row: int) -> None:
         """Ouvre le formulaire d'édition pour une tâche."""
         task = self.tasks[row]
-        dialog = AddTaskDialog(parent=QWidget(), task=task)
+        parent_widget = self.parent() if isinstance(self.parent(), QWidget) else None
+        dialog = AddTaskDialog(parent=parent_widget, task=task)
 
         if dialog.exec():
             task.title = dialog.title_input.text().strip()

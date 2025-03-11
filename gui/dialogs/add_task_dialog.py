@@ -27,8 +27,8 @@ class AddTaskDialog(QDialog):
         pyqtSignal()
     )  # Envoie un signal, pour éviter d'incorporer logique métier
 
-    def __init__(self, parent: QWidget | None = None, task: Task | None = None) -> None:
-        super().__init__(parent or QWidget())
+    def __init__(self, parent, task: Task | None = None) -> None:
+        super().__init__(parent)
 
         self.db = DatabaseManager()
         self.task = task
