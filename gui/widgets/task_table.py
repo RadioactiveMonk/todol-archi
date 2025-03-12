@@ -14,7 +14,7 @@ class TaskTable(QTableView):
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
         self.setup_ui()
-        self.setup_delegate()
+        self.setup_delegates()
         self.setup_signals()
 
     def setup_ui(self):
@@ -25,7 +25,7 @@ class TaskTable(QTableView):
         for col, width in COLUMN_WIDTHS.items():
             self.setColumnWidth(col, width)
 
-    def setup_delegate(self):
+    def setup_delegates(self):
         """Config de l'affichage des actions dans 'edit'"""
         self.delegate = EditDelegate(self)
         self.setItemDelegateForColumn(EDIT_COLUMN_INDEX, self.delegate)
