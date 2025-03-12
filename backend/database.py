@@ -1,4 +1,3 @@
-import sqlite3
 from typing import List
 from backend.database_controler import DatabaseControler
 from backend.task import Task

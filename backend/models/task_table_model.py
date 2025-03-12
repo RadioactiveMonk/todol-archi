@@ -1,4 +1,3 @@
-from asyncio import Task
 from typing import Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtWidgets import QWidget

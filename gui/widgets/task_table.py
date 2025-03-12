@@ -1,8 +1,4 @@
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QTableView, QWidget
-from backend.database import DatabaseManager
-from backend.database_controler import DatabaseControler
 from backend.models.task_table_model import TaskTableModel
 from backend.config.constants import EDIT_COLUMN_INDEX, COLUMN_WIDTHS
 from gui.widgets.edit_delegate import EditDelegate
