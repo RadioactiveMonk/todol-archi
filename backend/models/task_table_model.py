@@ -31,7 +31,7 @@ class TaskTableModel(QAbstractTableModel):
         """Mise à jour en DB et rafraichit l'affichage"""
         self.db_manager.execute("update_task", task)
         logger.info(
-            f"Task '{task.tid}' updated: '{task.title}', '{task.category}', '{task.expiration}', '{task.status}'"
+            f"UPDATE (Task): ID='{task.tid}', Title='{task.title}', Category='{task.category}', Expiration='{task.expiration}', Status='{task.status}'"
         )
 
         self.layoutChanged.emit()
@@ -82,7 +82,7 @@ class TaskTableModel(QAbstractTableModel):
         task = self.tasks[row]
         task.status = not task.status
 
-        logger.info(f"Task '{task.tid}' status toggled: '{task.status}'")
+        logger.info(f"TOGGLE (Status): ID='{task.tid}', Status='{task.status}'")
 
         self.db_manager.execute("update_task_status", task.status, task.tid)
         self._update_task(task)
@@ -108,7 +108,7 @@ class TaskTableModel(QAbstractTableModel):
 
         if task.tid != NO_ID:  # Vérifie que la tâche est dans la DB
             self.db_manager.execute("delete_task", task.tid)
-            logger.info(f"Task '{task.tid}' deleted: '{task.title}'")
+            logger.info(f"DELETE (Task): ID='{task.tid}', Title='{task.title}'")
 
         del self.tasks[row]  # Supprime du modèle
         self.layoutChanged.emit()

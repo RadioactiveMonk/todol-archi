@@ -1,9 +1,4 @@
-2025-03-11 22:35:23,474 - INFO - Task 18 status changed to False
-2025-03-11 22:35:23,492 - INFO - Mise à jour de la tâche: ID=18, Title='SQL and logs', Status=False
-2025-03-11 22:35:23,492 - INFO - Task 18 updated: SQL and logs, General, 2025-03-12 22:29, False
-2025-03-11 22:35:25,169 - INFO - Task 18 status changed to True
-2025-03-11 22:35:25,198 - INFO - Mise à jour de la tâche: ID=18, Title='SQL and logs', Status=True
-2025-03-11 22:35:25,199 - INFO - Task 18 updated: SQL and logs, General, 2025-03-12 22:29, True
-2025-03-12 08:32:50,341 - INFO - Mise à jour de la tâche: ID=18, Title='SQL and logs', Status=True
-2025-03-12 08:32:50,357 - INFO - Mise à jour de la tâche: ID=18, Title='SQL and logs', Status=True
-2025-03-12 08:32:50,358 - INFO - Task 18 updated: SQL and logs, Personnal, 2025-03-12 22:29, True
+2025-03-12 08:48:28,181 - INFO - TOGGLE (Status): ID='19', Status='True'
+2025-03-12 08:48:28,208 - INFO - UPDATE (Task): ID='19', Title='test', Status='True'
+2025-03-12 08:48:28,208 - INFO - UPDATE (Task): ID='19', Title='test', Category='Pets', Expiration='2025-03-13 08:40', Status='True'
+2025-03-12 08:48:32,405 - INFO - DELETE (Task): ID='19', Title='test'
