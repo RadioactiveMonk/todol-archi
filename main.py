@@ -3,12 +3,14 @@ import sys
 from rich.traceback import install
 from PyQt6.QtWidgets import QApplication
 from gui.main_window import MainWindow
+from gui.style_loader import load_stylesheet
 
 
 def main():
     """Point d'entrée principal de l'application"""
 
     app = QApplication(sys.argv)  # Convention: initialisation de QApplication
+    load_stylesheet(app)
     window = MainWindow()  # Récupération de la fenêtre principale
     window.show()  # A la manière de 'plot', la fenêtre est crée mais doit être affichée
 

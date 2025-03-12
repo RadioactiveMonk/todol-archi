@@ -9,9 +9,10 @@ DEBUG = False
 
 # Fichiers et stockage
 # =====================================
-CFG_PATH = "data/config.json"
-DB_PATH = "data/tasks.db"
-LOG_PATH = "logs"
+CFG_PATH = "backend/config/"
+DB_PATH = "data/"
+LOG_PATH = "logs/"
+STYLESHEET_PATH = "resources/stylesheets/"
 
 # Thèmes
 # =====================================
