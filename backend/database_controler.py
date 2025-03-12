@@ -36,7 +36,7 @@ class DatabaseControler:
         self, query: str, params: tuple = (), return_lastrowid: bool = False
     ) -> Any:
         """Execute une requête SQL avec gestion de la connexion automatique"""
-        logger.debug(f"Exécution SQL: {query} | PARAMS: {params}")
+        logger.debug(f"SQL: '{query}' | PARAMS: '{params}'")
         
         with sqlite3.connect(DB_PATH) as conn:
             cursor = conn.cursor()
