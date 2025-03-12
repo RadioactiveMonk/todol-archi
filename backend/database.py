@@ -19,10 +19,11 @@ class DatabaseManager:
         self.db = DatabaseControler()
 
     def execute(self, action: str, *args, **kwargs):
-        """Exécute une action sur la base de données via dict dispatch."""
-        if action not in self.actions:
-            raise ValueError(f"Action inconnue: {action}")
-        return self.actions[action](*args, **kwargs)
+        """Exécute une action dynamiquement de DatabaseManager"""
+        method = getattr(self, action, None)
+        if method and callable(method):
+            return method(*args, **kwargs)
+        raise ValueError(f"Unknown: {action}")
 
     def add_task(
         self, status: bool, category: str, expiration: str, title: str, notes: str

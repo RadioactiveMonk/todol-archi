@@ -37,14 +37,20 @@ class DatabaseControler:
     ) -> Any:
         """Execute une requête SQL avec gestion de la connexion automatique"""
         logger.debug(f"*SQL*: '{query}' | PARAMS: '{params}'")
-        
-        with sqlite3.connect(DB_PATH) as conn:
-            cursor = conn.cursor()
-            cursor.execute(query, params)
-            conn.commit()
 
-            if return_lastrowid:
-                return cursor.lastrowid
+        with sqlite3.connect(DB_PATH) as conn:
+            try:
+                cursor = conn.cursor()
+                cursor.execute("BEGIN TRANSACTION;")
+                cursor.execute(query, params)
+                conn.commit()
+
+                if return_lastrowid:
+                    return cursor.lastrowid
+            except sqlite3.Error as e:
+                conn.rollback()  # Annulation en cas d'erreur
+                logger.error(f"*SQL*ERROR*: {e}")
+                raise
 
             return (
                 cursor.fetchall()
@@ -54,10 +60,10 @@ class DatabaseControler:
 
     def _request(self, query_key: str, params: tuple = ()):
         """Execute une requête SQL du dict dispatch 'self.queries'"""
-        if query_key not in DatabaseControler._queries:
-            raise ValueError(f"Requête inconnue: {query_key}")
-
-        return self._exec_query(DatabaseControler._queries.get(query_key, ""), params)
+        query = self._queries.get(query_key)
+        if not query:
+            raise ValueError(f"Unknown request: {query_key}")
+        return self._exec_query(query, params)
 
     def _create_table(self) -> None:
         """Crée la table des tâches si elle n'existe pas"""
