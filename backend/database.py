@@ -9,13 +9,6 @@ class DatabaseManager:
     """Gestion de la base de données en utilisant un Singleton"""
 
     def __init__(self) -> None:
-        self.actions = {
-            "add_task": self.add_task,
-            "update_task": self.update_task,
-            "update_task_status": self.update_task_status,
-            "delete_task": self.del_task_db,
-            "get_tasks": self.get_tasks,
-        }
         self.db = DatabaseControler()
 
     def execute(self, action: str, *args, **kwargs):
@@ -69,7 +62,7 @@ class DatabaseManager:
             (int(status), task_id),
         )
 
-    def del_task_db(self, task_id: int) -> None:
+    def delete_task(self, task_id: int) -> None:
         """Supprime une tâche"""
 
         if task_id != NO_ID:
