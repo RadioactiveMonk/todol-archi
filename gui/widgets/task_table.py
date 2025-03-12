@@ -28,7 +28,7 @@ class TaskTable(QTableView):
         header = self.horizontalHeader()
 
         if header:
-            header.setStretchLastSection(True)  # ✅ Étire la dernière colonne (Edit)
+            header.setStretchLastSection(True)
         if vheader:
             vheader.setVisible(False)
 
