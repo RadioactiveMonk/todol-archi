@@ -1,0 +1,120 @@
+/* === GLOBAL STYLES === */
+QWidget {
+    background-color: #f8f9fa;
+    color: #343a40;
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+}
+
+/* === TABLE STYLES === */
+QTableView {
+    background-color: white;
+    alternate-background-color: #e9ecef;
+    selection-background-color: #007bff;
+    selection-color: white;
+    gridline-color: #dee2e6;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/* === HEADERS === */
+QHeaderView::section {
+    background-color: #495057;
+    color: white;
+    padding: 6px;
+    border: 1px solid #6c757d;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* === BUTTON STYLES === */
+QPushButton {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 6px 12px;
+    border: 1px solid #0056b3;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #0056b3;
+    border: 1px solid #004085;
+}
+
+QPushButton:pressed {
+    background-color: #003f7f;
+}
+
+/* === ICON BUTTONS === */
+QToolButton {
+    background-color: transparent;
+    border: none;
+}
+
+QToolButton:hover {
+    background-color: #e9ecef;
+}
+
+/* === TEXT FIELDS === */
+QLineEdit {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #007bff;
+}
+
+/* === TEXT AREAS === */
+QTextEdit {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QTextEdit:focus {
+    border: 1px solid #007bff;
+}
+
+/* === SCROLLBAR STYLING === */
+QScrollBar:vertical {
+    border: 1px solid #dee2e6;
+    background: #f8f9fa;
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #adb5bd;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #868e96;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: none;
+    border: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* === COMBOBOX === */
+QComboBox {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QComboBox:hover {
+    border: 1px solid #007bff;
+}

@@ -23,9 +23,14 @@ class TaskTable(QTableView):
         self.setSortingEnabled(True)
         self.setAlternatingRowColors(True)
         self.setShowGrid(False)
+
+        vheader = self.verticalHeader()
         header = self.horizontalHeader()
+
         if header:
             header.setStretchLastSection(True)  # ✅ Étire la dernière colonne (Edit)
+        if vheader:
+            vheader.setVisible(False)
 
         for col, width in COLUMN_WIDTHS.items():
             self.setColumnWidth(col, width)

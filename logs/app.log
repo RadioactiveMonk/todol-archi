@@ -4,3 +4,25 @@
 2025-03-12 18:49:14,314 - INFO - UPDATE (Task): ID='1', Title='yo', Category='Personnal', Expiration='2025-03-13 18:48', Status='True'
 2025-03-12 18:49:18,930 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
 2025-03-12 18:54:23,999 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-12 18:58:46,264 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-12 18:59:11,761 - INFO - DELETE (Task): ID='1', Title='yo'
+2025-03-12 18:59:41,915 - INFO - TOGGLE (Status): ID='2', Status='True'
+2025-03-12 18:59:41,943 - INFO - UPDATE (Task): ID='2', Title='styles', Status='True'
+2025-03-12 18:59:41,943 - INFO - UPDATE (Task): ID='2', Title='styles', Category='General', Expiration='2025-03-13 18:58', Status='True'
+2025-03-12 19:01:01,365 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-12 19:07:11,617 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-12 19:07:47,926 - INFO - TOGGLE (Status): ID='3', Status='True'
+2025-03-12 19:07:47,943 - INFO - UPDATE (Task): ID='3', Title='test', Status='True'
+2025-03-12 19:07:47,944 - INFO - UPDATE (Task): ID='3', Title='test', Category='General', Expiration='2025-03-13 19:07', Status='True'
+2025-03-12 19:08:22,134 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-12 19:09:00,658 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-12 19:09:15,999 - INFO - UPDATE (Task): ID='3', Title='test 2', Status='True'
+2025-03-12 19:09:16,017 - INFO - UPDATE (Task): ID='3', Title='test 2', Status='True'
+2025-03-12 19:09:16,018 - INFO - UPDATE (Task): ID='3', Title='test 2', Category='General', Expiration='2025-03-13 19:07', Status='True'
+2025-03-12 19:09:19,486 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-12 19:09:54,471 - INFO - TOGGLE (Status): ID='3', Status='False'
+2025-03-12 19:09:54,487 - INFO - UPDATE (Task): ID='3', Title='test 2', Status='False'
+2025-03-12 19:09:54,488 - INFO - UPDATE (Task): ID='3', Title='test 2', Category='General', Expiration='2025-03-13 19:07', Status='False'
+2025-03-12 19:09:54,963 - INFO - TOGGLE (Status): ID='3', Status='True'
+2025-03-12 19:09:54,981 - INFO - UPDATE (Task): ID='3', Title='test 2', Status='True'
+2025-03-12 19:09:54,981 - INFO - UPDATE (Task): ID='3', Title='test 2', Category='General', Expiration='2025-03-13 19:07', Status='True'
