@@ -112,3 +112,53 @@
 2025-03-12 11:48:59,242 - INFO - TOGGLE (Status): ID='24', Status='True'
 2025-03-12 11:48:59,269 - INFO - UPDATE (Task): ID='24', Title='test', Status='True'
 2025-03-12 11:48:59,269 - INFO - UPDATE (Task): ID='24', Title='test', Category='Health', Expiration='2025-03-13 11:48', Status='True'
+2025-03-12 11:54:42,979 - INFO - DELETE (Task): ID='24', Title='test'
+2025-03-12 11:55:41,473 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-12 11:55:41,509 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-12 11:55:49,619 - DEBUG - *SQL*: 'INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)' | PARAMS: '(False, 'General', '2025-03-13 11:55', 'test', 'debug')'
+2025-03-12 11:55:49,635 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-12 11:55:51,768 - INFO - TOGGLE (Status): ID='25', Status='True'
+2025-03-12 11:55:51,768 - DEBUG - *SQL*: 'UPDATE tasks SET status = ? WHERE id = ?' | PARAMS: '(1, 25)'
+2025-03-12 11:55:51,795 - INFO - UPDATE (Task): ID='25', Title='test', Status='True'
+2025-03-12 11:55:51,795 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'General', '2025-03-13 11:55', 'test', 'debug', 25)'
+2025-03-12 11:55:51,796 - INFO - UPDATE (Task): ID='25', Title='test', Category='General', Expiration='2025-03-13 11:55', Status='True'
+2025-03-12 11:57:54,822 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-12 11:57:54,822 - ERROR - *SQL*ERROR*: Test Error
+2025-03-12 11:58:37,329 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-12 11:58:37,360 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-12 11:58:40,171 - DEBUG - *SQL*: 'DELETE FROM tasks WHERE id = ?' | PARAMS: '(25,)'
+2025-03-12 11:58:40,198 - INFO - DELETE (Task): ID='25', Title='test'
+2025-03-12 12:02:23,130 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-12 12:02:23,162 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'

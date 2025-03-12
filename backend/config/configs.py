@@ -5,7 +5,7 @@
 
 # Mode débug
 # =====================================
-DEBUG = False
+DEBUG = True
 
 # Fenêtre principale
 # =====================================
