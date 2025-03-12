@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QTableView, QWidget
 from backend.database import DatabaseManager
 from backend.database_controler import DatabaseControler
 from backend.models.task_table_model import TaskTableModel
-from backend.config.constants import EDIT_COLUMN_INDEX
+from backend.config.constants import EDIT_COLUMN_INDEX, COLUMN_WIDTHS
 from gui.widgets.edit_delegate import EditDelegate
 
 
@@ -14,10 +14,7 @@ class TaskTable(QTableView):
     def __init__(self, parent: QWidget) -> None:
         super().__init__(parent)
 
-        self.db = (
-            DatabaseManager()
-        )  # On amene le gestionnaire partout ou il faut gerer les tâches
-        self.table_model = TaskTableModel(self, self.db)  # Connexion de la logique
+        self.table_model = TaskTableModel(self)  # Connexion de la logique
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
         self.setup_ui()
@@ -26,17 +23,17 @@ class TaskTable(QTableView):
         """Configuration de l'affichage de la table"""
         self.setSortingEnabled(True)
         self.setAlternatingRowColors(True)
-        self.setColumnWidth(0, 50)  # Colonne 'Status'
-        self.setColumnWidth(1, 100)  # Colonne 'Category'
-        self.setColumnWidth(2, 150)  # Colonne 'Expiration'
-        self.setColumnWidth(3, 250)  # Colonne 'Title'
-        self.setColumnWidth(4, 350)  # Colonne 'Notes'
-        self.setColumnWidth(5, 100)  # Colonne 'Edit'
 
-        delegate = EditDelegate(self)
-        self.setItemDelegateForColumn(EDIT_COLUMN_INDEX, delegate)
+        for col, width in COLUMN_WIDTHS.items():
+            self.setColumnWidth(col, width)
 
-        # Connexion des signaux
-        delegate.checkClicked.connect(self.table_model.handle_check)
-        delegate.editClicked.connect(self.table_model.handle_edit)
-        delegate.deleteClicked.connect(self.table_model.handle_delete)
+    def setup_delegate(self):
+        """Config de l'affichage des actions dans 'edit'"""
+        self.delegate = EditDelegate(self)
+        self.setItemDelegateForColumn(EDIT_COLUMN_INDEX, self.delegate)
+
+    def setup_signals(self):
+        """Connexion des icones aux signaux"""
+        self.delegate.checkClicked.connect(self.table_model.handle_check)
+        self.delegate.editClicked.connect(self.table_model.handle_edit)
+        self.delegate.deleteClicked.connect(self.table_model.handle_delete)

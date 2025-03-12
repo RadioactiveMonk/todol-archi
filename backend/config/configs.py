@@ -10,7 +10,7 @@ DEBUG = False
 # Fenêtre principale
 # =====================================
 MAIN_WINDOW_TITLE = "Todol Pro"
-MAIN_WINDOW_GEOMETRY = (100, 100, 1200, 600)
+MAIN_WINDOW_GEOMETRY = (250, 100, 1200, 600)
 
 # Boite d'ajout de tâche
 # =====================================
