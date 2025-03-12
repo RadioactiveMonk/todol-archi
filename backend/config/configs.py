@@ -26,7 +26,7 @@ for path in [os.path.dirname(DB_PATH), LOG_PATH, STYLESHEET_PATH]:
 
 # Thèmes
 # =====================================
-APP_THEMES = ["Default", "Dark"]
+APP_THEMES = ["Default", "Dark", "System"]
 DEFAULT_THEME = APP_THEMES[0]
 
 # Catégories des tâches

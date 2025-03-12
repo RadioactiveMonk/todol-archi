@@ -26,3 +26,9 @@
 2025-03-12 19:09:54,963 - INFO - TOGGLE (Status): ID='3', Status='True'
 2025-03-12 19:09:54,981 - INFO - UPDATE (Task): ID='3', Title='test 2', Status='True'
 2025-03-12 19:09:54,981 - INFO - UPDATE (Task): ID='3', Title='test 2', Category='General', Expiration='2025-03-13 19:07', Status='True'
+2025-03-12 19:14:52,109 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-12 19:17:07,288 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-12 19:17:35,302 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/system.qss
+2025-03-12 19:17:53,196 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-12 19:18:08,966 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/system.qss
+2025-03-12 19:18:23,051 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
