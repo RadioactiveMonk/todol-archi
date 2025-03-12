@@ -36,7 +36,15 @@ DEFAULT_THEME = APP_THEMES[0]
 
 # Catégories des tâches
 # =====================================
-CATEGORIES = ["General", "Home", "Health", "Personnal", "Family", "Pets"]
+CATEGORIES = [
+    "General",
+    "Home",
+    "Health",
+    "Personnal",
+    "Family",
+    "Pets",
+    "Education",
+]
 DEFAULT_CATEGORY = CATEGORIES[0]
 
 # Autres paramètres
