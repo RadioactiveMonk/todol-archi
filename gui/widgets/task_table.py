@@ -18,6 +18,8 @@ class TaskTable(QTableView):
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
         self.setup_ui()
+        self.setup_delegate()
+        self.setup_signals()
 
     def setup_ui(self):
         """Configuration de l'affichage de la table"""
