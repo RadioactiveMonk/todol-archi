@@ -4,9 +4,10 @@ from backend.config.constants import (
     DEFAULT_DATETIME,
     DEFAULT_TITLE,
     DEFAULT_NOTES,
+    DEFAULT_CATEGORY,
     NO_ID,
 )
-from backend.config.configs import DEFAULT_CATEGORY
+
 
 
 @dataclass

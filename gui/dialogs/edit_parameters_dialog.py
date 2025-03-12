@@ -8,11 +8,11 @@ from PyQt6.QtWidgets import (
     QHBoxLayout,
 )
 from gui.selectors import CategorySelector, ThemeSelector
-from backend.config.configs import (
+from backend.config.constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
-    CATEGORIES,
 )
+from backend.config.configs import CATEGORIES
 
 
 class EditParametersDialog(QDialog):

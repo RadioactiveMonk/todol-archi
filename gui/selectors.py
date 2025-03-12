@@ -3,7 +3,8 @@ from PyQt6.QtCore import QDateTime
 from backend.config.constants import (
     DEFAULT_DATETIME,
 )
-from backend.config.configs import DEFAULT_THEME, APP_THEMES, DEFAULT_CATEGORY, CATEGORIES
+from backend.config.configs import DEFAULT_THEME, APP_THEMES, CATEGORIES
+from backend.config.constants import DEFAULT_CATEGORY
 
 
 class ExpirationSelector(QDateTimeEdit):

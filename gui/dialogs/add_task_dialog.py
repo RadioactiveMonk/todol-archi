@@ -9,15 +9,14 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import pyqtSignal, QDateTime
 from gui.selectors import CategorySelector, ExpirationSelector
-from backend.config.configs import (
+from backend.config.constants import (
     EDIT_TASK_DIALOG_TITLE,
     TASK_DIALOG_TITLE,
     TASK_DIALOG_GEOMETRY,
-    CATEGORIES,
 )
 from backend.config.constants import DEFAULT_STATUS
 from backend.database import DatabaseManager
-from backend.task import Task
+from backend.models.task import Task
 
 
 class AddTaskDialog(QDialog):

@@ -14,7 +14,7 @@ from gui.widgets.search_tasks import SearchTasks
 from gui.widgets.task_table import TaskTable
 from gui.widgets.menu_bar import MenuBar
 from backend.database import DatabaseManager
-from backend.config.configs import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
+from backend.config.constants import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
 
 
 class MainWindow(QMainWindow):

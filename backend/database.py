@@ -1,6 +1,6 @@
 from typing import List
 from backend.database_controler import DatabaseControler
-from backend.task import Task
+from backend.models.task import Task
 from backend.logger import logger
 from backend.config.constants import NO_ID
 

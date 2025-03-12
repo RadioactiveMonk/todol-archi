@@ -1,5 +1,4 @@
 # Importing packages and modules
-import atexit
 import sys
 from rich.traceback import install
 from PyQt6.QtWidgets import QApplication
@@ -13,7 +12,6 @@ def main():
     app = QApplication(sys.argv)  # Convention: initialisation de QApplication
     window = MainWindow()  # Récupération de la fenêtre principale
     window.show()  # A la manière de 'plot', la fenêtre est crée mais doit être affichée
-    db = DatabaseManager()
 
     sys.exit(app.exec())  # Convention: boucle principale de l'application
 
@@ -21,5 +19,3 @@ def main():
 if __name__ == "__main__":
     install()  # Active les tracebacks améliorés avec rich
     main()
-
-    
