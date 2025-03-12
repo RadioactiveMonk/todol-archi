@@ -1,4 +1,5 @@
-from PyQt6.QtWidgets import QTableView, QWidget
+from PyQt6.QtWidgets import QTableView, QWidget, QHeaderView
+from PyQt6.QtCore import Qt
 from backend.models.task_table_model import TaskTableModel
 from backend.config.constants import EDIT_COLUMN_INDEX, COLUMN_WIDTHS
 from gui.widgets.edit_delegate import EditDelegate
@@ -21,6 +22,10 @@ class TaskTable(QTableView):
         """Configuration de l'affichage de la table"""
         self.setSortingEnabled(True)
         self.setAlternatingRowColors(True)
+        self.setShowGrid(False)
+        header = self.horizontalHeader()
+        if header:
+            header.setStretchLastSection(True)  # ✅ Étire la dernière colonne (Edit)
 
         for col, width in COLUMN_WIDTHS.items():
             self.setColumnWidth(col, width)

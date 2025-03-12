@@ -5,7 +5,6 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QVBoxLayout,
     QTextEdit,
-    QWidget,
 )
 from PyQt6.QtCore import pyqtSignal, QDateTime
 from gui.selectors import CategorySelector, ExpirationSelector

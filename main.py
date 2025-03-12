@@ -2,7 +2,6 @@
 import sys
 from rich.traceback import install
 from PyQt6.QtWidgets import QApplication
-from backend.database import DatabaseManager
 from gui.main_window import MainWindow
 
 

@@ -5,7 +5,7 @@
 
 # Mode débug
 # =====================================
-DEBUG = True
+DEBUG = False
 
 # Fichiers et stockage
 # =====================================

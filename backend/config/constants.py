@@ -4,7 +4,7 @@ from backend.config.configs import CATEGORIES
 # Fenêtre principale
 # =====================================
 MAIN_WINDOW_TITLE = "Todol Pro"
-MAIN_WINDOW_GEOMETRY = (250, 100, 1200, 600)
+MAIN_WINDOW_GEOMETRY = (250, 100, 1080, 600)
 
 # Boite d'ajout de tâche
 # =====================================
@@ -33,7 +33,7 @@ COLUMN_WIDTHS = {
     1: 100,  # Category
     2: 150,  # Expiration
     3: 250,  # Title
-    4: 350,  # Notes
+    4: 380,  # Notes
     5: 100,  # Edit
 }
 # TASKS_ROWS = ??
