@@ -1,3 +1,5 @@
+import os
+
 # =====================================
 # CONFIGURATION DE L'APPLICATION
 # =====================================
@@ -9,14 +11,22 @@ DEBUG = False
 
 # Fichiers et stockage
 # =====================================
-CFG_PATH = "backend/config/"
-DB_PATH = "data/"
-LOG_PATH = "logs/"
-STYLESHEET_PATH = "resources/stylesheets/"
+BASE_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "../../")
+)  # Dossier Todol-pro
+CONFIG_DIR = os.path.join(BASE_DIR, "backend", "config")
+SETTINGS_PATH = os.path.join(CONFIG_DIR, "settings.json")  # ✅ Fichier complet
+DB_PATH = os.path.join(BASE_DIR, "data", "tasks.db")
+LOG_PATH = os.path.join(BASE_DIR, "logs")
+STYLESHEET_PATH = os.path.join(BASE_DIR, "resources", "stylesheets")
+
+for path in [os.path.dirname(DB_PATH), LOG_PATH, STYLESHEET_PATH]:
+    os.makedirs(path, exist_ok=True)
+
 
 # Thèmes
 # =====================================
-APP_THEMES = ["Default", "Dark", "Night blue"]
+APP_THEMES = ["Default", "Dark"]
 DEFAULT_THEME = APP_THEMES[0]
 
 # Catégories des tâches
