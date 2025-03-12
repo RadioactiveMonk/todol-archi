@@ -1,26 +1,33 @@
 import logging
 import os
-from backend.config.configs import LOG_PATH
-from backend.config.configs import DEBUG
+from backend.config.configs import LOG_PATH, DEBUG
 
-
-# Création du dossier si inexistant
+# 🔥 Création du dossier logs/ s'il n'existe pas
 if not os.path.exists(LOG_PATH):
     os.makedirs(LOG_PATH)
 
-# Gestion du logger pour le DEBUG si DEBUG = TRUE (désactivé en production)
+# 🔥 Niveau du logger en fonction de DEBUG (True = DEBUG, False = INFO)
 top_level = logging.DEBUG if DEBUG else logging.INFO
 
-# Logger pour les erreurs
+# 🔥 Création de l'instance du logger
+logger = logging.getLogger("ToDoLogger")
+logger.setLevel(top_level)
+
+# 🔥 Handler pour le fichier général (app.log)
+file_handler = logging.FileHandler(os.path.join(LOG_PATH, "app.log"))
+file_handler.setLevel(top_level)
+
+# 🔥 Handler pour les erreurs (errors.log) - Ne capture que les erreurs
 error_handler = logging.FileHandler(os.path.join(LOG_PATH, "errors.log"))
 error_handler.setLevel(logging.ERROR)
 
-# Config du logger
-logging.basicConfig(
-    filename=os.path.join(LOG_PATH, "app.log"),
-    level=top_level,  # Log en fonction du mode DEBUG (true or false)
-    format="%(asctime)s - %(levelname)s - %(message)s",  # format des logs
-)
+# 🔥 Format des logs
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 
-logger = logging.getLogger("ToDoLogger")  # Instance
+# 🔥 Appliquer le format aux handlers
+file_handler.setFormatter(formatter)
+error_handler.setFormatter(formatter)
+
+# 🔥 Ajouter les handlers au logger
+logger.addHandler(file_handler)
 logger.addHandler(error_handler)
