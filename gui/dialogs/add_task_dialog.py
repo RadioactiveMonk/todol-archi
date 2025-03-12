@@ -50,6 +50,7 @@ class AddTaskDialog(QDialog):
         # Champs de saisie
         self.title_input = QLineEdit(self)
         self.title_input.setPlaceholderText("Enter task title ...")
+        self.title_input.setFocus()  # Focus sur le titre
         self.category_selector = CategorySelector()
         self.expiration_selector = ExpirationSelector()
         self.notes_input = QTextEdit(self)
@@ -64,6 +65,12 @@ class AddTaskDialog(QDialog):
         main_layout.addLayout(form_layout)  # Ajout du formulaire au layout principal
 
         self.ok_button = QPushButton("➕ Add" if not self.task else "✔️ Apply", self)
+        self.ok_button.setEnabled(
+            False
+        )  # Gestion du boutton ok en fonction du titre (vide=False, entrée=True)
+        self.title_input.textChanged.connect(
+            lambda: self.ok_button.setEnabled(bool(self.title_input.text().strip()))
+        )
         self.ok_button.clicked.connect(self.save_task)
         main_layout.addWidget(self.ok_button)
 
@@ -81,32 +88,26 @@ class AddTaskDialog(QDialog):
             self.notes_input.setPlainText(self.task.notes)
 
     def save_task(self):
-        """Récupère les données du formulaire et les enregistre dans la base de données"""
+        """Enregistre la tâche en BDD (ajout et maj)"""
 
-        title = self.title_input.text().strip()
-        category = self.category_selector.currentText()
-        expiration = self.expiration_selector.dateTime().toString(
-            "yyyy-MM-dd HH:mm"
-        )  # Convertit en str la date séléctionnée
-        notes = self.notes_input.toPlainText().strip()
+        task_data = {
+            "title": self.title_input.text().strip(),
+            "category": self.category_selector.currentText(),
+            "expiration": self.expiration_selector.dateTime().toString(
+                "yyyy-MM-dd HH:mm"
+            ),
+            "notes": self.notes_input.toPlainText().strip(),
+        }
 
-        if not title:  # Vérifie qu'un titre est saisi
+        if not task_data["title"]:
             return
 
         if self.task:
-            self.task.title = title
-            self.task.category = category
-            self.task.expiration = expiration
-            self.task.notes = notes
+            for key, value in task_data.items():
+                setattr(self.task, key, value)
             self.db.update_task(self.task)
-
         else:
-            self.db.add_task(
-                status=DEFAULT_STATUS,
-                category=category,
-                expiration=expiration,
-                title=title,
-                notes=notes,
-            )
-        self.ok_signal.emit()  # 🔥 Émet le signal pour prévenir MainWindow
-        self.accept()  # 🔥 Ferme la boîte de dialogue
+            self.db.add_task(status=DEFAULT_STATUS, **task_data)
+
+        self.ok_signal.emit()
+        self.accept()
