@@ -7,7 +7,8 @@ from PyQt6.QtWidgets import (
     QTextEdit,
 )
 from PyQt6.QtCore import pyqtSignal, QDateTime
-from gui.selectors import CategorySelector, ExpirationSelector
+from gui.selectors.category_selector import CategorySelector
+from gui.selectors.expiration_selector import ExpirationSelector
 from backend.config.constants import (
     EDIT_TASK_DIALOG_TITLE,
     TASK_DIALOG_TITLE,

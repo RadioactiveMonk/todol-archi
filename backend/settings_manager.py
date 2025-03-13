@@ -1,7 +1,8 @@
 import json
 from pathlib import Path
 from typing import Dict, List, Any
-from backend.config.configs import SETTINGS_FILE, DEFAULT_THEME
+from backend.config.configs import SETTINGS_FILE
+from backend.config.constants import DEFAULT_THEME
 from backend.logger import logger
 
 
