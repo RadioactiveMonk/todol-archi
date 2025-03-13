@@ -21,15 +21,6 @@ for p in [DB_PATH.parent, LOG_PATH, STYLESHEET_PATH]:
     p.mkdir(parents=True, exist_ok=True)
 
 
-# Thèmes
-# =====================================
-APP_THEMES = ["default", "dark", "system"]
-DEFAULT_THEME = APP_THEMES[0]
-
-# Catégories des tâches
-# =====================================
-CATEGORIES = ["General", "Work", "Hobbies"]
-
 # Autres paramètres
 # =====================================
 AUTO_SAVE_INTERVAL = 5

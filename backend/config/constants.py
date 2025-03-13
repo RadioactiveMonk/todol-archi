@@ -1,5 +1,4 @@
 from PyQt6.QtCore import QDateTime
-from backend.config.configs import CATEGORIES
 
 # Fenêtre principale
 # =====================================
@@ -36,7 +35,6 @@ COLUMN_WIDTHS = {
     4: 370,  # Notes
     5: 100,  # Edit
 }
-# TASKS_ROWS = ??
 
 
 # Status des tâches
@@ -60,5 +58,12 @@ DEFAULT_DATETIME = QDateTime.currentDateTime().addDays(1)
 DEFAULT_TITLE = "TASK"
 DEFAULT_NOTES = ""
 DEFAULT_STATUS = STATUS_PENDING
+CATEGORIES = ["General", "Work", "Hobbies"]  # default
 DEFAULT_CATEGORY = CATEGORIES[0]  # 'Général'
 NO_ID = -1
+
+# Thèmes
+# =====================================
+APP_THEMES = ["default", "dark", "system"]
+DEFAULT_THEME = APP_THEMES[0]
+
