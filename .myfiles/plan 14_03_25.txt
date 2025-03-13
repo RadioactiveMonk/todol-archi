@@ -1,0 +1,54 @@
+
+🎯🎯🎯 Todol fonctionnel au 14/03/25: objectif pousser la qualité avant la quantité >>>
+
+
+🚀 Plan de Refactoring & Optimisation
+
+🎯 Objectif : Rendre le code plus propre, plus robuste et plus maintenable.
+📌 1️⃣ Refactorisation & Optimisation de SettingsManager
+
+➡ Problèmes actuels :
+
+    Code correct, mais pas totalement DRY (certains morceaux peuvent être factorisés).
+    Gestion des erreurs à améliorer.
+    Approche plus élégante avec un Settings dataclass ?
+
+🔹 Amélioration proposée :
+✅ Encapsulation propre avec une classe Settings qui gère le cache en mémoire.
+✅ Utilisation d’un singleton pour éviter de recharger settings.json à chaque appel.
+✅ Refactoring pour éviter la répétition des appels JSON.
+📌 2️⃣ Sécurisation & Gestion des erreurs
+
+➡ Problèmes actuels :
+
+    La gestion des erreurs (try except) peut être améliorée & centralisée.
+    On peut anticiper plus proprement les erreurs courantes (corruption JSON, accès concurrentiel, etc.).
+    Logging plus précis et utile.
+
+🔹 Amélioration proposée :
+✅ Centralisation des try except → Une seule méthode load() qui sécurise toutes les opérations.
+✅ Gestion propre des erreurs JSON → Auto-récupération en cas de fichier corrompu.
+✅ Utilisation d’un fallback intelligent (par exemple : réinitialisation automatique si le JSON est illisible).
+📌 3️⃣ Optimisation de EditParametersDialog et des Sélecteurs
+
+➡ Problèmes actuels :
+
+    Optimisation possible sur les appels à SettingsManager (trop fréquents).
+    Meilleure communication via signals pour éviter des mises à jour inutiles.
+    Réduction des interactions inutiles avec settings.json (par ex. éviter de l’écrire après chaque modification individuelle).
+
+🔹 Amélioration proposée :
+✅ Bufferisation des mises à jour → Éviter les écritures successives dans settings.json.
+✅ Éviter les rechargements inutiles de la configuration en mémoire.
+✅ Meilleur découplage entre UI et logique métier.
+📌 4️⃣ Ajout de Tests Unitaires & Vérifications
+
+➡ Problèmes actuels :
+
+    Pas de tests automatisés sur SettingsManager et les Sélecteurs.
+    Pas de vérification de l’intégrité du settings.json.
+
+🔹 Amélioration proposée :
+✅ Ajouter des tests unitaires pour SettingsManager.
+✅ Créer un test pour vérifier l’intégrité du JSON à l’ouverture.
+✅ Utiliser pytest avec des mocks pour simuler des erreurs (fichiers corrompus, accès concurrentiel, etc.).
