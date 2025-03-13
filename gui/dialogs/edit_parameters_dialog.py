@@ -14,7 +14,6 @@ from backend.config.constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
 )
-from backend.config.configs import CATEGORIES
 from backend.settings_manager import SettingsManager
 from backend.style_loader import load_stylesheet
 
@@ -25,18 +24,11 @@ class EditParametersDialog(QDialog):
     SETTINGS_UPDATED: pyqtSignal = pyqtSignal(dict)
 
     def __init__(self, parent: QWidget | None = None) -> None:
-        """
-        Layouts de la fenêtre de paramètres
-
-         Parameters
-         ----------
-         parent : QWidget
-             De quelle fenêtre dépend la boite de dialogue
-
-        """
-
         super().__init__(parent or QWidget())
         self.settings = SettingsManager()
+        self.current_settings = self.settings.load_settings()
+        self.current_theme = self.current_settings.get("theme", "default")
+
         self.setup_ui()
 
     def setup_ui(self):
@@ -44,45 +36,38 @@ class EditParametersDialog(QDialog):
         self.setWindowTitle(EDIT_PARAMETERS_DIALOG_TITLE)
         self.setGeometry(*EDIT_PARAMETERS_DIALOG_GEOMETRY)
 
-        current_settings = self.settings.load_settings()
-        current_theme = current_settings.get("theme", "default")
-
-        # Layout principal vertical
         main_layout = QVBoxLayout(self)
         form_layout = QFormLayout()
 
-        # Instanciation des sélécteurs
-
+        # 🔥 CategorySelector gère les catégories directement
         self.category_selector = CategorySelector()
         self.theme_selector = ThemeSelector()
-        self.theme_selector.setCurrentText(current_theme)
+        self.theme_selector.setCurrentText(self.current_theme)
 
-        add_category_layout = QHBoxLayout()  # Layout pour add_category()
+        # Ajout des catégories
+        add_category_layout = QHBoxLayout()
         self.add_category_input = QLineEdit(self)
         self.add_category_input.setPlaceholderText("Category name ...")
 
         self.add_category_button = QPushButton("➕", self)
         self.add_category_button.setMaximumWidth(40)
-        self.add_category_button.clicked.connect(self.add_category)
+        self.add_category_button.clicked.connect(self.category_selector.add_category)
 
         add_category_layout.addWidget(self.add_category_input)
         add_category_layout.addWidget(self.add_category_button)
 
-        remove_category_layout = QHBoxLayout()  # Layout pour remove_category()
+        # Suppression des catégories
+        remove_category_layout = QHBoxLayout()
         self.remove_category_button = QPushButton("➖", self)
         self.remove_category_button.setMaximumWidth(40)
-        self.remove_category_button.clicked.connect(self.remove_category)
+        self.remove_category_button.clicked.connect(self.category_selector.remove_category)
 
         remove_category_layout.addWidget(self.category_selector)
         remove_category_layout.addWidget(self.remove_category_button)
 
-        # Affichage par ligne
-
         form_layout.addRow("New category: ", add_category_layout)
         form_layout.addRow("Categories: ", remove_category_layout)
         form_layout.addRow("Theme: ", self.theme_selector)
-
-        # Ajout des lignes au layout principal
 
         main_layout.addLayout(form_layout)
 
@@ -93,35 +78,25 @@ class EditParametersDialog(QDialog):
         self.setLayout(main_layout)
 
     def add_category(self) -> None:
-        """Ajoute une catégorie et met à jour le sélecteur."""
-
+        """Ajoute une catégorie via CategorySelector"""
         category_name = self.add_category_input.text().strip()
-
-        if category_name and category_name not in CATEGORIES:
-            CATEGORIES.append(category_name)  # Ajout dans les constantes
-            self.category_selector.addItem(category_name)  # Mise à jour UI
-            self.add_category_input.clear()  # Réinitialise le champ après ajout
-
-            self.settings.update_settings("categories", CATEGORIES)
-            self.SETTINGS_UPDATED.emit(self.settings.load_settings())
+        if category_name:
+            self.category_selector.add_category(category_name)
+            self.add_category_input.clear()
+            self.SETTINGS_UPDATED.emit(
+                self.settings.load_settings()
+            )  # 🔥 Signal de mise à jour
 
     def remove_category(self) -> None:
-        """Supprime une catégorie."""
-
+        """Supprime une catégorie via CategorySelector"""
         category_name = self.category_selector.currentText()
-
-        if category_name in CATEGORIES:
-            CATEGORIES.remove(category_name)
-
-            selector_category = self.category_selector.findText(category_name)
-            self.category_selector.removeItem(selector_category)
-
-            self.settings.update_settings("categories", CATEGORIES)
-            self.SETTINGS_UPDATED.emit(self.settings.load_settings())
+        self.category_selector.remove_category(category_name)
+        self.SETTINGS_UPDATED.emit(
+            self.settings.load_settings()
+        )  # 🔥 Signal de mise à jour
 
     def accept(self) -> None:
-        """Applique tout de suite les paramètres et ferme la boîte de dialogue"""
-
+        """Applique immédiatement le thème et ferme la boîte de dialogue"""
         new_theme = self.theme_selector.currentText()
         self.settings.update_settings("theme", new_theme)
 
@@ -130,5 +105,4 @@ class EditParametersDialog(QDialog):
             load_stylesheet(app)
 
         self.SETTINGS_UPDATED.emit(self.settings.load_settings())
-
         self.close()

@@ -4,7 +4,7 @@ from backend.config.constants import (
     DEFAULT_DATETIME,
 )
 from backend.config.configs import DEFAULT_THEME, APP_THEMES, CATEGORIES
-from backend.config.constants import DEFAULT_CATEGORY
+from backend.settings_manager import SettingsManager
 
 
 class ExpirationSelector(QDateTimeEdit):
@@ -24,11 +24,30 @@ class CategorySelector(QComboBox):
     """Menu déroulant pour la sélection de catégorie."""
 
     def __init__(
-        self, default: str = DEFAULT_CATEGORY, parent: QWidget | None = None
+        self, parent: QWidget | None = None
     ) -> None:
         super().__init__(parent)
-        self.addItems(CATEGORIES)
-        self.setCurrentText(default)
+        self.settings = SettingsManager()
+        self.categories = self.settings.load_settings().get("categories", CATEGORIES)
+        self.refresh_categories()
+
+    def refresh_categories(self):
+        """Recharge les catégories depuis settings.json"""
+        self.clear()
+        self.addItems(self.categories)
+
+    def add_category(self, category_name: str):
+        """Ajoute une catégorie"""
+        if category_name not in self.categories:
+            self.categories.append(category_name)
+            self.settings.update_settings("categories", self.categories)
+            self.refresh_categories()
+
+    def remove_category(self, category_name: str):
+        """Supprime une catégorie"""
+        if category_name in self.categories:
+            self.categories.remove(category_name)
+            self.settings.update_settings("categories", self.categories)
 
 
 class ThemeSelector(QComboBox):

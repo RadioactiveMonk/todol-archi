@@ -1,15 +1,35 @@
-from backend.style_loader import load_stylesheet
+from PyQt6.QtWidgets import QComboBox
+from backend.settings_manager import SettingsManager
 
 
-def accept(self) -> None:
-    """Applique immédiatement les paramètres et ferme la boîte de dialogue."""
-    new_theme = self.theme_selector.currentText()  # 🔥 Récupère le thème sélectionné
-    SettingsManager.update_settings("theme", new_theme)  # 🔥 Sauvegarde
+class CategorySelector(QComboBox):
+    """Sélecteur de catégories avec chargement dynamique"""
 
-    # 🔥 Applique immédiatement le thème
-    load_stylesheet(self.parent())
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.settings = SettingsManager()
+        self.refresh_categories()
 
-    # 🔥 Notifie que les settings ont changé
-    self.settings_updated.emit(SettingsManager.load_settings())
+    def refresh_categories(self):
+        """Recharge les catégories depuis settings.json"""
+        self.clear()
+        categories = self.settings.load_settings().get(
+            "categories", ["General", "Work", "Hobbies"]
+        )
+        self.addItems(categories)
 
-    self.close()
+    def add_category(self, category_name: str):
+        """Ajoute une catégorie"""
+        categories = self.settings.load_settings().get("categories", [])
+        if category_name and category_name not in categories:
+            categories.append(category_name)
+            self.settings.update_settings("categories", categories)
+            self.refresh_categories()  # 🔥 Rafraîchit la liste
+
+    def remove_category(self, category_name: str):
+        """Supprime une catégorie"""
+        categories = self.settings.load_settings().get("categories", [])
+        if category_name in categories:
+            categories.remove(category_name)
+            self.settings.update_settings("categories", categories)
+            self.refresh_categories()  # 🔥 Rafraîchit la liste

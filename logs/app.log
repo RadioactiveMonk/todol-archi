@@ -45,3 +45,86 @@
                 ' | PARAMS: '()'
 2025-03-13 15:50:55,508 - INFO - Theme dark appliqué avec succès !
 2025-03-13 15:50:55,532 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 23:26:04,637 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 23:26:04,690 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:26:04,772 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 23:26:08,484 - INFO - TOGGLE (Status): ID='8', Status='False'
+2025-03-13 23:26:08,484 - DEBUG - *SQL*: 'UPDATE tasks SET status = ? WHERE id = ?' | PARAMS: '(0, 8)'
+2025-03-13 23:26:08,497 - INFO - UPDATE (Task): ID='8', Title='pause', Status='False'
+2025-03-13 23:26:08,497 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(0, 'Work', '2025-03-14 13:09', 'pause', '', 8)'
+2025-03-13 23:26:08,498 - INFO - UPDATE (Task): ID='8', Title='pause', Category='Work', Expiration='2025-03-14 13:09', Status='False'
+2025-03-13 23:26:09,096 - INFO - TOGGLE (Status): ID='8', Status='True'
+2025-03-13 23:26:09,097 - DEBUG - *SQL*: 'UPDATE tasks SET status = ? WHERE id = ?' | PARAMS: '(1, 8)'
+2025-03-13 23:26:09,115 - INFO - UPDATE (Task): ID='8', Title='pause', Status='True'
+2025-03-13 23:26:09,115 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'Work', '2025-03-14 13:09', 'pause', '', 8)'
+2025-03-13 23:26:09,116 - INFO - UPDATE (Task): ID='8', Title='pause', Category='Work', Expiration='2025-03-14 13:09', Status='True'
+2025-03-13 23:26:33,854 - INFO - Theme default appliqué avec succès !
+2025-03-13 23:26:46,833 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:27:23,800 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:28:10,756 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 23:28:10,763 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:28:10,790 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 23:54:27,434 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 23:54:27,441 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:54:27,465 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 23:54:42,974 - DEBUG - *SQL*: 'INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)' | PARAMS: '(False, 'Hobbies', '2025-03-14 23:54', 'test', 'yo')'
+2025-03-13 23:54:42,990 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 23:54:52,882 - INFO - UPDATE (Task): ID='9', Title='test', Status='False'
+2025-03-13 23:54:52,883 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(0, 'General', '2025-03-14 23:54', 'test', 'yo', 9)'
+2025-03-13 23:54:52,901 - INFO - UPDATE (Task): ID='9', Title='test', Status='False'
+2025-03-13 23:54:52,901 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(0, 'General', '2025-03-14 23:54', 'test', 'yo', 9)'
+2025-03-13 23:54:52,901 - INFO - UPDATE (Task): ID='9', Title='test', Category='General', Expiration='2025-03-14 23:54', Status='False'
+2025-03-13 23:55:17,981 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:55:30,160 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:56:00,197 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 23:56:00,206 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:56:00,239 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 23:56:20,188 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:56:27,222 - INFO - UPDATE (Task): ID='9', Title='test', Status='False'
+2025-03-13 23:56:27,223 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(0, 'yo', '2025-03-14 23:54', 'test', 'yo', 9)'
+2025-03-13 23:56:27,239 - INFO - UPDATE (Task): ID='9', Title='test', Status='False'
+2025-03-13 23:56:27,239 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(0, 'yo', '2025-03-14 23:54', 'test', 'yo', 9)'
+2025-03-13 23:56:27,240 - INFO - UPDATE (Task): ID='9', Title='test', Category='yo', Expiration='2025-03-14 23:54', Status='False'
+2025-03-13 23:59:22,521 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 23:59:22,529 - INFO - Theme dark appliqué avec succès !
+2025-03-13 23:59:22,555 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
