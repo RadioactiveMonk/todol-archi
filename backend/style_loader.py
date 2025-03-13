@@ -16,8 +16,6 @@ def load_stylesheet(app: QApplication):
         theme = "default"
 
     stylesheet_file = Path(STYLESHEET_PATH) / f"{theme}.qss"
-    logger.info(f"Chemin testé pour le stylesheet: {stylesheet_file}")
-
     if not stylesheet_file.exists():
         logger.warning(f"{theme}.qss introuvable. Fallback sur default.qss")
         stylesheet_file = Path(STYLESHEET_PATH) / "default.qss"
