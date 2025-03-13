@@ -23,7 +23,7 @@ def load_stylesheet(app: QApplication):
     try:
         with stylesheet_file.open("r", encoding="utf-8") as f:
             stylesheet = f.read()
-            app.setStyleSheet(stylesheet)  # ✅ Applique le style
+            app.setStyleSheet(stylesheet)  # Applique le style
             logger.info(f"Theme {theme} appliqué avec succès !")
     except Exception as e:
         logger.error(f"Erreur lors de l'application du thème {theme}: {e}")

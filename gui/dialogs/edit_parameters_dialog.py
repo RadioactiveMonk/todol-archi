@@ -6,17 +6,23 @@ from PyQt6.QtWidgets import (
     QFormLayout,
     QLineEdit,
     QHBoxLayout,
+    QApplication
 )
+from PyQt6.QtCore import pyqtSignal
 from gui.selectors import CategorySelector, ThemeSelector
 from backend.config.constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
 )
 from backend.config.configs import CATEGORIES
+from backend.settings_manager import SettingsManager
+from backend.style_loader import load_stylesheet
 
 
 class EditParametersDialog(QDialog):
     """Fenêtre d'édition des paramètres"""
+
+    SETTINGS_UPDATED: pyqtSignal = pyqtSignal(dict)
 
     def __init__(self, parent: QWidget | None = None) -> None:
         """
@@ -30,13 +36,16 @@ class EditParametersDialog(QDialog):
         """
 
         super().__init__(parent or QWidget())
+        self.settings = SettingsManager()
+        self.setup_ui()
+
+    def setup_ui(self):
+        """Création de l'UI"""
         self.setWindowTitle(EDIT_PARAMETERS_DIALOG_TITLE)
         self.setGeometry(*EDIT_PARAMETERS_DIALOG_GEOMETRY)
 
         # Layout principal vertical
         main_layout = QVBoxLayout(self)
-
-        # Layout pour aligner les éléments
         form_layout = QFormLayout()
 
         # Instanciation des sélécteurs
@@ -89,6 +98,9 @@ class EditParametersDialog(QDialog):
             self.category_selector.addItem(category_name)  # Mise à jour UI
             self.add_category_input.clear()  # Réinitialise le champ après ajout
 
+            self.settings.update_settings("categories", CATEGORIES)
+            self.SETTINGS_UPDATED.emit(self.settings.load_settings())
+
     def remove_category(self) -> None:
         """Supprime une catégorie."""
 
@@ -99,3 +111,20 @@ class EditParametersDialog(QDialog):
 
             selector_category = self.category_selector.findText(category_name)
             self.category_selector.removeItem(selector_category)
+
+            self.settings.update_settings("categories", CATEGORIES)
+            self.SETTINGS_UPDATED.emit(self.settings.load_settings())
+
+    def accept(self) -> None:
+        """Applique tout de suite les paramètres et ferme la boîte de dialogue"""
+
+        new_theme = self.theme_selector.currentText()
+        self.settings.update_settings("theme", new_theme)
+
+        app = QApplication.instance()
+        if isinstance(app, QApplication):
+            load_stylesheet(app) 
+
+        self.SETTINGS_UPDATED.emit(self.settings.load_settings())
+
+        self.close()
