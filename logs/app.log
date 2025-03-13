@@ -32,3 +32,27 @@
 2025-03-12 19:17:53,196 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
 2025-03-12 19:18:08,966 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/system.qss
 2025-03-12 19:18:23,051 - INFO - THEME UPDATE: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 12:11:57,244 - WARNING - dark.qss introuvable. Fallback sur default.qss
+2025-03-13 12:12:02,396 - INFO - DELETE (Task): ID='3', Title='test 2'
+2025-03-13 12:12:03,353 - INFO - DELETE (Task): ID='2', Title='styles'
+2025-03-13 12:12:20,261 - INFO - TOGGLE (Status): ID='4', Status='True'
+2025-03-13 12:12:20,290 - INFO - UPDATE (Task): ID='4', Title='themes', Status='True'
+2025-03-13 12:12:20,291 - INFO - UPDATE (Task): ID='4', Title='themes', Category='General', Expiration='2025-03-14 12:11', Status='True'
+2025-03-13 12:12:33,673 - WARNING - dark.qss introuvable. Fallback sur default.qss
+2025-03-13 12:12:39,769 - INFO - UPDATE (Task): ID='4', Title='themes', Status='True'
+2025-03-13 12:12:39,785 - INFO - UPDATE (Task): ID='4', Title='themes', Status='True'
+2025-03-13 12:12:39,785 - INFO - UPDATE (Task): ID='4', Title='themes', Category='General', Expiration='2025-03-14 12:11', Status='True'
+2025-03-13 12:12:53,841 - WARNING - default.qss introuvable. Fallback sur default.qss
+2025-03-13 12:16:48,147 - WARNING - default.qss introuvable. Fallback sur default.qss
+2025-03-13 12:27:15,001 - INFO - UPDATE (Task): ID='4', Title='themes', Status='True'
+2025-03-13 12:27:15,005 - INFO - UPDATE (Task): ID='4', Title='themes', Status='True'
+2025-03-13 12:27:15,007 - INFO - UPDATE (Task): ID='4', Title='themes', Category='General', Expiration='2025-03-14 12:11', Status='True'
+2025-03-13 12:27:35,364 - INFO - TOGGLE (Status): ID='5', Status='True'
+2025-03-13 12:27:35,393 - INFO - UPDATE (Task): ID='5', Title='test', Status='True'
+2025-03-13 12:27:35,393 - INFO - UPDATE (Task): ID='5', Title='test', Category='General', Expiration='2025-03-14 12:27', Status='True'
+2025-03-13 12:32:07,230 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 12:33:16,127 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-13 12:41:11,194 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/default.qss
+2025-03-13 12:41:11,195 - INFO - Theme default appliqué avec succès !
+2025-03-13 12:41:24,522 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 12:41:24,522 - INFO - Theme dark appliqué avec succès !
