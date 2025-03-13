@@ -7,7 +7,7 @@ from pathlib import Path
 
 # Mode débug
 # =====================================
-DEBUG = False
+DEBUG = True
 
 # Fichiers et stockage
 # =====================================

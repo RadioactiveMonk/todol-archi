@@ -73,7 +73,7 @@ class EditParametersDialog(QDialog):
 
         main_layout.addLayout(form_layout)
 
-        self.ok_button = QPushButton("Apply", self)
+        self.ok_button = QPushButton("✔️Apply", self)
         self.ok_button.clicked.connect(self.accept)
         main_layout.addWidget(self.ok_button)
 

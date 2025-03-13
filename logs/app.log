@@ -56,3 +56,174 @@
 2025-03-13 12:41:11,195 - INFO - Theme default appliqué avec succès !
 2025-03-13 12:41:24,522 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
 2025-03-13 12:41:24,522 - INFO - Theme dark appliqué avec succès !
+2025-03-13 12:56:55,110 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 12:56:55,119 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 12:56:55,119 - INFO - Theme dark appliqué avec succès !
+2025-03-13 12:56:55,143 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 12:57:18,557 - DEBUG - *SQL*: 'DELETE FROM tasks WHERE id = ?' | PARAMS: '(5,)'
+2025-03-13 12:57:18,575 - INFO - DELETE (Task): ID='5', Title='test'
+2025-03-13 12:57:19,059 - DEBUG - *SQL*: 'DELETE FROM tasks WHERE id = ?' | PARAMS: '(4,)'
+2025-03-13 12:57:19,077 - INFO - DELETE (Task): ID='4', Title='themes'
+2025-03-13 12:59:21,757 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 12:59:21,765 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 12:59:21,766 - INFO - Theme dark appliqué avec succès !
+2025-03-13 12:59:21,789 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 12:59:45,201 - DEBUG - *SQL*: 'INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)' | PARAMS: '(False, 'General', '2025-03-14 12:59', 'task', '')'
+2025-03-13 12:59:45,218 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:00:16,174 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:00:16,183 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:00:16,183 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:00:16,211 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:00:35,336 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:00:35,345 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:00:35,345 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:00:35,370 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:00:49,984 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:00:49,993 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:00:49,993 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:00:50,017 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:01:04,232 - INFO - TOGGLE (Status): ID='6', Status='True'
+2025-03-13 13:01:04,232 - DEBUG - *SQL*: 'UPDATE tasks SET status = ? WHERE id = ?' | PARAMS: '(1, 6)'
+2025-03-13 13:01:04,251 - INFO - UPDATE (Task): ID='6', Title='task', Status='True'
+2025-03-13 13:01:04,251 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'General', '2025-03-14 12:59', 'task', '', 6)'
+2025-03-13 13:01:04,252 - INFO - UPDATE (Task): ID='6', Title='task', Category='General', Expiration='2025-03-14 12:59', Status='True'
+2025-03-13 13:04:21,344 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:04:21,352 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:04:21,353 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:04:21,377 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:04:57,496 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:04:57,505 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:04:57,505 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:04:57,534 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:05:06,514 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:05:06,522 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:05:06,523 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:05:06,548 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:05:41,585 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:05:41,594 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:05:41,594 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:05:41,618 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:05:53,870 - DEBUG - *SQL*: 'INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)' | PARAMS: '(False, 'General', '2025-03-14 13:05', 'ye', '')'
+2025-03-13 13:05:53,885 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:05:57,991 - INFO - TOGGLE (Status): ID='7', Status='True'
+2025-03-13 13:05:57,991 - DEBUG - *SQL*: 'UPDATE tasks SET status = ? WHERE id = ?' | PARAMS: '(1, 7)'
+2025-03-13 13:05:58,019 - INFO - UPDATE (Task): ID='7', Title='ye', Status='True'
+2025-03-13 13:05:58,020 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'General', '2025-03-14 13:05', 'ye', '', 7)'
+2025-03-13 13:05:58,020 - INFO - UPDATE (Task): ID='7', Title='ye', Category='General', Expiration='2025-03-14 13:05', Status='True'
+2025-03-13 13:07:19,797 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:07:19,818 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:07:19,818 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:07:19,856 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:08:21,048 - INFO - UPDATE (Task): ID='7', Title='ye', Status='True'
+2025-03-13 13:08:21,048 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'General', '2025-03-14 13:05', 'ye', '', 7)'
+2025-03-13 13:08:21,057 - INFO - UPDATE (Task): ID='7', Title='ye', Status='True'
+2025-03-13 13:08:21,057 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'General', '2025-03-14 13:05', 'ye', '', 7)'
+2025-03-13 13:08:21,058 - INFO - UPDATE (Task): ID='7', Title='ye', Category='General', Expiration='2025-03-14 13:05', Status='True'
+2025-03-13 13:09:11,775 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-13 13:09:11,787 - INFO - Chemin testé pour le stylesheet: /home/doyoudance/Desktop/Projects/todol-pro/resources/stylesheets/dark.qss
+2025-03-13 13:09:11,787 - INFO - Theme dark appliqué avec succès !
+2025-03-13 13:09:11,821 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-13 13:10:38,340 - INFO - TOGGLE (Status): ID='6', Status='False'
+2025-03-13 13:10:38,341 - DEBUG - *SQL*: 'UPDATE tasks SET status = ? WHERE id = ?' | PARAMS: '(0, 6)'
+2025-03-13 13:10:38,361 - INFO - UPDATE (Task): ID='6', Title='task', Status='False'
+2025-03-13 13:10:38,361 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(0, 'General', '2025-03-14 12:59', 'task', '', 6)'
+2025-03-13 13:10:38,362 - INFO - UPDATE (Task): ID='6', Title='task', Category='General', Expiration='2025-03-14 12:59', Status='False'
+2025-03-13 13:10:39,607 - INFO - TOGGLE (Status): ID='7', Status='False'
+2025-03-13 13:10:39,608 - DEBUG - *SQL*: 'UPDATE tasks SET status = ? WHERE id = ?' | PARAMS: '(0, 7)'
+2025-03-13 13:10:39,636 - INFO - UPDATE (Task): ID='7', Title='ye', Status='False'
+2025-03-13 13:10:39,636 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(0, 'General', '2025-03-14 13:05', 'ye', '', 7)'
+2025-03-13 13:10:39,637 - INFO - UPDATE (Task): ID='7', Title='ye', Category='General', Expiration='2025-03-14 13:05', Status='False'
+2025-03-13 13:10:40,980 - DEBUG - *SQL*: 'DELETE FROM tasks WHERE id = ?' | PARAMS: '(7,)'
+2025-03-13 13:10:40,999 - INFO - DELETE (Task): ID='7', Title='ye'
+2025-03-13 13:10:41,880 - DEBUG - *SQL*: 'DELETE FROM tasks WHERE id = ?' | PARAMS: '(6,)'
+2025-03-13 13:10:41,909 - INFO - DELETE (Task): ID='6', Title='task'
+2025-03-13 13:10:52,134 - DEBUG - *SQL*: 'INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)' | PARAMS: '(False, 'Work', '2025-03-14 13:09', 'pause', '')'
+2025-03-13 13:10:52,152 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'

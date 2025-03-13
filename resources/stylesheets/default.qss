@@ -2,7 +2,7 @@
 QWidget {
     background-color: #f8f9fa;
     color: #343a40;
-    font-family: "Arial", sans-serif;
+    font-family: "Mona Sans";
     font-size: 14px;
 }
 
