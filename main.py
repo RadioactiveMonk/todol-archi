@@ -3,7 +3,7 @@ import sys
 from rich.traceback import install
 from PyQt6.QtWidgets import QApplication
 from gui.main_window import MainWindow
-from gui.style_loader import load_stylesheet
+from backend.style_loader import load_stylesheet
 
 
 def main():
