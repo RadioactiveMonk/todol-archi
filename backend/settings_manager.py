@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from typing import Dict, List, Any
 from backend.config.configs import SETTINGS_FILE
-from backend.config.constants import DEFAULT_THEME
+from backend.config.constants import DEFAULT_THEME, CATEGORIES
 from backend.logger import logger
 
 
@@ -52,5 +52,4 @@ class SettingsManager:
     @staticmethod
     def default_settings() -> dict:
         """Definit les parametres par defaut"""
-        DEFAULT_CATEGORIES = ["General", "Work", "Hobbies"]
-        return {"theme": DEFAULT_THEME, "categories": DEFAULT_CATEGORIES}
+        return {"theme": DEFAULT_THEME, "categories": CATEGORIES}
