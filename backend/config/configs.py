@@ -1,9 +1,10 @@
 from pathlib import Path
+from backend.settings_manager import SettingsManager
 
 # =====================================
 # CONFIGURATION DE L'APPLICATION
 # =====================================
-
+_settings = SettingsManager.load_settings()
 
 # Mode débug
 # =====================================
@@ -29,11 +30,7 @@ DEFAULT_THEME = APP_THEMES[0]
 
 # Catégories des tâches
 # =====================================
-CATEGORIES = [
-    "General",
-    "Work",
-    "Hobbies",
-]
+CATEGORIES = _settings.get("categories", ["General", "Work", "Hobbies"])
 
 # Autres paramètres
 # =====================================

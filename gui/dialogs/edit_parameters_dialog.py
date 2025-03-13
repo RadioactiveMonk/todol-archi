@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import (
     QFormLayout,
     QLineEdit,
     QHBoxLayout,
-    QApplication
+    QApplication,
 )
 from PyQt6.QtCore import pyqtSignal
 from gui.selectors import CategorySelector, ThemeSelector
@@ -44,6 +44,9 @@ class EditParametersDialog(QDialog):
         self.setWindowTitle(EDIT_PARAMETERS_DIALOG_TITLE)
         self.setGeometry(*EDIT_PARAMETERS_DIALOG_GEOMETRY)
 
+        current_settings = self.settings.load_settings()
+        current_theme = current_settings.get("theme", "default")
+
         # Layout principal vertical
         main_layout = QVBoxLayout(self)
         form_layout = QFormLayout()
@@ -52,6 +55,7 @@ class EditParametersDialog(QDialog):
 
         self.category_selector = CategorySelector()
         self.theme_selector = ThemeSelector()
+        self.theme_selector.setCurrentText(current_theme)
 
         add_category_layout = QHBoxLayout()  # Layout pour add_category()
         self.add_category_input = QLineEdit(self)
@@ -123,7 +127,7 @@ class EditParametersDialog(QDialog):
 
         app = QApplication.instance()
         if isinstance(app, QApplication):
-            load_stylesheet(app) 
+            load_stylesheet(app)
 
         self.SETTINGS_UPDATED.emit(self.settings.load_settings())
 
