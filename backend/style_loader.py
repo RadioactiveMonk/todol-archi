@@ -1,6 +1,4 @@
-import os
 from pathlib import Path
-import json
 from PyQt6.QtWidgets import QApplication
 from backend.config.configs import STYLESHEET_PATH
 from backend.settings_manager import SettingsManager
@@ -21,3 +19,5 @@ def load_stylesheet(app: QApplication):
     if not stylesheet_file.exists():
         logger.warning(f"{theme}.qss introuvable. Fallback sur default.qss")
         stylesheet_file = Path(STYLESHEET_PATH) / "default.qss"
+
+    return stylesheet_file
