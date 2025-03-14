@@ -1,0 +1,83 @@
+
+🎯🎯🎯 Todol fonctionnel au 14/03/25: objectif pousser la qualité avant la quantité >>>
+
+
+📌 Réponses à tes questions & Meilleure approche pour la suite :
+1️⃣ L'application est-elle prête pour FastAPI ?
+
+➡ Réponse : Pas encore totalement, mais elle est bien avancée !
+💡 Pourquoi ?
+
+    SettingsManager est maintenant solide, donc la gestion des paramètres côté API sera facile.
+    Il faudrait structurer un point d’entrée pour l’API (main.py ou app.py avec FastAPI).
+    Vérifier que la logique backend est bien séparée de l'interface graphique.
+
+✅ Plan d'action pour intégrer FastAPI :
+
+    Définir un plan des endpoints (GET, POST, etc.).
+    Ajouter un app.py et monter un serveur FastAPI minimal.
+    Vérifier que l’UI peut interagir avec l’API (par ex. récupérer/modifier les tâches).
+
+2️⃣ Debugging avancé : Le logger suffit-il ?
+
+➡ Réponse : On a déjà bien avancé avec le logger, mais il reste encore des outils à explorer pour un debugging plus avancé.
+
+✅ Ce qu'on a déjà fait :
+
+    Logger structuré (info, warning, error).
+    Gestion des erreurs propre (ex : logs dans SettingsManager).
+
+✅ Ce qu'on peut encore explorer :
+
+    Profiling des performances (cProfile, line_profiler) pour détecter les bottlenecks.
+    Debugging live avec pdb ou PyCharm Debugger pour tester en temps réel.
+    Traces avancées (traceback, faulthandler) pour mieux analyser les erreurs complexes.
+
+💡 Idée : Une fois qu’on aura ajouté l’API, on pourra faire du profiling sur les requêtes pour voir où ça ralentit.
+3️⃣ pytest ou unittest pour les tests unitaires ?
+
+➡ Réponse : pytest est plus simple et plus puissant que unittest pour les tests modernes.
+💡 Tu avais déjà utilisé pytest pour Todol CLI, donc autant continuer dessus pour une meilleure cohérence.
+
+✅ Pourquoi pytest est mieux ?
+
+    Moins verbeux que unittest.
+    Supporte les fixtures pour éviter la répétition de code.
+    Génère des rapports de tests plus clairs.
+    Compatible avec les tests async (utile pour FastAPI).
+
+🔹 Plan d’action pour les tests :
+
+    Tester SettingsManager (pytest avec des mocks pour simuler le fichier JSON).
+    Tester EditParametersDialog (vérifier si les catégories/thèmes sont bien mis à jour).
+    Tester les sélecteurs (CategorySelector, ThemeSelector).
+    Préparer des tests pour l’API FastAPI une fois intégrée.
+
+4️⃣ Automatisation en Bash : Aller plus loin ?
+
+➡ Réponse : Oui, on peut faire BEAUCOUP plus que tree ! 🔥
+
+💡 Ce que tu peux apprendre et automatiser :
+✅ Lancer l'application et tester des composants avec un script Bash (run.sh).
+✅ Gérer les logs et les erreurs (tail -f, grep "ERROR").
+✅ Automatiser la génération de docs (Markdown, Sphinx, Doxygen).
+✅ Créer un Makefile pour standardiser le build/test/lancement (make test, make run).
+✅ Utiliser cron pour des tâches automatiques (sauvegardes, refresh des logs).
+
+🔹 Plan d’action pour apprendre Bash :
+
+    Scripts simples : Lancer l’app, nettoyer les fichiers (rm -rf logs/*).
+    Automatiser les tests : pytest > results.log.
+    Créer un Makefile pour standardiser les commandes (make run, make clean).
+    Planifier des tâches (cron) : Sauvegarde des settings, rotation des logs.
+
+📌 Meilleure approche pour la suite
+
+💡 Ma proposition d’ordre logique :
+1️⃣ Tests unitaires (pytest) → Vérifier que tout est stable avant d’ajouter des fonctionnalités.
+2️⃣ Intégration de FastAPI → Construire une API simple et propre.
+3️⃣ Debugging avancé et profiling → Identifier les performances et les erreurs de l’API et de l’app.
+4️⃣ Automatisation avec Bash & Makefile → Simplifier les tâches récurrentes.
+5️⃣ Transformation en package & Dockerisation → Préparer l’application pour un déploiement propre.
+
+🔥 Ça te convient comme plan pour la suite ? Tu veux commencer par les tests pytest comme prévu ? 🚀😎
