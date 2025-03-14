@@ -1,10 +1,27 @@
+from pytestqt.qtbot import QtBot
 import pytest
-import json
-from PyQt6.QtWidgets import QApplication
-from gui.dialogs.edit_parameters_dialog import EditParametersDialog
-from backend.settings_manager import SettingsManager, SETTINGS_FILE
+
+def test_add_category(edit_parameters_dialog, settings_manager, qtbot: QtBot):
+    """Teste l'ajout d'une catégorie via CategorySelector"""
+    edit_parameters_dialog.add_category_input.setText("Fitness")
+    qtbot.mouseClick(edit_parameters_dialog.add_category_button, 1)
+
+    assert "Fitness" in settings_manager.get("categories")
+    assert edit_parameters_dialog.category_selector.findText("Fitness") != -1
 
 
-@pytest.fixture(scope="session", autouse=True)
-def app():
-    pass
+def test_remove_category(edit_parameters_dialog, settings_manager, qtbot: QtBot):
+    """Teste la suppression d'une catégorie via CategorySelector"""
+    edit_parameters_dialog.category_selector.setCurrentText("Work")
+    qtbot.mouseClick(edit_parameters_dialog.remove_category_button, 1)
+
+    assert "Work" not in settings_manager.get("categories")
+    assert edit_parameters_dialog.category_selector.findText("Work") == -1
+
+
+def test_update_theme(edit_parameters_dialog, settings_manager, qtbot: QtBot):
+    """Teste le changement de thème via ThemeSelector"""
+    edit_parameters_dialog.theme_selector.setCurrentText("dark")
+    qtbot.mouseClick(edit_parameters_dialog.ok_button, 1)
+
+    assert settings_manager.get("theme") == "dark"
