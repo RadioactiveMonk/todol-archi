@@ -1,0 +1,239 @@
+<map version="1.1.0">
+<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
+<node COLOR="#008000" CREATED="1741958735989" ID="ID_1242110981" MODIFIED="1741967873909" TEXT="Todol-pro">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<icon BUILTIN="folder"/>
+<icon BUILTIN="list"/>
+<node COLOR="#ff8c00" CREATED="1741958905955" ID="ID_1914432461" MODIFIED="1741967600092" POSITION="left" TEXT="Probl&#xe8;mes">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<icon BUILTIN="messagebox_warning"/>
+<node COLOR="#ffa500" CREATED="1741967425820" ID="ID_1925448103" MODIFIED="1741967560272" TEXT="icone de status trop petite: d&#xe9;placer le click check dans la cellule, et color&#xe9; la cellule enfonction">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#0000ff" CREATED="1741963733610" ID="ID_1227661890" MODIFIED="1741967636045" POSITION="left" TEXT="Am&#xe9;liorations">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<icon BUILTIN="idea"/>
+<node COLOR="#008000" CREATED="1741966403276" ID="ID_1174477950" MODIFIED="1741967626207" TEXT="Done">
+<font NAME="SansSerif" SIZE="14"/>
+<icon BUILTIN="button_ok"/>
+<node COLOR="#808080" CREATED="1741966432964" ID="ID_1777526279" MODIFIED="1741967560272" TEXT="Migration SQLite">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966414606" ID="ID_1899244050" MODIFIED="1741967560272" TEXT="Gestionnaire de param&#xe8;tres">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#8b0000" CREATED="1741964496926" ID="ID_1647327598" MODIFIED="1741967611063" TEXT="First">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<icon BUILTIN="full-1"/>
+<node COLOR="#ff0000" CREATED="1741964566334" ID="ID_21364836" MODIFIED="1741967775359" TEXT="Refactoring, optimisation">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<icon BUILTIN="bookmark"/>
+</node>
+</node>
+<node COLOR="#00008b" CREATED="1741964504367" ID="ID_164031317" MODIFIED="1741967815512" TEXT="Next">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<icon BUILTIN="full-2"/>
+<node COLOR="#808080" CREATED="1741964653425" ID="ID_816755751" MODIFIED="1741967560272" TEXT="API avec FastAPI">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741964640544" ID="ID_1659148106" MODIFIED="1741967560272" TEXT="tests unitaires">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966838758" ID="ID_1643466732" MODIFIED="1741967560272" TEXT="debugging avanc&#xe9;, profiling">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966912531" ID="ID_1894442239" MODIFIED="1741967786235" TEXT="automatisation avec bash et makefile">
+<font NAME="SansSerif" SIZE="14"/>
+<icon BUILTIN="bookmark"/>
+</node>
+<node COLOR="#808080" CREATED="1741964662710" ID="ID_604331749" MODIFIED="1741967560272" TEXT="Transformer en package / gestion d&apos;environnements">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+</node>
+</node>
+<node COLOR="#0000ff" CREATED="1741965707235" ID="ID_24350819" MODIFIED="1741967658461" POSITION="right" TEXT="Backend">
+<font NAME="SansSerif" SIZE="14"/>
+<icon BUILTIN="back"/>
+<node COLOR="#008000" CREATED="1741963694164" ID="ID_1224413485" MODIFIED="1741967560272" TEXT="Gestion des param&#xe8;tres">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#ff0000" CREATED="1741963795991" ID="ID_1147594885" MODIFIED="1741967560272" TEXT="settings_manager.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#008000" CREATED="1741966993251" ID="ID_1898959185" MODIFIED="1741967560272" TEXT="configs">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#ff0000" CREATED="1741965833744" ID="ID_1431766589" MODIFIED="1741967560271" TEXT="settings.json">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741965827231" ID="ID_1349102525" MODIFIED="1741967560271" TEXT="constants.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741965813178" ID="ID_911995012" MODIFIED="1741967560271" TEXT="configs.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+</node>
+<node COLOR="#008000" CREATED="1741963704295" ID="ID_194810289" MODIFIED="1741967560271" TEXT="Base de donn&#xe9;es">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#808080" CREATED="1741963808242" ID="ID_213774447" MODIFIED="1741967560271" TEXT="database.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#ff0000" CREATED="1741963816159" ID="ID_1345735368" MODIFIED="1741967560271" TEXT="database_controler.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741967232638" ID="ID_914478616" MODIFIED="1741967560271" TEXT="data/tasks.db">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#008000" CREATED="1741963739882" ID="ID_577339083" MODIFIED="1741967560271" TEXT="Mod&#xe8;le de donn&#xe9;es">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#ff0000" CREATED="1741963840746" ID="ID_1551183292" MODIFIED="1741967560271" TEXT="task_table_model.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966054938" ID="ID_1935759631" MODIFIED="1741967560271" TEXT="task.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#808080" CREATED="1741967095746" ID="ID_561109530" MODIFIED="1741967560271" TEXT="api.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741967123669" ID="ID_1782102635" MODIFIED="1741967560271" TEXT="style_loader.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741967151292" ID="ID_1784320826" MODIFIED="1741967560271" TEXT="logger.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741967177592" ID="ID_704544786" MODIFIED="1741967560271" TEXT="(validators.py)">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#0000ff" CREATED="1741965730571" ID="ID_1915933360" MODIFIED="1741967661808" POSITION="right" TEXT="Frontend">
+<font NAME="SansSerif" SIZE="14"/>
+<icon BUILTIN="forward"/>
+<node COLOR="#008000" CREATED="1741963757991" ID="ID_1952442124" MODIFIED="1741967560271" TEXT=" Interface">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#008000" CREATED="1741963849588" ID="ID_1633960777" MODIFIED="1741967560271" TEXT="Boites de dialogue">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#808080" CREATED="1741963951434" ID="ID_802184407" MODIFIED="1741967560271" TEXT="add_task_dialog.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node CREATED="1741963960620" ID="ID_190333845" MODIFIED="1741967560271" TEXT="">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741964044364" ID="ID_1297065453" MODIFIED="1741967560271" TEXT="edit_parameters_dialog.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#008000" CREATED="1741963914640" ID="ID_470664581" MODIFIED="1741967560271" TEXT="Widgets">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#808080" CREATED="1741964082948" ID="ID_1500106457" MODIFIED="1741967560271" TEXT="edit_delegate.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741964738033" ID="ID_565002778" MODIFIED="1741967560271" TEXT="menu_bar.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741965867818" ID="ID_1180569977" MODIFIED="1741967560271" TEXT="cell_properties.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741965888831" ID="ID_1409746464" MODIFIED="1741967560270" TEXT="custom_button.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741965909056" ID="ID_1729107175" MODIFIED="1741967560270" TEXT="search_tasks.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#ff0000" CREATED="1741965945541" ID="ID_1123451058" MODIFIED="1741967560270" TEXT="task_table.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#008000" CREATED="1741964064129" ID="ID_345628783" MODIFIED="1741967560270" TEXT="Selecteurs">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#808080" CREATED="1741964165323" ID="ID_1512395445" MODIFIED="1741967560270" TEXT="category_selector.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741964172099" ID="ID_1007388354" MODIFIED="1741967560270" TEXT="expiration_selector.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966025684" ID="ID_922433494" MODIFIED="1741967560270" TEXT="theme_selector.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#ff0000" CREATED="1741963921557" ID="ID_300090325" MODIFIED="1741967560270" TEXT="main_window.py">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#008000" CREATED="1741964303252" ID="ID_830492156" MODIFIED="1741967560270" TEXT="Resources interface">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#008000" CREATED="1741964381824" ID="ID_1787154332" MODIFIED="1741967560270" TEXT="stylesheets">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<node COLOR="#808080" CREATED="1741966129573" ID="ID_1528849332" MODIFIED="1741967560270" TEXT="dark.qss">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966134916" ID="ID_1753524275" MODIFIED="1741967560270" TEXT="default.qss">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966140769" ID="ID_1720732652" MODIFIED="1741967560270" TEXT="system.qss">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#008000" CREATED="1741964753436" ID="ID_193541942" MODIFIED="1741967560270" TEXT="icons">
+<font NAME="DejaVu Sans" SIZE="14"/>
+</node>
+<node COLOR="#008000" CREATED="1741966124677" ID="ID_836364893" MODIFIED="1741967560270" TEXT="images">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+</node>
+<node COLOR="#0000ff" CREATED="1741964221883" ID="ID_671408775" MODIFIED="1741967716716" POSITION="right" TEXT="Logs">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<icon BUILTIN="info"/>
+<node COLOR="#808080" CREATED="1741965977784" ID="ID_460800900" MODIFIED="1741967560270" TEXT="app.log">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741965992510" ID="ID_754818884" MODIFIED="1741967560270" TEXT="errors.log">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#0000ff" CREATED="1741964269607" ID="ID_1665244491" MODIFIED="1741967723107" POSITION="right" TEXT="Tests">
+<font NAME="DejaVu Sans" SIZE="14"/>
+<icon BUILTIN="prepare"/>
+<node COLOR="#808080" CREATED="1741966300601" ID="ID_1948674577" MODIFIED="1741967560270" TEXT="test_database.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966308297" ID="ID_726046280" MODIFIED="1741967560270" TEXT="test_backend.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966318676" ID="ID_1724896377" MODIFIED="1741967560270" TEXT="test_settings.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966331806" ID="ID_1376316081" MODIFIED="1741967560270" TEXT="test_gui.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741978134280" ID="ID_525607457" MODIFIED="1741978153124" TEXT="test_edit_parameters_dialog.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#0000ff" CREATED="1741966495770" ID="ID_150411990" MODIFIED="1741967733965" POSITION="right" TEXT="Racine">
+<font NAME="SansSerif" SIZE="14"/>
+<icon BUILTIN="gohome"/>
+<node COLOR="#ff0000" CREATED="1741966519812" ID="ID_1440335276" MODIFIED="1741967560269" TEXT="main.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966610577" ID="ID_869430096" MODIFIED="1741967560269" TEXT="requirements.txt">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#ff0000" CREATED="1741966620097" ID="ID_1051612265" MODIFIED="1741967560269" TEXT="setup.py">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966625900" ID="ID_1647040634" MODIFIED="1741967560269" TEXT="README.md">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966634793" ID="ID_994806891" MODIFIED="1741967560269" TEXT="LICENSE">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#808080" CREATED="1741966649537" ID="ID_1436641497" MODIFIED="1741967560267" TEXT="credits.txt">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+</node>
+</map>
