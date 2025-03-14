@@ -4,6 +4,7 @@ QWidget {
     color: #343a40;
     font-family: "Mona Sans";
     font-size: 14px;
+    font-weight: bold;
 }
 
 /* === TABLE STYLES === */

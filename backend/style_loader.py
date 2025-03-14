@@ -1,5 +1,6 @@
 from pathlib import Path
 from PyQt6.QtWidgets import QApplication
+from backend import settings_manager
 from backend.config.configs import STYLESHEET_PATH
 from backend.settings_manager import SettingsManager
 from backend.logger import logger
@@ -7,9 +8,10 @@ from backend.logger import logger
 
 def load_stylesheet(app: QApplication):
     """Charge et applique un fichier de style .QSS"""
+    settings_manager = SettingsManager()
 
     try:
-        settings = SettingsManager.load_settings()
+        settings = settings_manager.get_all()
         theme = settings.get("theme", "default")
     except Exception as e:
         logger.error(f"THEME ERROR (load_settings()): {e}")
