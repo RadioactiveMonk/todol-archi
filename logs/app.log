@@ -1,0 +1,121 @@
+2025-03-14 11:51:55,854 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-14 11:51:55,908 - INFO - Theme dark appliqué avec succès !
+2025-03-14 11:51:56,009 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 11:52:31,244 - INFO - Theme default appliqué avec succès !
+2025-03-14 11:53:27,289 - INFO - Theme dark appliqué avec succès !
+2025-03-14 12:47:39,014 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-14 12:47:39,020 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 12:47:39,021 - INFO - Theme default appliqué avec succès !
+2025-03-14 12:47:39,045 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 12:50:27,914 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-14 12:50:27,922 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 12:50:27,922 - INFO - Theme default appliqué avec succès !
+2025-03-14 12:50:27,947 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 12:50:35,588 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 12:50:35,599 - INFO - Theme default appliqué avec succès !
+2025-03-14 12:52:22,165 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-14 12:52:22,177 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 12:52:22,177 - INFO - Theme default appliqué avec succès !
+2025-03-14 12:52:22,202 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 12:52:27,049 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 12:52:27,070 - INFO - Theme default appliqué avec succès !
+2025-03-14 12:59:01,488 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-14 12:59:01,495 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 12:59:01,495 - INFO - Theme default appliqué avec succès !
+2025-03-14 12:59:01,520 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 12:59:06,080 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 12:59:06,091 - INFO - Theme default appliqué avec succès !
+2025-03-14 12:59:11,423 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 12:59:11,445 - INFO - Theme default appliqué avec succès !
+2025-03-14 13:01:25,190 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-14 13:01:25,198 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 13:01:25,198 - INFO - Theme default appliqué avec succès !
+2025-03-14 13:01:25,222 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 13:01:29,676 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 13:01:29,687 - INFO - Theme default appliqué avec succès !
+2025-03-14 13:04:01,383 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-14 13:04:01,393 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 13:04:01,393 - INFO - Theme default appliqué avec succès !
+2025-03-14 13:04:01,421 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 13:04:04,499 - DEBUG - *SQL*: 'INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?)' | PARAMS: '(False, 'General', '2025-03-15 13:04', 'gjhj', '')'
+2025-03-14 13:04:04,527 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 13:04:06,583 - INFO - TOGGLE (Status): ID='14', Status='True'
+2025-03-14 13:04:06,584 - DEBUG - *SQL*: 'UPDATE tasks SET status = ? WHERE id = ?' | PARAMS: '(1, 14)'
+2025-03-14 13:04:06,613 - INFO - UPDATE (Task): ID='14', Title='gjhj', Status='True'
+2025-03-14 13:04:06,613 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'General', '2025-03-15 13:04', 'gjhj', '', 14)'
+2025-03-14 13:04:06,614 - INFO - UPDATE (Task): ID='14', Title='gjhj', Category='General', Expiration='2025-03-15 13:04', Status='True'
+2025-03-14 13:04:09,968 - INFO - UPDATE (Task): ID='14', Title='gjhj', Status='True'
+2025-03-14 13:04:09,969 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'Work', '2025-03-15 13:04', 'gjhj', '', 14)'
+2025-03-14 13:04:09,988 - INFO - UPDATE (Task): ID='14', Title='gjhj', Status='True'
+2025-03-14 13:04:09,988 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'Work', '2025-03-15 13:04', 'gjhj', '', 14)'
+2025-03-14 13:04:09,989 - INFO - UPDATE (Task): ID='14', Title='gjhj', Category='Work', Expiration='2025-03-15 13:04', Status='True'
+2025-03-14 13:04:12,806 - DEBUG - *SQL*: 'CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        status INTEGER,
+                        category TEXT,
+                        expiration TEXT,
+                        title TEXT NOT NULL,
+                        notes TEXT
+                    )
+                ' | PARAMS: '()'
+2025-03-14 13:04:12,821 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 13:04:12,821 - INFO - Theme default appliqué avec succès !
+2025-03-14 13:04:12,854 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 13:04:22,491 - ERROR - THEME ERROR (load_settings()): type object 'SettingsManager' has no attribute 'load_settings'
+2025-03-14 13:04:22,531 - INFO - Theme default appliqué avec succès !

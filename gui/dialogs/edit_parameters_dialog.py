@@ -27,7 +27,7 @@ class EditParametersDialog(QDialog):
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent or QWidget())
         self.settings = SettingsManager()
-        self.current_theme = self.settings.load_settings().get("theme", "default")
+        self.current_theme = self.settings.get("theme", "default")
 
         self.setup_ui()
 
@@ -86,17 +86,17 @@ class EditParametersDialog(QDialog):
             self.category_selector.add_category(category_name)
             self.add_category_input.clear()
             self.SETTINGS_UPDATED.emit(
-                self.settings.load_settings()
+                self.settings.get_all()
             )  # 🔥 Signal de mise à jour
 
     def accept(self) -> None:
         """Applique immédiatement le thème et ferme la boîte de dialogue"""
         new_theme = self.theme_selector.currentText()
-        self.settings.update_settings("theme", new_theme)
+        self.settings.update("theme", new_theme)
 
         app = QApplication.instance()
         if isinstance(app, QApplication):
             load_stylesheet(app)
 
-        self.SETTINGS_UPDATED.emit(self.settings.load_settings())
+        self.SETTINGS_UPDATED.emit(self.settings.get_all())
         self.close()
