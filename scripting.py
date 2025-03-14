@@ -1,40 +1,52 @@
 import pytest
 import json
-from pathlib import Path
+from PyQt6.QtWidgets import QApplication
 from backend.settings_manager import SettingsManager, SETTINGS_FILE
+from gui.dialogs.edit_parameters_dialog import EditParametersDialog
+
+
+# Initialiser une application Qt pour les tests
+@pytest.fixture(scope="session", autouse=True)
+def app():
+    """Crée une instance de QApplication pour les tests PyQt6"""
+    app = QApplication([])
+    yield app
+    app.quit()
 
 
 @pytest.fixture
 def settings_manager():
-    """Fixture pour instancier un SettingsManager propre pour chaque test"""
+    """Fixture pour instancier un SettingsManager propre aux tests"""
     SETTINGS_FILE.write_text(
-        json.dumps({"theme": "light", "categories": ["Work", "Personal"]})
+        json.dumps({"theme": "light", "categories": ["Work", "Home"]})
     )
     return SettingsManager()
 
 
-def test_load_settings(settings_manager):
-    """Teste si les paramètres sont bien chargés"""
-    settings = settings_manager.get_all()
-    assert settings["theme"] == "light"
-    assert settings["categories"] == ["Work", "Personal"]
+@pytest.fixture
+def edit_parameters_dialog(qtbot):
+    """Fixture pour instancier la boîte de dialogue avec un qtbot"""
+    dialog = EditParametersDialog()
+    qtbot.addWidget(dialog)
+    return dialog
 
 
-def test_update_theme(settings_manager):
-    """Teste si la mise à jour du thème fonctionne"""
-    settings_manager.update("theme", "dark")
-    assert settings_manager.get("theme") == "dark"
+def test_add_category(edit_parameters_dialog, settings_manager, qtbot):
+    """Teste l'ajout d'une catégorie via CategorySelector"""
+    edit_parameters_dialog.add_category_input.setText("Fitness")
+    qtbot.mouseClick(edit_parameters_dialog.add_category_button, 1)  # Simule un clic
 
-
-def test_update_categories(settings_manager):
-    """Teste si les catégories sont bien mises à jour"""
-    settings_manager.update("categories", ["New Category"])
-    assert settings_manager.get("categories") == ["New Category"]
-
-
-def test_invalid_key(settings_manager):
-    """Vérifie que mettre à jour une clé invalide ne casse pas le code"""
-    settings_manager.update("invalid_key", "value")
+    assert "Fitness" in settings_manager.get(
+        "categories"
+    )  # Vérifie que c'est bien enregistré
     assert (
-        settings_manager.get("invalid_key") is None
-    )  # Clé inconnue, donc pas d'ajout inattendu
+        edit_parameters_dialog.category_selector.findText("Fitness") != -1
+    )  # Vérifie que l'UI est mise à jour
+
+
+def test_remove_category(edit_parameters_dialog, settings_manager, qtbot):
+    """Teste la suppression d'une catégorie via CategorySelector"""
+    edit_parameters_dialog.category_selector.setCurrentText("Work")
+    qtbot.mouseClick(edit_parameters_dialog.remove_category_button, 1)  # Simule un clic
+
+    assert "Work" not in settings_manager.get("categories")  # Vérifie que c'
