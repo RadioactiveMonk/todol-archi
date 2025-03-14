@@ -1,0 +1,34 @@
+import pytest
+import json
+from pathlib import Path
+from backend.settings_manager import SettingsManager, SETTINGS_FILE
+
+
+@pytest.fixture
+def settings_manager():
+    """Fixture pour instancier un SettingsManager propre aux tests."""
+    SETTINGS_FILE.write_text(
+        json.dumps({"theme": "dark", "categories": ["Work", "Personal"]})
+    )
+    return SettingsManager()
+
+def test_load_settings(settings_manager):
+    """Test si les paramètres sont bien chargés"""
+    settings = settings_manager.get_all()
+    assert settings["theme"] == "dark"
+    assert settings["categories"] == ["Work", "Personal"]
+
+def test_update_theme(settings_manager):
+    """Test si le thème est bien mis à jour"""
+    settings_manager.update("theme", "system")
+    assert settings_manager.get("theme") == "system"
+
+def test_update_categories(settings_manager):
+    """Test si les catégories sont bien mises à jour"""
+    settings_manager.update("categories", ["Work", "Pets"])
+    assert settings_manager.get("categories") == ["Work", "Pets"]
+
+def test_invalid_key(settings_manager):
+    """Vérifie que mettre à jour une clé invalide ne casse pas le code"""
+    settings_manager.update("clock", "time")
+    assert settings_manager.get("clock") is None

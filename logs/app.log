@@ -529,3 +529,5 @@
                 ' | PARAMS: '()'
 2025-03-14 14:08:30,806 - INFO - Theme dark appliqué avec succès !
 2025-03-14 14:08:30,830 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-14 19:13:23,767 - WARNING - Clé inconnue dans les paramètres: clock
+2025-03-14 19:14:38,019 - WARNING - Clé inconnue dans les paramètres: clock

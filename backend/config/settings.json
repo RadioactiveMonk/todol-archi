@@ -1,9 +1,1 @@
-{
-    "theme": "dark",
-    "categories": [
-        "General",
-        "Work",
-        "Hobbies",
-        "test"
-    ]
-}
+{"theme": "dark", "categories": ["Work", "Personal"]}
