@@ -1,6 +1,7 @@
 import logging
 import os
-from backend.config.configs import LOG_PATH, DEBUG
+from backend.config.constants import LOG_PATH
+from backend.config.configs import DEBUG
 
 # 🔥 Création du dossier logs/ s'il n'existe pas
 if not os.path.exists(LOG_PATH):

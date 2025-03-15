@@ -1,7 +1,7 @@
 import sqlite3
 from typing import Any
 from backend.logger import logger
-from backend.config.configs import DB_PATH
+from backend.config.constants import DB_PATH
 
 
 class DatabaseControler:

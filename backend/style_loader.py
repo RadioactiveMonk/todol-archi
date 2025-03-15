@@ -1,7 +1,7 @@
 from pathlib import Path
 from PyQt6.QtWidgets import QApplication
 from backend import settings_manager
-from backend.config.configs import STYLESHEET_PATH
+from backend.config.constants import STYLESHEET_PATH
 from backend.settings_manager import SettingsManager
 from backend.logger import logger
 

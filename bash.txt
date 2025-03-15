@@ -1,0 +1,3 @@
+
+### Remplace tous les imports lors d'un déplacement de données
+grep -rl "config" backend/ | xargs sed -i 's/from backend.config /from backend.constants /g'
