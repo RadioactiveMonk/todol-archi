@@ -1,0 +1,57 @@
+Desktop/Projects/todol-pro
+├── backend
+│   ├── api.py
+│   ├── config
+│   ├── database_controler.py
+│   ├── database.py
+│   ├── __init__.py
+│   ├── logger.py
+│   ├── models
+│   ├── __pycache__
+│   ├── settings_manager.py
+│   ├── style_loader.py
+│   ├── uml
+│   └── validators.py
+├── credits.txt
+├── data
+│   └── tasks.db
+├── exercices
+│   ├── exercices.py
+│   └── exercices.txt
+├── gui
+│   ├── dialogs
+│   ├── __init__.py
+│   ├── main_window.py
+│   ├── __pycache__
+│   ├── selectors
+│   └── widgets
+├── LICENSE
+├── logs
+│   ├── app.log
+│   └── errors.log
+├── main.py
+├── __pycache__
+│   └── main.cpython-312.pyc
+├── README.md
+├── requirements.txt
+├── resources
+│   ├── fonts
+│   ├── icons
+│   ├── images
+│   ├── stylesheets
+│   └── translations
+├── scripting.py
+├── setup.py
+├── tests
+│   ├── conftest.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── temp
+│   ├── test_add_task_dialog.py
+│   ├── test_database.py
+│   ├── test_edit_parameters_dialog.py
+│   ├── test_settings.py
+│   └── test_style_loader.py
+└── tree15_03_25.txt
+
+24 directories, 31 files
