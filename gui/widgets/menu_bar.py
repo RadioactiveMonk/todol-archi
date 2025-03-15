@@ -39,5 +39,7 @@ class MenuBar(QMenuBar):
         QMessageBox.information(
             self,
             "About",
-            "Todol-Pro V1.0 - A task manager project in Python with PyQt6 \nby doyouDance",
+            "Todol Pro - Tasks manager desktop application.\n\n"
+            "Author: Sébastien Reisen\n"
+            "Link: https://github.com/RadioactiveMonk/",
         )
