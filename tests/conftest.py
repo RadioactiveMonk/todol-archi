@@ -63,3 +63,11 @@ def reset_temp_dir():
 def set_test_mode():
     """Force le mode test pour tous les tests"""
     os.environ["APP_MODE"] = "test"
+
+
+@pytest.fixture
+def clean_settings():
+    """Réinitialise settings.json avant chaque test."""
+    SETTINGS_FILE.write_text(
+        json.dumps({"theme": "dark", "categories": ["Work", "Personal"]})
+    )

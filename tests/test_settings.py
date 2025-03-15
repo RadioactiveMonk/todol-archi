@@ -1,4 +1,4 @@
-def test_load_settings(settings_manager):
+def test_load_settings(settings_manager, clean_settings):
     """Test si les paramètres sont bien chargés"""
     settings = settings_manager.get_all()
     assert settings["theme"] == "dark"
