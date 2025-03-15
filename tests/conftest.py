@@ -3,7 +3,7 @@ import os
 import json
 from pathlib import Path
 from pytestqt.qtbot import QtBot
-from PyQt6.QtWidgets import QApplication
+from PyQt6.QtWidgets import QApplication, QWidget
 from backend.config.configs import SETTINGS_FILE
 from backend.settings_manager import SettingsManager
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
@@ -30,9 +30,10 @@ def app():
 
 
 @pytest.fixture
-def edit_parameters_dialog(qtbot: QtBot, app):
+def edit_parameters_dialog(qtbot):
     """Fixture pour éviter la suppression prématurée de EditParametersDialog."""
-    dialog = EditParametersDialog()
+    parent = QWidget()
+    dialog = EditParametersDialog(parent)
     app.dialog = (
         dialog  # 🔥 On attache le dialog à QApplication pour éviter qu'il soit supprimé
     )

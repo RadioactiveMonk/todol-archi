@@ -24,8 +24,8 @@ class EditParametersDialog(QDialog):
 
     SETTINGS_UPDATED: pyqtSignal = pyqtSignal(dict)
 
-    def __init__(self, parent: QWidget | None = None) -> None:
-        super().__init__(parent or QWidget())
+    def __init__(self, parent: QWidget | None) -> None:
+        super().__init__(parent)
         self.settings = SettingsManager()
         self.current_theme = self.settings.get("theme", "default")
 
