@@ -22,6 +22,11 @@ def database():
     return db
 
 
+@pytest.fixture(scope="function")
+def database_manager():
+    db = DatabaseManager()
+    return db
+
 
 @pytest.fixture
 def settings_manager():
