@@ -1,15 +1,26 @@
 import pytest
 import os
 import json
+import sqlite3
 from pathlib import Path
 from pytestqt.qtbot import QtBot
 from PyQt6.QtWidgets import QApplication, QWidget
 from backend.config.configs import SETTINGS_FILE
 from backend.settings_manager import SettingsManager
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
+from backend.database import DatabaseManager
+from backend.database_controler import DatabaseControler
 
 LOG_FILE = Path("logs/app.log")
 TEMP_DIR = Path("tests/temp")
+
+
+@pytest.fixture(scope="function")
+def database():
+    """Fixture pour une DB propre aux tests"""
+    db = DatabaseControler()
+    return db
+
 
 
 @pytest.fixture
