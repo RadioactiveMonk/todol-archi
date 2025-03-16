@@ -5,13 +5,28 @@ from backend.db_controller import DbController
 
 
 class DbManager:
-    """Interface haut niveau pour manipuler les données SQL de DbController"""
+    """Higher interface to manager DbController."""
 
     def __init__(self) -> None:
         self.db = DbController()
 
     def add_task(self, task: Task) -> int | None:
-        """Ajoute une nouvelle tâche et retourne son ID"""
+        """Add a task in the DB.
+
+        Parameters
+        ----------
+        task : Task
+            instance of a task (task.py)
+
+        Returns
+        -------
+        int | None
+            return the id of the task if added, None if not
+        """
+
+        if not task.title:
+            logger.error("ERROR: task must contain a valid title.")
+
         query = "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);"
         params = (
             int(task.status),
@@ -21,13 +36,24 @@ class DbManager:
             task.notes,
         )
 
-        task_id = self.db._execute_query(query, params)
+        task_id = self.db._execute_query(query, params, lastrowid=True)
         return task_id if task_id else None
 
     def update_task(self, task: Task) -> bool:
-        """Met à jour une tâche existente, retourne un booléen"""
+        """Update a task in DB.
+
+        Parameters
+        ----------
+        task : Task
+            instance of a task
+
+        Returns
+        -------
+        bool
+            True is updated, False if not
+        """
         if not task.tid:
-            logger.warning("Impossible de mettre à jour une tâche sans ID")
+            logger.warning("WARNING: can't add a task without ID")
             return False
 
         query = "UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?;"
@@ -40,12 +66,22 @@ class DbManager:
             task.tid,
         )
 
-        result = self.db._execute_query(query, params)
-        return result is not None
+        result = self.db._execute_query(query, params, rowcount=True)
+        return result > 0
 
     def get_tasks(self, task_id: int | None = None) -> List[dict]:
-        """Récupère toutes les tâches ou UNE tâche spécifique si 'task_id' est donné"""
+        """Return all tasks by a list of dictionnaries.
 
+        Parameters
+        ----------
+        task_id : int | None, optional
+            the task id in db, by default None
+
+        Returns
+        -------
+        List[dict]
+            a list of dictionnaries
+        """
         query = "SELECT id, status, category, expiration, title, notes FROM tasks"
         if task_id:
             query += " WHERE id = ?"
@@ -70,23 +106,23 @@ class DbManager:
         )
 
     def delete_task(self, task_id: int) -> bool:
-        """Supprime une tâche en DB.
+        """Delete a task in DB.
 
         Parameters
         ----------
         task_id : int
-            l'id de la tâche en DB
+            the task id in DB
 
         Returns
         -------
         bool
-            True si la tâche est supprimée, sinon False.
+            True if deleted, false if not.
         """
         if not self.get_tasks(task_id):
             return False
-        
+
         query = "DELETE FROM tasks WHERE id = ?"
         params = (task_id,)
 
         result = self.db._execute_query(query, params)
-        return self.get_tasks(task_id) is None
+        return not self.get_tasks(task_id)

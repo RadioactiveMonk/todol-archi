@@ -18,6 +18,7 @@ class DbController:
         fetchone: bool = False,
         fetchall: bool = False,
         lastrowid: bool = False,
+        rowcount: bool = False,
     ) -> Any:
         """Execute une requête SQL avec gestion des erreurs"""
         logger.debug(f"*SQL*: '{query}' | PARAMS: '{params}'")
@@ -33,13 +34,14 @@ class DbController:
                     result = cursor.fetchall()
                 elif lastrowid:
                     result = cursor.lastrowid
+                elif rowcount:
+                    result = cursor.rowcount
                 else:
                     result = None
 
                 conn.commit()
+
                 return result
         except sqlite3.DatabaseError as e:
             logger.error(f"Erreur SQL: '{e}'")
             return None
-
-

@@ -14,7 +14,7 @@ from backend.config.constants import (
 class Task:
     """Représente une tâche"""
 
-    tid: int = field(default=NO_ID)
+    tid: int | None = None
     status: bool = field(default=DEFAULT_STATUS)
     category: str = field(default=DEFAULT_CATEGORY)
     expiration: str = field(
