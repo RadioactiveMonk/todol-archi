@@ -75,4 +75,4 @@ class DbManager:
         params = (task_id,)
 
         result = self.db._execute_query(query, params)
-        return result is not None
+        return self.get_tasks(task_id) is not None
