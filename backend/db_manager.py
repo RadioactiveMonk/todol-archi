@@ -8,6 +8,7 @@ class DbManager:
     """Higher interface to manager DbController."""
 
     def __init__(self) -> None:
+        """Setting up DB with DbController()"""
         self.db = DbController()
 
     def add_task(self, task: Task) -> int | None:

@@ -76,3 +76,8 @@
 2025-03-16 19:48:29,074 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
 2025-03-16 19:49:02,454 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?;' | PARAMS: '(1, 'test', '2026-08-01 22:01', 'Full modif2', 'Full crottesss', 105)'
 2025-03-16 19:49:15,699 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-16 20:52:01,274 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-16 20:52:13,501 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks WHERE id = ?' | PARAMS: '(105,)'
+2025-03-16 20:52:13,502 - DEBUG - *SQL*: 'DELETE FROM tasks WHERE id = ?' | PARAMS: '(105,)'
+2025-03-16 20:52:13,531 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks WHERE id = ?' | PARAMS: '(105,)'
+2025-03-16 20:52:18,910 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
