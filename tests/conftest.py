@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import QApplication, QWidget
 from backend.config.configs import SETTINGS_FILE
 from backend.settings_manager import SettingsManager
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
-from backend.database import DatabaseManager
+from backend.db_manager import DbManager
 from backend.database_controler import DatabaseControler
 
 LOG_FILE = Path("logs/app.log")

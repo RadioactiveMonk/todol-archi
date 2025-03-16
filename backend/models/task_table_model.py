@@ -1,7 +1,7 @@
 from typing import Any
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtWidgets import QWidget
-from backend.database import DatabaseManager
+from backend.db_manager import DbManager
 from backend.logger import logger
 from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.widgets.cell_properties import get_flags
@@ -19,7 +19,7 @@ class TaskTableModel(QAbstractTableModel):
     def __init__(
         self,
         parent: QObject | None = None,
-        db_manager: DatabaseManager = DatabaseManager(),
+        db_manager: DbManager = DbManager(),
     ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
         super().__init__(parent)

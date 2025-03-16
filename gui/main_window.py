@@ -6,14 +6,14 @@ from PyQt6.QtWidgets import (
 )
 
 from PyQt6.QtGui import QIcon
-from backend.database import DatabaseManager
+from backend.db_manager import DbManager
 from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
 from gui.widgets.custom_button import CustomButton
 from gui.widgets.search_tasks import SearchTasks
 from gui.widgets.task_table import TaskTable
 from gui.widgets.menu_bar import MenuBar
-from backend.database import DatabaseManager
+from backend.db_manager import DbManager
 from backend.config.constants import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
 
 

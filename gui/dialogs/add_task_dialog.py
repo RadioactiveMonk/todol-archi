@@ -15,7 +15,7 @@ from backend.config.constants import (
     TASK_DIALOG_GEOMETRY,
 )
 from backend.config.constants import DEFAULT_STATUS
-from backend.database import DatabaseManager
+from backend.db_manager import DbManager
 from backend.models.task import Task
 
 
@@ -29,7 +29,7 @@ class AddTaskDialog(QDialog):
     def __init__(self, parent, task: Task | None = None) -> None:
         super().__init__(parent)
 
-        self.db = DatabaseManager()
+        self.db = DbManager()
         self.task = task
         self.setup_ui()
         self.populate_fields()
