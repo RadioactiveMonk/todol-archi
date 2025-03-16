@@ -70,9 +70,23 @@ class DbManager:
         )
 
     def delete_task(self, task_id: int) -> bool:
-        """Supprime une tâche en DB"""
+        """Supprime une tâche en DB.
+
+        Parameters
+        ----------
+        task_id : int
+            l'id de la tâche en DB
+
+        Returns
+        -------
+        bool
+            True si la tâche est supprimée, sinon False.
+        """
+        if not self.get_tasks(task_id):
+            return False
+        
         query = "DELETE FROM tasks WHERE id = ?"
         params = (task_id,)
 
         result = self.db._execute_query(query, params)
-        return self.get_tasks(task_id) is not None
+        return self.get_tasks(task_id) is None
