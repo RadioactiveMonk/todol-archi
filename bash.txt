@@ -2,3 +2,7 @@
 ### Remplace tous les imports lors d'un déplacement de données (grep recherche du texte -rl applique récursivité, sed remplace du texte -i le fait directement dans les fichiers)
 grep -rl "config" backend/ | xargs sed -i 's/from backend.config /from backend.constants /g'
 
+### nettoyer les pycache
+find . -name "__pycache__" -type d -exec rm -r {} +
+
+
