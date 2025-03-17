@@ -49,16 +49,21 @@ class DbController:
                 cursor.execute("BEGIN TRANSACTION;")
                 cursor.execute(query, params)
 
-                if fetchone:
-                    result = cursor.fetchone()
-                elif fetchall:
-                    result = cursor.fetchall()
-                elif lastrowid:
-                    result = cursor.lastrowid
-                elif rowcount:
-                    result = cursor.rowcount
-                else:
-                    result = None
+                result_options = {
+                    "fetchone": cursor.fetchone if fetchone else None,
+                    "fetchall": cursor.fetchall if fetchall else None,
+                    "lastrowid": cursor.lastrowid if lastrowid else None,
+                    "rowcount": cursor.rowcount if rowcount else None,
+                }
+
+                result = next(
+                    (
+                        value() if callable(value) else value
+                        for key, value in result_options.items()
+                        if value
+                    ),
+                    None,
+                )
 
                 conn.commit()
 
