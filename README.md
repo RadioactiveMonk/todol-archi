@@ -1,4 +1,9 @@
 # todol-pro
 
-Todol Pro: A task manager project with Python, SQLite, PyQt6
+Todol Pro: A desktop UI task manager with Python, SQLite & PyQt6.
+
+Author: doyouDance
+Link: https://github.com/RadioactiveMonk
+Project: https://github.com/RadioactiveMonk/todol-pro
+
 
