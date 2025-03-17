@@ -5,9 +5,7 @@ from backend.config.constants import (
     DEFAULT_TITLE,
     DEFAULT_NOTES,
     DEFAULT_CATEGORY,
-    NO_ID,
 )
-
 
 
 @dataclass

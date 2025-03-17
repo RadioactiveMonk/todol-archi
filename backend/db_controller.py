@@ -1,7 +1,6 @@
 import sqlite3
 from backend.logger import logger
 from backend.config.constants import DB_PATH
-from backend.models.task import Task
 from typing import List, Dict, Any
 
 

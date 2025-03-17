@@ -96,3 +96,4 @@
 2025-03-17 12:05:57,914 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
 2025-03-17 12:06:54,525 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'Work', '2026-05-31 10:00', 'new title', 'new notes', 108)'
 2025-03-17 12:06:59,202 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-17 15:29:45,758 - INFO - Theme dark appliqué avec succès !
