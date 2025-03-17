@@ -2,6 +2,7 @@ from backend.logger import logger
 from backend.models.task import Task
 from typing import List
 from backend.db_controller import DbController
+from backend.config.constants import SQL_DELETE_TASK, SQL_INSERT_TASK, SQL_SELECT_TASKS
 
 
 class DbManager:
@@ -28,7 +29,7 @@ class DbManager:
         if not task.title:
             logger.error(f"ERROR: Cannot add task without title -- {task}")
 
-        query = "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);"
+        query = SQL_INSERT_TASK
         params = (
             int(task.status),
             task.category,
@@ -113,7 +114,7 @@ class DbManager:
         List[dict]
             a list of dictionnaries representing a task
         """
-        query = "SELECT id, status, category, expiration, title, notes FROM tasks"
+        query = SQL_SELECT_TASKS
         if task_id:
             query += " WHERE id = ?"
 
@@ -152,7 +153,7 @@ class DbManager:
         if not self.get_tasks(task_id):
             return False
 
-        query = "DELETE FROM tasks WHERE id = ?"
+        query = SQL_DELETE_TASK
         params = (task_id,)
 
         result = self.db._execute_query(query, params, rowcount=True)

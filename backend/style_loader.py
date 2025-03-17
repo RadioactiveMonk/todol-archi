@@ -1,6 +1,6 @@
 from pathlib import Path
 from PyQt6.QtWidgets import QApplication
-from backend.config.constants import STYLESHEET_PATH
+from backend.config.constants import STYLESHEET_PATH, DEFAULT_THEME
 from backend.settings_manager import SettingsManager
 from backend.logger import logger
 
@@ -11,7 +11,7 @@ def load_stylesheet(app: QApplication):
 
     try:
         settings = settings_manager.get_all()
-        theme = settings.get("theme", "default")
+        theme = settings.get("theme", DEFAULT_THEME)
     except Exception as e:
         logger.error(f"THEME ERROR (load_settings()): {e}")
         theme = "default"

@@ -2,6 +2,11 @@ from PyQt6.QtCore import QDateTime
 from pathlib import Path
 
 
+# Requêtes SQL
+# =====================================
+SQL_INSERT_TASK = "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);"
+SQL_SELECT_TASKS = "SELECT id, status, category, expiration, title, notes FROM tasks"
+SQL_DELETE_TASK = "DELETE FROM tasks WHERE id = ?"
 # Fichiers et stockage
 # =====================================
 BASE_DIR = Path(__file__).resolve().parent.parent.parent

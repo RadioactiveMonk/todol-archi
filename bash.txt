@@ -5,4 +5,8 @@ grep -rl "config" backend/ | xargs sed -i 's/from backend.config /from backend.c
 ### nettoyer les pycache
 find . -name "__pycache__" -type d -exec rm -r {} +
 
+### voir toutes les assignations
+grep -r " = " backend/ | grep -v "def " | grep -v "import "
+
+
 
