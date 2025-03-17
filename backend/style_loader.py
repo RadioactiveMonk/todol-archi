@@ -18,8 +18,8 @@ def load_stylesheet(app: QApplication):
 
     stylesheet_file = Path(STYLESHEET_PATH) / f"{theme}.qss"
     if not stylesheet_file.exists():
-        logger.warning(f"{theme}.qss introuvable. Fallback sur default.qss")
-        stylesheet_file = Path(STYLESHEET_PATH) / "default.qss"
+        logger.warning(f"{theme}.qss introuvable. Fallback sur {DEFAULT_THEME}.qss")
+        stylesheet_file = Path(STYLESHEET_PATH) / f"{DEFAULT_THEME}.qss"
 
     try:
         with stylesheet_file.open("r", encoding="utf-8") as f:
