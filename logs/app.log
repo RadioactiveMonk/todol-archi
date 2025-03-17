@@ -1,0 +1,6 @@
+2025-03-17 17:47:28,434 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-17 17:47:28,434 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-17 17:47:40,777 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks WHERE id = ?' | PARAMS: '(115,)'
+2025-03-17 17:47:40,777 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks WHERE id = ?' | PARAMS: '(115,)'
+2025-03-17 17:47:40,777 - DEBUG - *SQL*: 'DELETE FROM tasks WHERE id = ?' | PARAMS: '(115,)'
+2025-03-17 17:47:40,777 - DEBUG - *SQL*: 'DELETE FROM tasks WHERE id = ?' | PARAMS: '(115,)'

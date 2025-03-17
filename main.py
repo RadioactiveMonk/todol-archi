@@ -6,7 +6,7 @@ from backend.style_loader import load_stylesheet
 
 
 def main():
-    """Point d'entrée principal de l'application"""
+    """Application entry point"""
 
     app = QApplication(sys.argv)  # Convention: initialisation de QApplication
     load_stylesheet(app)

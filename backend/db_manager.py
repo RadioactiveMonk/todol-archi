@@ -153,7 +153,7 @@ class DbManager:
             return False
 
         query = "DELETE FROM tasks WHERE id = ?"
-        params = task_id,
+        params = (task_id,)
 
         result = self.db._execute_query(query, params, rowcount=True)
 
