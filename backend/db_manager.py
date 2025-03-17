@@ -40,34 +40,73 @@ class DbManager:
         task_id = self.db._execute_query(query, params, lastrowid=True)
         return task_id if task_id else None
 
-    def update_task(self, task: Task) -> bool:
-        """Update a task in DB.
+    def update_task(
+        self,
+        task_id: int,
+        status: bool | None = None,
+        category: str | None = None,
+        expiration: str | None = None,
+        title: str | None = None,
+        notes: str | None = None,
+    ) -> bool:
+        """Update task in DB
 
         Parameters
         ----------
-        task : Task
-            instance of a task
+        task_id : int
+            id of the task to update
+        status : bool (optional)
+            new status of the task (if provided)
+        category : str (optional)
+            new category of the task (if provided)
+        expiration : str (optional)
+            new due date of the task (if provided)
+        title : str (optional)
+            new title of the task (if provided)
+        notes : str (optional)
+            new notes of the task (if provided)
 
         Returns
         -------
         bool
-            True is updated, False if not
+            True if task updated, false if not
         """
-        if not task.tid:
+
+        if not task_id:
             logger.warning("WARNING: can't add a task without ID")
             return False
 
-        query = "UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?;"
-        params = (
-            int(task.status),
-            task.category,
-            task.expiration,
-            task.title,
-            task.notes,
-            task.tid,
-        )
+        updates = []
+        params = []
 
-        result = self.db._execute_query(query, params, rowcount=True)
+        if status is not None:
+            updates.append("status = ?")
+            params.append(int(status))
+
+        if category is not None:
+            updates.append("category = ?")
+            params.append(category)
+
+        if expiration is not None:
+            updates.append("expiration = ?")
+            params.append(expiration)
+
+        if title is not None:
+            updates.append("title = ?")
+            params.append(title)
+
+        if notes is not None:
+            updates.append("notes = ?")
+            params.append(notes)
+
+        if not updates:
+            logger.info("INFO: No fields to update for task ID %d", task_id)
+            return False  # Rien à mettre à jour
+
+        query = f"UPDATE tasks SET {', '.join(updates)} WHERE id = ?"
+        params.append(task_id)
+
+        result = self.db._execute_query(query, tuple(params), rowcount=True)
         return result > 0
 
     def get_tasks(self, task_id: int | None = None) -> List[dict]:
@@ -81,7 +120,7 @@ class DbManager:
         Returns
         -------
         List[dict]
-            a list of dictionnaries
+            a list of dictionnaries representing a task
         """
         query = "SELECT id, status, category, expiration, title, notes FROM tasks"
         if task_id:
