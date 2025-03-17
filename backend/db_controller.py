@@ -1,7 +1,7 @@
 import sqlite3
 from backend.logger import logger
 from backend.config.constants import DB_PATH
-from typing import List, Dict, Any
+from typing import Any
 
 
 class DbController:

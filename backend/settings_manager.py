@@ -1,5 +1,5 @@
 import json
-from typing import Dict, List, Any
+from typing import Dict, Any
 from dataclasses import dataclass, field
 from backend.config.constants import SETTINGS_FILE
 from backend.config.constants import DEFAULT_THEME, CATEGORIES

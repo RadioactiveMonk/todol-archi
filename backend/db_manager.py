@@ -1,6 +1,6 @@
 from backend.logger import logger
 from backend.models.task import Task
-from typing import List, Dict, Any
+from typing import List
 from backend.db_controller import DbController
 
 
@@ -26,7 +26,7 @@ class DbManager:
         """
 
         if not task.title:
-            logger.error("ERROR: task must contain a valid title.")
+            logger.error(f"ERROR: Cannot add task without title -- {task}")
 
         query = "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);"
         params = (
@@ -73,31 +73,22 @@ class DbManager:
         """
 
         if not task_id:
-            logger.warning("WARNING: can't add a task without ID")
+            logger.warning(f"WARNING: can't add a task without ID -- {task_id}")
             return False
 
         updates = []
         params = []
 
-        if status is not None:
-            updates.append("status = ?")
-            params.append(int(status))
+        fields = {
+            "status": int(status) if status is not None else None,
+            "category": category,
+            "expiration": expiration,
+            "title": title,
+            "notes": notes,
+        }
 
-        if category is not None:
-            updates.append("category = ?")
-            params.append(category)
-
-        if expiration is not None:
-            updates.append("expiration = ?")
-            params.append(expiration)
-
-        if title is not None:
-            updates.append("title = ?")
-            params.append(title)
-
-        if notes is not None:
-            updates.append("notes = ?")
-            params.append(notes)
+        updates = [f"{key} = ?" for key, value in fields.items() if value is not None]
+        params = [value for value in fields.values() if value is not None]
 
         if not updates:
             logger.info("INFO: No fields to update for task ID %d", task_id)
@@ -165,4 +156,4 @@ class DbManager:
         params = (task_id,)
 
         result = self.db._execute_query(query, params)
-        return not self.get_tasks(task_id)
+        return bool(self.get_tasks(task_id))
