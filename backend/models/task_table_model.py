@@ -1,9 +1,6 @@
-from typing import Any
+from typing import Any, List, Dict
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
-from PyQt6.QtWidgets import QWidget
 from backend.db_manager import DbManager
-from backend.logger import logger
-from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.widgets.cell_properties import get_flags
 from backend.models.task_table_utils import (
     TASK_TABLE_HEADERS,
@@ -23,13 +20,9 @@ class TaskTableModel(QAbstractTableModel):
     ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
         super().__init__(parent)
-        self.db = DbManager()
-        self.tasks = self.db.get_tasks()
+        self.db: DbManager = db_manager
+        self.tasks: List[Dict[str, Any]] = self.db.get_tasks()
         self.task_handlers = TaskHandlers()
-
-    def _update_task(self, task) -> None:
-        """Mise à jour en DB et rafraichit l'affichage"""
-        
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stockées."""
@@ -58,7 +51,9 @@ class TaskTableModel(QAbstractTableModel):
         if role == Qt.ItemDataRole.DisplayRole:
             if index.column() == 0:  # Statut ✅ / 🟨
                 return (
-                    "✅" if getattr(self.tasks[index.row()], "completed", None) else "🟨"
+                    "✅"
+                    if getattr(self.tasks[index.row()], "completed", None)
+                    else "🟨"
                 )
 
             if index.column() < EDIT_COLUMN_INDEX:  # Colonnes normales
@@ -71,5 +66,3 @@ class TaskTableModel(QAbstractTableModel):
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
         return get_flags(index, EDIT_COLUMN_INDEX)
-
-    
