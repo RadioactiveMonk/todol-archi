@@ -10,7 +10,7 @@ from backend.models.task_table_utils import (
     COLUMN_MAPPING,
     EDIT_COLUMN_INDEX,
 )
-from backend.models.edit_section_handlers import
+from backend.models.edit_section_handlers import TaskHandlers
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -23,14 +23,15 @@ class TaskTableModel(QAbstractTableModel):
     ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
         super().__init__(parent)
-        self.db_manager = db_manager
-        self.tasks = self.db_manager.get_tasks()
+        self.db = DbManager()
+        self.tasks = self.db.get_tasks()
+        self.task_handlers = TaskHandlers()
 
     def _update_task(self, task) -> None:
         """Mise à jour en DB et rafraichit l'affichage"""
-        self.db_manager.execute("update_task", task)
+        self.db.execute("update_task", task)
         logger.info(
-            f"UPDATE (Task): ID='{task.tid}', Title='{task.title}', Category='{task.category}', Expiration='{task.expiration}', Status='{task.status}'"
+            f"UPDATE (Task): ID='{task.tid}', Title='{task.title}', Category='{task.category}', Expiration='{task.expiration}', Status='{task.completed}'"
         )
 
         self.layoutChanged.emit()
@@ -62,7 +63,7 @@ class TaskTableModel(QAbstractTableModel):
         if role == Qt.ItemDataRole.DisplayRole:
             if index.column() == 0:  # Statut ✅ / 🟨
                 return (
-                    "✅" if getattr(self.tasks[index.row()], "status", None) else "🟨"
+                    "✅" if getattr(self.tasks[index.row()], "completed", None) else "🟨"
                 )
 
             if index.column() < EDIT_COLUMN_INDEX:  # Colonnes normales
@@ -79,11 +80,11 @@ class TaskTableModel(QAbstractTableModel):
     def handle_check(self, row: int) -> None:
         """Inverse le statut de la tâche (✅ ↔️ 🟨) et met à jour la DB."""
         task = self.tasks[row]
-        task.status = not task.status
+        task.completed = not task.completed
 
-        logger.info(f"TOGGLE (Status): ID='{task.tid}', Status='{task.status}'")
+        logger.info(f"TOGGLE (Status): ID='{task.tid}', Status='{task.completed}'")
 
-        self.db_manager.execute("update_task_status", task.status, task.tid)
+        self.db_manager.execute("update_task_completed", task.completed, task.tid)
         self._update_task(task)
 
     def handle_edit(self, row: int) -> None:
@@ -105,7 +106,7 @@ class TaskTableModel(QAbstractTableModel):
         """Supprime visuellement une tâche, supprime dans la DB et rafraîchit le tableau"""
         task = self.tasks[row]
 
-        if task.tid != NO_ID:  # Vérifie que la tâche est dans la DB
+        if task.tid != None:  # Vérifie que la tâche est dans la DB
             self.db_manager.execute("delete_task", task.tid)
             logger.info(f"DELETE (Task): ID='{task.tid}', Title='{task.title}'")
 

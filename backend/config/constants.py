@@ -4,8 +4,8 @@ from pathlib import Path
 
 # Requêtes SQL
 # =====================================
-SQL_INSERT_TASK = "INSERT INTO tasks (status, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);"
-SQL_SELECT_TASKS = "SELECT id, status, category, expiration, title, notes FROM tasks"
+SQL_INSERT_TASK = "INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);"
+SQL_SELECT_TASKS = "SELECT id, completed, category, expiration, title, notes FROM tasks"
 SQL_DELETE_TASK = "DELETE FROM tasks WHERE id = ?"
 
 # Fichiers et stockage
@@ -58,7 +58,7 @@ DEFAULT_DATETIME = QDateTime.currentDateTime().addDays(1)
 DEFAULT_TITLE = "TASK"
 DEFAULT_NOTES = ""
 DEFAULT_STATUS = STATUS_PENDING
-CATEGORIES = ["General", "Work", "Hobbies"]  # default
+CATEGORIES = ["General", "Work", "Hobbies"]  # default categories
 DEFAULT_CATEGORY = CATEGORIES[0]  # 'Général'
 NO_ID = -1
 

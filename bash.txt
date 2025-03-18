@@ -8,5 +8,9 @@ find . -name "__pycache__" -type d -exec rm -r {} +
 ### voir toutes les assignations
 grep -r " = " backend/ | grep -v "def " | grep -v "import "
 
+### Remplace status par completed dans tous les fichiers .py
+grep -rl "status" . --include="*.py" | xargs sed -i 's/status/completed/g'
+
+
 
 

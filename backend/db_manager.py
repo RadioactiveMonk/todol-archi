@@ -31,7 +31,7 @@ class DbManager:
 
         query = SQL_INSERT_TASK
         params = (
-            int(task.status),
+            int(task.completed),
             task.category,
             task.expiration,
             task.title,
@@ -44,7 +44,7 @@ class DbManager:
     def update_task(
         self,
         task_id: int,
-        status: bool | None = None,
+        completed: bool | None = None,
         category: str | None = None,
         expiration: str | None = None,
         title: str | None = None,
@@ -56,8 +56,8 @@ class DbManager:
         ----------
         task_id : int
             id of the task to update
-        status : bool (optional)
-            new status of the task (if provided)
+        completed : bool (optional)
+            new completed of the task (if provided)
         category : str (optional)
             new category of the task (if provided)
         expiration : str (optional)
@@ -81,7 +81,7 @@ class DbManager:
         params = []
 
         fields = {
-            "status": int(status) if status is not None else None,
+            "completed": int(completed) if completed is not None else None,
             "category": category,
             "expiration": expiration,
             "title": title,
@@ -126,7 +126,7 @@ class DbManager:
             [
                 {
                     "id": row[0],
-                    "status": row[1],
+                    "completed": row[1],
                     "category": row[2],
                     "expiration": row[3],
                     "title": row[4],

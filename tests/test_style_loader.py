@@ -1,6 +1,6 @@
 from pathlib import Path
 import pytest
-from backend.config.configs import STYLESHEET_PATH
+from backend.config.constants import STYLESHEET_PATH
 from backend.style_loader import load_stylesheet
 
 

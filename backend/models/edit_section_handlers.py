@@ -14,5 +14,4 @@ class TaskHandlers:
     def edit_handler(self):
         pass
 
-    def check_handler(self):
-        pass
+    
