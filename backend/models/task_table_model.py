@@ -5,12 +5,12 @@ from backend.db_manager import DbManager
 from backend.logger import logger
 from gui.dialogs.add_task_dialog import AddTaskDialog
 from gui.widgets.cell_properties import get_flags
-from backend.config.constants import (
+from backend.models.task_table_utils import (
     TASK_TABLE_HEADERS,
     COLUMN_MAPPING,
-    NO_ID,
     EDIT_COLUMN_INDEX,
 )
+from backend.models.edit_section_handlers import
 
 
 class TaskTableModel(QAbstractTableModel):
