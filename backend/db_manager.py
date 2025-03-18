@@ -1,3 +1,4 @@
+import sqlite3
 from backend.logger import logger
 from backend.models.task import Task
 from typing import List
@@ -28,6 +29,7 @@ class DbManager:
 
         if not task.title:
             logger.error(f"ERROR: Cannot add task without title -- {task}")
+            return None
 
         query = SQL_INSERT_TASK
         params = (
@@ -37,9 +39,18 @@ class DbManager:
             task.title,
             task.notes,
         )
+        try:
+            task_id = self.db._execute_query(query, params, lastrowid=True)
+            if task_id:
+                logger.info(f"Task added: {task_id}")
+            else:
+                logger.warning(f"Task insertion returned None")
 
-        task_id = self.db._execute_query(query, params, lastrowid=True)
-        return task_id if task_id else None
+            return task_id
+
+        except sqlite3.DatabaseError as e:
+            logger.error(f"Task couldn't be added: {e}")
+            return None
 
     def update_task(
         self,
@@ -74,7 +85,7 @@ class DbManager:
         """
 
         if not task_id:
-            logger.warning(f"WARNING: can't add a task without ID -- {task_id}")
+            logger.warning(f"WARNING: can't update a task without ID -- {task_id}")
             return False
 
         updates = []
@@ -98,8 +109,21 @@ class DbManager:
         query = f"UPDATE tasks SET {', '.join(updates)} WHERE id = ?"
         params.append(task_id)
 
-        result = self.db._execute_query(query, tuple(params), rowcount=True)
-        return result > 0
+        try:
+            result = self.db._execute_query(query, tuple(params), rowcount=True)
+            
+            if result is None:
+                logger.warning(f"SQL query executed but no row was affected for task ID {task_id}")
+                return False
+            
+            if result > 0:
+                logger.info(f"Task updated (ID: {task_id}): {fields}")
+
+            return result > 0
+
+        except sqlite3.DatabaseError as e:
+            logger.error(f"Task couldn't be updated (ID: {task_id}): {e}")
+            return False
 
     def get_tasks(self, task_id: int | None = None) -> List[dict]:
         """Return all tasks by a list of dictionnaries.
@@ -151,7 +175,7 @@ class DbManager:
         bool
             True if deleted, false if not.
         """
-        
+
         if not self.get_tasks(task_id):
             return False
 
