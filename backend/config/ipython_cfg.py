@@ -8,6 +8,7 @@ import backend.models.task
 def reload_all():
     """Recharge tous les modules modifiés dans IPython"""
     print("🔄 Reloading modules...")
+    reload(backend.models)
     reload(backend.models.task)
     reload(backend.db_manager)
     reload(backend.db_controller)
@@ -17,7 +18,5 @@ def reload_all():
     from backend.models.task import Task
 
     db = backend.db_manager.DbManager()
-    dbc = backend.db_controller.DbController()
 
-    # Retourne les nouvelles instances si besoin
-    return db, dbc, Task
+    return db, Task
