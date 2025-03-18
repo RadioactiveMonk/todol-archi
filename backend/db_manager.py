@@ -111,11 +111,13 @@ class DbManager:
 
         try:
             result = self.db._execute_query(query, tuple(params), rowcount=True)
-            
+
             if result is None:
-                logger.warning(f"SQL query executed but no row was affected for task ID {task_id}")
+                logger.warning(
+                    f"SQL query executed but no row was affected for task ID {task_id}"
+                )
                 return False
-            
+
             if result > 0:
                 logger.info(f"Task updated (ID: {task_id}): {fields}")
 
@@ -144,6 +146,7 @@ class DbManager:
             query += " WHERE id = ?"
 
         params = (task_id,) if task_id else ()
+
         results = self.db._execute_query(query, params, fetchall=True)
 
         return (
@@ -168,20 +171,37 @@ class DbManager:
         Parameters
         ----------
         task_id : int
-            the task id in DB
+            The task ID in DB
 
         Returns
         -------
         bool
-            True if deleted, false if not.
+            True if deleted, False if not.
         """
 
         if not self.get_tasks(task_id):
+            logger.warning(f"Task ID {task_id} not found, cannot delete.")
             return False
 
         query = SQL_DELETE_TASK
         params = (task_id,)
 
-        result = self.db._execute_query(query, params, rowcount=True)
+        logger.debug(f"Attempting to delete task ID {task_id}")
 
-        return result > 0
+        try:
+            result = self.db._execute_query(query, params, rowcount=True)
+
+            if result == 0:
+                logger.warning(f"Task ID {task_id} not found in DB, deletion failed.")
+                return False
+
+            logger.info(f"Task ID {task_id} deleted successfully.")
+            return True
+
+        except sqlite3.DatabaseError as e:
+            logger.error(f"Couldn't delete task ID {task_id}: {e}")
+            return False
+
+
+
+        

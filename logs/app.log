@@ -100,3 +100,55 @@
 2025-03-18 16:11:40,981 - INFO - Task added: 2
 2025-03-18 16:11:44,853 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
 2025-03-18 16:11:44,853 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:11,207 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:11,207 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:11,207 - INFO - SQL: table 'tasks' created
+2025-03-18 16:29:11,207 - INFO - SQL: table 'tasks' created
+2025-03-18 16:29:16,976 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:16,976 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:16,976 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:16,977 - INFO - SQL: table 'tasks' created
+2025-03-18 16:29:16,977 - INFO - SQL: table 'tasks' created
+2025-03-18 16:29:16,977 - INFO - SQL: table 'tasks' created
+2025-03-18 16:29:48,037 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:48,037 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:48,037 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:55,663 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (2,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:55,663 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (2,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:55,663 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (2,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:29:55,664 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (2,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:29:55,664 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (2,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:29:55,664 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (2,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:30:03,720 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, 'Work', '2025-06-06 20:02', 'test', 'test') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
+2025-03-18 16:30:03,720 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, 'Work', '2025-06-06 20:02', 'test', 'test') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
+2025-03-18 16:30:03,720 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, 'Work', '2025-06-06 20:02', 'test', 'test') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
+2025-03-18 16:30:03,741 - INFO - Task added: 3
+2025-03-18 16:30:03,741 - INFO - Task added: 3
+2025-03-18 16:30:03,741 - INFO - Task added: 3
+2025-03-18 16:30:18,984 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:30:18,984 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:30:18,984 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:30:37,883 - DEBUG - QUERY: UPDATE tasks SET completed = ?, title = ? WHERE id = ? | PARAMS: (1, 'Nouvelle tâche mise à jour', 3) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:30:37,883 - DEBUG - QUERY: UPDATE tasks SET completed = ?, title = ? WHERE id = ? | PARAMS: (1, 'Nouvelle tâche mise à jour', 3) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:30:37,883 - DEBUG - QUERY: UPDATE tasks SET completed = ?, title = ? WHERE id = ? | PARAMS: (1, 'Nouvelle tâche mise à jour', 3) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:30:37,913 - INFO - Task updated (ID: 3): {'completed': 1, 'category': None, 'expiration': None, 'title': 'Nouvelle tâche mise à jour', 'notes': None}
+2025-03-18 16:30:37,913 - INFO - Task updated (ID: 3): {'completed': 1, 'category': None, 'expiration': None, 'title': 'Nouvelle tâche mise à jour', 'notes': None}
+2025-03-18 16:30:37,913 - INFO - Task updated (ID: 3): {'completed': 1, 'category': None, 'expiration': None, 'title': 'Nouvelle tâche mise à jour', 'notes': None}
+2025-03-18 16:30:59,230 - INFO - INFO: No fields to update for task ID 3
+2025-03-18 16:30:59,230 - INFO - INFO: No fields to update for task ID 3
+2025-03-18 16:30:59,230 - INFO - INFO: No fields to update for task ID 3
+2025-03-18 16:31:21,064 - DEBUG - QUERY: UPDATE tasks SET title = ? WHERE id = ? | PARAMS: ('Titre inexistant', 9999) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:31:21,064 - DEBUG - QUERY: UPDATE tasks SET title = ? WHERE id = ? | PARAMS: ('Titre inexistant', 9999) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:31:21,064 - DEBUG - QUERY: UPDATE tasks SET title = ? WHERE id = ? | PARAMS: ('Titre inexistant', 9999) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:31:21,064 - WARNING - SQL query executed but no row was affected for task ID 9999
+2025-03-18 16:31:21,064 - WARNING - SQL query executed but no row was affected for task ID 9999
+2025-03-18 16:31:21,064 - WARNING - SQL query executed but no row was affected for task ID 9999
+2025-03-18 16:31:39,512 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (3,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:31:39,512 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (3,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:31:39,512 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (3,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:31:39,513 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (3,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:31:39,513 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (3,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:31:39,513 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (3,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-18 16:31:39,537 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:31:39,537 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 16:31:39,537 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
