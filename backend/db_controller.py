@@ -99,9 +99,9 @@ class DbController:
         try:
             query = SQL_DROP_TABLE
             self._execute_query(query)
-            logger.info(f"Table 'tasks' deleted")
+            logger.info(f"SQL: Table 'tasks' deleted")
         except sqlite3.DatabaseError as e:
-            logger.error(f"Couldn't delete table 'tasks': {e}")
+            logger.error(f"SQL: Couldn't delete table 'tasks': {e}")
 
     def debug_message(self, **kwargs):
         """Génère un message de debug SQL dynamique"""
