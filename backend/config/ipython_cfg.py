@@ -15,7 +15,9 @@ def reload_all():
     print("✅ Modules reloaded successfully!")
 
     from backend.models.task import Task
+
     db = backend.db_manager.DbManager()
+    dbc = backend.db_controller.DbController()
 
     # Retourne les nouvelles instances si besoin
-    return db, Task
+    return db, dbc, Task
