@@ -86,6 +86,7 @@ class DbController:
     def _create_table(self):
         """Create an SQL table"""
 
+        logger.debug(f"Attempting to create table")
         try:
             query = SQL_CREATE_TABLE
             self._execute_query(query)
@@ -95,7 +96,8 @@ class DbController:
 
     def _drop_table(self):
         """Supprime la table des tâches."""
-
+        
+        logger.debug(f"Attempting to drop table")
         try:
             query = SQL_DROP_TABLE
             self._execute_query(query)
