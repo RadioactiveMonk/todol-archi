@@ -114,6 +114,7 @@ class DbManager:
         List[dict]
             a list of dictionnaries representing a task
         """
+
         query = SQL_SELECT_TASKS
         if task_id:
             query += " WHERE id = ?"
@@ -150,6 +151,7 @@ class DbManager:
         bool
             True if deleted, false if not.
         """
+        
         if not self.get_tasks(task_id):
             return False
 

@@ -59,7 +59,7 @@ class DbController:
                 result = next(
                     (
                         value() if callable(value) else value
-                        for key, value in result_options.items()
+                        for _, value in result_options.items()
                         if value
                     ),
                     None,

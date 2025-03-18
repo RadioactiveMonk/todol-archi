@@ -15,5 +15,5 @@ COLUMN_WIDTHS = {
     2: 150,  # Expiration
     3: 250,  # Title
     4: 370,  # Notes
-    5: 100,  # Edit section
+    5: 100,  # Edit section (stretched to content)
 }
