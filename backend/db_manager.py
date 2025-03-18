@@ -6,7 +6,7 @@ from backend.config.constants import SQL_DELETE_TASK, SQL_INSERT_TASK, SQL_SELEC
 
 
 class DbManager:
-    """Higher interface to manager DbController."""
+    """Higher interface to manage DbController."""
 
     def __init__(self) -> None:
         """Setting up DB with DbController()"""

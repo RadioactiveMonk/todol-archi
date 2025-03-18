@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QTableView, QWidget, QHeaderView
 from PyQt6.QtCore import Qt
 from backend.models.task_table_model import TaskTableModel
-from backend.config.constants import EDIT_COLUMN_INDEX, COLUMN_WIDTHS
+from backend.models.task_table_utils import EDIT_COLUMN_INDEX, COLUMN_WIDTHS
 from gui.widgets.edit_delegate import EditDelegate
 
 

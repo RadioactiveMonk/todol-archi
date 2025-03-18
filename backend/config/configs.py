@@ -1,5 +1,3 @@
-from pathlib import Path
-
 # =====================================
 # CONFIGURATION DE L'APPLICATION
 # =====================================

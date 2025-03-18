@@ -1,5 +1,5 @@
 from PyQt6.QtCore import QModelIndex, Qt
-from backend.config.constants import EDIT_COLUMN_INDEX
+from backend.models.task_table_utils import EDIT_COLUMN_INDEX
 
 
 def get_flags(index: QModelIndex, total_columns: int = EDIT_COLUMN_INDEX) -> Qt.ItemFlag:

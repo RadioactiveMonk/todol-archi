@@ -13,7 +13,6 @@ from gui.widgets.custom_button import CustomButton
 from gui.widgets.search_tasks import SearchTasks
 from gui.widgets.task_table import TaskTable
 from gui.widgets.menu_bar import MenuBar
-from backend.db_manager import DbManager
 from backend.config.constants import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
 
 
@@ -28,7 +27,7 @@ class MainWindow(QMainWindow):
             QIcon("resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
 
-        self.db = DatabaseManager()  # Gestion des tâches en backend via le stockage
+        self.db = DbManager()  # Gestion des tâches en backend via le stockage
 
         self.setMenuBar(MenuBar(self))
         self.init_ui()  # Initialisation de l'interface

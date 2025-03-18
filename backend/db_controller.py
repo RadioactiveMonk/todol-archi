@@ -20,14 +20,14 @@ class DbController:
         lastrowid: bool = False,
         rowcount: bool = False,
     ) -> Any:
-        """_summary_
+        """Process connexion to DB, execute a query and return datas if fetchone, fetchall, lastrowid or rowcount is True
 
         Parameters
         ----------
         query : str
             an SQL query
         params : tuple, optional
-            tupple of values to be modified for INSERT & UPDATE, by default ()
+            tupple of values to be modified (for INSERT & UPDATE, by default ())
         fetchone : bool, optional
             True to retrieve one value, by default False
         fetchall : bool, optional
