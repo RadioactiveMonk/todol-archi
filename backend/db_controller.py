@@ -11,7 +11,6 @@ class DbController:
         """Setting up db path"""
         self.db = db
         self._create_table()
-        self.debug_message()
 
     def _execute_query(
         self,
