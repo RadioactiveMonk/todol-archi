@@ -95,8 +95,8 @@ class DbController:
             logger.error(f"SQL: could not create table 'tasks': {e}")
 
     def _drop_table(self):
-        """Supprime la table des tâches."""
-        
+        """Delete table 'tasks'"""
+
         logger.debug(f"Attempting to drop table")
         try:
             query = SQL_DROP_TABLE
@@ -106,7 +106,7 @@ class DbController:
             logger.error(f"SQL: Couldn't delete table 'tasks': {e}")
 
     def debug_message(self, **kwargs):
-        """Génère un message de debug SQL dynamique"""
+        """Generate a dynamic SQL debug message"""
         return " | ".join(
             [
                 f"{key.upper()}: {value}"
