@@ -1,15 +1,16 @@
 import sqlite3
 from backend.logger import logger
-from backend.config.constants import DB_PATH
+from backend.config.constants import DB_PATH, SQL_CREATE_TABLE, SQL_DROP_TABLE
 from typing import Any
 
 
 class DbController:
     """Gestion des requêtes SQL brutes et de la connexion DB"""
 
-    def __init__(self, db_path: str = str(DB_PATH)) -> None:
+    def __init__(self, db: str = str(DB_PATH)) -> None:
         """Setting up db path"""
-        self.db_path = db_path
+        self.db = db
+        self.debug_message()
 
     def _execute_query(
         self,
@@ -42,9 +43,18 @@ class DbController:
         Any
             depending on boolean parameters
         """
-        logger.debug(f"*SQL*: '{query}' | PARAMS: '{params}'")
+        logger.debug(
+            self.debug_message(
+                query=query,
+                params=params,
+                fetchone=fetchone,
+                fetchall=fetchall,
+                lastrowid=lastrowid,
+                rowcount=rowcount,
+            )
+        )
         try:
-            with sqlite3.connect(self.db_path) as conn:
+            with sqlite3.connect(self.db) as conn:
                 cursor = conn.cursor()
                 cursor.execute("BEGIN TRANSACTION;")
                 cursor.execute(query, params)
@@ -59,7 +69,7 @@ class DbController:
                 result = next(
                     (
                         value() if callable(value) else value
-                        for _, value in result_options.items()
+                        for key, value in result_options.items()
                         if value
                     ),
                     None,
@@ -69,5 +79,35 @@ class DbController:
 
                 return result
         except sqlite3.DatabaseError as e:
-            logger.error(f"Erreur SQL: '{e}'")
+            logger.error(f"SQL: '{e}'")
             return None
+
+    def _create_table(self):
+        """Create an SQL table"""
+
+        try:
+            query = SQL_CREATE_TABLE
+            self._execute_query(query)
+            logger.info(f"SQL: table 'tasks' created")
+        except sqlite3.DatabaseError as e:
+            logger.error(f"SQL: could not create table 'tasks': {e}")
+
+    def _drop_table(self):
+        """Supprime la table des tâches."""
+
+        try:
+            query = SQL_DROP_TABLE
+            self._execute_query(query)
+            logger.info(f"Table 'tasks' deleted")
+        except sqlite3.DatabaseError as e:
+            logger.error(f"Couldn't delete table 'tasks': {e}")
+
+    def debug_message(self, **kwargs):
+        """Génère un message de debug SQL dynamique"""
+        return " | ".join(
+            [
+                f"{key.upper()}: {value}"
+                for key, value in kwargs.items()
+                if value is not None
+            ]
+        )

@@ -20,3 +20,31 @@
 2025-03-17 21:21:24,303 - DEBUG - *SQL*: 'UPDATE tasks SET status = ?, category = ?, expiration = ?, title = ?, notes = ? WHERE id = ?' | PARAMS: '(1, 'Work', '2026-05-31 10:00', 'new', 'new', 118)'
 2025-03-17 21:21:27,658 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
 2025-03-17 21:21:27,658 - DEBUG - *SQL*: 'SELECT id, status, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-18 11:27:29,927 - DEBUG - *SQL*: 'SELECT id, completed, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-18 11:27:29,927 - DEBUG - *SQL*: 'SELECT id, completed, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-18 11:27:29,933 - ERROR - Erreur SQL: 'no such column: completed'
+2025-03-18 11:27:29,933 - ERROR - Erreur SQL: 'no such column: completed'
+2025-03-18 11:28:01,473 - DEBUG - *SQL*: 'INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);' | PARAMS: '(0, 'Work', '2025-06-06 20:02', 'test', 'test')'
+2025-03-18 11:28:01,473 - DEBUG - *SQL*: 'INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);' | PARAMS: '(0, 'Work', '2025-06-06 20:02', 'test', 'test')'
+2025-03-18 11:28:01,473 - ERROR - Erreur SQL: 'table tasks has no column named completed'
+2025-03-18 11:28:01,473 - ERROR - Erreur SQL: 'table tasks has no column named completed'
+2025-03-18 11:28:49,315 - DEBUG - *SQL*: 'SELECT id, completed, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-18 11:28:49,315 - DEBUG - *SQL*: 'SELECT id, completed, category, expiration, title, notes FROM tasks' | PARAMS: '()'
+2025-03-18 11:28:49,316 - ERROR - Erreur SQL: 'no such column: completed'
+2025-03-18 11:28:49,316 - ERROR - Erreur SQL: 'no such column: completed'
+2025-03-18 12:35:04,390 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 12:35:04,390 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 12:35:04,391 - ERROR - SQL: 'no such column: completed'
+2025-03-18 12:35:04,391 - ERROR - SQL: 'no such column: completed'
+2025-03-18 12:46:38,845 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 12:46:38,845 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 12:46:38,845 - ERROR - SQL: 'no such column: completed'
+2025-03-18 12:46:38,845 - ERROR - SQL: 'no such column: completed'
+2025-03-18 12:48:52,748 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, 'Work', '2025-06-06 20:02', 'test', 'test') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
+2025-03-18 12:48:52,748 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, 'Work', '2025-06-06 20:02', 'test', 'test') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
+2025-03-18 12:48:52,748 - ERROR - SQL: 'table tasks has no column named completed'
+2025-03-18 12:48:52,748 - ERROR - SQL: 'table tasks has no column named completed'
+2025-03-18 12:48:58,992 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 12:48:58,992 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-18 12:48:58,993 - ERROR - SQL: 'no such column: completed'
+2025-03-18 12:48:58,993 - ERROR - SQL: 'no such column: completed'
