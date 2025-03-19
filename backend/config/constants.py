@@ -1,4 +1,3 @@
-from sqlite3 import SQLITE_CREATE_TABLE
 from PyQt6.QtCore import QDateTime
 from pathlib import Path
 

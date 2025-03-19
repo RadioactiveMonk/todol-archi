@@ -2,7 +2,7 @@
 # =====================================
 TASK_TABLE_HEADERS = ["Status", "Category", "Expiration", "Title", "Notes"]
 COLUMN_MAPPING = {
-    "Status": "status",
+    "Status": "completed",
     "Category": "category",
     "Expiration": "expiration",
     "Title": "title",
