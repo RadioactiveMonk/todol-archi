@@ -69,3 +69,19 @@ class TaskTableModel(QAbstractTableModel):
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
         return get_flags(index, EDIT_COLUMN_INDEX)
+    
+    def refresh(self):
+        """Refresh the table with new tasks."""
+        self.tasks = self.db.get_tasks()
+        self.layoutChanged.emit()
+
+    def handle_delete_task(self, task_id: int):
+        """Deletes task in db and in table. Refresh the view."""
+        if self.task_handlers.delete_handler(task_id):
+            self.refresh()
+
+    def handle_edit_task(self, task_id: int, **kwargs):
+        """Updates task in db and in table. Refresh the view"""
+        if self.task_handlers.edit_handler(task_id, **kwargs):
+            self.refresh()
+
