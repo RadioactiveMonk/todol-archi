@@ -42,6 +42,5 @@ class TaskTable(QTableView):
 
     def setup_signals(self):
         """Connexion des icones aux signaux"""
-        self.delegate.checkClicked.connect(self.table_model.handle_check)
-        self.delegate.editClicked.connect(self.table_model.handle_edit)
-        self.delegate.deleteClicked.connect(self.table_model.handle_delete)
+        self.delegate.deleteClicked.connect(self.table_model.handle_delete_task)
+        self.delegate.editClicked.connect(self.table_model.handle_edit_task)

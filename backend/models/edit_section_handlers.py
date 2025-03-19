@@ -20,4 +20,13 @@ class TaskHandlers:
 
     def edit_handler(self, task_id: int, **kwargs) -> bool:
         """Updates a task in the DB"""
+        if not kwargs:
+            logger.info(f"EDIT SECTION: Nofields provided to update task {task_id}")
+
         result = self.db.update_task(task_id, **kwargs)
+
+        if result:
+            logger.info(f"EDIT SECTION: task {task_id} updated successfully -- Changes: {kwargs}")
+        else: logger.warning(f"EDIT SECTION: task {task_id} couldn't be updated -- No changes applied")
+
+        return result

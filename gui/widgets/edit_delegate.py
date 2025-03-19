@@ -12,7 +12,6 @@ from backend.config.constants import (
 class EditDelegate(QStyledItemDelegate):
     """Délégué pour afficher et gérer les icônes dans la colonne 'edit'"""
 
-    checkClicked = pyqtSignal(int)
     editClicked = pyqtSignal(int)
     deleteClicked = pyqtSignal(int)
 
@@ -20,7 +19,6 @@ class EditDelegate(QStyledItemDelegate):
         """Initialise les icônes"""
         super().__init__(parent)
         self.icons = {
-            "check": QIcon("resources/icons/check_task.png"),
             "edit": QIcon("resources/icons/edit_task.png"),
             "delete": QIcon("resources/icons/delete_task.png"),
         }
@@ -50,7 +48,6 @@ class EditDelegate(QStyledItemDelegate):
         """Gère les clics sur les icônes d'édition."""
 
         SIGNAL_MAPPING = {
-            "check": "checkClicked",
             "edit": "editClicked",
             "delete": "deleteClicked",
         }
