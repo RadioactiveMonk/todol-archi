@@ -19,8 +19,8 @@ DB_PATH = BASE_DIR / "data" / "tasks.db"
 LOG_PATH = BASE_DIR / "logs"
 STYLESHEET_PATH = BASE_DIR / "resources" / "stylesheets"
 
-for p in [DB_PATH.parent, LOG_PATH, STYLESHEET_PATH]:
-    p.mkdir(parents=True, exist_ok=True)
+for path in [DB_PATH.parent, LOG_PATH, STYLESHEET_PATH]:
+    path.mkdir(parents=True, exist_ok=True)
 
 # Fenêtre principale
 # =====================================
