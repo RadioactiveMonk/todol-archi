@@ -1,8 +1,8 @@
 from PyQt6.QtCore import QModelIndex, Qt
-from backend.models.task_table_utils import EDIT_COLUMN_INDEX
+from backend.models.task_table_utils import TASK_TABLE_HEADERS
 
 
-def get_flags(index: QModelIndex, total_columns: int = EDIT_COLUMN_INDEX) -> Qt.ItemFlag:
+def get_flags(index: QModelIndex, total_columns: int = len(TASK_TABLE_HEADERS)) -> Qt.ItemFlag:
     """Définit les propriétés des cellules (éditables, sélectionnables)"""
 
     if not index.isValid():

@@ -43,7 +43,7 @@ class TaskTableModel(QAbstractTableModel):
             and role == Qt.ItemDataRole.DisplayRole
         ):
             return TASK_TABLE_HEADERS[section]
-            
+
         return None
 
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
@@ -60,15 +60,14 @@ class TaskTableModel(QAbstractTableModel):
 
             if column_name == EDIT_COLUMN:
                 return None
-            
+
             return task.get(COLUMN_MAPPING.get(column_name, ""), "")
-                
 
         return None  # La colonne "Edit" est gérée par `EditDelegate`
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
-        return get_flags(index, index.column(EDIT_COLUMN))
+        return get_flags(index, index.column())
 
     def refresh(self):
         """Refresh the table with new tasks."""

@@ -1,7 +1,11 @@
 from PyQt6.QtWidgets import QTableView, QWidget, QHeaderView
 from PyQt6.QtCore import Qt
 from backend.models.task_table_model import TaskTableModel
-from backend.models.task_table_utils import EDIT_COLUMN_INDEX, COLUMN_WIDTHS
+from backend.models.task_table_utils import (
+    EDIT_COLUMN,
+    COLUMN_WIDTHS,
+    TASK_TABLE_HEADERS,
+)
 from gui.widgets.edit_delegate import EditDelegate
 
 
@@ -38,7 +42,9 @@ class TaskTable(QTableView):
     def setup_delegates(self):
         """Config de l'affichage des actions dans 'edit'"""
         self.delegate = EditDelegate(self)
-        self.setItemDelegateForColumn(EDIT_COLUMN_INDEX, self.delegate)
+        self.setItemDelegateForColumn(
+            TASK_TABLE_HEADERS.index(EDIT_COLUMN), self.delegate
+        )
 
     def setup_signals(self):
         """Connexion des icones aux signaux"""
