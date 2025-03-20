@@ -28,8 +28,9 @@ class EditDelegate(QStyledItemDelegate):
 
         cell_center_x = option.rect.center().x()  # ✅ Centre de la cellule
         total_width = (EDIT_ICON_SIZE + EDIT_ICON_SPACING) * len(
-            self.icons
+            EDIT_SECTION_POSITIONS
         ) - EDIT_ICON_SPACING
+
         start_x = cell_center_x - (total_width // 2)  # ✅ Alignement centré
 
         for i, icon_name in enumerate(EDIT_SECTION_POSITIONS):
@@ -63,8 +64,9 @@ class EditDelegate(QStyledItemDelegate):
         )  # ✅ PyQt6 utilise `.position()` à convertir en QPoint
         cell_center_x = option.rect.center().x()
         total_width = (EDIT_ICON_SIZE + EDIT_ICON_SPACING) * len(
-            self.icons
+            EDIT_SECTION_POSITIONS
         ) - EDIT_ICON_SPACING
+
         start_x = cell_center_x - (total_width // 2)  # ✅ Départ aligné au centre
 
         for i, icon_name in enumerate(EDIT_SECTION_POSITIONS):

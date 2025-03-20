@@ -51,7 +51,7 @@ STATUS_PENDING = False
 EDIT_ICON_SIZE = 18
 EDIT_ICON_SPACING = 4
 EDIT_ICON_TOP_OFFSET = 2
-EDIT_SECTION_POSITIONS = ["delete", "edit", "check"]
+EDIT_SECTION_POSITIONS = ["delete", "edit"]
 
 
 # Valeurs par défaut

@@ -3,9 +3,10 @@ from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.db_manager import DbManager
 from gui.widgets.cell_properties import get_flags
 from backend.models.task_table_utils import (
+    STATUS_COLUMN,
     TASK_TABLE_HEADERS,
     COLUMN_MAPPING,
-    EDIT_COLUMN_INDEX,
+    EDIT_COLUMN,
 )
 from backend.models.edit_section_handlers import TaskHandlers
 
@@ -33,7 +34,7 @@ class TaskTableModel(QAbstractTableModel):
 
     def columnCount(self, parent: QModelIndex | None = QModelIndex()) -> int:
         """Retourne le nombre de colonnes en fonction du nombre de sections dans le header"""
-        return EDIT_COLUMN_INDEX + 1  # +1 pour la colonne "Edit"
+        return len(TASK_TABLE_HEADERS)
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int) -> Any:
         """Retourne les noms des colonnes affichées dans le header du tableau."""
@@ -41,9 +42,8 @@ class TaskTableModel(QAbstractTableModel):
             orientation == Qt.Orientation.Horizontal
             and role == Qt.ItemDataRole.DisplayRole
         ):
-            return (
-                TASK_TABLE_HEADERS[section] if section < EDIT_COLUMN_INDEX else "Edit"
-            )
+            return TASK_TABLE_HEADERS[section]
+            
         return None
 
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
@@ -55,18 +55,20 @@ class TaskTableModel(QAbstractTableModel):
         column_name = TASK_TABLE_HEADERS[index.column()]
 
         if role == Qt.ItemDataRole.DisplayRole:
-            if column_name == "Status":
+            if column_name == STATUS_COLUMN:
                 return "✅" if task["completed"] else "🟨"
 
-            if column_name in COLUMN_MAPPING:
-                attribute = COLUMN_MAPPING[column_name]
-                return task.get(attribute, "")
+            if column_name == EDIT_COLUMN:
+                return None
+            
+            return task.get(COLUMN_MAPPING.get(column_name, ""), "")
+                
 
         return None  # La colonne "Edit" est gérée par `EditDelegate`
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
-        return get_flags(index, EDIT_COLUMN_INDEX)
+        return get_flags(index, index.column(EDIT_COLUMN))
 
     def refresh(self):
         """Refresh the table with new tasks."""
