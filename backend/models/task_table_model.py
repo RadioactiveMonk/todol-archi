@@ -51,25 +51,23 @@ class TaskTableModel(QAbstractTableModel):
         if not index.isValid():
             return None
 
-        if role == Qt.ItemDataRole.DisplayRole:
-            if index.column() == 0:  # Statut ✅ / 🟨
-                return (
-                    "✅"
-                    if getattr(self.tasks[index.row()], "completed", None)
-                    else "🟨"
-                )
+        task = self.tasks[index.row()]
+        column_name = TASK_TABLE_HEADERS[index.column()]
 
-            if index.column() < EDIT_COLUMN_INDEX:  # Colonnes normales
-                column_name = TASK_TABLE_HEADERS[index.column()]
-                attribute = COLUMN_MAPPING.get(column_name, "")
-                return getattr(self.tasks[index.row()], attribute, None)
+        if role == Qt.ItemDataRole.DisplayRole:
+            if column_name == "Status":
+                return "✅" if task["completed"] else "🟨"
+
+            if column_name in COLUMN_MAPPING:
+                attribute = COLUMN_MAPPING[column_name]
+                return task.get(attribute, "")
 
         return None  # La colonne "Edit" est gérée par `EditDelegate`
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
         return get_flags(index, EDIT_COLUMN_INDEX)
-    
+
     def refresh(self):
         """Refresh the table with new tasks."""
         self.tasks = self.db.get_tasks()
@@ -84,4 +82,3 @@ class TaskTableModel(QAbstractTableModel):
         """Updates task in db and in table. Refresh the view"""
         if self.task_handlers.edit_handler(task_id, **kwargs):
             self.refresh()
-
