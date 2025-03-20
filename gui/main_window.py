@@ -67,13 +67,11 @@ class MainWindow(QMainWindow):
 
         central_widget.setLayout(main_layout)
 
-    def open_add_task_dialog(self) -> None:
-        """Ouvre la boîte de dialogue d'ajout de tâche"""
 
-        dialog = AddTaskDialog(self)
-        dialog.ok_signal.connect(
-            self.refresh_task_list
-        )  # Récupère le signal 'task_added' depuis AddTaskDialog
+    def open_add_task_dialog(self, task=None) -> None:
+        """Ouvre la boîte de dialogue d'ajout/édition de tâche"""
+        dialog = AddTaskDialog(self, task)
+        dialog.ok_signal.connect(self.refresh_task_list)
         dialog.exec()
 
     def open_edit_parameters_dialog(self):

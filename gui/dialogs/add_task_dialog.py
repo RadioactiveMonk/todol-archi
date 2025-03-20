@@ -102,11 +102,7 @@ class AddTaskDialog(QDialog):
             return
 
         if self.task:
-            for key, value in task_data.items():
-                setattr(self.task, key, value)
-            self.db.update_task(self.task)
-        else:
-            self.db.add_task(**task_data)
+            self.db.add_task(self.task, **task_data)  # ✅ Utilisation du task_id
 
         self.ok_signal.emit()
         self.accept()
