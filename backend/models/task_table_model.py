@@ -9,6 +9,7 @@ from backend.models.task_table_utils import (
     EDIT_COLUMN,
 )
 from backend.models.edit_section_handlers import TaskHandlers
+from backend.logger import logger
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -74,12 +75,23 @@ class TaskTableModel(QAbstractTableModel):
         self.tasks = self.db.get_tasks()
         self.layoutChanged.emit()
 
-    def handle_delete_task(self, task_id: int):
-        """Deletes task in db and in table. Refresh the view."""
-        if self.task_handlers.delete_handler(task_id):
-            self.refresh()
 
-    def handle_edit_task(self, task_id: int, **kwargs):
-        """Updates task in db and in table. Refresh the view"""
-        if self.task_handlers.edit_handler(task_id, **kwargs):
-            self.refresh()
+    def handle_edit_task(self, row: int):
+        """Gère l'édition d'une tâche via le TaskHandlers"""
+        if row < 0 or row >= len(self.tasks):
+            return
+
+        task_id = self.tasks[row]["id"]
+        logger.debug(f"📝 Édition demandée pour la tâche {task_id}")  # ✅ Vérification
+        self.task_handlers.edit_handler(task_id, title="Titre modifié")
+
+    def handle_delete_task(self, row: int):
+        """Gère la suppression d'une tâche via le TaskHandlers"""
+        if row < 0 or row >= len(self.tasks):
+            return
+
+        task_id = self.tasks[row]["id"]
+        logger.debug(f"🗑 Suppression demandée pour la tâche {task_id}")  # ✅ Vérification
+        self.task_handlers.delete_handler(task_id)
+        self.refresh()  # ✅ Rafraîchir l'affichage après suppression
+

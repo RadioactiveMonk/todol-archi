@@ -709,3 +709,48 @@
 2025-03-20 18:26:59,540 - INFO - EDIT SECTION: Nofields provided to update task 1
 2025-03-20 18:26:59,540 - INFO - INFO: No fields to update for task ID 1
 2025-03-20 18:26:59,540 - WARNING - EDIT SECTION: task 1 couldn't be updated -- No changes applied
+2025-03-20 18:48:05,811 - DEBUG - Attempting to create table
+2025-03-20 18:48:05,811 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:48:05,811 - INFO - SQL: table 'tasks' created
+2025-03-20 18:48:05,811 - DEBUG - Attempting to create table
+2025-03-20 18:48:05,811 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:48:05,811 - INFO - SQL: table 'tasks' created
+2025-03-20 18:48:05,819 - INFO - Theme dark appliqué avec succès !
+2025-03-20 18:48:05,826 - DEBUG - Attempting to create table
+2025-03-20 18:48:05,826 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:48:05,826 - INFO - SQL: table 'tasks' created
+2025-03-20 18:48:05,844 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:54:28,852 - DEBUG - Attempting to create table
+2025-03-20 18:54:28,852 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:54:28,852 - INFO - SQL: table 'tasks' created
+2025-03-20 18:54:28,852 - DEBUG - Attempting to create table
+2025-03-20 18:54:28,852 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:54:28,852 - INFO - SQL: table 'tasks' created
+2025-03-20 18:54:28,860 - INFO - Theme dark appliqué avec succès !
+2025-03-20 18:54:28,867 - DEBUG - Attempting to create table
+2025-03-20 18:54:28,867 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:54:28,867 - INFO - SQL: table 'tasks' created
+2025-03-20 18:54:28,885 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:54:31,841 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (6,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:54:31,842 - DEBUG - Attempting to delete task ID 6
+2025-03-20 18:54:31,843 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (6,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-20 18:54:31,859 - INFO - Task ID 6 deleted successfully.
+2025-03-20 18:54:31,859 - INFO - EDIT SECTION: task deleted successfully -- 6
+2025-03-20 18:54:31,859 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:54:35,926 - DEBUG - QUERY: UPDATE tasks SET title = ? WHERE id = ? | PARAMS: ('Titre modifié', 5) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-20 18:54:35,955 - INFO - Task updated (ID: 5): {'completed': None, 'category': None, 'expiration': None, 'title': 'Titre modifié', 'notes': None}
+2025-03-20 18:54:35,955 - INFO - EDIT SECTION: task 5 updated successfully -- Changes: {'title': 'Titre modifié'}
+2025-03-20 18:58:05,612 - DEBUG - Attempting to create table
+2025-03-20 18:58:05,612 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:58:05,612 - INFO - SQL: table 'tasks' created
+2025-03-20 18:58:05,612 - DEBUG - Attempting to create table
+2025-03-20 18:58:05,612 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:58:05,612 - INFO - SQL: table 'tasks' created
+2025-03-20 18:58:05,622 - INFO - Theme dark appliqué avec succès !
+2025-03-20 18:58:05,631 - DEBUG - Attempting to create table
+2025-03-20 18:58:05,632 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:58:05,632 - INFO - SQL: table 'tasks' created
+2025-03-20 18:58:05,654 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:58:08,326 - DEBUG - Attempting to create table
+2025-03-20 18:58:08,326 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-20 18:58:08,327 - INFO - SQL: table 'tasks' created
