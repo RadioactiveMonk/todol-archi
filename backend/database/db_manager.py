@@ -43,6 +43,7 @@ class DbManager:
             task_id = self.db._execute_query(query, params, lastrowid=True)
             if task_id:
                 logger.info(f"Task added: {task_id}")
+                task.tid = task_id
             else:
                 logger.warning(f"Task insertion returned None")
 

@@ -67,11 +67,10 @@ class MainWindow(QMainWindow):
 
         central_widget.setLayout(main_layout)
 
-
     def open_add_task_dialog(self, task=None) -> None:
         """Ouvre la boîte de dialogue d'ajout/édition de tâche"""
-        dialog = AddTaskDialog(self, task)
-        dialog.ok_signal.connect(self.refresh_task_list)
+        dialog = AddTaskDialog(self)
+        dialog.ok_signal.connect(self.task_table.table_model.refresh)
         dialog.exec()
 
     def open_edit_parameters_dialog(self):
@@ -83,9 +82,3 @@ class MainWindow(QMainWindow):
     def search_tasks(self):
         """Affiche les tâches recherchées (à définir comment)"""
         pass
-
-    def refresh_task_list(self):
-        """Recharge les tâches et met à jour l'affichage du tableau"""
-
-        self.task_table.table_model.tasks = self.db.get_tasks()
-        self.task_table.table_model.layoutChanged.emit()  # Met à jour l'affichage

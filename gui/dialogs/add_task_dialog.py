@@ -87,22 +87,32 @@ class AddTaskDialog(QDialog):
             self.notes_input.setPlainText(self.task.notes)
 
     def save_task(self):
-        """Enregistre la tâche en BDD (ajout et maj)"""
+        """Crée ou met à jour une tâche en base"""
 
-        task_data = {
-            "title": self.title_input.text().strip(),
-            "category": self.category_selector.currentText(),
-            "expiration": self.expiration_selector.dateTime().toString(
-                "yyyy-MM-dd HH:mm"
-            ),
-            "notes": self.notes_input.toPlainText().strip(),
-        }
-
-        if not task_data["title"]:
+        title = self.title_input.text().strip()
+        if not title:
             return
 
+        task_data = Task(
+            title=title,
+            category=self.category_selector.currentText(),
+            expiration=self.expiration_selector.dateTime().toString("yyyy-MM-dd HH:mm"),
+            notes=self.notes_input.toPlainText().strip(),
+            completed=DEFAULT_STATUS,
+        )
+
         if self.task:
-            self.db.add_task(self.task, **task_data)  # ✅ Utilisation du task_id
+            assert self.task.tid is not None
+            self.db.update_task(
+                task_id=self.task.tid,
+                completed=task_data.completed,
+                category=task_data.category,
+                expiration=task_data.expiration,
+                title=task_data.title,
+                notes=task_data.notes,
+            )
+        else:
+            self.db.add_task(task_data)
 
         self.ok_signal.emit()
         self.accept()

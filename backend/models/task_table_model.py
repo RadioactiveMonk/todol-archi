@@ -1,6 +1,7 @@
 from typing import Any, List, Dict
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from backend.database.db_manager import DbManager
+from backend.models.task import Task
 from configuration.cell_properties import get_flags
 from backend.models.task_table_utils import (
     STATUS_COLUMN,
@@ -75,15 +76,27 @@ class TaskTableModel(QAbstractTableModel):
         self.tasks = self.db.get_tasks()
         self.layoutChanged.emit()
 
-
     def handle_edit_task(self, row: int):
-        """Gère l'édition d'une tâche via le TaskHandlers"""
+        """Ouvre la boîte de dialogue d'édition pour la tâche sélectionnée"""
         if row < 0 or row >= len(self.tasks):
             return
 
-        task_id = self.tasks[row]["id"]
-        logger.debug(f"📝 Édition demandée pour la tâche {task_id}")  # ✅ Vérification
-        self.task_handlers.edit_handler(task_id, title="Titre modifié")
+        task_data = self.tasks[row]
+
+        task = Task(
+            tid=task_data["id"],
+            completed=bool(task_data["completed"]),
+            category=task_data["category"],
+            expiration=task_data["expiration"],
+            title=task_data["title"],
+            notes=task_data["notes"],
+        )
+
+        from gui.dialogs.add_task_dialog import AddTaskDialog
+
+        dialog = AddTaskDialog(self.parent(), task=task)
+        dialog.ok_signal.connect(self.refresh)
+        dialog.exec()
 
     def handle_delete_task(self, row: int):
         """Gère la suppression d'une tâche via le TaskHandlers"""
@@ -91,7 +104,8 @@ class TaskTableModel(QAbstractTableModel):
             return
 
         task_id = self.tasks[row]["id"]
-        logger.debug(f"🗑 Suppression demandée pour la tâche {task_id}")  # ✅ Vérification
+        logger.debug(
+            f"🗑 Suppression demandée pour la tâche {task_id}"
+        )  # ✅ Vérification
         self.task_handlers.delete_handler(task_id)
         self.refresh()  # ✅ Rafraîchir l'affichage après suppression
-
