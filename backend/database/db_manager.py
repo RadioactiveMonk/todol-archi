@@ -28,7 +28,7 @@ class DbManager:
         """
 
         if not task.title:
-            logger.error(f"ERROR: Cannot add task without title -- {task}")
+            logger.error(f"Cannot add task without title -- {task}")
             return None
 
         query = SQL_INSERT_TASK
@@ -86,7 +86,7 @@ class DbManager:
         """
 
         if not task_id:
-            logger.warning(f"WARNING: can't update a task without ID -- {task_id}")
+            logger.warning(f"Can't update a task without ID -- {task_id}")
             return False
 
         updates = []
@@ -104,7 +104,7 @@ class DbManager:
         params = [value for value in fields.values() if value is not None]
 
         if not updates:
-            logger.info("INFO: No fields to update for task ID %d", task_id)
+            logger.info("No fields to update for task ID %d", task_id)
             return False  # Rien à mettre à jour
 
         query = f"UPDATE tasks SET {', '.join(updates)} WHERE id = ?"
@@ -129,7 +129,7 @@ class DbManager:
             return False
 
     def get_tasks(self, task_id: int | None = None) -> List[dict]:
-        """Return all tasks by a list of dictionnaries.
+        """Return all tasks by a list of dictionnaries. If task_id is provided, return the corresponding task.
 
         Parameters
         ----------

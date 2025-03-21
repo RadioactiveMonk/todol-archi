@@ -10,7 +10,7 @@ from configuration.constants import (
 
 @dataclass
 class Task:
-    """Représente une tâche"""
+    """Represent a task"""
 
     tid: int | None = None
     completed: bool = field(default=DEFAULT_STATUS)

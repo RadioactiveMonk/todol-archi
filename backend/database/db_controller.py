@@ -78,6 +78,7 @@ class DbController:
                 conn.commit()
 
                 return result
+            
         except sqlite3.DatabaseError as e:
             logger.error(f"SQL: '{e}'")
             return None

@@ -39,7 +39,7 @@ class EditParametersDialog(QDialog):
         main_layout = QVBoxLayout(self)
         form_layout = QFormLayout()
 
-        # 🔥 Utilisation des sélecteurs propres
+        #  Utilisation des sélecteurs propres
         self.category_selector = CategorySelector()
         self.theme_selector = ThemeSelector()
         self.theme_selector.setCurrentText(self.current_theme)

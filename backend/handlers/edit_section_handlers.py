@@ -5,7 +5,7 @@ from backend.models.task import Task
 
 
 class TaskHandlers:
-    """Manages the interaction with the db for edit sections handlers"""
+    """Manages the interaction with the db for deleting and editing a task"""
 
     def __init__(self) -> None:
         self.db = DbManager()

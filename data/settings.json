@@ -1,7 +1,8 @@
 {
-    "theme": "dark",
+    "theme": "default",
     "categories": [
         "Work",
-        "Personal"
+        "Personal",
+        "Python"
     ]
 }

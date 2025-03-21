@@ -20,7 +20,7 @@ from backend.models.task import Task
 
 
 class AddTaskDialog(QDialog):
-    """Fenêtre pour ajouter une nouvelle tâche."""
+    """Dialog window to add a task or to edit a task in edit mode"""
 
     ok_signal: pyqtSignal = (
         pyqtSignal()
@@ -55,7 +55,7 @@ class AddTaskDialog(QDialog):
         self.notes_input = QTextEdit(self)
         self.notes_input.setPlaceholderText("Enter task notes ...")
 
-        # Ajout des champs dans le layout FORM
+        # Ajout des champs dans le layout 'form_layout'
         form_layout.addRow("Title: ", self.title_input)
         form_layout.addRow("Category: ", self.category_selector)
         form_layout.addRow("Expiration date: ", self.expiration_selector)
