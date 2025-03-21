@@ -1,0 +1,128 @@
+.
+├── backend
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── logger.py
+│   │   ├── settings_manager.py
+│   │   └── style_loader.py
+│   ├── database
+│   │   ├── api.py
+│   │   ├── db_controller.py
+│   │   ├── db_manager.py
+│   │   └── __init__.py
+│   ├── __init__.py
+│   ├── models
+│   │   ├── edit_section_handlers.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── edit_section_handlers.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── task.cpython-312.pyc
+│   │   │   ├── task_table_model.cpython-312.pyc
+│   │   │   └── task_table_utils.cpython-312.pyc
+│   │   ├── task.py
+│   │   ├── task_table_model.py
+│   │   └── task_table_utils.py
+│   └── __pycache__
+│       ├── db_controller.cpython-312.pyc
+│       ├── db_manager.cpython-312.pyc
+│       ├── __init__.cpython-312.pyc
+│       ├── logger.cpython-312.pyc
+│       ├── settings_manager.cpython-312.pyc
+│       └── style_loader.cpython-312.pyc
+├── configuration
+│   ├── cell_properties.py
+│   ├── configs.py
+│   ├── constants.py
+│   ├── __init__.py
+│   └── ipython_cfg.py
+├── credits.txt
+├── data
+│   ├── settings.json
+│   └── tasks.db
+├── gui
+│   ├── components
+│   │   ├── __init__.py
+│   │   ├── menu_bar.py
+│   │   ├── __pycache__
+│   │   │   ├── category_selector.cpython-312.pyc
+│   │   │   ├── expiration_selector.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── theme_selector.cpython-312.pyc
+│   │   ├── search_tasks.py
+│   │   └── task_table.py
+│   ├── delegates
+│   │   ├── edit_delegate.py
+│   │   └── __init__.py
+│   ├── dialogs
+│   │   ├── add_task_dialog.py
+│   │   ├── edit_parameters_dialog.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── add_task_dialog.cpython-312.pyc
+│   │       ├── edit_parameters_dialog.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── __init__.py
+│   ├── main_window.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   └── main_window.cpython-312.pyc
+│   ├── resources
+│   │   ├── fonts
+│   │   ├── icons
+│   │   │   ├── app_icon.png
+│   │   │   ├── check_task.png
+│   │   │   ├── check_task.svg
+│   │   │   ├── delete_task.png
+│   │   │   ├── delete_task.svg
+│   │   │   ├── edit_settings.png
+│   │   │   ├── edit_task.png
+│   │   │   ├── edit_task.svg
+│   │   │   └── new_task.png
+│   │   ├── images
+│   │   ├── stylesheets
+│   │   │   ├── dark.qss
+│   │   │   ├── default.qss
+│   │   │   └── system.qss
+│   │   └── translations
+│   └── widgets
+│       ├── category_selector.py
+│       ├── custom_button.py
+│       ├── expiration_selector.py
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── cell_properties.cpython-312.pyc
+│       │   ├── custom_button.cpython-312.pyc
+│       │   ├── edit_delegate.cpython-312.pyc
+│       │   ├── __init__.cpython-312.pyc
+│       │   ├── menu_bar.cpython-312.pyc
+│       │   ├── search_tasks.cpython-312.pyc
+│       │   └── task_table.cpython-312.pyc
+│       └── theme_selector.py
+├── LICENSE
+├── logs
+│   ├── app.log
+│   └── errors.log
+├── main.py
+├── __pycache__
+│   └── main.cpython-312.pyc
+├── README.md
+├── requirements.txt
+├── scripts
+│   ├── bash.txt
+│   ├── gitadd.py
+│   ├── __init__.py
+│   └── myscript.py
+├── setup.py
+├── tests
+│   ├── conftest.py
+│   ├── __init__.py
+│   ├── temp
+│   ├── test_add_task_dialog.py
+│   ├── test_database.py
+│   ├── test_edit_parameters_dialog.py
+│   ├── test_settings.py
+│   └── test_style_loader.py
+└── tree_31-03-25.txt
+
+29 directories, 97 files
