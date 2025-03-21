@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QStyledItemDelegate
 from PyQt6.QtCore import QRect, pyqtSignal, QEvent
 from PyQt6.QtGui import QIcon, QPainter, QMouseEvent
-from backend.config.constants import (
+from configuration.constants import (
     EDIT_ICON_SIZE,
     EDIT_ICON_SPACING,
     EDIT_ICON_TOP_OFFSET,

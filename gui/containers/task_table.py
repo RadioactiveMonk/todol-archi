@@ -6,7 +6,7 @@ from backend.models.task_table_utils import (
     COLUMN_WIDTHS,
     TASK_TABLE_HEADERS,
 )
-from gui.widgets.edit_delegate import EditDelegate
+from gui.delegates.edit_delegate import EditDelegate
 
 
 class TaskTable(QTableView):

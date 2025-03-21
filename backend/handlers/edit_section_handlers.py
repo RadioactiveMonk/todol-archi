@@ -1,5 +1,5 @@
-from backend.db_manager import DbManager
-from backend.logger import logger
+from backend.database.db_manager import DbManager
+from backend.core.logger import logger
 
 
 class TaskHandlers:

@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QComboBox, QWidget
-from backend.settings_manager import SettingsManager
-from backend.config.constants import CATEGORIES
+from backend.core.settings_manager import SettingsManager
+from configuration.constants import CATEGORIES
 
 
 class CategorySelector(QComboBox):

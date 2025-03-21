@@ -7,15 +7,15 @@ from PyQt6.QtWidgets import (
     QTextEdit,
 )
 from PyQt6.QtCore import pyqtSignal, QDateTime
-from gui.selectors.category_selector import CategorySelector
-from gui.selectors.expiration_selector import ExpirationSelector
-from backend.config.constants import (
+from gui.controls.category_selector import CategorySelector
+from gui.controls.expiration_selector import ExpirationSelector
+from configuration.constants import (
     EDIT_TASK_DIALOG_TITLE,
     TASK_DIALOG_TITLE,
     TASK_DIALOG_GEOMETRY,
 )
-from backend.config.constants import DEFAULT_STATUS
-from backend.db_manager import DbManager
+from configuration.constants import DEFAULT_STATUS
+from backend.database.db_manager import DbManager
 from backend.models.task import Task
 
 

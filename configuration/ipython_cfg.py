@@ -1,7 +1,7 @@
 from importlib import reload
-import backend.db_manager
-import backend.db_controller
-import backend.logger
+import backend.database.db_manager
+import backend.database.db_controller
+import backend.core.logger
 import backend.models.task
 
 
@@ -10,13 +10,13 @@ def reload_all():
     print("🔄 Reloading modules...")
     reload(backend.models)
     reload(backend.models.task)
-    reload(backend.db_manager)
-    reload(backend.db_controller)
-    reload(backend.logger)
+    reload(backend.database.db_manager)
+    reload(backend.database.db_controller)
+    reload(backend.core.logger)
     print("✅ Modules reloaded successfully!")
 
     from backend.models.task import Task
 
-    db = backend.db_manager.DbManager()
+    db = backend.database.db_manager.DbManager()
 
     return db, Task

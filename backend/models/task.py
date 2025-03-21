@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from backend.config.constants import (
+from configuration.constants import (
     DEFAULT_STATUS,
     DEFAULT_DATETIME,
     DEFAULT_TITLE,

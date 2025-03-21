@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QDateTimeEdit, QWidget
 from PyQt6.QtCore import QDateTime
-from backend.config.constants import DEFAULT_DATETIME
+from configuration.constants import DEFAULT_DATETIME
 
 
 class ExpirationSelector(QDateTimeEdit):

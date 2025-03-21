@@ -1,15 +1,15 @@
 from typing import Any, List, Dict
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
-from backend.db_manager import DbManager
-from gui.widgets.cell_properties import get_flags
+from backend.database.db_manager import DbManager
+from configuration.cell_properties import get_flags
 from backend.models.task_table_utils import (
     STATUS_COLUMN,
     TASK_TABLE_HEADERS,
     COLUMN_MAPPING,
     EDIT_COLUMN,
 )
-from backend.models.edit_section_handlers import TaskHandlers
-from backend.logger import logger
+from backend.handlers.edit_section_handlers import TaskHandlers
+from backend.core.logger import logger
 
 
 class TaskTableModel(QAbstractTableModel):

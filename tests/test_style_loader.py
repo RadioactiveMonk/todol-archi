@@ -1,7 +1,7 @@
 from pathlib import Path
 import pytest
-from backend.config.constants import STYLESHEET_PATH
-from backend.style_loader import load_stylesheet
+from configuration.constants import STYLESHEET_PATH
+from backend.core.style_loader import load_stylesheet
 
 
 def test_load_qss(app, settings_manager):

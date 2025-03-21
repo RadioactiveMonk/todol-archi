@@ -1,6 +1,6 @@
 import sqlite3
-from backend.logger import logger
-from backend.config.constants import DB_PATH, SQL_CREATE_TABLE, SQL_DROP_TABLE
+from backend.core.logger import logger
+from configuration.constants import DB_PATH, SQL_CREATE_TABLE, SQL_DROP_TABLE
 from typing import Any
 
 

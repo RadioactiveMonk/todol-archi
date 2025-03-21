@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
-from backend.config.constants import LOG_PATH
-from backend.config.configs import DEBUG
+from configuration.constants import LOG_PATH
+from configuration.configs import DEBUG
 
 # 🔥 Création du dossier logs/ s'il n'existe pas
 log_path = Path(LOG_PATH)

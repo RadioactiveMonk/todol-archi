@@ -1,8 +1,8 @@
 from pathlib import Path
 from PyQt6.QtWidgets import QApplication
-from backend.config.constants import STYLESHEET_PATH, DEFAULT_THEME
-from backend.settings_manager import SettingsManager
-from backend.logger import logger
+from configuration.constants import STYLESHEET_PATH, DEFAULT_THEME
+from backend.core.settings_manager import SettingsManager
+from backend.core.logger import logger
 
 
 def load_stylesheet(app: QApplication):

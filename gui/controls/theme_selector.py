@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QComboBox, QWidget
-from backend.config.constants import APP_THEMES, DEFAULT_THEME
+from configuration.constants import APP_THEMES, DEFAULT_THEME
 
 class ThemeSelector(QComboBox):
     """Menu déroulant pour les thèmes"""

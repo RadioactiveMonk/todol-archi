@@ -9,14 +9,14 @@ from PyQt6.QtWidgets import (
     QApplication,
 )
 from PyQt6.QtCore import pyqtSignal
-from gui.selectors.category_selector import CategorySelector
-from gui.selectors.theme_selector import ThemeSelector
-from backend.config.constants import (
+from gui.controls.category_selector import CategorySelector
+from gui.controls.theme_selector import ThemeSelector
+from configuration.constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
 )
-from backend.settings_manager import SettingsManager
-from backend.style_loader import load_stylesheet
+from backend.core.settings_manager import SettingsManager
+from backend.core.style_loader import load_stylesheet
 
 
 class EditParametersDialog(QDialog):

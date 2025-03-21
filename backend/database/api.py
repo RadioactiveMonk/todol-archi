@@ -1,1 +1,1 @@
-# Check more infos about api.py
+# Api configuration here
