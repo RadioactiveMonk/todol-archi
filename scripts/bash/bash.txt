@@ -15,4 +15,3 @@ grep -rl "status" . --include="*.py" | xargs sed -i 's/status/completed/g'
 
 
 
-
