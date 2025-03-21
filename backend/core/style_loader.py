@@ -14,7 +14,7 @@ def load_stylesheet(app: QApplication):
         theme = settings.get("theme", DEFAULT_THEME)
     except Exception as e:
         logger.error(f"THEME ERROR (load_settings()): {e}")
-        theme = "default"
+        theme = DEFAULT_THEME
 
     stylesheet_file = Path(STYLESHEET_PATH) / f"{theme}.qss"
     if not stylesheet_file.exists():

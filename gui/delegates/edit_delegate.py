@@ -19,8 +19,8 @@ class EditDelegate(QStyledItemDelegate):
         """Initialise les icônes"""
         super().__init__(parent)
         self.icons = {
-            "edit": QIcon("resources/icons/edit_task.png"),
-            "delete": QIcon("resources/icons/delete_task.png"),
+            "edit": QIcon("gui/resources/icons/edit_task.png"),
+            "delete": QIcon("gui/resources/icons/delete_task.png"),
         }
 
     def paint(self, painter: QPainter, option, index):

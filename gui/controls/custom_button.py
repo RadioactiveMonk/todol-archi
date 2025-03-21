@@ -10,6 +10,6 @@ class CustomButton(QPushButton):
         self, icon_name: str = "", tooltip: str = "", parent: QWidget | None = None
     ) -> None:
         super().__init__(parent or QWidget())
-        icon_path = QDir.current().filePath(f"resources/icons/{icon_name}")
+        icon_path = QDir.current().filePath(f"gui/resources/icons/{icon_name}")
         self.setIcon(QIcon(icon_path))
         self.setToolTip(tooltip)

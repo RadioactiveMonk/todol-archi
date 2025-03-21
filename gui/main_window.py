@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(MAIN_WINDOW_TITLE)  # Définition du titre de la fenêtre
         self.setGeometry(*MAIN_WINDOW_GEOMETRY)  # Position et taille de la fenêtre
         self.setWindowIcon(
-            QIcon("resources/icons/app_icon.png")
+            QIcon("gui/resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
 
         self.db = DbManager()  # Gestion des tâches en backend via le stockage

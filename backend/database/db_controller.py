@@ -1,13 +1,13 @@
 import sqlite3
 from backend.core.logger import logger
-from configuration.constants import DB_PATH, SQL_CREATE_TABLE, SQL_DROP_TABLE
+from configuration.constants import DB_FILE, SQL_CREATE_TABLE, SQL_DROP_TABLE
 from typing import Any
 
 
 class DbController:
     """Gestion des requêtes SQL brutes et de la connexion DB"""
 
-    def __init__(self, db: str = str(DB_PATH)) -> None:
+    def __init__(self, db: str = str(DB_FILE)) -> None:
         """Setting up db path"""
         self.db = db
         self._create_table()
