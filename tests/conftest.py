@@ -15,6 +15,14 @@ LOG_FILE = Path("logs/app.log")
 TEMP_DIR = Path("tests/temp")
 
 
+@pytest.fixture
+def in_memory_db():
+    db_controller = DbController(":memory:")
+    db_manager = DbManager(controller=db_controller)
+    db_controller._create_table()
+    return db_manager
+
+
 @pytest.fixture(scope="function")
 def database():
     """Fixture pour une DB propre aux tests"""
