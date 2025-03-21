@@ -12,7 +12,7 @@ SQL_CREATE_TABLE = """CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY A
 
 # Fichiers et stockage
 # =====================================
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 CONFIG_DIR = BASE_DIR / "configuration"
 SETTINGS_FILE = BASE_DIR / "data" / "settings.json"
 DB_FILE = BASE_DIR / "data" / "tasks.db"
