@@ -4,9 +4,14 @@
 
 ---
 
-[![Tests](https://img.shields.io/badge/tests-pytest-green?style=flat-square)](https://pytest.org)
-[![Python](https://img.shields.io/badge/python-3.12+-blue?style=flat-square)](https://python.org)
+[![Python](https://img.shields.io/badge/python-3.12+-blue?style=flat-square&logo=python)](https://python.org)
+[![PyQt6](https://img.shields.io/badge/GUI-PyQt6-green?style=flat-square&logo=qt)](https://riverbankcomputing.com/software/pyqt/)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-blue?style=flat-square&logo=sqlite)](https://sqlite.org)
+[![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
+[![Tests](https://img.shields.io/badge/tests-pytest-green?style=flat-square&logo=pytest)](https://pytest.org)
+[![Learning](https://img.shields.io/badge/Built%20for-Learning%20%26%20Practice-yellow?style=flat-square)](#)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)](./LICENSE)
+
 
 ## ℹ️ Présentation
 
