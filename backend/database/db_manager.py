@@ -9,9 +9,9 @@ from configuration.constants import SQL_DELETE_TASK, SQL_INSERT_TASK, SQL_SELECT
 class DbManager:
     """Higher interface to manage DbController."""
 
-    def __init__(self) -> None:
+    def __init__(self, controller: DbController | None = None) -> None:
         """Setting up DB with DbController()"""
-        self.db = DbController()
+        self.controller = controller or DbController()
 
     def add_task(self, task: Task) -> int | None:
         """Add a task in the DB.
@@ -40,7 +40,7 @@ class DbManager:
             task.notes,
         )
         try:
-            task_id = self.db._execute_query(query, params, lastrowid=True)
+            task_id = self.controller._execute_query(query, params, lastrowid=True)
             if task_id:
                 logger.info(f"Task added: {task_id}")
                 task.tid = task_id
@@ -111,7 +111,7 @@ class DbManager:
         params.append(task_id)
 
         try:
-            result = self.db._execute_query(query, tuple(params), rowcount=True)
+            result = self.controller._execute_query(query, tuple(params), rowcount=True)
 
             if result is None:
                 logger.warning(
@@ -148,7 +148,7 @@ class DbManager:
 
         params = (task_id,) if task_id else ()
 
-        results = self.db._execute_query(query, params, fetchall=True)
+        results = self.controller._execute_query(query, params, fetchall=True)
 
         return (
             [
@@ -190,7 +190,7 @@ class DbManager:
         logger.debug(f"Attempting to delete task ID {task_id}")
 
         try:
-            result = self.db._execute_query(query, params, rowcount=True)
+            result = self.controller._execute_query(query, params, rowcount=True)
 
             if result == 0:
                 logger.warning(f"Task ID {task_id} not found in DB, deletion failed.")

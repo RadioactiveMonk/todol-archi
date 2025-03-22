@@ -23,19 +23,6 @@ def in_memory_db():
     return db_manager
 
 
-@pytest.fixture(scope="function")
-def database():
-    """Fixture pour une DB propre aux tests"""
-    db = DbController()
-    return db
-
-
-@pytest.fixture(scope="function")
-def database_manager():
-    db = DbManager()
-    return db
-
-
 @pytest.fixture
 def settings_manager():
     """Fixture globale pour un SettingsManager propre."""
