@@ -22,6 +22,11 @@ def in_memory_db():
     db_manager = DbManager(controller=db_controller)
     return db_manager
 
+@pytest.fixture
+def in_memory_connection():
+    db_controller = DbController("file::memory:?cache=shared")
+    return db_controller
+
 
 @pytest.fixture
 def settings_manager():

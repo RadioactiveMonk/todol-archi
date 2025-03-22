@@ -1,10 +1,18 @@
-2025-03-22 23:38:48,776 - DEBUG - Attempting to create table
-2025-03-22 23:38:48,776 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 23:38:48,776 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 23:38:48,777 - INFO - SQL: table 'tasks' created
-2025-03-22 23:38:48,777 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?) | PARAMS: (0, 'ToDelete', '2025-05-01 12:00', 'Delete me', 'soon') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
-2025-03-22 23:38:48,777 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 23:38:48,777 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (1,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
-2025-03-22 23:38:48,777 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 23:38:48,777 - DEBUG - QUERY: SELECT COUNT(*) FROM tasks WHERE id = ? | PARAMS: (1,) | FETCHONE: True | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 23:38:48,777 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-23 00:01:34,891 - DEBUG - Attempting to create table
+2025-03-23 00:01:34,891 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-23 00:01:34,891 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-23 00:01:34,891 - INFO - SQL: table 'tasks' created
+2025-03-23 00:01:34,892 - DEBUG - Attempting to create table
+2025-03-23 00:01:34,892 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-23 00:01:34,892 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-23 00:01:34,892 - INFO - SQL: table 'tasks' created
+2025-03-23 00:01:34,892 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, '...', '2025-01-01 12:00', 'To delete', '...') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
+2025-03-23 00:01:34,892 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-23 00:01:34,892 - INFO - Task added: 1
+2025-03-23 00:01:34,892 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (1,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-23 00:01:34,892 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-23 00:01:34,892 - DEBUG - Attempting to delete task ID 1
+2025-03-23 00:01:34,892 - INFO - ✅ Deleting task ID 1 (rowcount=1)
+2025-03-23 00:01:34,892 - INFO - Task ID 1 deleted successfully.
+2025-03-23 00:01:34,892 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-23 00:01:34,892 - DEBUG - 📂 Using database file: file::memory:?cache=shared

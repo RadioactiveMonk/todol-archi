@@ -1,9 +1,10 @@
 from backend.database.db_controller import DbController
+from tests.conftest import in_memory_connection
 
 
-def test_persistant_connection():
+def test_persistant_connection(in_memory_connection):
     # On crée un controller avec une base mémoire partagée
-    db = DbController("file::memory:?cache=shared")
+    db = in_memory_connection
 
     # On insère une ligne manuellement
     insert_query = """
@@ -25,8 +26,8 @@ def test_persistant_connection():
     assert result[0] == "Titre test"
 
 
-def test_update_task_direct_sql():
-    db = DbController("file::memory:?cache=shared")
+def test_update_task_direct_sql(in_memory_connection):
+    db = in_memory_connection
 
     # Insertion initiale
     insert_query = """
@@ -52,8 +53,8 @@ def test_update_task_direct_sql():
     assert result == ("New Title", "New Note")
 
 
-def test_delete_task_direct_sql():
-    db = DbController("file::memory:?cache=shared")
+def test_delete_task_direct_sql(in_memory_connection):
+    db = in_memory_connection
 
     # Insertion
     task_id = db._execute_query(

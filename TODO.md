@@ -18,7 +18,7 @@
 - [x] Créer `self.conn` dans `DbController.__init__()`
 - [x] Modifier `_execute_query()` pour utiliser `self.conn`
 - [x] Fermer la connexion dans `__del__()`
-- [x] Vérifier l'impact sur les tests `in_memory_db`
+- [x] Vérifier l'impact sur les tests `in_memory_db`, 'in_memory_connection'
 
 ---
 
@@ -55,5 +55,21 @@
 - [ ] Mesurer l’impact de `@lru_cache` sur les perfs globales
 
 ---
+
+## ✅ Étape 7 – Couverture des tests unitaires
+
+### 🧱 Backend
+
+- [x] `test_connection.py` – Requêtes SQL directes (INSERT, UPDATE, DELETE)
+- [x] `test_database.py` – Fonctions métier (`add_task`, `update_task`, `delete_task`)
+
+### 🧠 À venir
+
+- [ ] `test_task_handlers.py` – Handlers `edit_handler`, `delete_handler`
+- [ ] `test_cached_utils.py` – Fonctions avec `@lru_cache`
+- [ ] `test_task_table_model.py` – (si tu veux tester la logique d’affichage plus tard)
+
+---
+
 
 _Fichier généré automatiquement — Dernière mise à jour : {{ aujourd’hui }}_
