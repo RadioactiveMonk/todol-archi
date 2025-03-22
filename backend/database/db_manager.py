@@ -104,7 +104,6 @@ class DbManager:
         updates = [f"{k} = ?" for k in filtered_fields]
         params = list(filtered_fields.values())
 
-
         if not updates:
             logger.info("No fields to update for task ID %d", task_id)
             return False  # Rien à mettre à jour
@@ -113,7 +112,9 @@ class DbManager:
         params.append(task_id)
 
         try:
-            result = self.controller._execute_query(query, tuple(params), rowcount=True)
+            result = self.controller.execute_and_confirm(
+                query, tuple(params), log_context=f"Updating task ID {task_id}"
+            )
 
             if result is None:
                 logger.warning(
@@ -192,7 +193,9 @@ class DbManager:
         logger.debug(f"Attempting to delete task ID {task_id}")
 
         try:
-            result = self.controller._execute_query(query, params, rowcount=True)
+            result = self.controller.execute_and_confirm(
+                query, (task_id,), log_context=f"Deleting task ID {task_id}"
+            )
 
             if result == 0:
                 logger.warning(f"Task ID {task_id} not found in DB, deletion failed.")
@@ -204,7 +207,3 @@ class DbManager:
         except sqlite3.DatabaseError as e:
             logger.error(f"Couldn't delete task ID {task_id}: {e}")
             return False
-
-
-
-        
