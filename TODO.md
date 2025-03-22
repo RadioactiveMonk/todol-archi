@@ -15,7 +15,7 @@
 
 ## 🔁 Étape 2 – Connexion persistante (DbController)
 
-- [ ] Créer `self.conn` dans `DbController.__init__()`
+- [x] Créer `self.conn` dans `DbController.__init__()`
 - [ ] Modifier `_execute_query()` pour utiliser `self.conn`
 - [ ] Fermer la connexion dans `__del__()`
 - [ ] Vérifier l'impact sur les tests `in_memory_db`

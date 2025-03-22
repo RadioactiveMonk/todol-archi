@@ -10,12 +10,13 @@ class DbController:
     def __init__(self, db: str = str(DB_FILE)) -> None:
         """Setting up db path"""
         self.db = db
+        self.conn = sqlite3.connect(self.db, uri=True, check_same_thread=False)
         self._create_table()
 
     def _execute_query(
         self,
         query: str,
-        params: tuple = (),
+        params: tuple[Any, ...] = (),
         fetchone: bool = False,
         fetchall: bool = False,
         lastrowid: bool = False,
@@ -56,32 +57,28 @@ class DbController:
         logger.debug(f"📂 Using database file: {self.db}")
 
         try:
-            with sqlite3.connect(self.db, uri=True, check_same_thread=False) as conn:
+            cursor = self.conn.cursor()
+            cursor.execute("BEGIN TRANSACTION;")
+            cursor.execute(query, params)
 
-                # uri, pour les tests et eviter la duplication de tables "file::memory:?cache=shared"
-                cursor = conn.cursor()
-                cursor.execute("BEGIN TRANSACTION;")
-                cursor.execute(query, params)
+            result_options = {
+                "fetchone": cursor.fetchone if fetchone else None,
+                "fetchall": cursor.fetchall if fetchall else None,
+                "lastrowid": cursor.lastrowid if lastrowid else None,
+                "rowcount": cursor.rowcount if rowcount else None,
+            }
 
-                result_options = {
-                    "fetchone": cursor.fetchone if fetchone else None,
-                    "fetchall": cursor.fetchall if fetchall else None,
-                    "lastrowid": cursor.lastrowid if lastrowid else None,
-                    "rowcount": cursor.rowcount if rowcount else None,
-                }
+            result = next(
+                (
+                    value() if callable(value) else value
+                    for key, value in result_options.items()
+                    if value
+                ),
+                None,
+            )
 
-                result = next(
-                    (
-                        value() if callable(value) else value
-                        for key, value in result_options.items()
-                        if value
-                    ),
-                    None,
-                )
-
-                conn.commit()
-
-                return result
+            self.conn.commit()
+            return result
 
         except sqlite3.DatabaseError as e:
             logger.error(f"SQL: '{e}'")
@@ -108,6 +105,44 @@ class DbController:
             logger.info(f"SQL: Table 'tasks' deleted")
         except sqlite3.DatabaseError as e:
             logger.error(f"SQL: Couldn't delete table 'tasks': {e}")
+
+    def __del__(self):
+        """Close the connexion or log a warning."""
+        try:
+            self.conn.close()
+        except Exception as e:
+            logger.warning(f"Error closing DB connection: {e}")
+
+    def execute_and_confirm(
+        self,
+        query: str,
+        params: tuple[Any, ...] = (),
+        log_context: str = "",
+    ) -> bool:
+        """
+        Execute a modifying query (UPDATE, DELETE) and confirms that at least one row was affected.
+        Logs a warning if no change occurred.
+        """
+
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("BEGIN TRANSACTION;")
+            cursor.execute(query, params)
+            self.conn.commit()
+
+            # doit être différent de 0 si il y a eu une modification
+            affected = cursor.rowcount
+
+            if affected:
+                logger.info(f"✅ {log_context} (rowcount={affected})")
+                return True
+            else:
+                logger.warning(f"⚠️ {log_context} - No row affected (rowcount=0)")
+                return False
+
+        except sqlite3.DatabaseError as e:
+            logger.error(f"❌ {log_context} - SQL error: {e}")
+            return False
 
     def debug_message(self, **kwargs):
         """Generate a dynamic SQL debug message"""

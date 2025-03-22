@@ -1,110 +1,19 @@
-2025-03-22 03:04:26,177 - DEBUG - Attempting to create table
-2025-03-22 03:04:26,177 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 03:04:26,177 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 03:04:26,177 - INFO - SQL: table 'tasks' created
-2025-03-22 03:04:26,177 - DEBUG - Attempting to create table
-2025-03-22 03:04:26,177 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 03:04:26,177 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 03:04:26,177 - INFO - SQL: table 'tasks' created
-2025-03-22 03:04:26,177 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, '...', '2025-01-01 12:00', 'To delete', '...') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
-2025-03-22 03:04:26,177 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 03:04:26,177 - INFO - Task added: 2
-2025-03-22 03:04:26,177 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (2,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 03:04:26,178 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 03:04:26,178 - DEBUG - Attempting to delete task ID 2
-2025-03-22 03:04:26,178 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (2,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
-2025-03-22 03:04:26,178 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 03:04:26,178 - INFO - Task ID 2 deleted successfully.
-2025-03-22 03:04:26,178 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 03:04:26,178 - DEBUG - 📂 Using database file: file::memory:?cache=shared
-2025-03-22 21:56:21,339 - DEBUG - Attempting to create table
-2025-03-22 21:56:21,339 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:21,339 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:21,340 - INFO - SQL: table 'tasks' created
-2025-03-22 21:56:21,340 - DEBUG - Attempting to create table
-2025-03-22 21:56:21,340 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:21,340 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:21,340 - INFO - SQL: table 'tasks' created
-2025-03-22 21:56:21,393 - INFO - Theme default appliqué avec succès !
-2025-03-22 21:56:21,435 - DEBUG - Attempting to create table
-2025-03-22 21:56:21,435 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:21,435 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:21,435 - INFO - SQL: table 'tasks' created
-2025-03-22 21:56:21,490 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:21,490 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:34,589 - INFO - Theme dark appliqué avec succès !
-2025-03-22 21:56:40,782 - DEBUG - Attempting to create table
-2025-03-22 21:56:40,782 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:40,783 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:40,783 - INFO - SQL: table 'tasks' created
-2025-03-22 21:56:43,934 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, 'Work', '2025-03-23 21:56', 'test', '') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
-2025-03-22 21:56:43,934 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:43,951 - INFO - Task added: 10
-2025-03-22 21:56:43,952 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:43,952 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:47,417 - DEBUG - Attempting to create table
-2025-03-22 21:56:47,417 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:47,417 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:47,418 - INFO - SQL: table 'tasks' created
-2025-03-22 21:56:58,689 - DEBUG - 🗑 Suppression demandée pour la tâche 10
-2025-03-22 21:56:58,690 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (10,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:58,690 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:58,691 - DEBUG - Attempting to delete task ID 10
-2025-03-22 21:56:58,691 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (10,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
-2025-03-22 21:56:58,691 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 21:56:58,707 - INFO - Task ID 10 deleted successfully.
-2025-03-22 21:56:58,707 - INFO - 🗑 Task deleted successfully (id=10)
-2025-03-22 21:56:58,707 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 21:56:58,708 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:03:38,389 - DEBUG - Attempting to create table
-2025-03-22 22:03:38,389 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:03:38,389 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:03:38,389 - INFO - SQL: table 'tasks' created
-2025-03-22 22:03:38,389 - DEBUG - Attempting to create table
-2025-03-22 22:03:38,389 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:03:38,389 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:03:38,390 - INFO - SQL: table 'tasks' created
-2025-03-22 22:03:38,397 - INFO - Theme dark appliqué avec succès !
-2025-03-22 22:03:38,404 - DEBUG - Attempting to create table
-2025-03-22 22:03:38,404 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:03:38,404 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:03:38,404 - INFO - SQL: table 'tasks' created
-2025-03-22 22:03:38,422 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:03:38,422 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:03:49,742 - INFO - Theme default appliqué avec succès !
-2025-03-22 22:03:52,063 - DEBUG - Attempting to create table
-2025-03-22 22:03:52,063 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:03:52,063 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:03:52,064 - INFO - SQL: table 'tasks' created
-2025-03-22 22:04:20,356 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, 'Work', '2025-03-27 22:03', 'Todol', 'Task manager') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
-2025-03-22 22:04:20,356 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:04:20,377 - INFO - Task added: 11
-2025-03-22 22:04:20,377 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:04:20,377 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:04:38,241 - DEBUG - Attempting to create table
-2025-03-22 22:04:38,241 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:04:38,241 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:04:38,242 - INFO - SQL: table 'tasks' created
-2025-03-22 22:04:48,069 - DEBUG - Attempting to create table
-2025-03-22 22:04:48,070 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:04:48,070 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:04:48,071 - INFO - SQL: table 'tasks' created
-2025-03-22 22:04:54,651 - DEBUG - Attempting to create table
-2025-03-22 22:04:54,651 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:04:54,651 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:04:54,653 - INFO - SQL: table 'tasks' created
-2025-03-22 22:05:53,834 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, 'Work', '2025-04-06 22:03', 'Simply simple', '') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
-2025-03-22 22:05:53,834 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:05:53,851 - INFO - Task added: 12
-2025-03-22 22:05:53,851 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:05:53,851 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:06:06,828 - DEBUG - 🗑 Suppression demandée pour la tâche 12
-2025-03-22 22:06:06,829 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (12,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:06:06,829 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:06:06,830 - DEBUG - Attempting to delete task ID 12
-2025-03-22 22:06:06,830 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (12,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
-2025-03-22 22:06:06,830 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
-2025-03-22 22:06:06,847 - INFO - Task ID 12 deleted successfully.
-2025-03-22 22:06:06,847 - INFO - 🗑 Task deleted successfully (id=12)
-2025-03-22 22:06:06,847 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
-2025-03-22 22:06:06,847 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-22 23:21:02,285 - DEBUG - Attempting to create table
+2025-03-22 23:21:02,285 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-22 23:21:02,285 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-22 23:21:02,285 - INFO - SQL: table 'tasks' created
+2025-03-22 23:21:02,285 - DEBUG - Attempting to create table
+2025-03-22 23:21:02,285 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-22 23:21:02,285 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-22 23:21:02,285 - INFO - SQL: table 'tasks' created
+2025-03-22 23:21:02,285 - DEBUG - QUERY: INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?); | PARAMS: (0, '...', '2025-01-01 12:00', 'To delete', '...') | FETCHONE: False | FETCHALL: False | LASTROWID: True | ROWCOUNT: False
+2025-03-22 23:21:02,285 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-22 23:21:02,285 - INFO - Task added: 1
+2025-03-22 23:21:02,286 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks WHERE id = ? | PARAMS: (1,) | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-22 23:21:02,286 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-22 23:21:02,286 - DEBUG - Attempting to delete task ID 1
+2025-03-22 23:21:02,286 - DEBUG - QUERY: DELETE FROM tasks WHERE id = ? | PARAMS: (1,) | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: True
+2025-03-22 23:21:02,286 - DEBUG - 📂 Using database file: file::memory:?cache=shared
+2025-03-22 23:21:02,286 - INFO - Task ID 1 deleted successfully.
+2025-03-22 23:21:02,286 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-22 23:21:02,286 - DEBUG - 📂 Using database file: file::memory:?cache=shared
