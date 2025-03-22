@@ -47,5 +47,7 @@ Libre à toi de t’en inspirer, le forker, ou contribuer ✌️
 ## 👤 Auteur: doyouDance
 
 Ce projet est un terrain d’apprentissage avancé, mené avec rigueur et souci de qualité de code.
+L'objectif n'est pas une application parfaite et multifonctionnelle dans son utilisation, 
+mais optimisée dans sa conception dans un premier temps.
 
 
