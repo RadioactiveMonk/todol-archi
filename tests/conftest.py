@@ -17,9 +17,9 @@ TEMP_DIR = Path("tests/temp")
 
 @pytest.fixture
 def in_memory_db():
-    db_controller = DbController(":memory:")
-    db_manager = DbManager(controller=db_controller)
+    db_controller = DbController("file::memory:?cache=shared")
     db_controller._create_table()
+    db_manager = DbManager(controller=db_controller)
     return db_manager
 
 

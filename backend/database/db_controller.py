@@ -53,8 +53,12 @@ class DbController:
                 rowcount=rowcount,
             )
         )
+        logger.debug(f"📂 Using database file: {self.db}")
+
         try:
-            with sqlite3.connect(self.db) as conn:
+            with sqlite3.connect(self.db, uri=True, check_same_thread=False) as conn:
+
+                # uri, pour les tests et eviter la duplication de tables "file::memory:?cache=shared"
                 cursor = conn.cursor()
                 cursor.execute("BEGIN TRANSACTION;")
                 cursor.execute(query, params)
@@ -78,7 +82,7 @@ class DbController:
                 conn.commit()
 
                 return result
-            
+
         except sqlite3.DatabaseError as e:
             logger.error(f"SQL: '{e}'")
             return None

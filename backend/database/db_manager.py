@@ -11,7 +11,7 @@ class DbManager:
 
     def __init__(self, controller: DbController | None = None) -> None:
         """Setting up DB with DbController()"""
-        self.controller = controller or DbController()
+        self.controller = controller if controller else DbController()
 
     def add_task(self, task: Task) -> int | None:
         """Add a task in the DB.
@@ -100,8 +100,10 @@ class DbManager:
             "notes": notes,
         }
 
-        updates = [f"{key} = ?" for key, value in fields.items() if value is not None]
-        params = [value for value in fields.values() if value is not None]
+        filtered_fields = {k: v for k, v in fields.items() if v is not None}
+        updates = [f"{k} = ?" for k in filtered_fields]
+        params = list(filtered_fields.values())
+
 
         if not updates:
             logger.info("No fields to update for task ID %d", task_id)
