@@ -48,6 +48,10 @@ Libre à toi de t’en inspirer, le forker, ou contribuer ✌️
 
 Ce projet est un terrain d’apprentissage avancé, mené avec rigueur et souci de qualité de code.
 L'objectif n'est pas une application parfaite et multifonctionnelle dans son utilisation, 
-mais optimisée dans sa conception dans un premier temps.
+mais optimisée dans sa conception dans un premier temps. 
+
+## Note pour les autodidactes tels que moi:
+
+Soyez curieux, car quand j'ai commencé ce projet, je codais encore avec Sam, Alice, Tom et toute l'équipe (des étudiants ou des employés bien connus). Ces bases sont nécessaires, mais rien ne vous amènera plus haut que de vous lancer dans un projet, quel qu'il soit. Si vous ne voyez pas ou vous allez avec ce que vous apprenez, lancez vous ! Il y a 3 mois, je ne savais même pas faire une requête SQL. Aujourd'hui, je sais gérer une base de donnée directement depuis mon terminal. Je tenais à faire cette remarque, je ne suis pas un expert, mais je suis sûr qu'ils vous diront la même chose. ✌️✌️
 
 
