@@ -1,10 +1,14 @@
 # Todol-Pro
 
-> Application minimaliste de gestion de tâches moderne et modulaire, pensée pour être maintenable, testable et extensible.
+> Application minimaliste de gestion de tâches, moderne et modulaire, pensée pour être maintenable, testable et extensible.
 
 ---
 
-## 🚀 Présentation
+[![Tests](https://img.shields.io/badge/tests-pytest-green?style=flat-square)](https://pytest.org)
+[![Python](https://img.shields.io/badge/python-3.12+-blue?style=flat-square)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)](./LICENSE)
+
+## ℹ️ Présentation
 
 **Todol-Pro** est une application de type "To-Do List", développée en Python avec PyQt6. C'est une version améliorée de mon premier projet Python 'Todol' (gestion de tâches en CLI). Cette nouvelle version est dotée :
 
@@ -30,59 +34,6 @@ Elle est conçue pour évoluer vers une API REST (FastAPI) et une architecture p
 
 ---
 
-## 📁 Structure du projet (simplifiée)
-
-todol-pro/ 
-├── backend/
-│   ├── core/
-│   ├── database/
-│   ├── handlers/
-│   ├── models/
-│   └── __init__.py
-├── configuration/
-│   ├── cell_properties.py
-│   ├── configs.py
-│   ├── constants.py
-│   ├── ipython_cfg.py
-│   └── __init__.py
-├── data/
-│   ├── settings.json
-│   └── tasks.db
-├── docs/
-├── gui/
-│   ├── containers/
-│   ├── controls/
-│   ├── delegates/
-│   ├── dialogs/
-│   ├── main_window.py
-│   ├── __init__.py
-│   └── resources/
-├── logs/
-│   ├── app.log
-│   └── errors.log
-├── scripts/
-├── tests/
-│   ├── conftest.py
-│   ├── temp/
-│   ├── test_add_task_dialog.py
-│   ├── test_constants.py
-│   ├── test_database.py
-│   ├── test_edit_parameters_dialog.py
-│   ├── test_settings.py
-│   ├── test_style_loader.py
-│   ├── test_task_handlers.py
-│   ├── test_task.py
-|   ├── __init__.py
-│   └── test_task_table_model.py
-├── requirements.txt
-├── LICENSE
-├── credits.txt
-├── setup.py
-├── README.md
-├── main.py
-├── pyproject.toml
-└── TODO.md
-
 ## ✨ Contribuer
 
 Même si le projet est mené en solo à des fins pédagogiques, toute suggestion est la bienvenue !
@@ -95,6 +46,6 @@ Libre à toi de t’en inspirer, le forker, ou contribuer ✌️
 
 ## 👤 Auteur: doyouDance
 
-Projet développé par un développeur passionné en quête de qualité, d’apprentissage et de maîtrise des outils pro.
+Ce projet est un terrain d’apprentissage avancé, mené avec rigueur et souci de qualité de code.
 
 
