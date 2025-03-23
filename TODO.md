@@ -10,6 +10,7 @@
 - [x] Isolation des handlers dans `TaskHandlers`
 - [x] Conversion de `tid` dans `Task` avec suivi dynamique
 - [x] Tests unitaires fonctionnels (add / update / delete)
+- [x] Refonte de 'settings_manager.py'
 
 ---
 
@@ -26,15 +27,15 @@
 
 ### 📁 `backend/core/cached_utils.py`
 
-- [ ] Ajouter `get_categories()` avec `@lru_cache`
-- [ ] Ajouter `get_stylesheet(theme)` avec `@lru_cache`
+- [x] Ajouter `get_categories()` avec `@lru_cache`
+- [x] Ajouter `get_stylesheet(theme)` avec `@lru_cache`
 - [ ] Ajouter (optionnel) `get_available_themes()` avec cache
 
 ---
 
 ## 🔁 Étape 4 – Tests des fonctions mises en cache
 
-- [ ] Créer `test_cached_utils.py`
+- [x] Créer `test_cached_utils.py`
 - [ ] Tester que `get_categories()` retourne bien une liste
 - [ ] Tester que `get_stylesheet()` retourne bien un contenu de `.qss`
 
