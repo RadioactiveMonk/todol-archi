@@ -15,7 +15,11 @@ from configuration.constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
 )
-from backend.core.settings_manager import SettingsManager
+from configuration.settings_manager import (
+    load_settings,
+    get_setting,
+    set_setting,
+)
 from backend.core.style_loader import load_stylesheet
 
 
@@ -26,8 +30,8 @@ class EditParametersDialog(QDialog):
 
     def __init__(self, parent: QWidget | None) -> None:
         super().__init__(parent)
-        self.settings = SettingsManager()
-        self.current_theme = self.settings.get("theme", "default")
+        self.load_settings = load_settings()
+        self.get_current_theme = get_setting("theme")
 
         self.setup_ui()
 
@@ -42,7 +46,7 @@ class EditParametersDialog(QDialog):
         #  Utilisation des sélecteurs propres
         self.category_selector = CategorySelector()
         self.theme_selector = ThemeSelector()
-        self.theme_selector.setCurrentText(self.current_theme)
+        self.theme_selector.setCurrentText(self.get_current_theme)
 
         # Ajout des catégories
         add_category_layout = QHBoxLayout()
@@ -83,20 +87,22 @@ class EditParametersDialog(QDialog):
         """Ajoute une catégorie via CategorySelector"""
         category_name = self.add_category_input.text().strip()
         if category_name:
-            self.category_selector.add_category(category_name)
-            self.add_category_input.clear()
-            self.SETTINGS_UPDATED.emit(
-                self.settings.get_all()
-            )  # 🔥 Signal de mise à jour
+            current = get_setting("categories", [])
+            if category_name not in current:
+                current.append(category_name)
+                set_setting("categories", current)
+                self.SETTINGS_UPDATED.emit(load_settings())
+                self.add_category_input.clear()
+                self.category_selector.add_category(category_name)
 
     def accept(self) -> None:
         """Applique immédiatement le thème et ferme la boîte de dialogue"""
         new_theme = self.theme_selector.currentText()
-        self.settings.set("theme", new_theme)
+        set_setting("theme", new_theme)
 
         app = QApplication.instance()
         if isinstance(app, QApplication):
             load_stylesheet(app)
 
-        self.SETTINGS_UPDATED.emit(self.settings.get_all())
+        self.SETTINGS_UPDATED.emit(load_settings())
         self.close()

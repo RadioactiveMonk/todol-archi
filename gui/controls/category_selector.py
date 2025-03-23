@@ -1,37 +1,26 @@
-from PyQt6.QtWidgets import QComboBox, QWidget
-from backend.core.settings_manager import SettingsManager
-from configuration.constants import CATEGORIES
+from PyQt6.QtWidgets import QComboBox
+from backend.core.cached_utils import get_categories
+
 
 
 class CategorySelector(QComboBox):
     """Menu déroulant pour la sélection de catégorie avec gestion intégrée."""
 
-    def __init__(self, parent: QWidget | None = None) -> None:
+    def __init__(self, parent=None):
         super().__init__(parent)
-        self.settings = SettingsManager()
         self.refresh_categories()
 
     def refresh_categories(self):
-        """Recharge les catégories depuis settings.json"""
-        categories = self.settings.get("categories", CATEGORIES)
         self.clear()
-        self.addItems(categories)
+        self.addItems(get_categories())
 
-    def add_category(self, category_name: str):
-        """Ajoute une catégorie et met à jour la liste"""
-        if category_name and category_name not in [
-            self.itemText(i) for i in range(self.count())
-        ]:
-            categories = self.settings.get("categories", CATEGORIES)
-            categories.append(category_name)
-            self.settings.update("categories", categories)
-            self.refresh_categories()  # 🔥 Rafraîchit l'affichage
+    def add_category(self, category: str) -> None:
+        """Ajoute une nouvelle catégorie si elle n'existe pas encore"""
+        if category not in get_categories():
+            self.addItem(category)
+    
+    def remove_category(self, category: str):
+        """Supprime une catégorie existante"""
+        if category in get_categories():
+            self.removeItem()
 
-    def remove_category(self):
-        """Supprime la catégorie sélectionnée"""
-        category_name = self.currentText()
-        categories = self.settings.get("categories", [])
-        if category_name in categories:
-            categories.remove(category_name)
-            self.settings.update("categories", categories)
-            self.refresh_categories()  # 🔥 Mise à jour de l'affichage
