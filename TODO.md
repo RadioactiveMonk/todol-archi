@@ -1,76 +1,58 @@
-# Todol-Pro — Roadmap Backend & Optimisation
+# ✅ Todol-Pro – Plan de développement avant packaging
 
 ---
 
-## ✅ Étape 1 – Refonte Backend & Base de données
+## 🔁 Étape 1 – Connexion persistante (DbController)
 
-- [x] Structure du backend avec `DbController` et `DbManager`
-- [x] Injection de `DbController` dans `DbManager`
-- [x] Tests en `file::memory:?cache=shared` pour la base
-- [x] Isolation des handlers dans `TaskHandlers`
-- [x] Conversion de `tid` dans `Task` avec suivi dynamique
-- [x] Tests unitaires fonctionnels (add / update / delete)
-- [x] Refonte de 'settings_manager.py'
+- [x] Connexion unique avec `self.conn`
+- [x] `_execute_query()` mis à jour pour l'utiliser
+- [x] `__del__()` pour fermeture propre
+- [x] Tests : `test_connection.py`, `test_database.py` validés ✅
 
 ---
 
-## 🔁 Étape 2 – Connexion persistante (DbController)
+## ⚡ Étape 2 – Mise en cache `@lru_cache`
 
-- [x] Créer `self.conn` dans `DbController.__init__()`
-- [x] Modifier `_execute_query()` pour utiliser `self.conn`
-- [x] Fermer la connexion dans `__del__()`
-- [x] Vérifier l'impact sur les tests `in_memory_db`, 'in_memory_connection'
-
----
-
-## 🔁 Étape 3 – Mise en cache (`lru_cache`) des accès fichiers
-
-### 📁 `backend/core/cached_utils.py`
-
-- [x] Ajouter `get_categories()` avec `@lru_cache`
-- [x] Ajouter `get_stylesheet(theme)` avec `@lru_cache`
-- [x] Ajouter (optionnel) `get_available_themes()` avec cache
+- [x] `get_categories()` dans `cached_utils.py`
+- [x] `get_stylesheet(theme)` dans `cached_utils.py`
+- [x] `get_available_themes()` → liste dynamique des `.qss`
+- [x] Tests en IPython → ✅
 
 ---
 
-## 🔁 Étape 4 – Tests des fonctions mises en cache
+## ⚙️ Étape 3 – Paramètres (Refacto)
 
-- [x] Créer `test_cached_utils.py`
-- [ ] Tester que `get_categories()` retourne bien une liste
-- [ ] Tester que `get_stylesheet()` retourne bien un contenu de `.qss`
-
----
-
-## 🔁 Étape 5 – Intégration dans l’app
-
-- [ ] Remplacer lecture directe des `.qss` par `get_stylesheet(theme)`
-- [ ] Utiliser `get_categories()` dans les dialogues si besoin
-- [ ] Ajouter un log (facultatif) à l’appel des fonctions cachées
+- [x] Nouveau `settings_manager.py` simple et pur
+- [x] `get_setting()`, `set_setting()` → centralisés
+- [x] Plus de cache maison, plus de dataclass
 
 ---
 
-## 🧠 Étape 6 – Bonus (profiling & cache invalidation)
+## 🧩 Étape 4 – UI (Paramètres / thèmes / catégories)
 
-- [ ] Ajouter un système de `clear_cache()` si fichier modifié
-- [ ] Ajouter `@profile` ou `perf_counter()` sur certaines fonctions
-- [ ] Mesurer l’impact de `@lru_cache` sur les perfs globales
-
----
-
-## ✅ Étape 7 – Couverture des tests unitaires
-
-### 🧱 Backend
-
-- [x] `test_connection.py` – Requêtes SQL directes (INSERT, UPDATE, DELETE)
-- [x] `test_database.py` – Fonctions métier (`add_task`, `update_task`, `delete_task`)
-- [x] 'test_cached_utils.py - Fonctions en lru_cache: récupère les catégories et les thèmes.
-
-### 🧠 À venir
-
-- [ ] `test_task_handlers.py` – Handlers `edit_handler`, `delete_handler`
-- [ ] `test_task_table_model.py` – (si tu veux tester la logique d’affichage plus tard)
+- [x] `EditParametersDialog` reconnecté (get/set, signal, cache)
+- [x] `CategorySelector` + JSON synchro
+- [x] `ThemeSelector` + thèmes dynamiques
+- [x] `reload_theme(app)` propre, centralisé
+- [x] Application live du thème sans redémarrage ✅
 
 ---
 
+## 🧪 Étape 5 – Tests IPython
 
-_Fichier généré automatiquement — Dernière mise à jour : {{ aujourd’hui }}_
+- [x] Vérif complète du flux `settings.json` → UI
+- [x] Tests du cache (misses/hits)
+- [x] Tests de rechargement live
+
+---
+
+## 🔜 Étapes suivantes 
+
+- [ ] Revoir la gestion du thème (fusion `load_stylesheet` / `reload_theme`)
+- [ ] Ajouter un bouton “🔁 Reset default settings”
+- [ ] Préparer le passage à FastAPI (profil, endpoints, pydantic ?)
+- [ ] Refactor léger `theme/category` pour centraliser
+
+---
+
+📅 Dernière mise à jour : {{ 23-03-25 }}
