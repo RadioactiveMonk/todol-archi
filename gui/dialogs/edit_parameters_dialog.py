@@ -65,7 +65,7 @@ class EditParametersDialog(QDialog):
         self.remove_category_button = QPushButton("➖", self)
         self.remove_category_button.setMaximumWidth(40)
         self.remove_category_button.clicked.connect(
-            self.category_selector.remove_category
+            self.remove_selected_category
         )
 
         remove_category_layout.addWidget(self.category_selector)
@@ -84,16 +84,19 @@ class EditParametersDialog(QDialog):
         self.setLayout(main_layout)
 
     def add_category(self) -> None:
-        """Ajoute une catégorie via CategorySelector"""
+        """Ajoute une nouvelle catégorie et met à jour l'UI + JSON"""
         category_name = self.add_category_input.text().strip()
         if category_name:
-            current = get_setting("categories", [])
-            if category_name not in current:
-                current.append(category_name)
-                set_setting("categories", current)
-                self.SETTINGS_UPDATED.emit(load_settings())
-                self.add_category_input.clear()
-                self.category_selector.add_category(category_name)
+            self.category_selector.add_category(category_name)
+            self.SETTINGS_UPDATED.emit(load_settings())
+            self.add_category_input.clear()
+
+    def remove_selected_category(self) -> None:
+        """Supprime la catégorie sélectionnée"""
+        category = self.category_selector.currentText()
+        if category:
+            self.category_selector.remove_category(category)
+            self.SETTINGS_UPDATED.emit(load_settings())
 
     def accept(self) -> None:
         """Applique immédiatement le thème et ferme la boîte de dialogue"""

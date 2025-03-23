@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QComboBox
 from backend.core.cached_utils import get_categories
-
+from configuration.settings_manager import get_setting, set_setting
+from backend.core.logger import logger
 
 
 class CategorySelector(QComboBox):
@@ -15,12 +16,23 @@ class CategorySelector(QComboBox):
         self.addItems(get_categories())
 
     def add_category(self, category: str) -> None:
-        """Ajoute une nouvelle catégorie si elle n'existe pas encore"""
-        if category not in get_categories():
+        """Ajoute une catégorie dans le sélecteur et dans le fichier settings"""
+        current = get_setting("categories", [])
+        if category not in current:
+            current.append(category)
+            set_setting("categories", current)
             self.addItem(category)
-    
-    def remove_category(self, category: str):
-        """Supprime une catégorie existante"""
-        if category in get_categories():
-            self.removeItem()
 
+    def remove_category(self, category: str) -> None:
+        """Supprime une catégorie dans le sélecteur et dans le fichier settings"""
+        index = self.findText(category)
+        if index == -1:
+            logger.warning(f"Category '{category}' not found in selector")
+            return
+
+        self.removeItem(index)
+
+        current = get_setting("categories", [])
+        if category in current:
+            current.remove(category)
+            set_setting("categories", current)
