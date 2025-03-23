@@ -62,6 +62,7 @@
 
 - [x] `test_connection.py` – Requêtes SQL directes (INSERT, UPDATE, DELETE)
 - [x] `test_database.py` – Fonctions métier (`add_task`, `update_task`, `delete_task`)
+- [x] 'test_cached_utils.py - Fonctions en lru_cache: récupère les catégories et les thèmes.
 
 ### 🧠 À venir
 

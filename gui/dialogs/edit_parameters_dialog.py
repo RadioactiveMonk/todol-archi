@@ -92,7 +92,7 @@ class EditParametersDialog(QDialog):
     def accept(self) -> None:
         """Applique immédiatement le thème et ferme la boîte de dialogue"""
         new_theme = self.theme_selector.currentText()
-        self.settings.update("theme", new_theme)
+        self.settings.set("theme", new_theme)
 
         app = QApplication.instance()
         if isinstance(app, QApplication):
