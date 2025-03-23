@@ -29,7 +29,7 @@
 
 - [x] Ajouter `get_categories()` avec `@lru_cache`
 - [x] Ajouter `get_stylesheet(theme)` avec `@lru_cache`
-- [ ] Ajouter (optionnel) `get_available_themes()` avec cache
+- [x] Ajouter (optionnel) `get_available_themes()` avec cache
 
 ---
 
@@ -68,7 +68,6 @@
 ### 🧠 À venir
 
 - [ ] `test_task_handlers.py` – Handlers `edit_handler`, `delete_handler`
-- [ ] `test_cached_utils.py` – Fonctions avec `@lru_cache`
 - [ ] `test_task_table_model.py` – (si tu veux tester la logique d’affichage plus tard)
 
 ---
