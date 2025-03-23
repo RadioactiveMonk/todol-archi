@@ -16,3 +16,11 @@ def get_stylesheet(theme: str = DEFAULT_THEME) -> str:
     """Retourne le contenu QSS du thème donné (cache activé)"""
     qss_path = STYLESHEET_PATH / f"{theme}.qss"
     return qss_path.read_text(encoding="utf-8")
+
+
+@lru_cache
+def get_available_themes() -> list[str]:
+    """Retourne la liste des thèmes disponibles (.qss sans extension)"""
+    return [
+        file.stem for file in STYLESHEET_PATH.glob("*.qss") if file.is_file()
+    ]  # .stem = supprime l'extension | .glob: parcours le dossier | .is_file: si c'est un fichier
