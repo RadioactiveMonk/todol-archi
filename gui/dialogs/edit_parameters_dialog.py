@@ -20,7 +20,7 @@ from configuration.settings_manager import (
     get_setting,
     set_setting,
 )
-from backend.core.style_loader import load_stylesheet
+from backend.core.style_loader import reload_theme
 
 
 class EditParametersDialog(QDialog):
@@ -30,8 +30,6 @@ class EditParametersDialog(QDialog):
 
     def __init__(self, parent: QWidget | None) -> None:
         super().__init__(parent)
-        self.load_settings = load_settings()
-        self.get_current_theme = get_setting("theme")
 
         self.setup_ui()
 
@@ -46,7 +44,7 @@ class EditParametersDialog(QDialog):
         #  Utilisation des sélecteurs propres
         self.category_selector = CategorySelector()
         self.theme_selector = ThemeSelector()
-        self.theme_selector.setCurrentText(self.get_current_theme)
+        self.theme_selector.setCurrentText(get_setting("theme"))
 
         # Ajout des catégories
         add_category_layout = QHBoxLayout()
@@ -64,9 +62,7 @@ class EditParametersDialog(QDialog):
         remove_category_layout = QHBoxLayout()
         self.remove_category_button = QPushButton("➖", self)
         self.remove_category_button.setMaximumWidth(40)
-        self.remove_category_button.clicked.connect(
-            self.remove_selected_category
-        )
+        self.remove_category_button.clicked.connect(self.remove_selected_category)
 
         remove_category_layout.addWidget(self.category_selector)
         remove_category_layout.addWidget(self.remove_category_button)
@@ -102,10 +98,8 @@ class EditParametersDialog(QDialog):
         """Applique immédiatement le thème et ferme la boîte de dialogue"""
         new_theme = self.theme_selector.currentText()
         set_setting("theme", new_theme)
-
         app = QApplication.instance()
-        if isinstance(app, QApplication):
-            load_stylesheet(app)
+        reload_theme(app)
 
         self.SETTINGS_UPDATED.emit(load_settings())
         self.close()
