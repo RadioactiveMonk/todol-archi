@@ -1,4 +1,4 @@
-# ✅ Todol-Pro – Plan de développement avant packaging
+# ✅ Todol-Pro – Plan de refactoring #777
 
 ---
 
@@ -44,15 +44,64 @@
 - [x] Tests du cache (misses/hits)
 - [x] Tests de rechargement live
 
----
 
-## 🔜 Étapes suivantes 
-
-- [ ] Revoir la gestion du thème (fusion `load_stylesheet` / `reload_theme`)
-- [ ] Ajouter un bouton “🔁 Reset default settings”
-- [ ] Préparer le passage à FastAPI (profil, endpoints, pydantic ?)
-- [ ] Refactor léger `theme/category` pour centraliser
+# ✅ Todol-Pro – Feuille de route finale
 
 ---
 
-📅 Dernière mise à jour : {{ 23-03-25 }}
+## 1. Dernières fonctionnalités de base à implémenter
+
+- [ ] Toggle status centralisé (`status_handler.py`)
+- [ ] Clic sur colonne “Status” via `EditDelegate`
+- [ ] Couleur dynamique dans `TaskTableModel` (au lieu de l’emoji)
+- [ ] Barre de recherche opérationnelle (`SearchBar`)
+- [ ] Bouton “Reset paramètres par défaut”
+
+---
+
+## 2. Peaufinage UI / UX
+
+- [ ] Uniformiser les logs (thèmes, tâches, erreurs)
+- [ ] Gérer les cas limites (champ vide, doublon, suppression vide, etc.)
+- [ ] Réorganiser les composants si besoin (`components/`, `delegates/`, etc.)
+
+---
+
+## 3. Refactoring global #778
+
+- [ ] Relecture fichier par fichier (comme `DbController`)
+- [ ] Centralisation logique (`style`, `status`, `handlers`, etc.)
+- [ ] Nettoyage code mort / import inutiles
+- [ ] Ajout type hints / docstrings manquants
+
+---
+
+## 4. Ajout d’une API (FastAPI)
+
+- [ ] `GET /tasks`
+- [ ] `POST /tasks`
+- [ ] `PATCH /tasks/{id}`
+- [ ] `DELETE /tasks/{id}`
+- [ ] `GET /categories`
+
+---
+
+## 5. Phase Tests avancés
+
+- [ ] Ajouter des tests API (si FastAPI)
+- [ ] Tests d’intégration logique (handlers / modèles)
+- [ ] Revoir couverture `pytest`
+
+---
+
+## 6. Industrialisation
+
+- [ ] README finalisé (structure, usage, installation)
+- [ ] Packaging propre (`pyproject.toml`, setup…)
+- [ ] `requirements.txt` mis à jour
+- [ ] Git / nettoyage branche
+- [ ] (Optionnel) Makefile ou script bash (`dev`, `test`, `clean`…)
+
+---
+
+📌 Dernière mise à jour : {{ 23-03-25 }}
