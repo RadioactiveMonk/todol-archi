@@ -4,7 +4,7 @@ from backend.core.logger import logger
 
 
 def toggle_task_status(task_id: int, db: DbManager) -> bool:
-    """Inverse le statut 'completed' d'une tâche donnée.
+    """Inverse le statut 'completed' d'une tâche donnée. (connecté dans task_table.py)
 
     Parameters
     ----------

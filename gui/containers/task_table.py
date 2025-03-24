@@ -1,5 +1,4 @@
-from PyQt6.QtWidgets import QTableView, QWidget, QHeaderView
-from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QTableView, QWidget
 from backend.models.task_table_model import TaskTableModel
 from backend.models.task_table_utils import (
     EDIT_COLUMN,
@@ -7,14 +6,18 @@ from backend.models.task_table_utils import (
     TASK_TABLE_HEADERS,
 )
 from gui.delegates.edit_delegate import EditDelegate
+from PyQt6.QtWidgets import QTableView, QAbstractItemView
+from PyQt6.QtCore import QModelIndex, QPoint
+from backend.handlers.status_handler import toggle_task_status
+from backend.database.db_manager import DbManager
 
 
 class TaskTable(QTableView):
     """Configuration graphique des tâches. Aucune logique métier, gérée par backend.TaskTableModel"""
 
-    def __init__(self, parent: QWidget) -> None:
+    def __init__(self, db: DbManager, parent: QWidget) -> None:
         super().__init__(parent)
-
+        self.db = db
         self.table_model = TaskTableModel(self)  # Connexion de la logique
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
@@ -50,3 +53,19 @@ class TaskTable(QTableView):
         """Connexion des icones aux signaux"""
         self.delegate.deleteClicked.connect(self.table_model.handle_delete_task)
         self.delegate.editClicked.connect(self.table_model.handle_edit_task)
+
+    def mousePressEvent(self, event):
+        """Gère le clic dans la colonne 'Status' pour inverser l'état d'une tâche"""
+        index: QModelIndex = self.indexAt(event.pos())
+        if index.isValid():
+            col = index.column()
+            row = index.row()
+
+            # Colonne 1 = 'Status' (completed)
+            if col == 1:
+                task_id = self.model().index(row, 0).data()
+                if toggle_task_status(task_id, self.db):
+                    self.table_model.refresh()
+
+        # Appelle le comportement normal du clic (sélection, etc.)
+        super().mousePressEvent(event)
