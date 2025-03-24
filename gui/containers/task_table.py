@@ -10,6 +10,7 @@ from PyQt6.QtWidgets import QTableView, QAbstractItemView
 from PyQt6.QtCore import QModelIndex, QPoint
 from backend.handlers.status_handler import toggle_task_status
 from backend.database.db_manager import DbManager
+from backend.core.logger import logger
 
 
 class TaskTable(QTableView):
@@ -54,7 +55,6 @@ class TaskTable(QTableView):
         self.delegate.deleteClicked.connect(self.table_model.handle_delete_task)
         self.delegate.editClicked.connect(self.table_model.handle_edit_task)
 
-
     def mousePressEvent(self, event):
         """Gère le clic dans la colonne 'Status' pour inverser l'état d'une tâche"""
         index: QModelIndex = self.indexAt(event.pos())
@@ -63,7 +63,7 @@ class TaskTable(QTableView):
             row = index.row()
 
             # Colonne 1 = 'Status' (completed)
-            if col == 1:
+            if col == 0:
                 task_id = self.table_model.index(row, 0).data()
                 if toggle_task_status(task_id, self.db):
                     self.table_model.refresh()

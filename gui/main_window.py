@@ -62,7 +62,7 @@ class MainWindow(QMainWindow):
         main_layout.addLayout(action_layout)  # Ajout du layout de recherche et boutons
 
         # Création du tableau des tâches personnalisé
-        self.task_table = TaskTable(self)
+        self.task_table = TaskTable(self.db)
         main_layout.addWidget(self.task_table)
 
         central_widget.setLayout(main_layout)

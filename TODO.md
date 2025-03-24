@@ -51,7 +51,7 @@
 
 ## 1. Dernières fonctionnalités de base à implémenter
 
-- [ ] Toggle status centralisé (`status_handler.py`)
+- [x] Toggle status centralisé (`status_handler.py`)
 - [ ] Clic sur colonne “Status” via `EditDelegate`
 - [ ] Couleur dynamique dans `TaskTableModel` (au lieu de l’emoji)
 - [ ] Barre de recherche opérationnelle (`SearchBar`)
