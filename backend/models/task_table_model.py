@@ -65,8 +65,10 @@ class TaskTableModel(QAbstractTableModel):
 
             self.task_handlers.toggle_task_status(task_id)
             task["completed"] = not task["completed"]
+            logger.debug(f"[setData] Toggle task ID {task_id} -> {task['completed']}")
             # Signale à Qt que les données ont changé (rafraîchissement de la cellule (x,y))
             self.dataChanged.emit(index, index)
+
             return True
         return False
 
