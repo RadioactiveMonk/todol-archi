@@ -58,7 +58,7 @@ class TaskTableModel(QAbstractTableModel):
 
         if role == Qt.ItemDataRole.DisplayRole:
             if column_name == STATUS_COLUMN:
-                return "✅" if task["completed"] else "🟨"
+                return "[ROCKED]" if task["completed"] else "[PENDING]"
 
             if column_name == EDIT_COLUMN:
                 return None
