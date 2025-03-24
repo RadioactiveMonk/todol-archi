@@ -1437,3 +1437,28 @@
 2025-03-24 18:09:16,540 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
 2025-03-24 18:09:16,540 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
 2025-03-24 18:09:16,541 - WARNING - [toggle_status] Task ID [PENDING] introuvable.
+2025-03-24 18:24:24,509 - DEBUG - Attempting to create table
+2025-03-24 18:24:24,510 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-24 18:24:24,510 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-24 18:24:24,510 - INFO - SQL: table 'tasks' created
+2025-03-24 18:24:24,510 - DEBUG - Attempting to create table
+2025-03-24 18:24:24,510 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-24 18:24:24,510 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-24 18:24:24,510 - INFO - SQL: table 'tasks' created
+2025-03-24 18:24:24,518 - INFO - /home/doyoudance/Desktop/Projects/todol-pro/data/settings.json loaded successfully
+2025-03-24 18:24:24,518 - INFO - 🎨 Theme 'dark' appliqué avec succès !
+2025-03-24 18:24:24,524 - DEBUG - Attempting to create table
+2025-03-24 18:24:24,524 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-24 18:24:24,524 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-24 18:24:24,525 - INFO - SQL: table 'tasks' created
+2025-03-24 18:24:24,543 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-24 18:24:24,543 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-24 18:24:27,732 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-24 18:24:27,732 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-24 18:24:27,732 - WARNING - [toggle_status] Task ID [PENDING] introuvable.
+2025-03-24 18:24:30,736 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-24 18:24:30,737 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-24 18:24:30,737 - WARNING - [toggle_status] Task ID [PENDING] introuvable.
+2025-03-24 18:24:31,225 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-24 18:24:31,225 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-24 18:24:31,225 - WARNING - [toggle_status] Task ID [PENDING] introuvable.
