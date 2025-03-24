@@ -4,12 +4,7 @@ from PyQt6.QtGui import QColor, QBrush, QFont
 from backend.database.db_manager import DbManager
 from backend.models.task import Task
 from configuration.cell_properties import get_flags
-from backend.models.task_table_utils import (
-    STATUS_COLUMN,
-    TASK_TABLE_HEADERS,
-    COLUMN_MAPPING,
-    EDIT_COLUMN,
-)
+from backend.models.task_table_utils import STATUS_COLUMN, TASK_TABLE_HEADERS
 from backend.handlers.task_handlers import TaskHandlers
 from backend.core.logger import logger
 from backend.models.task_table_utils import STATUS_DONE_UI, STATUS_PENDING_UI
@@ -17,7 +12,7 @@ from configuration.cell_properties import get_alignment
 
 
 class TaskTableModel(QAbstractTableModel):
-    """Modèle de données à afficher dans TaskTable (widgets.py)"""
+    """Data model for the task table"""
 
     def __init__(
         self,
@@ -25,7 +20,17 @@ class TaskTableModel(QAbstractTableModel):
         db: DbManager | None = None,
         task_handlers: TaskHandlers | None = None,
     ) -> None:
-        """Initialise les données à afficher pour chaque tâche"""
+        """Init the the model
+
+        Parameters
+        ----------
+        parent : QObject | None, optional
+            parent object, by default None
+        db : DbManager | None, optional
+            the database manager, by default None
+        task_handlers : TaskHandlers | None, optional
+            the task handlers, by default None
+        """
 
         super().__init__(parent)
         self.db = db if db is not None else DbManager()
@@ -34,15 +39,54 @@ class TaskTableModel(QAbstractTableModel):
         self.task_handlers = task_handlers if task_handlers else TaskHandlers()
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
-        """Retourne le nombre de lignes en fonction du nombre de tâches stockées."""
+        """Retuor the number of rows in the table
+
+        Parameters
+        ----------
+        parent : QModelIndex | None, optional
+            parent index, by default None
+
+        Returns
+        -------
+        int
+            the number of tasks
+        """
         return len(self.tasks)
 
-    def columnCount(self, parent: QModelIndex | None = QModelIndex()) -> int:
-        """Retourne le nombre de colonnes en fonction du nombre de sections dans le header"""
+    def columnCount(self, parent: QModelIndex | None = None) -> int:
+        """Return the number of columns in the table
+
+        Parameters
+        ----------
+        parent : QModelIndex | None, optional
+            parent index, by default None
+
+        Returns
+        -------
+        int
+            the number of columns
+        """
+
         return len(TASK_TABLE_HEADERS)
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int) -> Any:
-        """Retourne les noms des colonnes affichées dans le header du tableau."""
+        """Return the header data for the table
+
+        Parameters
+        ----------
+        section : int
+            column index
+        orientation : Qt.Orientation
+            horizontal or vertical
+        role : int
+            role of the data
+
+        Returns
+        -------
+        Any
+            the header data for columns
+        """
+
         if (
             orientation == Qt.Orientation.Horizontal
             and role == Qt.ItemDataRole.DisplayRole
@@ -54,6 +98,22 @@ class TaskTableModel(QAbstractTableModel):
     def setData(
         self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole
     ) -> bool:
+        """Set the data in the table
+
+        Parameters
+        ----------
+        index : QModelIndex
+            index of the cell
+        value : Any
+            value to set
+        role : int, optional
+            role of the data, by default Qt.ItemDataRole.EditRole
+
+        Returns
+        -------
+        bool
+            True if the data is set, False otherwise
+        """
         if not index.isValid() or role != Qt.ItemDataRole.EditRole:
             return False
 

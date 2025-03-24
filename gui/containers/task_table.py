@@ -7,7 +7,6 @@ from backend.models.task_table_utils import (
 )
 from gui.delegates.edit_delegate import EditDelegate
 from PyQt6.QtWidgets import QTableView
-from PyQt6.QtCore import QModelIndex
 from backend.handlers.task_handlers import TaskHandlers
 from backend.database.db_manager import DbManager
 from backend.core.logger import logger
@@ -15,21 +14,35 @@ from gui.delegates.status_delegate import StatusEditDelegate
 
 
 class TaskTable(QTableView):
-    """Configuration graphique des tâches. Aucune logique métier, gérée par backend.TaskTableModel"""
+    """Display the tasks in a table"""
 
-    def __init__(self, db: DbManager | None = None, parent: QWidget | None = None) -> None:
+    def __init__(
+        self, db: DbManager | None = None, parent: QWidget | None = None
+    ) -> None:
+        """Init the table: db, handlers, model, ui, delegates, signals
+
+        Parameters
+        ----------
+        db : DbManager | None, optional
+            the database manager, by default None
+        parent : QWidget | None, optional
+            the parent widget, by default None
+        """
+
         super().__init__(parent)
         self.db = db if db is not None else DbManager()
         self.task_handlers = TaskHandlers()
-        self.table_model = TaskTableModel(parent=self, db=self.db, task_handlers=self.task_handlers)  # Connexion de la logique
+        self.table_model = TaskTableModel(
+            parent=self, db=self.db, task_handlers=self.task_handlers
+        )  # Create the model
 
-        self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
+        self.setModel(self.table_model)  # Set the model to the table
         self.setup_ui()
         self.setup_delegates()
         self.setup_signals()
 
     def setup_ui(self):
-        """Configuration de l'affichage de la table"""
+        """Table UI setup"""
         self.setSortingEnabled(True)
         self.setAlternatingRowColors(True)
         self.setShowGrid(False)
@@ -46,7 +59,7 @@ class TaskTable(QTableView):
             self.setColumnWidth(col, width)
 
     def setup_delegates(self):
-        """Config de l'affichage des actions dans 'edit'"""
+        """Setup the delegates for the table"""
         self.delegate = EditDelegate(self)
         self.setItemDelegateForColumn(
             TASK_TABLE_HEADERS.index(EDIT_COLUMN), self.delegate
@@ -54,10 +67,6 @@ class TaskTable(QTableView):
         self.setItemDelegateForColumn(0, StatusEditDelegate())
 
     def setup_signals(self):
-        """Connexion des icones aux signaux"""
+        """Connect the signals to the slots"""
         self.delegate.deleteClicked.connect(self.table_model.handle_delete_task)
         self.delegate.editClicked.connect(self.table_model.handle_edit_task)
-
-    def mousePressEvent(self, event):
-        """Gère le clic dans la colonne 'Status' pour inverser l'état d'une tâche"""
-        super().mousePressEvent(event)

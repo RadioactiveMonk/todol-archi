@@ -12,6 +12,7 @@ from gui.dialogs.edit_parameters_dialog import EditParametersDialog
 from gui.controls.custom_button import CustomButton
 from gui.containers.search_tasks import SearchTasks
 from gui.containers.task_table import TaskTable
+from backend.models.task import Task
 from gui.containers.menu_bar import MenuBar
 from configuration.constants import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
 
@@ -20,35 +21,41 @@ class MainWindow(QMainWindow):
     """Main window of the application"""
 
     def __init__(self, db: DbManager | None = None) -> None:
+        """Init the main window
+
+        Parameters
+        ----------
+        db : DbManager | None
+            The database manager, by default None
+        """
         super().__init__()
-        self.setWindowTitle(MAIN_WINDOW_TITLE)  # Définition du titre de la fenêtre
-        self.setGeometry(*MAIN_WINDOW_GEOMETRY)  # Position et taille de la fenêtre
-        self.setWindowIcon(
-            QIcon("gui/resources/icons/app_icon.png")
-        )  # Ajout d'une icône personnalisée
-
-        self.db = db if db is not None else DbManager()  # Gestion des tâches en backend via le stockage
-
+        self.db = db if db is not None else DbManager()
+        self.setWindowTitle(MAIN_WINDOW_TITLE)
+        self.setGeometry(*MAIN_WINDOW_GEOMETRY)
+        self.setWindowIcon(QIcon("gui/resources/icons/app_icon.png"))
         self.setMenuBar(MenuBar(self))
-        self.init_ui()  # Initialisation de l'interface
+        self.init_ui()
 
     def init_ui(self) -> None:
-        """Initialise l'interface graphique."""
+        """Init the main window UI
+        1. Create the main layout
+        2. Create the action layout
+        3. Create the search bar
+        4. Create the custom buttons
+        5. Create the task table
+        6. Set the layout
+        """
 
         central_widget: QWidget = QWidget(self)
         self.setCentralWidget(central_widget)
 
-        main_layout: QVBoxLayout = QVBoxLayout()  # Layout principal (vertical)
-
-        # Layout supérieur
+        main_layout: QVBoxLayout = QVBoxLayout()
         action_layout: QHBoxLayout = QHBoxLayout()
 
-        # Barre de recherche personnalisée
         self.search_tasks_bar = SearchTasks(self)
         # ️🚩 connect......
         action_layout.addWidget(self.search_tasks_bar)
 
-        # Boutons personnalisés
         self.add_task_button = CustomButton("new_task.png", "Add new task", self)
         self.add_task_button.clicked.connect(self.open_add_task_dialog)
         action_layout.addWidget(self.add_task_button)
@@ -59,26 +66,32 @@ class MainWindow(QMainWindow):
         self.edit_parameters_button.clicked.connect(self.open_edit_parameters_dialog)
         action_layout.addWidget(self.edit_parameters_button)
 
-        main_layout.addLayout(action_layout)  # Ajout du layout de recherche et boutons
+        main_layout.addLayout(action_layout)
 
-        # Création du tableau des tâches personnalisé
+        # Task table
         self.task_table = TaskTable(self.db)
         main_layout.addWidget(self.task_table)
 
         central_widget.setLayout(main_layout)
 
-    def open_add_task_dialog(self, task=None) -> None:
-        """Ouvre la boîte de dialogue d'ajout/édition de tâche"""
+    def open_add_task_dialog(self, task: Task | None = None) -> None:
+        """Open a dialog to add a task
+
+        Parameters
+        ----------
+        task : Task, optional
+            If given, the dialog will be pre-filled with the task data, by default None
+        """
         dialog = AddTaskDialog(self)
         dialog.ok_signal.connect(self.task_table.table_model.refresh)
         dialog.exec()
 
     def open_edit_parameters_dialog(self):
-        """Ouvre la boite d'édition des paramètres"""
+        """Open a dialog to edit parameters"""
 
         dialog = EditParametersDialog(self)
         dialog.exec()
 
     def search_tasks(self):
-        """Affiche les tâches recherchées (à définir comment)"""
+        """Search tasks"""
         pass
