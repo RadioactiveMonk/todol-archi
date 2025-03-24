@@ -36,3 +36,11 @@ def get_flags(
         )
 
     return Qt.ItemFlag.NoItemFlags
+
+
+def get_alignment(column: int) -> Qt.AlignmentFlag:
+    """
+    Retourne l'alignement du texte pour une colonne donnée.
+    Actuellement : tout est centré, mais cette fonction permet d’adapter colonne par colonne.
+    """
+    return Qt.AlignmentFlag.AlignCenter

@@ -54,7 +54,7 @@
 - [ ] task_table_utils.py: ce qui est vraiment utile
 - [ ] cell_properties.py: clarifier les rôles visuels
 - [ ] edit_delegate.py: découpage et simplification
-- [ ] task_table_model.py: relecture complète et nettoyage des dépendances
+- [ ] task_table_model.py: relecture complète et nettoyage des dépendances, implémenter get_alignment
 - [ ] OPTIONNEL: restructuration dans un dossier tables/ ..
 
 ## 1. Dernières fonctionnalités de base à implémenter
