@@ -126,13 +126,26 @@ class TaskTableModel(QAbstractTableModel):
             self.task_handlers.toggle_task_status(task_id)
             task["completed"] = not bool(task["completed"])
             logger.debug(f"[setData] Toggle task ID {task_id} -> {task['completed']}")
-            # Signale à Qt que les données ont changé (rafraîchissement de la cellule (x,y))
             self.dataChanged.emit(index, index)
 
             return True
         return False
 
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
+        """Return the data for the table
+
+        Parameters
+        ----------
+        index : QModelIndex
+            index of the cell
+        role : int, optional
+            role of the data, by default Qt.ItemDataRole.DisplayRole
+
+        Returns
+        -------
+        Any
+            the data for the cell
+        """
         if not index.isValid():
             return None
 
@@ -150,7 +163,18 @@ class TaskTableModel(QAbstractTableModel):
                 return None
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
-        """Appelle les propriétés de cellules"""
+        """Return the flags for the table
+
+        Parameters
+        ----------
+        index : QModelIndex
+            index of the cell
+
+        Returns
+        -------
+        Qt.ItemFlag
+            the flags for the cell
+        """
         return get_flags(index)
 
     def refresh(self) -> None:
@@ -159,7 +183,14 @@ class TaskTableModel(QAbstractTableModel):
         self.layoutChanged.emit()
 
     def handle_edit_task(self, row: int) -> None:
-        """Ouvre la boîte de dialogue d'édition pour la tâche sélectionnée"""
+        """Logic to handle the edit task action for a given row
+
+        Parameters
+        ----------
+        row : int
+            the row index
+        """
+
         if row < 0 or row >= len(self.tasks):
             return
 
@@ -181,47 +212,67 @@ class TaskTableModel(QAbstractTableModel):
         dialog.exec()
 
     def handle_delete_task(self, row: int) -> None:
-        """Gère la suppression d'une tâche via le TaskHandlers"""
+        """Logic to handle the delete task action for a given row
+
+        Parameters
+        ----------
+        row : int
+            the row index
+        """
+
         if row < 0 or row >= len(self.tasks):
             return
 
         task_id = self.tasks[row]["id"]
-        logger.debug(
-            f"🗑 Suppression demandée pour la tâche {task_id}"
-        )  # ✅ Vérification
+        logger.debug(f"🗑 Suppression demandée pour la tâche {task_id}")
         self.task_handlers.delete_handler(task_id)
-        self.refresh()  # ✅ Rafraîchir l'affichage après suppression
+        self.refresh()
 
     def _get_display_value(self, task: dict, column: int) -> str | None:
-        """Gere l'affichage des cellules
+        """Return the value to show in the cell
 
         Parameters
         ----------
         task : dict
-            Task in dict format
+            the task data
         column : int
             column index
 
         Returns
         -------
         str | None
-            the value to show in the cell | None for edit_section
+            the value to show in the cell or None if column is not found
         """
         match column:
             case 0:
-                return STATUS_DONE_UI if task["completed"] else STATUS_PENDING_UI
+                return (
+                    STATUS_DONE_UI
+                    if task.get("completed", False)
+                    else STATUS_PENDING_UI
+                )
             case 1:
-                return task["category"]
+                return task.get("category", "")
             case 2:
-                return task["expiration"]
+                return task.get("expiration", "")
             case 3:
-                return task["title"]
+                return task.get("title", "")
             case 4:
-                return task["notes"]
+                return task.get("notes", "")
             case _:
                 return None
 
     def _get_status_background(self, task: dict) -> QBrush:
-        """ "Set background for status column cells"""
+        """Return the background color for the status column
+
+        Parameters
+        ----------
+        task : dict
+            the task data
+
+        Returns
+        -------
+        QBrush
+            the background color
+        """
         color = "#b0db43" if task["completed"] else "#db2763"
         return QBrush(QColor(color))

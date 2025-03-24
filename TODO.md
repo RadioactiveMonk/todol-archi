@@ -64,6 +64,7 @@
 - [x] Toggle status centralisé (`status_handler.py`)
 - [x] Clic sur colonne “Status” via `EditDelegate`
 - [x] Couleur dynamique dans `TaskTableModel` (au lieu de l’emoji)
+- [ ] THEORIE: SOLID
 - [ ] Barre de recherche opérationnelle (`SearchBar`)
 - [ ] Bouton “Reset paramètres par défaut”
 
