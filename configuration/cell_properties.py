@@ -31,7 +31,6 @@ def get_flags(
     if index.column() == status_section:
         return (
             Qt.ItemFlag.ItemIsEnabled
-            | Qt.ItemFlag.ItemIsEditable
             | Qt.ItemFlag.ItemIsSelectable
         )
 
