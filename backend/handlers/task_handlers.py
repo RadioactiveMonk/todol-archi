@@ -11,7 +11,18 @@ class TaskHandlers:
         self.db = db if db is not None else DbManager()
 
     def delete_handler(self, task_id: int) -> bool:
-        """Deletes the row task from the DB."""
+        """Deletes a task from the DB
+
+        Parameters
+        ----------
+        task_id : int
+            ID of the task to delete
+
+        Returns
+        -------
+        bool
+            True if the task was deleted successfully, False otherwise
+        """
 
         result = self.db.delete_task(task_id)
         if result:
@@ -21,7 +32,18 @@ class TaskHandlers:
         return result
 
     def edit_handler(self, task: Task) -> bool:
-        """Updates a task in the DB"""
+        """Edits a task in the DB
+
+        Parameters
+        ----------
+        task : Task
+            Task object to edit
+
+        Returns
+        -------
+        bool
+            True if the task was edited successfully, False otherwise
+        """
 
         if task.tid is None:
             logger.warning(f"✏️ Cannot edit task: missing ID")
@@ -47,19 +69,17 @@ class TaskHandlers:
         return result
 
     def toggle_task_status(self, task_id: int) -> bool:
-        """Inverse le statut 'completed' d'une tâche donnée. (connecté dans task_table.py)
+        """Toggles the status of a task (completed or not)
 
         Parameters
         ----------
         task_id : int
-            ID de la tâche à modifier.
-        db : DbManager
-            Instance de DbManager à utiliser.
+            ID of the task to toggle
 
         Returns
         -------
         bool
-            True si la tâche a été modifiée avec succès, False sinon.
+            True if the task status was toggled successfully, False otherwise
         """
 
         tasks = self.db.get_tasks()

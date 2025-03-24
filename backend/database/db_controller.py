@@ -1,3 +1,4 @@
+from pathlib import Path
 import sqlite3
 from backend.core.logger import logger
 from configuration.constants import DB_FILE, SQL_CREATE_TABLE, SQL_DROP_TABLE
@@ -7,9 +8,10 @@ from typing import Any
 class DbController:
     """Gestion des requêtes SQL brutes et de la connexion DB"""
 
-    def __init__(self, db: str = str(DB_FILE)) -> None:
+    def __init__(self, db: Path | None = None) -> None:
         """Setting up db path"""
-        self.db = db
+
+        self.db = db if db is not None else DB_FILE  # chemin de la base de données
         self.conn = sqlite3.connect(self.db, uri=True, check_same_thread=False)
         self._create_table()
 
@@ -85,7 +87,15 @@ class DbController:
             return None
 
     def _create_table(self):
-        """Create an SQL table"""
+        """Create table 'tasks' if it doesn't exist.
+        The table contains the following columns:
+            - id: integer, primary key
+            - completed: integer (0 or 1)
+            - category: text
+            - expiration: text
+            - title: text
+            - notes: text
+        """
 
         logger.debug(f"Attempting to create table")
         try:
@@ -96,7 +106,7 @@ class DbController:
             logger.error(f"SQL: could not create table 'tasks': {e}")
 
     def _drop_table(self):
-        """Delete table 'tasks'"""
+        """Drop table 'tasks' if it exists (for testing purposes)"""
 
         logger.debug(f"Attempting to drop table")
         try:

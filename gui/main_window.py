@@ -17,9 +17,9 @@ from configuration.constants import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
 
 
 class MainWindow(QMainWindow):
-    """Fenêtre principale de l'application To-Do List."""
+    """Main window of the application"""
 
-    def __init__(self) -> None:
+    def __init__(self, db: DbManager | None = None) -> None:
         super().__init__()
         self.setWindowTitle(MAIN_WINDOW_TITLE)  # Définition du titre de la fenêtre
         self.setGeometry(*MAIN_WINDOW_GEOMETRY)  # Position et taille de la fenêtre
@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
             QIcon("gui/resources/icons/app_icon.png")
         )  # Ajout d'une icône personnalisée
 
-        self.db = DbManager()  # Gestion des tâches en backend via le stockage
+        self.db = db if db is not None else DbManager()  # Gestion des tâches en backend via le stockage
 
         self.setMenuBar(MenuBar(self))
         self.init_ui()  # Initialisation de l'interface

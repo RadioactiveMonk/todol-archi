@@ -5,8 +5,17 @@ from configuration.settings_manager import get_setting
 from backend.core.logger import logger
 
 
-def load_stylesheet(app, theme: str = DEFAULT_THEME) -> None:
-    """Applique le thème QSS à l'application (cache activé)."""
+def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
+    """Apply a theme to the application
+
+    Parameters
+    ----------
+    app : QApplication
+        The application to apply the theme to
+    theme : str, optional
+        by default DEFAULT_THEME
+    """
+
     try:
         qss = get_stylesheet(theme)
         app.setStyleSheet(qss)
@@ -16,7 +25,7 @@ def load_stylesheet(app, theme: str = DEFAULT_THEME) -> None:
 
 
 def reload_theme(app) -> None:
-    """Reload the active theme (cache)"""
+    """Reload the current theme"""
     get_stylesheet.cache_clear()
     theme = get_setting("theme")
     app.setStyleSheet(get_stylesheet(theme))
