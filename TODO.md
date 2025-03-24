@@ -49,11 +49,19 @@
 
 ---
 
+## 0. Nettoyage du code UI (refacto)
+
+- [ ] task_table_utils.py: ce qui est vraiment utile
+- [ ] cell_properties.py: clarifier les rôles visuels
+- [ ] edit_delegate.py: découpage et simplification
+- [ ] task_table_model.py: relecture complète et nettoyage des dépendances
+- [ ] OPTIONNEL: restructuration dans un dossier tables/ ..
+
 ## 1. Dernières fonctionnalités de base à implémenter
 
-- [x] Toggle status centralisé (`status_handler.py`)
+- [ ] Toggle status centralisé (`status_handler.py`)
 - [ ] Clic sur colonne “Status” via `EditDelegate`
-- [ ] Couleur dynamique dans `TaskTableModel` (au lieu de l’emoji)
+- [x] Couleur dynamique dans `TaskTableModel` (au lieu de l’emoji)
 - [ ] Barre de recherche opérationnelle (`SearchBar`)
 - [ ] Bouton “Reset paramètres par défaut”
 

@@ -1,5 +1,6 @@
 from typing import Any, List, Dict
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
+from PyQt6.QtGui import QColor, QBrush, QFont
 from backend.database.db_manager import DbManager
 from backend.models.task import Task
 from configuration.cell_properties import get_flags
@@ -50,34 +51,32 @@ class TaskTableModel(QAbstractTableModel):
         return None
 
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
-        """Retourne les données à afficher dans une cellule"""
         if not index.isValid():
             return None
 
-        task = self.tasks[index.row()]
-        column_name = TASK_TABLE_HEADERS[index.column()]
+        row, column = index.row(), index.column()
+        task = self.tasks[row]
 
-        if role == Qt.ItemDataRole.DisplayRole:
-            if column_name == STATUS_COLUMN:
-                return STATUS_DONE_UI if task["completed"] else STATUS_PENDING_UI
-
-            if column_name == EDIT_COLUMN:
+        match role:
+            case Qt.ItemDataRole.DisplayRole:
+                return self._get_display_value(task, column)
+            case Qt.ItemDataRole.BackgroundRole if column == 0:
+                return self._get_status_background(task)
+            case Qt.ItemDataRole.TextAlignmentRole if column == 0:
+                return Qt.AlignmentFlag.AlignCenter
+            case _:
                 return None
-
-            return task.get(COLUMN_MAPPING.get(column_name, ""), "")
-
-        return None  # La colonne "Edit" est gérée par `EditDelegate`
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
         return get_flags(index, index.column())
 
-    def refresh(self):
+    def refresh(self) -> None:
         """Refresh the table with new tasks."""
         self.tasks = self.db.get_tasks()
         self.layoutChanged.emit()
 
-    def handle_edit_task(self, row: int):
+    def handle_edit_task(self, row: int) -> None:
         """Ouvre la boîte de dialogue d'édition pour la tâche sélectionnée"""
         if row < 0 or row >= len(self.tasks):
             return
@@ -99,7 +98,7 @@ class TaskTableModel(QAbstractTableModel):
         dialog.ok_signal.connect(self.refresh)
         dialog.exec()
 
-    def handle_delete_task(self, row: int):
+    def handle_delete_task(self, row: int) -> None:
         """Gère la suppression d'une tâche via le TaskHandlers"""
         if row < 0 or row >= len(self.tasks):
             return
@@ -110,3 +109,37 @@ class TaskTableModel(QAbstractTableModel):
         )  # ✅ Vérification
         self.task_handlers.delete_handler(task_id)
         self.refresh()  # ✅ Rafraîchir l'affichage après suppression
+
+    def _get_display_value(self, task: dict, column: int) -> str | None:
+        """Gere l'affichage des cellules
+
+        Parameters
+        ----------
+        task : dict
+            Task in dict format
+        column : int
+            column index
+
+        Returns
+        -------
+        str | None
+            the value to show in the cell | None for edit_section
+        """
+        match column:
+            case 0:
+                return STATUS_DONE_UI if task["completed"] else STATUS_PENDING_UI
+            case 1:
+                return task["category"]
+            case 2:
+                return task["expiration"]
+            case 3:
+                return task["title"]
+            case 4:
+                return task["notes"]
+            case _:
+                return None
+
+    def _get_status_background(self, task: dict) -> QBrush:
+        """ "Set background for status column cells"""
+        color = "#b0db43" if task["completed"] else "#db2763"
+        return QBrush(QColor(color))
