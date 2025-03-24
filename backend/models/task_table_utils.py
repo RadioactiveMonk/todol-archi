@@ -24,6 +24,9 @@ COLUMN_MAPPING: Dict[str, str] = {
 # 🖱️ Colonnes spécifiques pour interactions (non mappées à des attributs)
 EDIT_COLUMN: str = TASK_TABLE_HEADERS[-1]
 STATUS_COLUMN: str = TASK_TABLE_HEADERS[0]
+EDIT_COLUMN_INDEX: int = len(TASK_TABLE_HEADERS)
+STATUS_COLUMN_INDEX: int = TASK_TABLE_HEADERS.index("Status")
+
 
 # 📐 Largeurs personnalisées des colonnes
 COLUMN_WIDTHS: Dict[int, int] = {
