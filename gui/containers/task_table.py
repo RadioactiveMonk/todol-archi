@@ -11,6 +11,7 @@ from PyQt6.QtCore import QModelIndex
 from backend.handlers.task_handlers import TaskHandlers
 from backend.database.db_manager import DbManager
 from backend.core.logger import logger
+from gui.delegates.status_delegate import StatusEditDelegate
 
 
 class TaskTable(QTableView):
@@ -50,6 +51,7 @@ class TaskTable(QTableView):
         self.setItemDelegateForColumn(
             TASK_TABLE_HEADERS.index(EDIT_COLUMN), self.delegate
         )
+        self.setItemDelegateForColumn(0, StatusEditDelegate())
 
     def setup_signals(self):
         """Connexion des icones aux signaux"""

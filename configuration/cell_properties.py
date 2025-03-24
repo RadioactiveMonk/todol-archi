@@ -1,5 +1,9 @@
 from PyQt6.QtCore import QModelIndex, Qt
-from backend.models.task_table_utils import TASK_TABLE_HEADERS, EDIT_COLUMN_INDEX, STATUS_COLUMN_INDEX
+from backend.models.task_table_utils import (
+    TASK_TABLE_HEADERS,
+    EDIT_COLUMN_INDEX,
+    STATUS_COLUMN_INDEX,
+)
 
 
 def get_flags(
@@ -29,10 +33,7 @@ def get_flags(
         return Qt.ItemFlag.ItemIsEnabled
 
     if index.column() == status_section:
-        return (
-            Qt.ItemFlag.ItemIsEnabled
-            | Qt.ItemFlag.ItemIsSelectable
-        )
+        return Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsEditable
 
     return Qt.ItemFlag.NoItemFlags
 
