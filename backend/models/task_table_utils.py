@@ -11,10 +11,12 @@ COLUMN_MAPPING = {
 EDIT_COLUMN = TASK_TABLE_HEADERS[-1]
 STATUS_COLUMN = TASK_TABLE_HEADERS[0]
 COLUMN_WIDTHS = {
-    0: 80,  # Status
+    0: 100,  # Status
     1: 100,  # Category
     2: 150,  # Expiration
     3: 250,  # Title
     4: 370,  # Notes
-    5: 100,  # Edit section (stretched to content)
+    5: 80,  # Edit section (stretched to content)
 }
+STATUS_DONE_UI = "[ROCKED]"
+STATUS_PENDING_UI = "[PENDING]"

@@ -11,6 +11,7 @@ from backend.models.task_table_utils import (
 )
 from backend.handlers.edit_section_handlers import TaskHandlers
 from backend.core.logger import logger
+from backend.models.task_table_utils import STATUS_DONE_UI, STATUS_PENDING_UI
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -58,7 +59,7 @@ class TaskTableModel(QAbstractTableModel):
 
         if role == Qt.ItemDataRole.DisplayRole:
             if column_name == STATUS_COLUMN:
-                return "[ROCKED]" if task["completed"] else "[PENDING]"
+                return STATUS_DONE_UI if task["completed"] else STATUS_PENDING_UI
 
             if column_name == EDIT_COLUMN:
                 return None

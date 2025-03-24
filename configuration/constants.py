@@ -40,7 +40,7 @@ EDIT_PARAMETERS_DIALOG_TITLE = "Parameters"
 EDIT_PARAMETERS_DIALOG_GEOMETRY = (1150, 200, 400, 200)
 
 
-# Status des tâches
+# Status des tâches (voir task_table_utils.py)
 # =====================================
 STATUS_DONE = True
 STATUS_PENDING = False
