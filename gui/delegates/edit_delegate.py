@@ -1,5 +1,5 @@
-from PyQt6.QtWidgets import QStyledItemDelegate
-from PyQt6.QtCore import QRect, pyqtSignal, QEvent
+from PyQt6.QtWidgets import QStyledItemDelegate, QWidget, QStyleOptionViewItem
+from PyQt6.QtCore import QRect, pyqtSignal, QEvent, QModelIndex, QAbstractItemModel
 from PyQt6.QtGui import QIcon, QPainter, QMouseEvent
 from configuration.constants import (
     EDIT_ICON_SIZE,
@@ -10,12 +10,15 @@ from configuration.constants import (
 
 
 class EditDelegate(QStyledItemDelegate):
-    """Délégué pour afficher et gérer les icônes dans la colonne 'edit'"""
+    """
+    Délégué personnalisé pour la colonne 'Edit'.
+    Affiche des icônes (ex: edit, delete) et gère les clics dessus.
+    """
 
-    editClicked = pyqtSignal(int)
-    deleteClicked = pyqtSignal(int)
+    editClicked = pyqtSignal(int)  # row index
+    deleteClicked = pyqtSignal(int)  # row index
 
-    def __init__(self, parent=None):
+    def __init__(self, parent: QWidget | None = None):
         """Initialise les icônes"""
         super().__init__(parent)
         self.icons = {
@@ -23,51 +26,53 @@ class EditDelegate(QStyledItemDelegate):
             "delete": QIcon("gui/resources/icons/delete_task.png"),
         }
 
-    def paint(self, painter: QPainter, option, index):
-        """Affiche les icônes dans la colonne 'edit'"""
+        self.signal_map = {"edit": self.editClicked, "delete": self.deleteClicked}
 
-        cell_center_x = option.rect.center().x()  # ✅ Centre de la cellule
+    def paint(
+        self, painter: QPainter, option: QStyleOptionViewItem, index: QModelIndex
+    ):
+        """Affiche les icônes centrées dans la cellule."""
+
+        cell_center_x = option.rect.center().x()  # Centre de la cellule
         total_width = (EDIT_ICON_SIZE + EDIT_ICON_SPACING) * len(
             EDIT_SECTION_POSITIONS
         ) - EDIT_ICON_SPACING
-
-        start_x = cell_center_x - (total_width // 2)  # ✅ Alignement centré
+        start_x = cell_center_x - (total_width // 2)  # Alignement centré
 
         for i, icon_name in enumerate(EDIT_SECTION_POSITIONS):
             x_offset = start_x + (EDIT_ICON_SIZE + EDIT_ICON_SPACING) * i
-
             icon_rect = QRect(
                 x_offset,
                 option.rect.center().y()
-                - (EDIT_ICON_SIZE // 2),  # ✅ Centre verticalement
+                - (EDIT_ICON_SIZE // 2),  # Centre verticalement
                 EDIT_ICON_SIZE,
                 EDIT_ICON_SIZE,
             )
             self.icons[icon_name].paint(painter, icon_rect)
 
-    def editorEvent(self, event, model, option, index):
-        """Gère les clics sur les icônes d'édition."""
-
-        SIGNAL_MAPPING = {
-            "edit": "editClicked",
-            "delete": "deleteClicked",
-        }
+    def editorEvent(
+        self,
+        event: QEvent,
+        model: QAbstractItemModel,
+        option: QStyleOptionViewItem,
+        index: QModelIndex,
+    ):
+        """Gère les clics sur les icônes et émet le signal correspondant."""
 
         if (
             not isinstance(event, QMouseEvent)
             or event.type() != QEvent.Type.MouseButtonRelease
         ):
-            return False  # ✅ On s'assure que c'est bien un clic souris
+            return False  # On s'assure que c'est bien un clic souris
 
         mouse_pos = (
             event.position().toPoint()
-        )  # ✅ PyQt6 utilise `.position()` à convertir en QPoint
+        )  # PyQt6 utilise `.position()` à convertir en QPoint
         cell_center_x = option.rect.center().x()
         total_width = (EDIT_ICON_SIZE + EDIT_ICON_SPACING) * len(
             EDIT_SECTION_POSITIONS
         ) - EDIT_ICON_SPACING
-
-        start_x = cell_center_x - (total_width // 2)  # ✅ Départ aligné au centre
+        start_x = cell_center_x - (total_width // 2)  # Départ aligné au centre
 
         for i, icon_name in enumerate(EDIT_SECTION_POSITIONS):
             x_offset = start_x + (EDIT_ICON_SIZE + EDIT_ICON_SPACING) * i
@@ -78,12 +83,8 @@ class EditDelegate(QStyledItemDelegate):
                 EDIT_ICON_SIZE,
             )
 
-            if icon_rect.contains(
-                mouse_pos
-            ):  # ✅ Vérifie si la souris est dans l'icône
-                getattr(self, SIGNAL_MAPPING[icon_name]).emit(
-                    index.row()
-                )  # ✅ Récupère le bon signal dynamiquement
+            if icon_rect.contains(mouse_pos):  # Vérifie si la souris est dans l'icône
+                self.signal_map[icon_name].emit(index.row())
                 return True
 
         return super().editorEvent(event, model, option, index)

@@ -10,9 +10,10 @@ from backend.models.task_table_utils import (
     COLUMN_MAPPING,
     EDIT_COLUMN,
 )
-from backend.handlers.edit_section_handlers import TaskHandlers
+from backend.handlers.task_handlers import TaskHandlers
 from backend.core.logger import logger
 from backend.models.task_table_utils import STATUS_DONE_UI, STATUS_PENDING_UI
+from configuration.cell_properties import get_alignment
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -50,6 +51,25 @@ class TaskTableModel(QAbstractTableModel):
 
         return None
 
+    def setData(
+        self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole
+    ) -> bool:
+        if not index.isValid() or role != Qt.ItemDataRole.EditRole:
+            return False
+
+        row, column = index.row(), index.column()
+        task = self.tasks[row]
+
+        if TASK_TABLE_HEADERS[column] == STATUS_COLUMN:
+            task_id = task["id"]
+
+            self.task_handlers.toggle_task_status(task_id)
+            task["completed"] = not task["completed"]
+            # Signale à Qt que les données ont changé (rafraîchissement de la cellule (x,y))
+            self.dataChanged.emit(index, index)
+            return True
+        return False
+
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
         if not index.isValid():
             return None
@@ -62,14 +82,14 @@ class TaskTableModel(QAbstractTableModel):
                 return self._get_display_value(task, column)
             case Qt.ItemDataRole.BackgroundRole if column == 0:
                 return self._get_status_background(task)
-            case Qt.ItemDataRole.TextAlignmentRole if column == 0:
-                return Qt.AlignmentFlag.AlignCenter
+            case Qt.ItemDataRole.TextAlignmentRole:
+                return get_alignment(column)
             case _:
                 return None
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Appelle les propriétés de cellules"""
-        return get_flags(index, index.column())
+        return get_flags(index)
 
     def refresh(self) -> None:
         """Refresh the table with new tasks."""
