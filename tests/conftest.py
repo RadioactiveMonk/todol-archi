@@ -6,7 +6,12 @@ from pathlib import Path
 from pytestqt.qtbot import QtBot
 from PyQt6.QtWidgets import QApplication, QWidget
 from configuration.constants import SETTINGS_FILE
-from backend.core.settings_manager import SettingsManager
+from configuration.settings_manager import (
+    get_setting,
+    set_setting,
+    save_settings,
+    load_settings,
+)
 from gui.dialogs.edit_parameters_dialog import EditParametersDialog
 from backend.database.db_manager import DbManager
 from backend.database.db_controller import DbController
@@ -22,19 +27,11 @@ def in_memory_db():
     db_manager = DbManager(controller=db_controller)
     return db_manager
 
+
 @pytest.fixture
 def in_memory_connection():
     db_controller = DbController("file::memory:?cache=shared")
     return db_controller
-
-
-@pytest.fixture
-def settings_manager():
-    """Fixture globale pour un SettingsManager propre."""
-    SETTINGS_FILE.write_text(
-        json.dumps({"theme": "dark", "categories": ["Work", "Personal"]})
-    )
-    return SettingsManager()
 
 
 @pytest.fixture(scope="session", autouse=True)  # Obligatoire pour les tests PyQt
