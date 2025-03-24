@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem
 from PyQt6.QtCore import QEvent, QModelIndex, Qt
 from PyQt6.QtGui import QMouseEvent
+from backend.core.logger import logger
 from typing import Any
 
 
@@ -18,5 +19,6 @@ class StatusEditDelegate(QStyledItemDelegate):
         if event.type() == QEvent.Type.MouseButtonRelease and isinstance(
             event, QMouseEvent
         ):
+            logger.debug("Click detected")
             model.setData(index, None, Qt.ItemDataRole.EditRole)
         return True
