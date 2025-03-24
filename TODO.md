@@ -1,3 +1,5 @@
+# Emojis: ✅ 🚩 ℹ️ 👉 💭 💯 🛠️ ⚠️ ⁉️
+
 # ✅ Todol-Pro – Plan de refactoring #777
 
 ---

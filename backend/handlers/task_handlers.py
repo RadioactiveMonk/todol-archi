@@ -7,8 +7,8 @@ from backend.models.task import Task
 class TaskHandlers:
     """Manages the interaction with the db for deleting and editing a task"""
 
-    def __init__(self) -> None:
-        self.db = DbManager()
+    def __init__(self, db: DbManager | None = None) -> None:
+        self.db = db if db is not None else DbManager()
 
     def delete_handler(self, task_id: int) -> bool:
         """Deletes the row task from the DB."""

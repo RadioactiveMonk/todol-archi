@@ -67,6 +67,11 @@ class EditParametersDialog(QDialog):
         remove_category_layout.addWidget(self.category_selector)
         remove_category_layout.addWidget(self.remove_category_button)
 
+        # Reset to default
+        self.reset_app_button = QPushButton("Reset", self)
+        self.reset_app_button.setMaximumWidth(80)
+        self.reset_app_button.clicked.connect(self.reset_settings) # 🚩
+
         form_layout.addRow("New category: ", add_category_layout)
         form_layout.addRow("Categories: ", remove_category_layout)
         form_layout.addRow("Theme: ", self.theme_selector)
@@ -93,6 +98,10 @@ class EditParametersDialog(QDialog):
         if category:
             self.category_selector.remove_category(category)
             self.SETTINGS_UPDATED.emit(load_settings())
+
+    def reset_settings(self):
+        # 🚩
+        pass
 
     def accept(self) -> None:
         """Applique immédiatement le thème et ferme la boîte de dialogue"""

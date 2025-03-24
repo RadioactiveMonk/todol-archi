@@ -17,11 +17,11 @@ from gui.delegates.status_delegate import StatusEditDelegate
 class TaskTable(QTableView):
     """Configuration graphique des tâches. Aucune logique métier, gérée par backend.TaskTableModel"""
 
-    def __init__(self, db: DbManager, parent: QWidget | None = None) -> None:
+    def __init__(self, db: DbManager | None = None, parent: QWidget | None = None) -> None:
         super().__init__(parent)
-        self.db = db
-        self.table_model = TaskTableModel(self)  # Connexion de la logique
+        self.db = db if db is not None else DbManager()
         self.task_handlers = TaskHandlers()
+        self.table_model = TaskTableModel(parent=self, db=self.db, task_handlers=self.task_handlers)  # Connexion de la logique
 
         self.setModel(self.table_model)  # Association du modèle a TaskTable(QTableView)
         self.setup_ui()

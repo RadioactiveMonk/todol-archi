@@ -22,16 +22,16 @@ class TaskTableModel(QAbstractTableModel):
     def __init__(
         self,
         parent: QObject | None = None,
-        db_manager: DbManager = DbManager(),
-        task_handlers: TaskHandlers = TaskHandlers(),
+        db: DbManager | None = None,
+        task_handlers: TaskHandlers | None = None,
     ) -> None:
         """Initialise les données à afficher pour chaque tâche"""
 
         super().__init__(parent)
-        self.db = db_manager
+        self.db = db if db is not None else DbManager()
 
         self.tasks: List[Dict[str, Any]] = self.db.get_tasks()
-        self.task_handlers = task_handlers
+        self.task_handlers = task_handlers if task_handlers else TaskHandlers()
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
         """Retourne le nombre de lignes en fonction du nombre de tâches stockées."""
