@@ -75,6 +75,7 @@ class EditParametersDialog(QDialog):
         form_layout.addRow("New category: ", add_category_layout)
         form_layout.addRow("Categories: ", remove_category_layout)
         form_layout.addRow("Theme: ", self.theme_selector)
+        form_layout.addRow(self.reset_app_button)
 
         main_layout.addLayout(form_layout)
 
@@ -100,7 +101,7 @@ class EditParametersDialog(QDialog):
             self.SETTINGS_UPDATED.emit(load_settings())
 
     def reset_settings(self):
-        # 🚩
+        # 🚩 Qwarning: "Are you sure you want to reset to default ? (all datas will be lost)"
         pass
 
     def accept(self) -> None:
