@@ -15,7 +15,7 @@ from backend.database.db_manager import DbManager
 class TaskTable(QTableView):
     """Configuration graphique des tâches. Aucune logique métier, gérée par backend.TaskTableModel"""
 
-    def __init__(self, db: DbManager, parent: QWidget) -> None:
+    def __init__(self, db: DbManager, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.db = db
         self.table_model = TaskTableModel(self)  # Connexion de la logique
@@ -54,6 +54,7 @@ class TaskTable(QTableView):
         self.delegate.deleteClicked.connect(self.table_model.handle_delete_task)
         self.delegate.editClicked.connect(self.table_model.handle_edit_task)
 
+
     def mousePressEvent(self, event):
         """Gère le clic dans la colonne 'Status' pour inverser l'état d'une tâche"""
         index: QModelIndex = self.indexAt(event.pos())
@@ -63,9 +64,8 @@ class TaskTable(QTableView):
 
             # Colonne 1 = 'Status' (completed)
             if col == 1:
-                task_id = self.model().index(row, 0).data()
+                task_id = self.table_model.index(row, 0).data()
                 if toggle_task_status(task_id, self.db):
                     self.table_model.refresh()
 
-        # Appelle le comportement normal du clic (sélection, etc.)
         super().mousePressEvent(event)
