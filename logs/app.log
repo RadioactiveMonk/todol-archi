@@ -294,3 +294,36 @@
 2025-03-25 00:07:28,163 - INFO - Task updated (ID: 27): {'completed': 0, 'category': 'Work', 'expiration': '2025-03-25 23:26', 'title': 'work on type hints', 'notes': ''}
 2025-03-25 00:07:28,164 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
 2025-03-25 00:07:28,164 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-25 11:07:01,210 - INFO - /home/doyoudance/Desktop/Projects/todol-pro/data/settings.json loaded successfully
+2025-03-25 11:07:01,213 - INFO - 🎨 Theme 'default' appliqué avec succès !
+2025-03-25 11:07:01,228 - DEBUG - Attempting to create table
+2025-03-25 11:07:01,228 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-25 11:07:01,228 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-25 11:07:01,228 - INFO - SQL: table 'tasks' created
+2025-03-25 11:07:01,304 - DEBUG - Attempting to create table
+2025-03-25 11:07:01,304 - DEBUG - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-03-25 11:07:01,304 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-25 11:07:01,304 - INFO - SQL: table 'tasks' created
+2025-03-25 11:07:01,306 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-25 11:07:01,306 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-25 11:07:17,703 - INFO - /home/doyoudance/Desktop/Projects/todol-pro/data/settings.json loaded successfully
+2025-03-25 11:07:17,704 - INFO - /home/doyoudance/Desktop/Projects/todol-pro/data/settings.json loaded successfully
+2025-03-25 11:07:21,418 - INFO - /home/doyoudance/Desktop/Projects/todol-pro/data/settings.json loaded successfully
+2025-03-25 11:07:21,419 - INFO - /home/doyoudance/Desktop/Projects/todol-pro/data/settings.json saved successfully: {'theme': 'dark', 'categories': ['Work', 'Personal', 'test']}
+2025-03-25 11:07:21,419 - INFO - Setting updated successfully: theme = dark
+2025-03-25 11:07:21,419 - INFO - /home/doyoudance/Desktop/Projects/todol-pro/data/settings.json loaded successfully
+2025-03-25 11:07:21,436 - INFO - /home/doyoudance/Desktop/Projects/todol-pro/data/settings.json loaded successfully
+2025-03-25 11:07:28,046 - DEBUG - Click detected
+2025-03-25 11:07:28,046 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-25 11:07:28,046 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-25 11:07:28,060 - INFO - ✅ Updating task ID 27 (rowcount=1)
+2025-03-25 11:07:28,061 - INFO - Task updated (ID: 27): {'completed': 1, 'category': None, 'expiration': None, 'title': None, 'notes': None}
+2025-03-25 11:07:28,061 - INFO - [toggle_status] Tâche ID 27 -> completed = True
+2025-03-25 11:07:28,061 - DEBUG - [setData] Toggle task ID 27 -> True
+2025-03-25 11:07:29,320 - DEBUG - Click detected
+2025-03-25 11:07:29,321 - DEBUG - QUERY: SELECT id, completed, category, expiration, title, notes FROM tasks | PARAMS: () | FETCHONE: False | FETCHALL: True | LASTROWID: False | ROWCOUNT: False
+2025-03-25 11:07:29,321 - DEBUG - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-pro/data/tasks.db
+2025-03-25 11:07:29,349 - INFO - ✅ Updating task ID 27 (rowcount=1)
+2025-03-25 11:07:29,350 - INFO - Task updated (ID: 27): {'completed': 0, 'category': None, 'expiration': None, 'title': None, 'notes': None}
+2025-03-25 11:07:29,350 - INFO - [toggle_status] Tâche ID 27 -> completed = False
+2025-03-25 11:07:29,350 - DEBUG - [setData] Toggle task ID 27 -> False
