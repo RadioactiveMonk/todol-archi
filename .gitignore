@@ -34,3 +34,4 @@ tests/__pycache__/
 dist/
 build/
 *.egg-info/
+.ruff_cache/
