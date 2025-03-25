@@ -83,6 +83,7 @@
 - [x] `resources/`, `data/`, `logs/`, `tests/` organisés proprement
 - [x] Plan de découpage progressif pour `handlers/` (ex: `status_handler.py`)
 - [x] Suppression des `__pycache__/` et nettoyage global
+- [ ] Mise en place du mainwindow_factory.py
 - [ ] Correction automatique des imports (`grep | sed`) à prévoir
 - [ ] Ajout de `ensure_data_dir()` dans `main.py` (création auto de `data/`, `logs/`)
 - [ ] Intégration propre des `factories` dans `main.py`

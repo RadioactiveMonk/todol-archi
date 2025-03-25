@@ -1,5 +1,48 @@
+[project]
+name = "todol-archi"
+version = "0.1.0"
+description = "Todol-archi - laboratoire Python"
+authors = [{ name = "Sébastien 'doyouDance' Reisen" }]
+requires-python = ">=3.12"
+dependencies = [
+  "PyQt6==6.8.1",
+  "PyQt6-Qt6==6.8.2",
+  "PyQt6_sip==13.10.0",
+  "ipython==9.0.0",
+  "pylint==3.3.5",
+  "pytest==8.3.5",
+  "pytest-cov==6.0.0",
+  "pytest-qt==4.4.0",
+  "ruff==0.4.4",
+  "coverage==7.6.12",
+  "rich==13.9.4",
+  "Pyment==0.3.3"
+]
+
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "-ra -q"
 testpaths = ["tests"]
 python_files = "test_*.py"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = ["tests", "temp"]
+select = ["E", "F", "I", "UP", "C90", "B", "A", "N", "RUF"]
+fix = true
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+indent-size = 4
+line-ending = "auto"
+
+
+[tool.ruff.lint]
+ignore = ["E501"]  # ignore lignes > 88 caractères 
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
