@@ -1,5 +1,5 @@
 from backend.core.cached_utils import get_available_themes
-from configuration.settings_manager import get_setting
+from src.core.settings.settings_manager import get_setting
 from PyQt6.QtWidgets import QComboBox
 
 

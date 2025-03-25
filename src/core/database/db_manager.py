@@ -1,10 +1,10 @@
 import sqlite3
 from typing import List
 
-from backend.core.logger import logger
-from backend.database.db_controller import DbController
-from backend.models.task import Task
-from configuration.constants import SQL_DELETE_TASK, SQL_INSERT_TASK, SQL_SELECT_TASKS
+from src.core.logger import logger
+from src.core.database.db_controller import DbController
+from src.models.task import Task
+from src.core.settings.constants import SQL_DELETE_TASK, SQL_INSERT_TASK, SQL_SELECT_TASKS
 
 
 class DbManager:

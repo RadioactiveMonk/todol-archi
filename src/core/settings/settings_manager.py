@@ -1,8 +1,8 @@
 import json
 from typing import Any
 
-from backend.core.logger import logger
-from configuration.constants import CATEGORIES, DEFAULT_THEME, SETTINGS_FILE
+from src.core.logger import logger
+from src.core.settings.constants import CATEGORIES, DEFAULT_THEME, SETTINGS_FILE
 
 
 def load_settings() -> dict:

@@ -1,4 +1,4 @@
-from configuration.constants import (
+from src.core.settings.constants import (
     EDIT_ICON_SIZE,
     EDIT_ICON_SPACING,
     EDIT_SECTION_POSITIONS,

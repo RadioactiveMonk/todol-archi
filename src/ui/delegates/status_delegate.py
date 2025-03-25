@@ -1,6 +1,6 @@
 from typing import Any
 
-from backend.core.logger import logger
+from src.core.logger import logger
 from PyQt6.QtCore import QEvent, QModelIndex, Qt
 from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem

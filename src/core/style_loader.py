@@ -1,5 +1,5 @@
 from .constants import DEFAULT_THEME
-from configuration.settings_manager import get_setting
+from src.core.settings.settings_manager import get_setting
 from PyQt6.QtWidgets import QApplication
 from src.core.cached_utils import get_stylesheet
 from src.core.logger import logger

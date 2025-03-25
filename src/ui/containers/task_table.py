@@ -1,7 +1,7 @@
-from backend.database.db_manager import DbManager
-from backend.handlers.task_handlers import TaskHandlers
-from backend.models.task_table_model import TaskTableModel
-from backend.models.task_table_utils import (
+from src.core.database.db_manager import DbManager
+from src.handlers.task_handlers import TaskHandlers
+from src.models.task_table_model import TaskTableModel
+from src.models.task_table_utils import (
     COLUMN_WIDTHS,
     EDIT_COLUMN,
     TASK_TABLE_HEADERS,

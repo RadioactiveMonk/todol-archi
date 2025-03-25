@@ -1,15 +1,15 @@
-from backend.core.style_loader import reload_theme
-from configuration.constants import (
+from src.core.style_loader import reload_theme
+from src.core.settings.constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
 )
-from configuration.settings_manager import (
+from src.core.settings.settings_manager import (
     get_setting,
     load_settings,
     set_setting,
 )
-from gui.controls.category_selector import CategorySelector
-from gui.controls.theme_selector import ThemeSelector
+from src.ui.controls.category_selector import CategorySelector
+from src.ui.controls.theme_selector import ThemeSelector
 from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtWidgets import (
     QApplication,

@@ -2,8 +2,8 @@ import sqlite3
 from pathlib import Path
 from typing import Any
 
-from backend.core.logger import logger
-from configuration.constants import DB_FILE, SQL_CREATE_TABLE, SQL_DROP_TABLE
+from src.core.logger import logger
+from src.core.settings.constants import DB_FILE, SQL_CREATE_TABLE, SQL_DROP_TABLE
 
 
 class DbController:

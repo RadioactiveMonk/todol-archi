@@ -1,6 +1,6 @@
 from backend.core.cached_utils import get_categories
-from backend.core.logger import logger
-from configuration.settings_manager import get_setting, set_setting
+from src.core.logger import logger
+from src.core.settings.settings_manager import get_setting, set_setting
 from PyQt6.QtWidgets import QComboBox
 
 

@@ -1,13 +1,13 @@
-from backend.database.db_manager import DbManager
-from backend.models.task import Task
-from configuration.constants import (
+from src.core.database.db_manager import DbManager
+from src.models.task import Task
+from src.core.settings.constants import (
     DEFAULT_STATUS,
     EDIT_TASK_DIALOG_TITLE,
     TASK_DIALOG_GEOMETRY,
     TASK_DIALOG_TITLE,
 )
-from gui.controls.category_selector import CategorySelector
-from gui.controls.expiration_selector import ExpirationSelector
+from src.ui.controls.category_selector import CategorySelector
+from src.ui.controls.expiration_selector import ExpirationSelector
 from PyQt6.QtCore import QDateTime, pyqtSignal
 from PyQt6.QtWidgets import (
     QDialog,

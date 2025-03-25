@@ -1,12 +1,12 @@
-from backend.database.db_manager import DbManager
-from backend.models.task import Task
-from configuration.constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
-from gui.containers.menu_bar import MenuBar
-from gui.containers.search_tasks import SearchTasks
-from gui.containers.task_table import TaskTable
-from gui.controls.custom_button import CustomButton
-from gui.dialogs.add_task_dialog import AddTaskDialog
-from gui.dialogs.edit_parameters_dialog import EditParametersDialog
+from src.core.database.db_manager import DbManager
+from src.models.task import Task
+from src.core.settings.constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
+from src.ui.containers.menu_bar import MenuBar
+from src.ui.containers.search_tasks import SearchTasks
+from src.ui.containers.task_table import TaskTable
+from src.ui.controls.custom_button import CustomButton
+from src.ui.dialogs.add_task_dialog import AddTaskDialog
+from src.ui.dialogs.edit_parameters_dialog import EditParametersDialog
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
     QHBoxLayout,

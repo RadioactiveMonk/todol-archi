@@ -1,10 +1,10 @@
 from typing import Any, Dict, List
 
-from backend.core.logger import logger
-from backend.database.db_manager import DbManager
-from backend.handlers.task_handlers import TaskHandlers
-from backend.models.task import Task
-from backend.models.task_table_utils import (
+from src.core.logger import logger
+from src.core.database.db_manager import DbManager
+from src.handlers.task_handlers import TaskHandlers
+from src.models.task import Task
+from src.models.task_table_utils import (
     STATUS_COLUMN,
     STATUS_DONE_UI,
     STATUS_PENDING_UI,
@@ -209,7 +209,7 @@ class TaskTableModel(QAbstractTableModel):
             notes=task_data["notes"],
         )
 
-        from gui.dialogs.add_task_dialog import AddTaskDialog
+        from src.ui.dialogs.add_task_dialog import AddTaskDialog
 
         dialog = AddTaskDialog(self.parent(), task=task)
         dialog.ok_signal.connect(self.refresh)

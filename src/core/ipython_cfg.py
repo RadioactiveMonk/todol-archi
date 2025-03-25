@@ -16,7 +16,7 @@ def reload_all():
     reload(backend.core.logger)
     print("✅ Modules reloaded successfully!")
 
-    from backend.models.task import Task
+    from src.models.task import Task
 
     db = backend.database.db_manager.DbManager()
 
