@@ -5,7 +5,7 @@ from src.core.logger import logger
 from src.core.settings.constants import CATEGORIES, DEFAULT_THEME, SETTINGS_FILE
 
 
-def load_settings() -> dict:
+def load_settings() -> dict[str, Any]:
     """Load settings file 'settings.json'"""
     try:
         with open(SETTINGS_FILE, "r", encoding="utf-8") as f:
@@ -16,7 +16,7 @@ def load_settings() -> dict:
         return {}
 
 
-def save_settings(data: dict) -> bool:
+def save_settings(data: dict[str, Any]) -> bool:
     """Write settings into 'settings.json'"""
     try:
         with open(SETTINGS_FILE, "w", encoding="utf-8") as f:

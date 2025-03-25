@@ -1,10 +1,14 @@
 import sqlite3
 from typing import List
 
-from src.core.logger import logger
 from src.core.database.db_controller import DbController
+from src.core.logger import logger
+from src.core.settings.constants import (
+    SQL_DELETE_TASK,
+    SQL_INSERT_TASK,
+    SQL_SELECT_TASKS,
+)
 from src.models.task import Task
-from src.core.settings.constants import SQL_DELETE_TASK, SQL_INSERT_TASK, SQL_SELECT_TASKS
 
 
 class DbManager:
@@ -117,7 +121,7 @@ class DbManager:
                 query, tuple(params), log_context=f"Updating task ID {task_id}"
             )
 
-            if result is None:
+            if result == 0:
                 logger.warning(
                     f"SQL query executed but no row was affected for task ID {task_id}"
                 )
@@ -132,7 +136,7 @@ class DbManager:
             logger.error(f"Task couldn't be updated (ID: {task_id}): {e}")
             return False
 
-    def get_tasks(self, task_id: int | None = None) -> List[dict]:
+    def get_tasks(self, task_id: int | None = None) -> List[dict[str, object]]:
         """Return all tasks by a list of dictionnaries. If task_id is provided, return the corresponding task.
 
         Parameters
@@ -195,7 +199,7 @@ class DbManager:
 
         try:
             result = self.controller.execute_and_confirm(
-                query, (task_id,), log_context=f"Deleting task ID {task_id}"
+                query, params, log_context=f"Deleting task ID {task_id}"
             )
 
             if result == 0:

@@ -74,7 +74,7 @@ class DbController:
             result = next(
                 (
                     value() if callable(value) else value
-                    for key, value in result_options.items()
+                    for _, value in result_options.items()
                     if value
                 ),
                 None,
@@ -155,7 +155,7 @@ class DbController:
             logger.error(f"❌ {log_context} - SQL error: {e}")
             return False
 
-    def debug_message(self, **kwargs):
+    def debug_message(self, **kwargs: Any) -> str:
         """Generate a dynamic SQL debug message"""
         return " | ".join(
             [
