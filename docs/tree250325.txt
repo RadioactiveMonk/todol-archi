@@ -1,0 +1,118 @@
+.
+├── core
+│   ├── api
+│   │   ├── dependencies.py
+│   │   ├── __init__.py
+│   │   ├── routes.py
+│   │   ├── schemas.py
+│   │   └── utils.py
+│   ├── database
+│   │   ├── db_controller.py
+│   │   ├── db_manager.py
+│   │   └── __init__.py
+│   ├── settings
+│   │   ├── cell_properties.py
+│   │   ├── constants.py
+│   │   ├── db_constants.py
+│   │   ├── __init__.py
+│   │   ├── settings_manager.py
+│   │   └── ui_constants.py
+│   ├── cached_utils.py
+│   ├── config.py
+│   ├── __init__.py
+│   ├── ipython_cfg.py
+│   ├── logger.py
+│   └── style_loader.py
+├── data
+│   ├── settings.json
+│   ├── tasks.db
+│   └── themes.json
+├── docs
+│   ├── setup_notes.md
+│   ├── tree250325.txt
+│   └── workflow.md
+├── factory
+│   ├── dialog_factory.py
+│   ├── handler_factory.py
+│   ├── __init__.py
+│   ├── mainwindow_factory.py
+│   └── notification_factory
+├── handlers
+│   ├── __init__.py
+│   └── task_handlers.py
+├── logs
+│   ├── app.log
+│   └── errors.log
+├── models
+│   ├── __init__.py
+│   ├── task.py
+│   ├── task_table_model.py
+│   └── task_table_utils.py
+├── resources
+│   ├── fonts
+│   ├── icons
+│   │   ├── app_icon.png
+│   │   ├── check_task.png
+│   │   ├── check_task.svg
+│   │   ├── delete_task.png
+│   │   ├── delete_task.svg
+│   │   ├── edit_settings.png
+│   │   ├── edit_task.png
+│   │   ├── edit_task.svg
+│   │   └── new_task.png
+│   ├── images
+│   ├── stylesheets
+│   │   ├── dark.qss
+│   │   ├── default.qss
+│   │   └── system.qss
+│   └── translations
+├── scripts
+│   └── gitadd.py
+├── tests
+│   ├── temp
+│   ├── conftest.py
+│   ├── __init__.py
+│   ├── test_add_task_dialog.py
+│   ├── test_cached_utils.py
+│   ├── test_connection.py
+│   ├── test_constants.py
+│   ├── test_database.py
+│   ├── test_edit_parameters_dialog.py
+│   ├── test_settings.py
+│   ├── test_status_handler.py
+│   ├── test_style_loader.py
+│   ├── test_task_handlers.py
+│   ├── test_task.py
+│   └── test_task_table_model.py
+├── ui
+│   ├── containers
+│   │   ├── __init__.py
+│   │   ├── menu_bar.py
+│   │   ├── search_tasks.py
+│   │   └── task_table.py
+│   ├── controls
+│   │   ├── category_selector.py
+│   │   ├── custom_button.py
+│   │   ├── expiration_selector.py
+│   │   ├── __init__.py
+│   │   └── theme_selector.py
+│   ├── delegates
+│   │   ├── edit_delegate.py
+│   │   ├── __init__.py
+│   │   └── status_delegate.py
+│   ├── dialogs
+│   │   ├── add_task_dialog.py
+│   │   ├── edit_parameters_dialog.py
+│   │   └── __init__.py
+│   ├── __init__.py
+│   └── main_window.py
+├── credits.txt
+├── LICENSE
+├── main.py
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+├── setup.py
+└── TODO.md
+
+25 directories, 91 files

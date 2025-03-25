@@ -4,7 +4,7 @@
 
 # Mode débug
 # =====================================
-DEBUG = True
+DEBUG = False
 
 
 # Autres paramètres
