@@ -25,13 +25,21 @@ addopts = "-ra -q"
 testpaths = ["tests"]
 python_files = "test_*.py"
 
+[tool.pyright]
+include = ["src"]
+extraPaths = ["src"]
+typeCheckingMode = "strict"
+
+
 [tool.ruff]
 target-version = "py312"
 exclude = ["tests", "temp"]
 fix = true
 src = ["src"]
 line-length = 88
-lint.extend-select = ["I"] 
+
+[tool.ruff.lint]
+extend-select = ["I"]  # ← isort intégré (tri des imports)
 
 [tool.ruff.format]
 quote-style = "double"
@@ -42,8 +50,14 @@ preview = true
 
 [tool.setuptools]
 package-dir = { "" = "src" }
-packages = ["core", "models", "handlers", "factory", "ui"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.pdm.scripts]
+fix = "ruff check --fix src"
+
