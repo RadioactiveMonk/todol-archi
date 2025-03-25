@@ -1,7 +1,8 @@
 import logging
 from pathlib import Path
-from configuration.constants import LOG_PATH
+
 from core.config import DEBUG
+from src.core.settings.constants import LOG_PATH
 
 # Création du dossier logs/ s'il n'existe pas
 log_path = Path(LOG_PATH)

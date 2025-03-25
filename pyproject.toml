@@ -35,7 +35,10 @@ fix = true
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
-line-ending = "auto"
+line-ending = "lf"
+docstring-code-format = true
+line-ending = "lf"
+preview = true
 
 [tool.ruff.lint]
 ignore = ["E501"]  # ignore lignes > 88 caractères 
