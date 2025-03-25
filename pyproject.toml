@@ -32,16 +32,18 @@ exclude = ["tests", "temp"]
 select = ["E", "F", "I", "UP", "C90", "B", "A", "N", "RUF"]
 fix = true
 
-
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 indent-size = 4
 line-ending = "auto"
 
-
 [tool.ruff.lint]
 ignore = ["E501"]  # ignore lignes > 88 caractères 
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["core", "models", "handlers", "factory", "ui"]
 
 [build-system]
 requires = ["setuptools", "wheel"]
