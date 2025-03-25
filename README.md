@@ -1,63 +1,27 @@
-# Todol-Pro
+# 🧠 Todol-Archi
 
-> Application minimaliste de gestion de tâches, moderne et modulaire, pensée pour être maintenable, testable et extensible.
+Version modulaire et refactorisée de Todol-Pro.  
+Expérimentation de patterns avancés (Factory, SOLID, Inversion de dépendance, etc.)
 
----
+## Objectifs
 
-[![Python](https://img.shields.io/badge/python-3.12+-blue?style=flat-square&logo=python)](https://python.org)
-[![PyQt6](https://img.shields.io/badge/GUI-PyQt6-green?style=flat-square&logo=qt)](https://riverbankcomputing.com/software/pyqt/)
-[![SQLite](https://img.shields.io/badge/Database-SQLite-blue?style=flat-square&logo=sqlite)](https://sqlite.org)
-[![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Tests](https://img.shields.io/badge/tests-pytest-green?style=flat-square&logo=pytest)](https://pytest.org)
-[![Learning](https://img.shields.io/badge/Built%20for-Learning%20%26%20Practice-yellow?style=flat-square)](#)
-[![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)](./LICENSE)
+- 🔁 Repenser la structure du projet pour plus de clarté et de réutilisabilité
+- 🏭 Implémenter des factories pour tous les composants majeurs
+- 🧩 Modulariser au maximum chaque élément (UI, logique, backend)
+- 🧪 Faciliter les tests et les extensions futures
 
+## Base
 
-## ℹ️ Présentation
+- PyQt6
+- SQLite
+- Architecture modulaire orientée objets
 
-**Todol-Pro** est une application de type "To-Do List", développée en Python avec PyQt6. C'est une version améliorée de mon premier projet Python 'Todol' (gestion de tâches en CLI). Cette nouvelle version est dotée :
+## Démarrage
 
-- d’un backend structuré autour de SQLite,
-- d'une interface graphique sous PyQt6,
-- d’un système de gestion de thèmes (QSS),
-- de fonctionnalités CRUD complètes,
-- de handlers séparés et testables,
-- d’un support des tests unitaires via `pytest`.
-
-Elle est conçue pour évoluer vers une API REST (FastAPI) et une architecture plus avancée (profiling, caching, packaging...).
-
----
-
-## ⚙️ Fonctionnalités principales
-
-- Ajout, modification, suppression de tâches
-- Expiration des tâches avec sélection de date/heure
-- Interface graphique PyQt6 claire et modulaire
-- Gestion du thème
-- Paramètres sauvegardés en .json
-- Connexion persistante à une base de donnée SQLite 
-- Cache LRU pour les accès fichiers
-
----
-
-## ✨ Contribuer
-
-Même si le projet est mené en solo à des fins pédagogiques, toute suggestion est la bienvenue !
-N'hésitez pas à ouvrir une issue ou à forker pour proposer une amélioration.
-
-## 📜 Licence
-
-Ce projet est sous licence MIT.
-Libre à toi de t’en inspirer, le forker, ou contribuer ✌️
-
-## 👤 Auteur: Sébastien 'doyouDance' Reisen
-
-Ce projet est un terrain d’apprentissage avancé, mené avec rigueur et souci de qualité de code.
-L'objectif n'est pas une application parfaite et multifonctionnelle dans son utilisation, 
-mais optimisée dans sa conception dans un premier temps. 
-
-## Note pour les autodidactes tels que moi:
-
-Soyez curieux, car lorsque j'ai commencé ce projet, je codais encore avec Sam, Alice, Tom et toute l'équipe (des étudiants ou des employés bien connus). Ces bases sont nécessaires, mais rien ne vous amènera plus haut que de vous lancer dans un projet, quel qu'il soit. Si vous ne voyez pas ou vous allez avec ce que vous apprenez, lancez vous ! Il y a 1 mois, je ne savais même pas faire une requête SQL, et je codais encore dans un seul fichier. Aujourd'hui, je sais gérer une base de donnée directement depuis mon terminal. Je tenais à faire cette remarque, en espérant pouvoir inspirer ceux qui se demandent encore quand les choses sérieuses vont commencer. ✌️✌️
-
-
+```bash
+git clone git@github.com:RadioactiveMonk/todol-archi.git
+cd todol-archi
+python -m venv .venv
+source .venv/bin/activate  # ou .venv\\Scripts\\activate sous Windows
+pip install -r requirements.txt
+python main.py

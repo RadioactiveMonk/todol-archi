@@ -1,6 +1,36 @@
-.venv/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
-scripting.py
+*.pyd
+*.pyc
+*.pkl
+*.sqlite3
 
+# Virtual env
+.venv/
+env/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Tests / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+tests/__pycache__/
+
+# Logs / cache
+*.log
+*.db
+*.sqlite
+.DS_Store
+
+# Build
+dist/
+build/
+*.egg-info/
