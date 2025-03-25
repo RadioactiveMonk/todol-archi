@@ -57,18 +57,36 @@
 - [x] cell_properties.py: clarifier les rôles visuels
 - [x] edit_delegate.py: découpage et simplification
 - [x] task_table_model.py: relecture complète et nettoyage des dépendances, implémenter get_alignment
-- [ ] OPTIONNEL: restructuration dans un dossier tables/ ..
+- [x] OPTIONNEL: restructuration dans un dossier tables/ ..
 
 ## 1. Dernières fonctionnalités de base à implémenter
 
 - [x] Toggle status centralisé (`status_handler.py`)
 - [x] Clic sur colonne “Status” via `EditDelegate`
 - [x] Couleur dynamique dans `TaskTableModel` (au lieu de l’emoji)
-- [ ] THEORIE: SOLID
+- [x] THEORIE: SOLID
 - [ ] Barre de recherche opérationnelle (`SearchBar`)
 - [ ] Bouton “Reset paramètres par défaut”
+- [ ] Toasts
 
 ---
+
+
+---
+
+## 🧱 Nouvelle structure modulaire (Todol-Archi)
+
+- [x] Dossier `core/` avec `database/`, `settings/`, `logger`, etc.
+- [x] `ui/` : séparation claire entre `containers/`, `controls/`, `delegates/`, `dialogs/`
+- [x] `factory/` pour gérer la création des composants (MainWindow, Dialogs, etc.)
+- [x] `handlers/` modulaire et prêt à être découpé (`task_handlers.py`, etc.)
+- [x] `resources/`, `data/`, `logs/`, `tests/` organisés proprement
+- [x] Plan de découpage progressif pour `handlers/` (ex: `status_handler.py`)
+- [x] Suppression des `__pycache__/` et nettoyage global
+- [ ] Correction automatique des imports (`grep | sed`) à prévoir
+- [ ] Ajout de `ensure_data_dir()` dans `main.py` (création auto de `data/`, `logs/`)
+- [ ] Intégration propre des `factories` dans `main.py`
+- [ ] Option : centralisation des paramètres (activer/désactiver les notifications, logs, etc.)
 
 ## 2. Peaufinage UI / UX
 
@@ -115,4 +133,4 @@
 
 ---
 
-📌 Dernière mise à jour : 24-03-25
+📌 Dernière mise à jour : 25-03-25
