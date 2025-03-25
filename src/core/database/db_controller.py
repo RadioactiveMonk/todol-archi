@@ -1,8 +1,9 @@
-from pathlib import Path
 import sqlite3
+from pathlib import Path
+from typing import Any
+
 from backend.core.logger import logger
 from configuration.constants import DB_FILE, SQL_CREATE_TABLE, SQL_DROP_TABLE
-from typing import Any
 
 
 class DbController:
@@ -97,22 +98,22 @@ class DbController:
             - notes: text
         """
 
-        logger.debug(f"Attempting to create table")
+        logger.debug("Attempting to create table")
         try:
             query = SQL_CREATE_TABLE
             self._execute_query(query)
-            logger.info(f"SQL: table 'tasks' created")
+            logger.info("SQL: table 'tasks' created")
         except sqlite3.DatabaseError as e:
             logger.error(f"SQL: could not create table 'tasks': {e}")
 
     def _drop_table(self):
         """Drop table 'tasks' if it exists (for testing purposes)"""
 
-        logger.debug(f"Attempting to drop table")
+        logger.debug("Attempting to drop table")
         try:
             query = SQL_DROP_TABLE
             self._execute_query(query)
-            logger.info(f"SQL: Table 'tasks' deleted")
+            logger.info("SQL: Table 'tasks' deleted")
         except sqlite3.DatabaseError as e:
             logger.error(f"SQL: Couldn't delete table 'tasks': {e}")
 

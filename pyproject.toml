@@ -26,22 +26,19 @@ testpaths = ["tests"]
 python_files = "test_*.py"
 
 [tool.ruff]
-line-length = 88
 target-version = "py312"
 exclude = ["tests", "temp"]
-select = ["E", "F", "I", "UP", "C90", "B", "A", "N", "RUF"]
 fix = true
+src = ["src"]
+line-length = 88
+lint.extend-select = ["I"] 
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 line-ending = "lf"
 docstring-code-format = true
-line-ending = "lf"
 preview = true
-
-[tool.ruff.lint]
-ignore = ["E501"]  # ignore lignes > 88 caractères 
 
 [tool.setuptools]
 package-dir = { "" = "src" }

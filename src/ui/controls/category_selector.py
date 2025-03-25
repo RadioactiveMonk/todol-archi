@@ -1,7 +1,7 @@
-from PyQt6.QtWidgets import QComboBox
 from backend.core.cached_utils import get_categories
-from configuration.settings_manager import get_setting, set_setting
 from backend.core.logger import logger
+from configuration.settings_manager import get_setting, set_setting
+from PyQt6.QtWidgets import QComboBox
 
 
 class CategorySelector(QComboBox):

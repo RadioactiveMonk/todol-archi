@@ -1,10 +1,11 @@
 from dataclasses import dataclass, field
+
 from configuration.constants import (
-    DEFAULT_STATUS,
-    DEFAULT_DATETIME,
-    DEFAULT_TITLE,
-    DEFAULT_NOTES,
     DEFAULT_CATEGORY,
+    DEFAULT_DATETIME,
+    DEFAULT_NOTES,
+    DEFAULT_STATUS,
+    DEFAULT_TITLE,
 )
 
 

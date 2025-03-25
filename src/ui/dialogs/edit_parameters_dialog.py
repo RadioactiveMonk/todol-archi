@@ -1,26 +1,26 @@
-from PyQt6.QtWidgets import (
-    QDialog,
-    QPushButton,
-    QVBoxLayout,
-    QWidget,
-    QFormLayout,
-    QLineEdit,
-    QHBoxLayout,
-    QApplication,
-)
-from PyQt6.QtCore import pyqtSignal
-from gui.controls.category_selector import CategorySelector
-from gui.controls.theme_selector import ThemeSelector
+from backend.core.style_loader import reload_theme
 from configuration.constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
 )
 from configuration.settings_manager import (
-    load_settings,
     get_setting,
+    load_settings,
     set_setting,
 )
-from backend.core.style_loader import reload_theme
+from gui.controls.category_selector import CategorySelector
+from gui.controls.theme_selector import ThemeSelector
+from PyQt6.QtCore import pyqtSignal
+from PyQt6.QtWidgets import (
+    QApplication,
+    QDialog,
+    QFormLayout,
+    QHBoxLayout,
+    QLineEdit,
+    QPushButton,
+    QVBoxLayout,
+    QWidget,
+)
 
 
 class EditParametersDialog(QDialog):

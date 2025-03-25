@@ -1,14 +1,18 @@
-from typing import Any, List, Dict
-from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
-from PyQt6.QtGui import QColor, QBrush, QFont
-from backend.database.db_manager import DbManager
-from backend.models.task import Task
-from configuration.cell_properties import get_flags
-from backend.models.task_table_utils import STATUS_COLUMN, TASK_TABLE_HEADERS
-from backend.handlers.task_handlers import TaskHandlers
+from typing import Any, Dict, List
+
 from backend.core.logger import logger
-from backend.models.task_table_utils import STATUS_DONE_UI, STATUS_PENDING_UI
-from configuration.cell_properties import get_alignment
+from backend.database.db_manager import DbManager
+from backend.handlers.task_handlers import TaskHandlers
+from backend.models.task import Task
+from backend.models.task_table_utils import (
+    STATUS_COLUMN,
+    STATUS_DONE_UI,
+    STATUS_PENDING_UI,
+    TASK_TABLE_HEADERS,
+)
+from configuration.cell_properties import get_alignment, get_flags
+from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
+from PyQt6.QtGui import QBrush, QColor
 
 
 class TaskTableModel(QAbstractTableModel):

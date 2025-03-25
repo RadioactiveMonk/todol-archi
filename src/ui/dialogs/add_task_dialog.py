@@ -1,22 +1,22 @@
+from backend.database.db_manager import DbManager
+from backend.models.task import Task
+from configuration.constants import (
+    DEFAULT_STATUS,
+    EDIT_TASK_DIALOG_TITLE,
+    TASK_DIALOG_GEOMETRY,
+    TASK_DIALOG_TITLE,
+)
+from gui.controls.category_selector import CategorySelector
+from gui.controls.expiration_selector import ExpirationSelector
+from PyQt6.QtCore import QDateTime, pyqtSignal
 from PyQt6.QtWidgets import (
     QDialog,
     QFormLayout,
     QLineEdit,
     QPushButton,
-    QVBoxLayout,
     QTextEdit,
+    QVBoxLayout,
 )
-from PyQt6.QtCore import pyqtSignal, QDateTime
-from gui.controls.category_selector import CategorySelector
-from gui.controls.expiration_selector import ExpirationSelector
-from configuration.constants import (
-    EDIT_TASK_DIALOG_TITLE,
-    TASK_DIALOG_TITLE,
-    TASK_DIALOG_GEOMETRY,
-)
-from configuration.constants import DEFAULT_STATUS
-from backend.database.db_manager import DbManager
-from backend.models.task import Task
 
 
 class AddTaskDialog(QDialog):

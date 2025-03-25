@@ -1,20 +1,19 @@
-from PyQt6.QtWidgets import (
-    QMainWindow,
-    QWidget,
-    QVBoxLayout,
-    QHBoxLayout,
-)
-
-from PyQt6.QtGui import QIcon
 from backend.database.db_manager import DbManager
-from gui.dialogs.add_task_dialog import AddTaskDialog
-from gui.dialogs.edit_parameters_dialog import EditParametersDialog
-from gui.controls.custom_button import CustomButton
+from backend.models.task import Task
+from configuration.constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
+from gui.containers.menu_bar import MenuBar
 from gui.containers.search_tasks import SearchTasks
 from gui.containers.task_table import TaskTable
-from backend.models.task import Task
-from gui.containers.menu_bar import MenuBar
-from configuration.constants import MAIN_WINDOW_TITLE, MAIN_WINDOW_GEOMETRY
+from gui.controls.custom_button import CustomButton
+from gui.dialogs.add_task_dialog import AddTaskDialog
+from gui.dialogs.edit_parameters_dialog import EditParametersDialog
+from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import (
+    QHBoxLayout,
+    QMainWindow,
+    QVBoxLayout,
+    QWidget,
+)
 
 
 class MainWindow(QMainWindow):

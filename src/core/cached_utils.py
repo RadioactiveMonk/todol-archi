@@ -1,6 +1,7 @@
-from functools import lru_cache
-from configuration.constants import SETTINGS_FILE, STYLESHEET_PATH, DEFAULT_THEME
 import json
+from functools import lru_cache
+
+from configuration.constants import DEFAULT_THEME, SETTINGS_FILE, STYLESHEET_PATH
 
 
 @lru_cache

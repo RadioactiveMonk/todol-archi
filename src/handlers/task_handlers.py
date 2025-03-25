@@ -1,6 +1,7 @@
 from dataclasses import asdict
-from backend.database.db_manager import DbManager
+
 from backend.core.logger import logger
+from backend.database.db_manager import DbManager
 from backend.models.task import Task
 
 
@@ -46,7 +47,7 @@ class TaskHandlers:
         """
 
         if task.tid is None:
-            logger.warning(f"✏️ Cannot edit task: missing ID")
+            logger.warning("✏️ Cannot edit task: missing ID")
             return False
 
         data = asdict(task)

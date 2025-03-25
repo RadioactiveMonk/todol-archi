@@ -1,10 +1,10 @@
+from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import (
-    QWidget,
+    QMenu,
     QMenuBar,
     QMessageBox,
-    QMenu,
+    QWidget,
 )
-from PyQt6.QtGui import QAction
 
 
 class MenuBar(QMenuBar):

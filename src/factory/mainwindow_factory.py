@@ -1,8 +1,9 @@
-from PyQt6.QtWidgets import QMainWindow, QApplication
-from ui.main_window import MainWindow
+from PyQt6.QtWidgets import QMainWindow
+
 from factory.dialog_factory import DialogFactory
 from factory.handler_factory import HandlerFactory
 from factory.notification_factory import NotificationFactory
+from ui.main_window import MainWindow
 
 
 class MainWindowFactory:

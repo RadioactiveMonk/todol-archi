@@ -1,12 +1,11 @@
-from PyQt6.QtWidgets import QStyledItemDelegate, QWidget, QStyleOptionViewItem
-from PyQt6.QtCore import QRect, pyqtSignal, QEvent, QModelIndex, QAbstractItemModel
-from PyQt6.QtGui import QIcon, QPainter, QMouseEvent
 from configuration.constants import (
     EDIT_ICON_SIZE,
     EDIT_ICON_SPACING,
-    EDIT_ICON_TOP_OFFSET,
     EDIT_SECTION_POSITIONS,
 )
+from PyQt6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, pyqtSignal
+from PyQt6.QtGui import QIcon, QMouseEvent, QPainter
+from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
 
 
 class EditDelegate(QStyledItemDelegate):

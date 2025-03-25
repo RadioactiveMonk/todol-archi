@@ -1,9 +1,8 @@
-from PyQt6.QtCore import QModelIndex, Qt
 from backend.models.task_table_utils import (
-    TASK_TABLE_HEADERS,
     EDIT_COLUMN_INDEX,
     STATUS_COLUMN_INDEX,
 )
+from PyQt6.QtCore import QModelIndex, Qt
 
 
 def get_flags(

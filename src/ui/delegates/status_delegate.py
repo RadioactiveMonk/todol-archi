@@ -1,8 +1,9 @@
-from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem
+from typing import Any
+
+from backend.core.logger import logger
 from PyQt6.QtCore import QEvent, QModelIndex, Qt
 from PyQt6.QtGui import QMouseEvent
-from backend.core.logger import logger
-from typing import Any
+from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem
 
 
 class StatusEditDelegate(QStyledItemDelegate):

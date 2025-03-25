@@ -1,7 +1,8 @@
 
-from PyQt6.QtWidgets import QPushButton, QWidget
 from PyQt6.QtCore import QDir
 from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import QPushButton, QWidget
+
 
 class CustomButton(QPushButton):
     """Bouton personnalisé avec icône et tooltip."""

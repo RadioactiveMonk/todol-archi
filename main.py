@@ -1,6 +1,8 @@
 import sys
-from rich.traceback import install
+
 from PyQt6.QtWidgets import QApplication
+from rich.traceback import install
+
 from factory.mainwindow_factory import MainWindowFactory
 
 
