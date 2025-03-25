@@ -36,7 +36,7 @@
 │   ├── handler_factory.py
 │   ├── __init__.py
 │   ├── mainwindow_factory.py
-│   └── notification_factory
+│   └── notification_factory.py
 ├── handlers
 │   ├── __init__.py
 │   └── task_handlers.py
