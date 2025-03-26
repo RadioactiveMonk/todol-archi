@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from src.core.settings.constants import (
+from core.app_constants import (
     DEFAULT_CATEGORY,
     DEFAULT_DATETIME,
     DEFAULT_NOTES,

@@ -1,27 +1,4 @@
-from pathlib import Path
-
 from PyQt6.QtCore import QDateTime
-
-# Requêtes SQL
-# =====================================
-SQL_INSERT_TASK = "INSERT INTO tasks (completed, category, expiration, title, notes) VALUES (?, ?, ?, ?, ?);"
-SQL_SELECT_TASKS = "SELECT id, completed, category, expiration, title, notes FROM tasks"
-SQL_DELETE_TASK = "DELETE FROM tasks WHERE id = ?"
-SQL_DROP_TABLE = "DROP TABLE IF EXISTS tasks;"
-SQL_CREATE_TABLE = """CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT);"""
-
-# Fichiers et stockage
-# =====================================
-BASE_DIR = Path(__file__).resolve().parent.parent
-CONFIG_DIR = BASE_DIR / "configuration"
-SETTINGS_FILE = BASE_DIR / "data" / "settings.json"
-DB_FILE = BASE_DIR / "data" / "tasks.db"
-LOG_PATH = BASE_DIR / "logs"
-STYLESHEET_PATH = BASE_DIR / "gui" / "resources" / "stylesheets"
-ICONS_PATH = BASE_DIR / "gui" / "resources" / "icons"
-
-for path in [DB_FILE.parent, LOG_PATH, STYLESHEET_PATH]:
-    path.mkdir(parents=True, exist_ok=True)
 
 # Fenêtre principale
 # =====================================

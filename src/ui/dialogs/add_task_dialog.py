@@ -9,7 +9,7 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 from src.core.database.db_manager import DbManager
-from src.core.settings.constants import (
+from core.app_constants import (
     DEFAULT_STATUS,
     EDIT_TASK_DIALOG_TITLE,
     TASK_DIALOG_GEOMETRY,

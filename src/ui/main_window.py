@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 from src.core.database.db_manager import DbManager
-from src.core.settings.constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
+from core.app_constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
 from src.models.task import Task
 from src.ui.containers.menu_bar import MenuBar
 from src.ui.containers.search_tasks import SearchTasks

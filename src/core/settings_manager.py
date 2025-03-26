@@ -2,7 +2,7 @@ import json
 from typing import Any
 
 from src.core.logger import logger
-from src.core.settings.constants import CATEGORIES, DEFAULT_THEME, SETTINGS_FILE
+from core.app_constants import CATEGORIES, DEFAULT_THEME, SETTINGS_FILE
 
 
 def load_settings() -> dict[str, Any]:

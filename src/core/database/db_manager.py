@@ -3,7 +3,7 @@ from typing import List
 
 from src.core.database.db_controller import DbController
 from src.core.logger import logger
-from src.core.settings.constants import (
+from core.app_constants import (
     SQL_DELETE_TASK,
     SQL_INSERT_TASK,
     SQL_SELECT_TASKS,

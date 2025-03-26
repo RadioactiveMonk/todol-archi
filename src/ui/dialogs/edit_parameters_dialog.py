@@ -9,7 +9,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-from src.core.settings.constants import (
+from core.app_constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
 )
