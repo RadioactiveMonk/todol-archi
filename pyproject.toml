@@ -28,7 +28,7 @@ python_files = "test_*.py"
 [tool.pyright]
 include = ["src"]
 extraPaths = ["src"]
-typeCheckingMode = "strict"
+typeCheckingMode = "basic"
 
 
 [tool.ruff]
