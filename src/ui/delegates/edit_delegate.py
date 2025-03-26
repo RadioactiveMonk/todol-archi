@@ -1,11 +1,11 @@
+from PyQt6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, pyqtSignal
+from PyQt6.QtGui import QIcon, QMouseEvent, QPainter
+from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
 from src.core.settings.constants import (
     EDIT_ICON_SIZE,
     EDIT_ICON_SPACING,
     EDIT_SECTION_POSITIONS,
 )
-from PyQt6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, pyqtSignal
-from PyQt6.QtGui import QIcon, QMouseEvent, QPainter
-from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
 
 
 class EditDelegate(QStyledItemDelegate):
@@ -28,7 +28,7 @@ class EditDelegate(QStyledItemDelegate):
         self.signal_map = {"edit": self.editClicked, "delete": self.deleteClicked}
 
     def paint(
-        self, painter: QPainter, option: QStyleOptionViewItem, index: QModelIndex
+        self, painter: QPainter | None, option: QStyleOptionViewItem, index: QModelIndex
     ):
         """Affiche les icônes centrées dans la cellule."""
 
@@ -51,8 +51,8 @@ class EditDelegate(QStyledItemDelegate):
 
     def editorEvent(
         self,
-        event: QEvent,
-        model: QAbstractItemModel,
+        event: QEvent | None,
+        model: QAbstractItemModel | None,
         option: QStyleOptionViewItem,
         index: QModelIndex,
     ):

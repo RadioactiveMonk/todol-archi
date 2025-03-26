@@ -1,9 +1,9 @@
 from typing import Any
 
-from src.core.logger import logger
 from PyQt6.QtCore import QEvent, QModelIndex, Qt
 from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem
+from src.core.logger import logger
 
 
 class StatusEditDelegate(QStyledItemDelegate):
@@ -11,13 +11,13 @@ class StatusEditDelegate(QStyledItemDelegate):
 
     def editorEvent(
         self,
-        event: QEvent,
+        event: QEvent | None,
         model: Any,
         option: QStyleOptionViewItem,
         index: QModelIndex,
     ) -> bool:
         """Déclenche setData() sur clic gauche."""
-        if event.type() == QEvent.Type.MouseButtonRelease and isinstance(
+        if event is not None and event.type() == QEvent.Type.MouseButtonRelease and isinstance(
             event, QMouseEvent
         ):
             logger.debug("Click detected")

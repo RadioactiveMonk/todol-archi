@@ -6,6 +6,7 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QTextEdit,
     QVBoxLayout,
+    QWidget,
 )
 from src.core.database.db_manager import DbManager
 from src.core.settings.constants import (
@@ -25,7 +26,7 @@ class AddTaskDialog(QDialog):
     ok_signal: pyqtSignal = pyqtSignal()
      # Envoie un signal, pour éviter d'incorporer logique métier
 
-    def __init__(self, parent, task: Task | None = None) -> None:
+    def __init__(self, parent: QWidget, task: Task | None = None) -> None:
         super().__init__(parent)
 
         self.db = DbManager()

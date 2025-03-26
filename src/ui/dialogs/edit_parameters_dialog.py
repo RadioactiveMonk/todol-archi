@@ -1,15 +1,3 @@
-from src.core.style_loader import reload_theme
-from src.core.settings.constants import (
-    EDIT_PARAMETERS_DIALOG_GEOMETRY,
-    EDIT_PARAMETERS_DIALOG_TITLE,
-)
-from src.core.settings.settings_manager import (
-    get_setting,
-    load_settings,
-    set_setting,
-)
-from src.ui.controls.category_selector import CategorySelector
-from src.ui.controls.theme_selector import ThemeSelector
 from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtWidgets import (
     QApplication,
@@ -21,6 +9,18 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+from src.core.settings.constants import (
+    EDIT_PARAMETERS_DIALOG_GEOMETRY,
+    EDIT_PARAMETERS_DIALOG_TITLE,
+)
+from src.core.settings.settings_manager import (
+    get_setting,
+    load_settings,
+    set_setting,
+)
+from src.core.style_loader import reload_theme
+from src.ui.controls.category_selector import CategorySelector
+from src.ui.controls.theme_selector import ThemeSelector
 
 
 class EditParametersDialog(QDialog):
@@ -109,7 +109,8 @@ class EditParametersDialog(QDialog):
         new_theme = self.theme_selector.currentText()
         set_setting("theme", new_theme)
         app = QApplication.instance()
-        reload_theme(app)
+        if isinstance(app, QApplication):
+            reload_theme(app)
 
         self.SETTINGS_UPDATED.emit(load_settings())
         self.close()

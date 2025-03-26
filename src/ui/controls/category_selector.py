@@ -1,19 +1,20 @@
-from backend.core.cached_utils import get_categories
+from PyQt6.QtWidgets import QComboBox
+from src.core.cached_utils import get_categories
 from src.core.logger import logger
 from src.core.settings.settings_manager import get_setting, set_setting
-from PyQt6.QtWidgets import QComboBox
 
 
 class CategorySelector(QComboBox):
     """Menu déroulant pour la sélection de catégorie avec gestion intégrée."""
 
-    def __init__(self, parent=None):
+    def __init__(self, parent: QComboBox | None = None):
         super().__init__(parent)
-        self.refresh_categories()
 
-    def refresh_categories(self):
+    def refresh_categories(self) -> None:
+        """Refreshes the list of categories in the selector."""
         self.clear()
-        self.addItems(get_categories())
+        categories: list[str] = list(get_categories())
+        self.addItems(categories)
 
     def add_category(self, category: str) -> None:
         """Ajoute une catégorie dans le sélecteur et dans le fichier settings"""
