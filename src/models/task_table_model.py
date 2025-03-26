@@ -1,7 +1,8 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, cast
 
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtGui import QBrush, QColor
+from PyQt6.QtWidgets import QWidget
 from src.core.database.db_manager import DbManager
 from src.core.logger import logger
 from src.core.settings.cell_properties import get_alignment, get_flags
@@ -13,6 +14,7 @@ from src.models.task_table_utils import (
     STATUS_PENDING_UI,
     TASK_TABLE_HEADERS,
 )
+from src.ui.dialogs.add_task_dialog import AddTaskDialog
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -209,9 +211,7 @@ class TaskTableModel(QAbstractTableModel):
             notes=task_data["notes"],
         )
 
-        from src.ui.dialogs.add_task_dialog import AddTaskDialog
-
-        dialog = AddTaskDialog(self.parent(), task=task)
+        dialog = AddTaskDialog(cast(QWidget, self.parent()), task=task)
         dialog.ok_signal.connect(self.refresh)
         dialog.exec()
 

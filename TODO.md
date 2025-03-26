@@ -11,7 +11,7 @@
 
 ## 🧹 Étape 1 – Nettoyage & Imports
 - [ ] Désactiver Ruff et Pylance strict temporairement
-- [ ] Nettoyer tous les imports
+- [x] Nettoyer tous les imports
 - [ ] Corriger tous les imports `from src.` → structure relative
 - [ ] Retester les fichiers un par un dans IPython pour valider les modules
 
@@ -19,9 +19,9 @@
 
 ## ⚙️ Étape 2 – Reconstruction des Fonctions
 ### [1] Toggle Status
-- [ ] Finaliser `toggle_status()` dans `handlers/status_handler.py`
-- [ ] Appliquer `[PENDING]` / `[ROCKED]` dans la colonne
-- [ ] Mettre une couleur de fond verte/rouge selon le statut
+- [x] Finaliser `toggle_status()` dans `handlers/status_handler.py`
+- [x] Appliquer `[PENDING]` / `[ROCKED]` dans la colonne
+- [x] Mettre une couleur de fond verte/rouge selon le statut
 
 ### [2] Recherche
 - [ ] Brancher barre de recherche à la table
