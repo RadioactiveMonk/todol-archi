@@ -5,7 +5,6 @@ from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QWidget
 from src.core.database.db_manager import DbManager
 from src.core.logger import logger
-from src.core.settings.cell_properties import get_alignment, get_flags
 from src.handlers.task_handlers import TaskHandlers
 from src.models.task import Task
 from src.models.task_table_utils import (
@@ -14,6 +13,7 @@ from src.models.task_table_utils import (
     STATUS_PENDING_UI,
     TASK_TABLE_HEADERS,
 )
+from src.ui.cell_properties import get_alignment, get_flags
 from src.ui.dialogs.add_task_dialog import AddTaskDialog
 
 

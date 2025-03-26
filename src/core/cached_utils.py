@@ -1,7 +1,8 @@
 import json
 from functools import lru_cache
 
-from core.app_constants import DEFAULT_THEME, SETTINGS_FILE, STYLESHEET_PATH
+from src.core.app_constants import DEFAULT_THEME
+from src.core.path import SETTINGS_FILE, STYLESHEETS_DIR
 
 
 @lru_cache
@@ -15,7 +16,7 @@ def get_categories() -> list[str]:
 @lru_cache
 def get_stylesheet(theme: str = DEFAULT_THEME) -> str:
     """Return the content of the .qss file corresponding to the theme"""
-    qss_path = STYLESHEET_PATH / f"{theme}.qss"
+    qss_path = STYLESHEETS_DIR / f"{theme}.qss"
     return qss_path.read_text(encoding="utf-8")
 
 
@@ -23,5 +24,5 @@ def get_stylesheet(theme: str = DEFAULT_THEME) -> str:
 def get_available_themes() -> list[str]:
     """Return the list of available themes"""
     return [
-        file.stem for file in STYLESHEET_PATH.glob("*.qss") if file.is_file()
+        file.stem for file in STYLESHEETS_DIR.glob("*.qss") if file.is_file()
     ]  # .stem = supprime l'extension | .glob: parcours le dossier | .is_file: si c'est un fichier

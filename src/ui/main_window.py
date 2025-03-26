@@ -5,7 +5,9 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+from src.core.app_constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
 from src.core.database.db_manager import DbManager
+from src.core.path import ICONS_DIR
 from src.models.task import Task
 from src.ui.containers.menu_bar import MenuBar
 from src.ui.containers.search_tasks import SearchTasks
@@ -13,9 +15,6 @@ from src.ui.containers.task_table import TaskTable
 from src.ui.controls.custom_button import CustomButton
 from src.ui.dialogs.add_task_dialog import AddTaskDialog
 from src.ui.dialogs.edit_parameters_dialog import EditParametersDialog
-
-from core.app_constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
-from core.path import ICONS_DIR
 
 
 class MainWindow(QMainWindow):

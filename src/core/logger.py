@@ -2,14 +2,14 @@ import logging
 from pathlib import Path
 
 from src.core.config import DEBUG
-from core.app_constants import LOG_PATH
+from src.core.path import LOG_DIR
 
 # Création du dossier logs/ s'il n'existe pas
-log_path = Path(LOG_PATH)
+log_path = Path(LOG_DIR)
 log_path.mkdir(parents=True, exist_ok=True)
-log_file = Path(LOG_PATH) / "app.log"
+log_file = Path(LOG_DIR) / "app.log"
 log_file.touch(exist_ok=True)
-errors_file = Path(LOG_PATH) / "errors.log"
+errors_file = Path(LOG_DIR) / "errors.log"
 errors_file.touch(exist_ok=True)
 
 # Niveau du logger en fonction de DEBUG (True = DEBUG, False = INFO)

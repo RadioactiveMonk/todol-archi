@@ -9,11 +9,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-from core.app_constants import (
-    EDIT_PARAMETERS_DIALOG_GEOMETRY,
-    EDIT_PARAMETERS_DIALOG_TITLE,
-)
-from src.core.settings.settings_manager import (
+from src.core.settings_manager import (
     get_setting,
     load_settings,
     set_setting,
@@ -21,6 +17,11 @@ from src.core.settings.settings_manager import (
 from src.core.style_loader import reload_theme
 from src.ui.controls.category_selector import CategorySelector
 from src.ui.controls.theme_selector import ThemeSelector
+
+from core.app_constants import (
+    EDIT_PARAMETERS_DIALOG_GEOMETRY,
+    EDIT_PARAMETERS_DIALOG_TITLE,
+)
 
 
 class EditParametersDialog(QDialog):

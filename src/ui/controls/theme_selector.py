@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QComboBox
 from src.core.cached_utils import get_available_themes
-from src.core.settings.settings_manager import get_setting
+from src.core.settings_manager import get_setting
 
 
 class ThemeSelector(QComboBox):

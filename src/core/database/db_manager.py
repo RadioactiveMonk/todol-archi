@@ -2,12 +2,12 @@ import sqlite3
 from typing import List
 
 from src.core.database.db_controller import DbController
-from src.core.logger import logger
-from core.app_constants import (
+from src.core.database_config import (
     SQL_DELETE_TASK,
     SQL_INSERT_TASK,
     SQL_SELECT_TASKS,
 )
+from src.core.logger import logger
 from src.models.task import Task
 
 
