@@ -28,7 +28,7 @@ Mise à jour automatique des imports via grep | sed
 
 2. 📦 Refonte de l’arborescence interne
 
-```` ```markdown````
+```
 Todol-archi/
 ├── data
 │   ├── settings.json
@@ -145,7 +145,7 @@ Todol-archi/
 ├── pyproject.toml
 ├── README.md
 └── TODO.md
-```` ``` ````
+```
 
 3. 🔁 Mise à jour des chemins dynamiques
 
