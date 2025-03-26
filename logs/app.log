@@ -115,3 +115,14 @@
 2025-03-26 14:48:01,283 - INFO - ✅ Updating task ID 32 (rowcount=1)
 2025-03-26 14:48:01,283 - INFO - Task updated (ID: 32): {'completed': 0, 'category': None, 'expiration': None, 'title': None, 'notes': None}
 2025-03-26 14:48:01,283 - INFO - [toggle_status] Tâche ID 32 -> completed = False
+2025-03-26 15:34:55,398 - INFO - SQL: table 'tasks' created
+2025-03-26 15:34:55,420 - INFO - SQL: table 'tasks' created
+2025-03-26 15:35:01,901 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 15:35:01,901 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 15:35:04,243 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 15:35:04,243 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'dark', 'categories': ['Work', 'Personal', 'test']}
+2025-03-26 15:35:04,244 - INFO - Setting updated successfully: theme = dark
+2025-03-26 15:35:04,244 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 15:35:04,272 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 15:35:07,482 - INFO - SQL: table 'tasks' created
+2025-03-26 15:35:07,505 - INFO - SQL: table 'tasks' created
