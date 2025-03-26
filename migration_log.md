@@ -30,13 +30,14 @@ Mise à jour automatique des imports via grep | sed
 
 ```
 Todol-archi/
+.
 ├── data
 │   ├── settings.json
 │   ├── tasks.db
 │   └── themes.json
 ├── docs
 │   ├── setup_notes.md
-│   ├── tree250325.txt
+│   ├── tree260325.txt
 │   └── workflow.md
 ├── logs
 │   ├── app.log
@@ -81,48 +82,49 @@ Todol-archi/
 │   │   ├── task.py
 │   │   ├── task_table_model.py
 │   │   └── task_table_utils.py
-│   └── ui
-│       ├── containers
-│       │   ├── __init__.py
-│       │   ├── menu_bar.py
-│       │   ├── search_tasks.py
-│       │   └── task_table.py
-│       ├── controls
-│       │   ├── category_selector.py
-│       │   ├── custom_button.py
-│       │   ├── expiration_selector.py
-│       │   ├── __init__.py
-│       │   └── theme_selector.py
-│       ├── delegates
-│       │   ├── edit_delegate.py
-│       │   ├── __init__.py
-│       │   └── status_delegate.py
-│       ├── dialogs
-│       │   ├── add_task_dialog.py
-│       │   ├── edit_parameters_dialog.py
-│       │   └── __init__.py
-│       ├── resources
-│       │   ├── fonts
-│       │   ├── icons
-│       │   │   ├── app_icon.png
-│       │   │   ├── check_task.png
-│       │   │   ├── check_task.svg
-│       │   │   ├── delete_task.png
-│       │   │   ├── delete_task.svg
-│       │   │   ├── edit_settings.png
-│       │   │   ├── edit_task.png
-│       │   │   ├── edit_task.svg
-│       │   │   └── new_task.png
-│       │   ├── images
-│       │   ├── stylesheets
-│       │   │   ├── dark.qss
-│       │   │   ├── default.qss
-│       │   │   └── system.qss
-│       │   └── translations
-│       ├── cell_properties.py
-│       ├── __init__.py
-│       ├── main_window.py
-│       └── ui_constants.py
+│   ├── ui
+│   │   ├── containers
+│   │   │   ├── __init__.py
+│   │   │   ├── menu_bar.py
+│   │   │   ├── search_tasks.py
+│   │   │   └── task_table.py
+│   │   ├── controls
+│   │   │   ├── category_selector.py
+│   │   │   ├── custom_button.py
+│   │   │   ├── expiration_selector.py
+│   │   │   ├── __init__.py
+│   │   │   └── theme_selector.py
+│   │   ├── delegates
+│   │   │   ├── edit_delegate.py
+│   │   │   ├── __init__.py
+│   │   │   └── status_delegate.py
+│   │   ├── dialogs
+│   │   │   ├── add_task_dialog.py
+│   │   │   ├── edit_parameters_dialog.py
+│   │   │   └── __init__.py
+│   │   ├── resources
+│   │   │   ├── fonts
+│   │   │   ├── icons
+│   │   │   │   ├── app_icon.png
+│   │   │   │   ├── check_task.png
+│   │   │   │   ├── check_task.svg
+│   │   │   │   ├── delete_task.png
+│   │   │   │   ├── delete_task.svg
+│   │   │   │   ├── edit_settings.png
+│   │   │   │   ├── edit_task.png
+│   │   │   │   ├── edit_task.svg
+│   │   │   │   └── new_task.png
+│   │   │   ├── images
+│   │   │   ├── stylesheets
+│   │   │   │   ├── dark.qss
+│   │   │   │   ├── default.qss
+│   │   │   │   └── system.qss
+│   │   │   └── translations
+│   │   ├── cell_properties.py
+│   │   ├── __init__.py
+│   │   ├── main_window.py
+│   │   └── ui_constants.py
+│   └── main.py
 ├── tests
 │   ├── temp
 │   ├── conftest.py
@@ -134,13 +136,13 @@ Todol-archi/
 │   ├── test_database.py
 │   ├── test_edit_parameters_dialog.py
 │   ├── test_settings.py
+│   ├── test_status_handler.py
 │   ├── test_style_loader.py
 │   ├── test_task_handlers.py
 │   ├── test_task.py
 │   └── test_task_table_model.py
 ├── credits.txt
 ├── LICENSE
-├── main.py
 ├── migration_log.md
 ├── pyproject.toml
 ├── README.md
