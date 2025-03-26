@@ -9,7 +9,6 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-from src.core.cached_utils import get_categories
 from src.core.settings_manager import (
     get_setting,
     load_settings,
