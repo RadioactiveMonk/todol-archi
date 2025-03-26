@@ -1,8 +1,9 @@
 from PyQt6.QtWidgets import QApplication
 from src.core.cached_utils import get_stylesheet
 from src.core.logger import logger
+from src.core.settings_manager import get_setting
+
 from core.app_constants import DEFAULT_THEME
-from src.core.settings.settings_manager import get_setting
 
 
 def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
