@@ -77,3 +77,41 @@
 2025-03-26 13:39:35,462 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
 2025-03-26 13:39:35,462 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
 2025-03-26 13:39:40,288 - INFO - SQL: table 'tasks' created
+2025-03-26 14:41:37,565 - INFO - SQL: table 'tasks' created
+2025-03-26 14:41:37,588 - INFO - SQL: table 'tasks' created
+2025-03-26 14:42:20,115 - INFO - SQL: table 'tasks' created
+2025-03-26 14:43:54,912 - INFO - Task added: 30
+2025-03-26 14:44:17,505 - INFO - SQL: table 'tasks' created
+2025-03-26 14:44:35,296 - INFO - Task added: 31
+2025-03-26 14:44:48,646 - INFO - SQL: table 'tasks' created
+2025-03-26 14:44:48,669 - INFO - SQL: table 'tasks' created
+2025-03-26 14:45:00,984 - INFO - ✅ Updating task ID 31 (rowcount=1)
+2025-03-26 14:45:00,984 - INFO - Task updated (ID: 31): {'completed': 1, 'category': None, 'expiration': None, 'title': None, 'notes': None}
+2025-03-26 14:45:00,984 - INFO - [toggle_status] Tâche ID 31 -> completed = True
+2025-03-26 14:45:08,784 - INFO - ✅ Updating task ID 30 (rowcount=1)
+2025-03-26 14:45:08,785 - INFO - Task updated (ID: 30): {'completed': 1, 'category': None, 'expiration': None, 'title': None, 'notes': None}
+2025-03-26 14:45:08,785 - INFO - [toggle_status] Tâche ID 30 -> completed = True
+2025-03-26 14:45:34,573 - INFO - ✅ Deleting task ID 31 (rowcount=1)
+2025-03-26 14:45:34,574 - INFO - Task ID 31 deleted successfully.
+2025-03-26 14:45:34,574 - INFO - 🗑 Task deleted successfully (id=31)
+2025-03-26 14:45:37,758 - INFO - ✅ Deleting task ID 30 (rowcount=1)
+2025-03-26 14:45:37,758 - INFO - Task ID 30 deleted successfully.
+2025-03-26 14:45:37,758 - INFO - 🗑 Task deleted successfully (id=30)
+2025-03-26 14:45:43,731 - INFO - SQL: table 'tasks' created
+2025-03-26 14:45:53,525 - INFO - Task added: 32
+2025-03-26 14:46:02,573 - INFO - SQL: table 'tasks' created
+2025-03-26 14:46:11,041 - INFO - ✅ Updating task ID 32 (rowcount=1)
+2025-03-26 14:46:11,041 - INFO - Task updated (ID: 32): {'completed': 0, 'category': 'Work', 'expiration': '2025-03-22 22:00', 'title': 'kiné', 'notes': ''}
+2025-03-26 14:46:20,119 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 14:46:20,120 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 14:46:36,024 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 14:46:36,025 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'default', 'categories': ['Work', 'Personal', 'test']}
+2025-03-26 14:46:36,025 - INFO - Setting updated successfully: theme = default
+2025-03-26 14:46:36,025 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 14:46:36,036 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 14:47:57,252 - INFO - ✅ Updating task ID 32 (rowcount=1)
+2025-03-26 14:47:57,253 - INFO - Task updated (ID: 32): {'completed': 1, 'category': None, 'expiration': None, 'title': None, 'notes': None}
+2025-03-26 14:47:57,253 - INFO - [toggle_status] Tâche ID 32 -> completed = True
+2025-03-26 14:48:01,283 - INFO - ✅ Updating task ID 32 (rowcount=1)
+2025-03-26 14:48:01,283 - INFO - Task updated (ID: 32): {'completed': 0, 'category': None, 'expiration': None, 'title': None, 'notes': None}
+2025-03-26 14:48:01,283 - INFO - [toggle_status] Tâche ID 32 -> completed = False
