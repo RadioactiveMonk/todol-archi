@@ -1,8 +1,8 @@
-from .constants import DEFAULT_THEME
-from src.core.settings.settings_manager import get_setting
 from PyQt6.QtWidgets import QApplication
 from src.core.cached_utils import get_stylesheet
 from src.core.logger import logger
+from src.core.settings.constants import DEFAULT_THEME
+from src.core.settings.settings_manager import get_setting
 
 
 def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
@@ -24,7 +24,7 @@ def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
         logger.warning(f"⚠️ Impossible de charger le thème '{theme}' : {e}")
 
 
-def reload_theme(app) -> None:
+def reload_theme(app: QApplication) -> None:
     """Reload the current theme"""
     get_stylesheet.cache_clear()
     theme = get_setting("theme")

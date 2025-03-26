@@ -1,13 +1,3 @@
-from src.core.database.db_manager import DbManager
-from src.models.task import Task
-from src.core.settings.constants import (
-    DEFAULT_STATUS,
-    EDIT_TASK_DIALOG_TITLE,
-    TASK_DIALOG_GEOMETRY,
-    TASK_DIALOG_TITLE,
-)
-from src.ui.controls.category_selector import CategorySelector
-from src.ui.controls.expiration_selector import ExpirationSelector
 from PyQt6.QtCore import QDateTime, pyqtSignal
 from PyQt6.QtWidgets import (
     QDialog,
@@ -17,14 +7,23 @@ from PyQt6.QtWidgets import (
     QTextEdit,
     QVBoxLayout,
 )
+from src.core.database.db_manager import DbManager
+from src.core.settings.constants import (
+    DEFAULT_STATUS,
+    EDIT_TASK_DIALOG_TITLE,
+    TASK_DIALOG_GEOMETRY,
+    TASK_DIALOG_TITLE,
+)
+from src.models.task import Task
+from src.ui.controls.category_selector import CategorySelector
+from src.ui.controls.expiration_selector import ExpirationSelector
 
 
 class AddTaskDialog(QDialog):
     """Dialog window to add a task or to edit a task in edit mode"""
 
-    ok_signal: pyqtSignal = (
-        pyqtSignal()
-    )  # Envoie un signal, pour éviter d'incorporer logique métier
+    ok_signal: pyqtSignal = pyqtSignal()
+     # Envoie un signal, pour éviter d'incorporer logique métier
 
     def __init__(self, parent, task: Task | None = None) -> None:
         super().__init__(parent)

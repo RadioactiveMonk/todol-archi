@@ -1,7 +1,7 @@
 from dataclasses import asdict
 
-from src.core.logger import logger
 from src.core.database.db_manager import DbManager
+from src.core.logger import logger
 from src.models.task import Task
 
 

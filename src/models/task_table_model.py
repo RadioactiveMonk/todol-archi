@@ -1,7 +1,10 @@
 from typing import Any, Dict, List
 
-from src.core.logger import logger
+from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
+from PyQt6.QtGui import QBrush, QColor
 from src.core.database.db_manager import DbManager
+from src.core.logger import logger
+from src.core.settings.cell_properties import get_alignment, get_flags
 from src.handlers.task_handlers import TaskHandlers
 from src.models.task import Task
 from src.models.task_table_utils import (
@@ -10,9 +13,6 @@ from src.models.task_table_utils import (
     STATUS_PENDING_UI,
     TASK_TABLE_HEADERS,
 )
-from configuration.cell_properties import get_alignment, get_flags
-from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
-from PyQt6.QtGui import QBrush, QColor
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -73,7 +73,7 @@ class TaskTableModel(QAbstractTableModel):
 
         return len(TASK_TABLE_HEADERS)
 
-    def headerData(self, section: int, orientation: Qt.Orientation, role: int) -> Any:
+    def headerData(self, section: int, orientation: Qt.Orientation, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
         """Return the header data for the table
 
         Parameters
@@ -232,7 +232,7 @@ class TaskTableModel(QAbstractTableModel):
         self.task_handlers.delete_handler(task_id)
         self.refresh()
 
-    def _get_display_value(self, task: dict, column: int) -> str | None:
+    def _get_display_value(self, task: dict[str, Any], column: int) -> str | None:
         """Return the value to show in the cell
 
         Parameters
@@ -265,7 +265,7 @@ class TaskTableModel(QAbstractTableModel):
             case _:
                 return None
 
-    def _get_status_background(self, task: dict) -> QBrush:
+    def _get_status_background(self, task: dict[str, Any]) -> QBrush:
         """Return the background color for the status column
 
         Parameters
