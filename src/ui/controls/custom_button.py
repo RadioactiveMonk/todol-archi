@@ -1,7 +1,6 @@
-
-from PyQt6.QtCore import QDir
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QPushButton, QWidget
+from src.core.path import ICONS_DIR
 
 
 class CustomButton(QPushButton):
@@ -11,6 +10,6 @@ class CustomButton(QPushButton):
         self, icon_name: str = "", tooltip: str = "", parent: QWidget | None = None
     ) -> None:
         super().__init__(parent or QWidget())
-        icon_path = QDir.current().filePath(f"gui/resources/icons/{icon_name}")
-        self.setIcon(QIcon(icon_path))
+        icon_path = ICONS_DIR / icon_name
+        self.setIcon(QIcon(str(icon_path)))
         self.setToolTip(tooltip)

@@ -1,8 +1,9 @@
 import json
 from typing import Any
 
+from src.core.app_constants import CATEGORIES, DEFAULT_THEME
 from src.core.logger import logger
-from core.app_constants import CATEGORIES, DEFAULT_THEME, SETTINGS_FILE
+from src.core.path import SETTINGS_FILE
 
 
 def load_settings() -> dict[str, Any]:

@@ -1,6 +1,8 @@
 from PyQt6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, pyqtSignal
 from PyQt6.QtGui import QIcon, QMouseEvent, QPainter
 from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
+from src.core.path import ICONS_DIR
+
 from core.app_constants import (
     EDIT_ICON_SIZE,
     EDIT_ICON_SPACING,
@@ -21,8 +23,8 @@ class EditDelegate(QStyledItemDelegate):
         """Initialise les icônes"""
         super().__init__(parent)
         self.icons = {
-            "edit": QIcon("gui/resources/icons/edit_task.png"),
-            "delete": QIcon("gui/resources/icons/delete_task.png"),
+            "edit": QIcon(str(ICONS_DIR / "edit_task.png")),
+            "delete": QIcon(str(ICONS_DIR / "delete_task.png")),
         }
 
         self.signal_map = {"edit": self.editClicked, "delete": self.deleteClicked}
