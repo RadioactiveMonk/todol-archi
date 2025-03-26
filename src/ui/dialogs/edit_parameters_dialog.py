@@ -9,6 +9,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+from src.core.cached_utils import get_categories
 from src.core.settings_manager import (
     get_setting,
     load_settings,
@@ -29,8 +30,8 @@ class EditParametersDialog(QDialog):
 
     SETTINGS_UPDATED: pyqtSignal = pyqtSignal(dict)
 
-    def __init__(self, parent: QWidget | None) -> None:
-        super().__init__(parent)
+    def __init__(self, parent: QWidget | None = None) -> None:
+        super().__init__(parent if parent is not None else QWidget())
 
         self.setup_ui()
 
@@ -71,7 +72,7 @@ class EditParametersDialog(QDialog):
         # Reset to default
         self.reset_app_button = QPushButton("Reset", self)
         self.reset_app_button.setMaximumWidth(80)
-        self.reset_app_button.clicked.connect(self.reset_settings) # 🚩
+        self.reset_app_button.clicked.connect(self.reset_settings)  # 🚩
 
         form_layout.addRow("New category: ", add_category_layout)
         form_layout.addRow("Categories: ", remove_category_layout)

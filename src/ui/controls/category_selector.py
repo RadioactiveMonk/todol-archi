@@ -9,6 +9,7 @@ class CategorySelector(QComboBox):
 
     def __init__(self, parent: QComboBox | None = None):
         super().__init__(parent)
+        self.refresh_categories()
 
     def refresh_categories(self) -> None:
         """Refreshes the list of categories in the selector."""

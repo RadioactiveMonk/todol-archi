@@ -9,15 +9,16 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 from src.core.database.db_manager import DbManager
+from src.models.task import Task
+from src.ui.controls.category_selector import CategorySelector
+from src.ui.controls.expiration_selector import ExpirationSelector
+
 from core.app_constants import (
     DEFAULT_STATUS,
     EDIT_TASK_DIALOG_TITLE,
     TASK_DIALOG_GEOMETRY,
     TASK_DIALOG_TITLE,
 )
-from src.models.task import Task
-from src.ui.controls.category_selector import CategorySelector
-from src.ui.controls.expiration_selector import ExpirationSelector
 
 
 class AddTaskDialog(QDialog):
