@@ -10,7 +10,7 @@
 ---
 
 ## 🧹 Étape 1 – Nettoyage & Imports
-- [ ] Désactiver Ruff et Pylance strict temporairement
+- [x] (Désactiver Ruff) et Pylance strict temporairement
 - [x] Nettoyer tous les imports
 - [ ] Corriger tous les imports `from src.` → structure relative
 - [ ] Retester les fichiers un par un dans IPython pour valider les modules
@@ -22,6 +22,7 @@
 - [x] Finaliser `toggle_status()` dans `handlers/status_handler.py`
 - [x] Appliquer `[PENDING]` / `[ROCKED]` dans la colonne
 - [x] Mettre une couleur de fond verte/rouge selon le statut
+- [ ] Corriger l'enregistrement du thème au restart
 
 ### [2] Recherche
 - [ ] Brancher barre de recherche à la table
