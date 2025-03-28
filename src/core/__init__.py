@@ -61,3 +61,8 @@ __all__ = [
     "AUTO_SAVE_INTERVAL",
     "DEBUG",
 ]
+
+# This module imports and re-exports various constants, utility functions, and
+# configuration settings related to the application. It serves as a centralized
+# location for accessing important paths, database configurations, settings
+# management, and other application-wide constants.
