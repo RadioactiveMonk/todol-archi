@@ -173,3 +173,12 @@
 2025-03-28 17:46:21,947 - INFO - SQL: table 'tasks' created
 2025-03-28 17:52:44,929 - INFO - SQL: table 'tasks' created
 2025-03-28 17:52:44,929 - INFO - SQL: table 'tasks' created
+2025-03-28 19:23:36,149 - INFO - SQL: table 'tasks' created
+2025-03-28 19:23:36,172 - INFO - SQL: table 'tasks' created
+2025-03-28 19:23:43,368 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-28 19:23:43,368 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-28 19:23:53,632 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-28 19:23:53,633 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'default', 'categories': ['Work', 'Personal']}
+2025-03-28 19:23:53,634 - INFO - Setting updated successfully: theme = default
+2025-03-28 19:23:53,634 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-28 19:23:53,641 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
