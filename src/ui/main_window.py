@@ -8,7 +8,6 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
-from core.app_constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
 from core.database.db_manager import DbManager
 from core.path import ICONS_DIR
 from models.task import Task
@@ -18,6 +17,7 @@ from ui.containers.task_table import TaskTable
 from ui.controls.custom_button import CustomButton
 from ui.dialogs.add_task_dialog import AddTaskDialog
 from ui.dialogs.edit_parameters_dialog import EditParametersDialog
+from ui.ui_constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
 
 
 class MainWindow(QMainWindow):

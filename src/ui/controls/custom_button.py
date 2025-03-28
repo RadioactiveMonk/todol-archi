@@ -1,5 +1,6 @@
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QPushButton, QWidget
+
 from core.path import ICONS_DIR
 
 

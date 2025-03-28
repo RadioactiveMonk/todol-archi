@@ -4,10 +4,6 @@ from PyQt6.QtCore import QDateTime
 # DOMAIN DEFAULTS
 # =====================================
 
-# Status
-STATUS_DONE: bool = True
-STATUS_PENDING: bool = False
-DEFAULT_STATUS: bool = STATUS_PENDING
 
 # Task values
 DEFAULT_TITLE: str = "TASK"

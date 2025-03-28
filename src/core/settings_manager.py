@@ -1,9 +1,10 @@
 import json
 from typing import Any
 
-from core.app_constants import CATEGORIES, DEFAULT_THEME
+from core.default_values import CATEGORIES
 from core.logger import logger
 from core.path import SETTINGS_FILE
+from ui.ui_constants import DEFAULT_THEME
 
 
 def load_settings() -> dict[str, Any]:

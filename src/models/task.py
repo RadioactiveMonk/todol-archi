@@ -1,12 +1,12 @@
 from dataclasses import dataclass, field
 
-from core.app_constants import (
+from core.default_values import (
     DEFAULT_CATEGORY,
     DEFAULT_DATETIME,
     DEFAULT_NOTES,
-    DEFAULT_STATUS,
     DEFAULT_TITLE,
 )
+from core.status_constants import DEFAULT_STATUS
 
 
 @dataclass

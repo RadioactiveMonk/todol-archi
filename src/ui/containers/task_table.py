@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QTableView, QWidget
+
 from core.database.db_manager import DbManager
 from handlers.task_handlers import TaskHandlers
 from models.task_table_model import TaskTableModel

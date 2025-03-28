@@ -2,12 +2,12 @@ from PyQt6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, pyqtSig
 from PyQt6.QtGui import QIcon, QMouseEvent, QPainter
 from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
 
-from core.app_constants import (
+from core.path import ICONS_DIR
+from ui.ui_constants import (
     EDIT_ICON_SIZE,
     EDIT_ICON_SPACING,
     EDIT_SECTION_POSITIONS,
 )
-from core.path import ICONS_DIR
 
 
 class EditDelegate(QStyledItemDelegate):

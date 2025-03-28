@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QComboBox
+
 from core.cached_utils import get_categories
 from core.logger import logger
 from core.settings_manager import get_setting, set_setting
