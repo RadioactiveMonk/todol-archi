@@ -23,7 +23,7 @@ format:
 
 lint:
 	@echo "Vérification du code avec Ruff..."
-	ruff check $(SRC) $(TESTS)
+	ruff check --fix $(SRC) $(TESTS)
 
 reload:
 	@echo "Lancement d'IPython avec reload_all..."
