@@ -7,7 +7,7 @@
 ## Phase 1 – Stabilisation finale
 - [x] Ajouter les `__init__.py` dans tous les sous-dossiers
 - [x] Vérifier l’importabilité avec `python -m src.main`
-- [ ] Redecouper les constantes
+- [x] Redecouper les constantes
 - [x] Corriger les imports restants si besoin (absolus/relatifs)
 - [ ] Refacto avancé progressif des fondations: class dispatch, args, kwargs, dict dispatch, walrus operator, .. (but pédagogique)
 - [ ] Lancer l’application et valider : tâches, toggle, thème, catégories
