@@ -16,25 +16,26 @@ Expérimentation de patterns avancés (Factory, SOLID, Inversion de dépendance,
 - SQLite
 - Architecture modulaire orientée objets
 
-## Structure (26-03-25)
+## Structure (28-03-25)
 
 ```
-Todol-archi/
-.
+.todol-archi
 ├── data
 │   ├── settings.json
 │   ├── tasks.db
 │   └── themes.json
 ├── docs
-│   ├── setup_notes.md
 │   ├── tree260325.txt
-│   └── workflow.md
+│   └── tree28-03.txt
 ├── logs
 │   ├── app.log
 │   └── errors.log
 ├── scripts
 │   ├── dev.sh
-│   └── gitadd.py
+│   ├── gitadd.py
+│   ├── README_dev.md
+│   ├── reload_all.py
+│   └── replace_imports.py
 ├── src
 │   ├── core
 │   │   ├── api
@@ -51,14 +52,16 @@ Todol-archi/
 │   │   ├── cached_utils.py
 │   │   ├── config.py
 │   │   ├── database_config.py
+│   │   ├── default_values.py
 │   │   ├── __init__.py
-│   │   ├── ipython_cfg.py
 │   │   ├── logger.py
 │   │   ├── path.py
 │   │   ├── settings_manager.py
+│   │   ├── status_constants.py
 │   │   └── style_loader.py
 │   ├── factory
 │   │   ├── dialog_factory.py
+│   │   ├── factory_utils.py
 │   │   ├── handler_factory.py
 │   │   ├── icon_factory.py
 │   │   ├── __init__.py
@@ -72,6 +75,12 @@ Todol-archi/
 │   │   ├── task.py
 │   │   ├── task_table_model.py
 │   │   └── task_table_utils.py
+│   ├── todol_archi.egg-info
+│   │   ├── dependency_links.txt
+│   │   ├── PKG-INFO
+│   │   ├── requires.txt
+│   │   ├── SOURCES.txt
+│   │   └── top_level.txt
 │   ├── ui
 │   │   ├── containers
 │   │   │   ├── __init__.py
@@ -114,6 +123,7 @@ Todol-archi/
 │   │   ├── __init__.py
 │   │   ├── main_window.py
 │   │   └── ui_constants.py
+│   ├── __init__.py
 │   └── main.py
 ├── tests
 │   ├── temp
@@ -132,11 +142,14 @@ Todol-archi/
 │   ├── test_task.py
 │   └── test_task_table_model.py
 ├── credits.txt
+├── learning_map.md
 ├── LICENSE
+├── Makefile
 ├── migration_log.md
 ├── pyproject.toml
 ├── README.md
-└── TODO.md
+├── TODO.md
+└── TODO_review1.md
 ```
 
 ## Démarrage
