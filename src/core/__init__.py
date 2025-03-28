@@ -1,4 +1,4 @@
-from .app_constants import APP_NAME, DEFAULT_THEME
+from .app_constants import APP_NAME
 from .cached_utils import get_available_themes, get_categories, get_stylesheet
 from .config import AUTO_SAVE_INTERVAL, DEBUG
 from .database_config import (
@@ -25,7 +25,6 @@ from .style_loader import load_stylesheet, reload_theme
 __all__ = [
     # App constants
     "APP_NAME",
-    "DEFAULT_THEME",
     # Settings access
     "get_setting",
     "set_setting",

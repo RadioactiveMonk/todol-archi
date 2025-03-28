@@ -1,5 +1,5 @@
 # =====================================
 # CONFIGURATION DE L'APPLICATION
 # =====================================
-DEBUG = False
-AUTO_SAVE_INTERVAL = 5
+DEBUG: bool = False
+AUTO_SAVE_INTERVAL: int = 5

@@ -1,8 +1,8 @@
 import json
 from functools import lru_cache
 
-from core.app_constants import DEFAULT_THEME
 from core.path import SETTINGS_FILE, STYLESHEETS_DIR
+from ui.ui_constants import DEFAULT_THEME
 
 
 @lru_cache
