@@ -18,8 +18,10 @@ class StatusEditDelegate(QStyledItemDelegate):
         index: QModelIndex,
     ) -> bool:
         """Déclenche setData() sur clic gauche."""
-        if event is not None and event.type() == QEvent.Type.MouseButtonRelease and isinstance(
-            event, QMouseEvent
+        if (
+            event is not None
+            and event.type() == QEvent.Type.MouseButtonRelease
+            and isinstance(event, QMouseEvent)
         ):
             logger.debug("Click detected")
             model.setData(index, None, Qt.ItemDataRole.EditRole)

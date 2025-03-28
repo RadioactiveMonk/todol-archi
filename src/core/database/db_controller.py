@@ -158,10 +158,8 @@ class DbController:
 
     def debug_message(self, **kwargs: Any) -> str:
         """Generate a dynamic SQL debug message"""
-        return " | ".join(
-            [
-                f"{key.upper()}: {value}"
-                for key, value in kwargs.items()
-                if value is not None
-            ]
-        )
+        return " | ".join([
+            f"{key.upper()}: {value}"
+            for key, value in kwargs.items()
+            if value is not None
+        ])

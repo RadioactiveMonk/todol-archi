@@ -8,8 +8,7 @@ from PyQt6.QtWidgets import (
 
 
 class MenuBar(QMenuBar):
-    """Application menu bar
-    """
+    """Application menu bar"""
 
     def __init__(self, parent: QWidget) -> None:
         super().__init__(parent)

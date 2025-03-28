@@ -1,7 +1,7 @@
 from .cell_properties import get_alignment, get_flags
 from .main_window import MainWindow
 
-# from .ui_constants import 
+# from .ui_constants import
 
 __all__ = [
     "get_alignment",

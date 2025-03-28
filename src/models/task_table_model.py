@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, cast
+from typing import TYPE_CHECKING, Any, Dict, List, cast
 
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtGui import QBrush, QColor
@@ -14,7 +14,9 @@ from models.task_table_utils import (
     STATUS_PENDING_UI,
     TASK_TABLE_HEADERS,
 )
-from ui.dialogs.add_task_dialog import AddTaskDialog
+
+if TYPE_CHECKING:
+    from ui.dialogs.add_task_dialog import AddTaskDialog
 
 
 class TaskTableModel(QAbstractTableModel):

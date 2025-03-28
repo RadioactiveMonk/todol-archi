@@ -4,4 +4,10 @@ from .icon_factory import IconFactory
 from .mainwindow_factory import MainWindowFactory
 from .notification_factory import NotificationFactory
 
-__all__ = ["DialogFactory", "HandlerFactory", "IconFactory", "MainWindowFactory", "NotificationFactory"]
+__all__ = [
+    "DialogFactory",
+    "HandlerFactory",
+    "IconFactory",
+    "MainWindowFactory",
+    "NotificationFactory",
+]

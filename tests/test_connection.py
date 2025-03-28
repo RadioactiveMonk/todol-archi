@@ -13,7 +13,7 @@ def test_persistant_connection(in_memory_connection):
     params = (0, "Test", "2025-01-01 12:00", "Titre test", "Note test")
 
     # Renvoie l'id de la tâche
-    task_id = db._execute_query(insert_query, params, lastrowid=True)  
+    task_id = db._execute_query(insert_query, params, lastrowid=True)
 
     assert isinstance(task_id, int)
 
