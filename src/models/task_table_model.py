@@ -3,18 +3,18 @@ from typing import Any, Dict, List, cast
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QWidget
-from src.core.database.db_manager import DbManager
-from src.core.logger import logger
-from src.handlers.task_handlers import TaskHandlers
-from src.models.task import Task
-from src.models.task_table_utils import (
+from core.database.db_manager import DbManager
+from core.logger import logger
+from handlers.task_handlers import TaskHandlers
+from models.task import Task
+from models.task_table_utils import (
     STATUS_COLUMN,
     STATUS_DONE_UI,
     STATUS_PENDING_UI,
     TASK_TABLE_HEADERS,
 )
-from src.ui.cell_properties import get_alignment, get_flags
-from src.ui.dialogs.add_task_dialog import AddTaskDialog
+from ui.cell_properties import get_alignment, get_flags
+from ui.dialogs.add_task_dialog import AddTaskDialog
 
 
 class TaskTableModel(QAbstractTableModel):

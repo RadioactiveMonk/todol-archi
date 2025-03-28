@@ -1,5 +1,5 @@
 from PyQt6.QtCore import QModelIndex, Qt
-from src.models.task_table_utils import (
+from models.task_table_utils import (
     EDIT_COLUMN_INDEX,
     STATUS_COLUMN_INDEX,
 )

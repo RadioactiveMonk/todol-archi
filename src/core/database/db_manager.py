@@ -1,14 +1,14 @@
 import sqlite3
 from typing import List
 
-from src.core.database.db_controller import DbController
-from src.core.database_config import (
+from core.database.db_controller import DbController
+from core.database_config import (
     SQL_DELETE_TASK,
     SQL_INSERT_TASK,
     SQL_SELECT_TASKS,
 )
-from src.core.logger import logger
-from src.models.task import Task
+from core.logger import logger
+from models.task import Task
 
 
 class DbManager:

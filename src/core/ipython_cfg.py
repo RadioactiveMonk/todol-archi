@@ -23,8 +23,8 @@ def reload_all() -> Tuple[object, type]:
     print("✅ Modules reloaded successfully!")
 
     # Réimporter les éléments utiles
-    from src.core.database.db_manager import DbManager
-    from src.models.task import Task
+    from core.database.db_manager import DbManager
+    from models.task import Task
 
     db = DbManager()
     return db, Task

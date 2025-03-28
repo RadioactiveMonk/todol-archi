@@ -9,14 +9,14 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-from src.core.settings_manager import (
+from core.settings_manager import (
     get_setting,
     load_settings,
     set_setting,
 )
-from src.core.style_loader import reload_theme
-from src.ui.controls.category_selector import CategorySelector
-from src.ui.controls.theme_selector import ThemeSelector
+from core.style_loader import reload_theme
+from ui.controls.category_selector import CategorySelector
+from ui.controls.theme_selector import ThemeSelector
 
 from core.app_constants import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,

@@ -1,14 +1,14 @@
 from PyQt6.QtWidgets import QTableView, QWidget
-from src.core.database.db_manager import DbManager
-from src.handlers.task_handlers import TaskHandlers
-from src.models.task_table_model import TaskTableModel
-from src.models.task_table_utils import (
+from core.database.db_manager import DbManager
+from handlers.task_handlers import TaskHandlers
+from models.task_table_model import TaskTableModel
+from models.task_table_utils import (
     COLUMN_WIDTHS,
     EDIT_COLUMN,
     TASK_TABLE_HEADERS,
 )
-from src.ui.delegates.edit_delegate import EditDelegate
-from src.ui.delegates.status_delegate import StatusEditDelegate
+from ui.delegates.edit_delegate import EditDelegate
+from ui.delegates.status_delegate import StatusEditDelegate
 
 
 class TaskTable(QTableView):

@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QApplication
-from src.core.cached_utils import get_stylesheet
-from src.core.logger import logger
-from src.core.settings_manager import get_setting
+from core.cached_utils import get_stylesheet
+from core.logger import logger
+from core.settings_manager import get_setting
 
 from core.app_constants import DEFAULT_THEME
 

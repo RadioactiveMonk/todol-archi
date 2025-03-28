@@ -8,10 +8,10 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-from src.core.database.db_manager import DbManager
-from src.models.task import Task
-from src.ui.controls.category_selector import CategorySelector
-from src.ui.controls.expiration_selector import ExpirationSelector
+from core.database.db_manager import DbManager
+from models.task import Task
+from ui.controls.category_selector import CategorySelector
+from ui.controls.expiration_selector import ExpirationSelector
 
 from core.app_constants import (
     DEFAULT_STATUS,

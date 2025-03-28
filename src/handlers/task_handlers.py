@@ -1,8 +1,8 @@
 from dataclasses import asdict
 
-from src.core.database.db_manager import DbManager
-from src.core.logger import logger
-from src.models.task import Task
+from core.database.db_manager import DbManager
+from core.logger import logger
+from models.task import Task
 
 
 class TaskHandlers:

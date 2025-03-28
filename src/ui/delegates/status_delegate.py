@@ -3,7 +3,7 @@ from typing import Any
 from PyQt6.QtCore import QEvent, QModelIndex, Qt
 from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem
-from src.core.logger import logger
+from core.logger import logger
 
 
 class StatusEditDelegate(QStyledItemDelegate):
