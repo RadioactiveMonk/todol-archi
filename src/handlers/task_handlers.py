@@ -32,7 +32,7 @@ class TaskHandlers:
             logger.warning(f"❌ Failed to delete task (id={task_id})")
         return result
 
-    def edit_handler(self, task: Task) -> bool:
+    def edit_handler(self, task: "Task") -> bool:
         """Edits a task in the DB
 
         Parameters

@@ -3,6 +3,7 @@ from typing import Any, Dict, List, cast
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QWidget
+
 from core.database.db_manager import DbManager
 from core.logger import logger
 from handlers.task_handlers import TaskHandlers
@@ -13,7 +14,6 @@ from models.task_table_utils import (
     STATUS_PENDING_UI,
     TASK_TABLE_HEADERS,
 )
-from ui.cell_properties import get_alignment, get_flags
 from ui.dialogs.add_task_dialog import AddTaskDialog
 
 
@@ -75,7 +75,12 @@ class TaskTableModel(QAbstractTableModel):
 
         return len(TASK_TABLE_HEADERS)
 
-    def headerData(self, section: int, orientation: Qt.Orientation, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
+    def headerData(
+        self,
+        section: int,
+        orientation: Qt.Orientation,
+        role: int = Qt.ItemDataRole.DisplayRole,
+    ) -> Any:
         """Return the header data for the table
 
         Parameters
@@ -152,6 +157,9 @@ class TaskTableModel(QAbstractTableModel):
         Any
             the data for the cell
         """
+
+        from ui.cell_properties import get_alignment
+
         if not index.isValid():
             return None
 
@@ -181,6 +189,8 @@ class TaskTableModel(QAbstractTableModel):
         Qt.ItemFlag
             the flags for the cell
         """
+        from ui.cell_properties import get_flags
+
         return get_flags(index)
 
     def refresh(self) -> None:

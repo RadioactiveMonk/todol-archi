@@ -3,12 +3,12 @@
 from importlib import reload
 from typing import Tuple
 
-import src.core.database.db_controller as db_controller_module
-import src.core.database.db_manager as db_manager_module
-import src.core.logger as logger_module
+import core.database.db_controller as db_controller_module
+import core.database.db_manager as db_manager_module
+import core.logger as logger_module
 
 # Modules à reloader
-import src.models.task as task_module
+import models.task as task_module
 
 
 def reload_all() -> Tuple[object, type]:

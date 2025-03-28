@@ -1,3 +1,5 @@
+from typing import Union
+
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
     QHBoxLayout,
@@ -5,6 +7,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+
 from core.app_constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
 from core.database.db_manager import DbManager
 from core.path import ICONS_DIR
@@ -74,7 +77,7 @@ class MainWindow(QMainWindow):
 
         central_widget.setLayout(main_layout)
 
-    def open_add_task_dialog(self, task: Task | None = None) -> None:
+    def open_add_task_dialog(self, task: Union["Task", None] = None) -> None:
         """Open a dialog to add a task
 
         Parameters

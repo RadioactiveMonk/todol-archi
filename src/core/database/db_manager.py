@@ -1,5 +1,5 @@
 import sqlite3
-from typing import List
+from typing import TYPE_CHECKING, List
 
 from core.database.db_controller import DbController
 from core.database_config import (
@@ -8,7 +8,9 @@ from core.database_config import (
     SQL_SELECT_TASKS,
 )
 from core.logger import logger
-from models.task import Task
+
+if TYPE_CHECKING:
+    from models.task import Task
 
 
 class DbManager:
@@ -18,7 +20,7 @@ class DbManager:
         """Setting up DB with DbController()"""
         self.controller = controller if controller else DbController()
 
-    def add_task(self, task: Task) -> int | None:
+    def add_task(self, task: "Task") -> int | None:
         """Add a task in the DB.
 
         Parameters

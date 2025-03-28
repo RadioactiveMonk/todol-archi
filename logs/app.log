@@ -153,3 +153,7 @@
 2025-03-28 13:17:16,569 - INFO - ✅ Deleting task ID 32 (rowcount=1)
 2025-03-28 13:17:16,569 - INFO - Task ID 32 deleted successfully.
 2025-03-28 13:17:16,569 - INFO - 🗑 Task deleted successfully (id=32)
+2025-03-28 16:11:50,521 - INFO - SQL: table 'tasks' created
+2025-03-28 16:11:50,544 - INFO - SQL: table 'tasks' created
+2025-03-28 16:11:55,055 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-28 16:11:55,055 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
