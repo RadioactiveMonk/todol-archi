@@ -1,8 +1,17 @@
 from PyQt6.QtCore import QDateTime
 
+# Application
+# =====================================
+APP_NAME = "Todol archi"
+APP_VERSION = "0.1.0"
+APP_AUTHOR = "Sébastien 'doyouDance' Reisen"
+APP_DESCRIPTION = "A simple task manager"
+APP_COPYRIGHT = "Copyright (c) 2023 Sébastien Reisen"
+APP_LICENSE = "MIT"
+
 # Fenêtre principale
 # =====================================
-MAIN_WINDOW_TITLE = "Todol Pro"
+MAIN_WINDOW_TITLE = "Todol archi"
 MAIN_WINDOW_GEOMETRY = (250, 100, 1080, 600)
 
 # Boite d'ajout de tâche

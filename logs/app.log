@@ -128,3 +128,28 @@
 2025-03-26 15:35:07,505 - INFO - SQL: table 'tasks' created
 2025-03-26 16:38:59,268 - INFO - SQL: table 'tasks' created
 2025-03-26 16:38:59,292 - INFO - SQL: table 'tasks' created
+2025-03-26 19:31:00,631 - INFO - SQL: table 'tasks' created
+2025-03-26 19:31:00,709 - INFO - SQL: table 'tasks' created
+2025-03-26 19:31:37,131 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:37,133 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:40,681 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:40,681 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:40,682 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'dark', 'categories': ['Work', 'Personal']}
+2025-03-26 19:31:40,682 - INFO - Setting updated successfully: categories = ['Work', 'Personal']
+2025-03-26 19:31:40,683 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:41,902 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:41,903 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'dark', 'categories': ['Work', 'Personal']}
+2025-03-26 19:31:41,903 - INFO - Setting updated successfully: theme = dark
+2025-03-26 19:31:41,903 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:41,937 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:44,419 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:44,419 - INFO - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-03-26 19:31:51,802 - INFO - SQL: table 'tasks' created
+2025-03-26 19:31:57,905 - INFO - SQL: table 'tasks' created
+2025-03-26 19:31:57,928 - INFO - SQL: table 'tasks' created
+2025-03-26 19:32:00,880 - INFO - SQL: table 'tasks' created
+2025-03-28 13:17:08,456 - INFO - SQL: table 'tasks' created
+2025-03-28 13:17:08,523 - INFO - SQL: table 'tasks' created
+2025-03-28 13:17:16,569 - INFO - ✅ Deleting task ID 32 (rowcount=1)
+2025-03-28 13:17:16,569 - INFO - Task ID 32 deleted successfully.
+2025-03-28 13:17:16,569 - INFO - 🗑 Task deleted successfully (id=32)
