@@ -1,5 +1,5 @@
 scripts/base_script.py
-'''
+'' '
 import argparse from pathlib import Path
 
 def main(filepath: Path, verbose: bool = False): if verbose: print(f"[INFO] Lecture du fichier : {filepath}") if filepath.exists(): content = filepath.read_text(encoding="utf-8") print(f"Contenu :\n{content}") else: print(f"[ERREUR] Fichier non trouvé : {filepath}")
