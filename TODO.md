@@ -8,7 +8,7 @@
 - [x] Ajouter les `__init__.py` dans tous les sous-dossiers
 - [x] Vérifier l’importabilité avec `python -m src.main`
 - [ ] Redecouper les constantes
-- [ ] Corriger les imports restants si besoin (absolus/relatifs)
+- [x] Corriger les imports restants si besoin (absolus/relatifs)
 - [ ] Refacto avancé progressif des fondations: class dispatch, args, kwargs, dict dispatch, walrus operator, .. (but pédagogique)
 - [ ] Lancer l’application et valider : tâches, toggle, thème, catégories
 - [ ] Mettre à jour `README.md` et `MIGRATION_LOG.md`
