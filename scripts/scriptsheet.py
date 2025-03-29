@@ -1,4 +1,24 @@
+# scriptsheet.py
 
+import argparse
+from pathlib import Path
+
+
+def main(filepath: Path, verbose: bool = False):
+    if verbose:
+        print(f"[INFO] Lecture du fichier: {filepath}")
+        if filepath.exists():
+            content = filepath.read_text(encoding="utf-8")
+            print(f"Contenu: \n{content}")
+        else:
+            print(f"[ERREUR] Fichier non trouvé: {filepath}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Affiche le contenu d'un fichier texte"
+    )
+    parser.add_argument("filepath", type=Path, help="Affiche des infos supplémentaires")
 
 
 # -------------------------------
