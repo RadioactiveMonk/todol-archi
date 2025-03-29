@@ -17,7 +17,7 @@ def reload_all() -> Tuple[object, type]:
     importlib.reload(task_module)
     importlib.reload(db_manager_module)
     importlib.reload(db_controller_module)
-    importlib.reload(logger_module)  # ✅ ici enfin valide !
+    importlib.reload(logger_module)  
 
     print("✅ Modules reloaded successfully!")
 
