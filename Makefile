@@ -23,7 +23,7 @@ format:
 
 lint:
 	@echo "Vérification du code avec Ruff..."
-	ruff check $(SRC) $(TESTS)
+	ruff check $(SRC) $(TESTS) --fix
 
 reload:
 	@echo "Lancement d'IPython avec reload_all..."
@@ -31,7 +31,7 @@ reload:
 
 gadd:
 	@echo "Ajout des fichiers au dépôt Git..."
-	python scripts/gitadd.py "$(msg)"
+	$(PYTHON) scripts/gitadd.py "$(msg)"
 
 clean:
 	@echo "Nettoyage des fichiers .pyc et __pycache__..."
