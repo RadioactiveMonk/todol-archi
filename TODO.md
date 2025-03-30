@@ -9,7 +9,7 @@
 - [x] Vérifier l’importabilité avec `python -m src.main`
 - [x] Redecouper les constantes
 - [x] Corriger les imports restants si besoin (absolus/relatifs)
-- [ ] Refacto avancé progressif des fondations: class dispatch, args, kwargs, dict dispatch, walrus operator, .. (but pédagogique)
+- [ ] Refacto avancé progressif des fondations: class dispatch, args, kwargs, dict dispatch, walrus operator, .. (TODO_review.md)
 - [ ] Lancer l’application et valider : tâches, toggle, thème, catégories
 - [ ] Mettre à jour `README.md` et `MIGRATION_LOG.md`
 
