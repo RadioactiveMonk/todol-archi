@@ -96,7 +96,10 @@ def delete_favorite():
 
 
 def list_favorites(data: List[Dict[str, str]]):
-    pass
+    if not data:
+        print("Aucun favori enregistré.")
+    for i, fav in enumerate(data, 1):
+        print(f"{i}. {fav['title']} - {fav['url']}")
 
 
 def show_menu() -> str:

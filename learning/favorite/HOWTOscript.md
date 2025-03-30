@@ -200,3 +200,5 @@ def get_path(name: str) -> Path:
 ```
 
 Permet d’éviter les constantes globales qui traînent et rend le code plus modulaire.
+
+
