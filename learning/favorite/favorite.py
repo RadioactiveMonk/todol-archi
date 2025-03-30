@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -22,8 +23,7 @@ def get_path(path: str) -> Path | None:
         "json": current_file.parent / "favorites.json",
     }
 
-    if path in path_dict:
-        return path_dict.get(path, None)
+    return path_dict.get(path, None)
 
 
 def load_data(verbose: bool = False) -> List[Dict[str, str]]:
@@ -63,15 +63,39 @@ def save_data(data: List[Dict[str, str]], verbose: bool = False) -> bool:
         return False
 
 
-def add_favorite(data):
+def add_favorite(data: List[Dict[str, str]], favorite: Dict[str, str]) -> bool:
+    if validate_url(favorite["url"]) and favorite["title"]:
+        data.append(favorite)
+        save_data(data)
+        print(f"{favorite} ajouté avec succès.")
+        list_favorites(data)
+        return True
+    else:
+        print("Titre ou URL invalide. Réessaye.")
+        return False
+
+
+def show_add_favorite() -> Dict[str, str]:
+    """Show add favorite section"""
+    title = strip_lower(input("Entrez un titre:"))
+    url = strip_lower(input("Entrez une url:"))
+
+    return {"title": title, "url": url}
+
+
+def validate_url(url: str) -> bool:
+    """Returns false is url is not valid, otherwise returns True"""
+
+    pattern = r"^(http|https|ftp)://[^\s]+\.[a-z]{2,}$"
+
+    return bool(re.match(pattern, url))
+
+
+def delete_favorite():
     pass
 
 
-def delete_favorite(data):
-    pass
-
-
-def list_favorites(data):
+def list_favorites(data: List[Dict[str, str]]):
     pass
 
 
@@ -89,8 +113,8 @@ def show_menu() -> str:
 def handle_choices(choice: str, data: List[Dict[str, str]]) -> Any:
     valid_choices = {
         "1": lambda: list_favorites(data),
-        "2": lambda: add_favorite(data),
-        "3": lambda: delete_favorite(data),
+        "2": lambda: add_favorite(data, show_add_favorite()),
+        "3": lambda: delete_favorite(),
         "q": lambda: quit_program(),
     }
 
