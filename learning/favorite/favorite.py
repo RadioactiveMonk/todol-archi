@@ -7,29 +7,13 @@ def main() -> Any:
     data = load_data(verbose=True)
 
     while True:
-        print("\nQue veux-tu faire ?")
-        print("1 - Lister les favoris")
-        print("2 - Ajouter un favori")
-        print("3 - Supprimer un favori")
-        print("Q - Quitter")
-
-        valid_choices = {
-            "1": lambda: list_favorites(data),
-            "2": lambda: add_favorite(data),
-            "3": lambda: delete_favorite(data),
-            "Q": lambda: quit,
-        }
-
-        choice = input("Ton choix + ENTER: ").strip().lower()
-
-        if choice not in valid_choices.keys():
-            print(f"{choice} n'est pas une option valide")
-            continue
-        else:
-            valid_choices.get(choice, lambda: print("Choix invalide"))()
+        show_menu()
+        input_choice = strip_lower(input("Ton choix + ENTER: "))
+        handle_choices(input_choice, data)
 
 
 def get_path(path: str) -> Path | None:
+    """Returns the given path"""
     CURRENT_FILE = Path(__file__).resolve()
 
     path_dict = {
@@ -43,6 +27,7 @@ def get_path(path: str) -> Path | None:
 
 
 def load_data(verbose: bool = False) -> List[Dict[str, str]]:
+    """Returns a list of favorites as dicts"""
     if verbose:
         print(f"[INFO] Chargement de : {get_path('json')}")
 
@@ -65,6 +50,7 @@ def load_data(verbose: bool = False) -> List[Dict[str, str]]:
 
 
 def save_data(data: List[Dict[str, str]], verbose: bool = False) -> bool:
+    """Return true if data are saved, otherwise returns false"""
     try:
         json_file = str(get_path("json"))
         with open(json_file, "w", encoding="utf-8") as f:
@@ -89,8 +75,33 @@ def list_favorites(data):
     pass
 
 
-def quit():
+def show_menu():
+    print("\nQue veux-tu faire ?")
+    print("1 - Lister les favoris")
+    print("2 - Ajouter un favori")
+    print("3 - Supprimer un favori")
+    print("q - Quitter")
+
+
+def handle_choices(choice: str, data: List[Dict[str, str]]) -> Any:
+    valid_choices = {
+        "1": lambda: list_favorites(data),
+        "2": lambda: add_favorite(data),
+        "3": lambda: delete_favorite(data),
+        "q": lambda: quit_program(),
+    }
+
+    if choice not in valid_choices.keys():
+        return f"{choice} n'est pas une option valide"
+    else:
+        valid_choices.get(choice, lambda: print("Choix invalide"))()
+
+
+def quit_program():
     exit(0)
+
+def strip_lower(input: str) -> str:
+    return input.strip().lower()
 
 
 if __name__ == "__main__":
