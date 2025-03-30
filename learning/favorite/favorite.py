@@ -28,6 +28,7 @@ def main() -> Any:
         else:
             valid_choices.get(choice, lambda: print("Choix invalide"))()
 
+
 def get_path(path: str) -> Path | None:
     CURRENT_FILE = Path(__file__).resolve()
 
