@@ -1,13 +1,9 @@
 import json
 from pathlib import Path
-from typing import Dict, List
-
-CURRENT_FILE = Path(__file__).resolve()
-CURRENT_PATH = CURRENT_FILE.parent
-FAV_PATH = CURRENT_PATH / "favorites.json"
+from typing import Any, Dict, List
 
 
-def main():
+def main() -> Any:
     data = load_data(verbose=True)
 
     while True:
@@ -17,10 +13,12 @@ def main():
         print("3 - Supprimer un favori")
         print("Q - Quitter")
 
-        valid_choices = {"1": lambda: list_favorites,
-                         "2": lambda: add_favorite,
-                         "3": lambda: delete_favorite,
-                         "Q": lambda: quit}
+        valid_choices = {
+            "1": lambda: list_favorites(data),
+            "2": lambda: add_favorite(data),
+            "3": lambda: delete_favorite(data),
+            "Q": lambda: quit,
+        }
 
         choice = input("Ton choix + ENTER: ").strip().lower()
 
@@ -28,37 +26,50 @@ def main():
             print(f"{choice} n'est pas une option valide")
             continue
         else:
-            valid_choices[choice]()
+            valid_choices.get(choice, lambda: print("Choix invalide"))()
 
+def get_path(path: str) -> Path | None:
+    CURRENT_FILE = Path(__file__).resolve()
+
+    path_dict = {
+        "current_file": CURRENT_FILE,
+        "current_path": CURRENT_FILE.parent,
+        "json": CURRENT_FILE.parent / "favorites.json",
+    }
+
+    if path in path_dict.keys():
+        return path_dict.get(path, None)
 
 
 def load_data(verbose: bool = False) -> List[Dict[str, str]]:
     if verbose:
-        print(f"[INFO] Chargement de : {FAV_PATH}")
+        print(f"[INFO] Chargement de : {get_path('json')}")
 
     try:
-        with open(FAV_PATH, "r", encoding="utf-8") as f:
+        json_file = str(get_path("json"))
+        with open(json_file, "r", encoding="utf-8") as f:
             return json.load(f)
 
     except FileNotFoundError:
         if verbose:
-            print(f"[INFO] {FAV_PATH} non trouvé. Création d'un fichier vide.")
-        FAV_PATH.write_text("[]", encoding="utf-8")
+            print(f"[INFO] {json_file} non trouvé. Création d'un fichier vide.")
+        Path(json_file).write_text("[]", encoding="utf-8")
         return []
 
     except json.JSONDecodeError:
         print(
-            f"[ERREUR] Le fichier {FAV_PATH.name} est corrompu. Utilisation d'une liste vide."
+            f"[ERREUR] Le fichier {json_file} est corrompu. Utilisation d'une liste vide."
         )
         return []
 
 
 def save_data(data: List[Dict[str, str]], verbose: bool = False) -> bool:
     try:
-        with open(FAV_PATH, "w", encoding="utf-8") as f:
+        json_file = str(get_path("json"))
+        with open(json_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
         if verbose:
-            print(f"[INFO] Données sauvegardées dans {FAV_PATH}")
+            print(f"[INFO] Données sauvegardées dans {json_file}")
         return True
     except Exception as e:
         print(f"[ERREUR] Impossible de sauvegarder les données : {e}")
@@ -75,6 +86,7 @@ def delete_favorite(data):
 
 def list_favorites(data):
     pass
+
 
 def quit():
     exit(0)
