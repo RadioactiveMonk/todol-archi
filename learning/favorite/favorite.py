@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Dict, List
 
 CURRENT_FILE = Path(__file__).resolve()
 CURRENT_PATH = CURRENT_FILE.parent
@@ -17,19 +17,18 @@ def main():
         print("3 - Supprimer un favori")
         print("Q - Quitter")
 
-        valid_choices = {"1": list_favorites,
-                         "2": add_favorite,
-                         "3": delete_favorite,
-                         "Q": quit}
+        valid_choices = {"1": lambda: list_favorites,
+                         "2": lambda: add_favorite,
+                         "3": lambda: delete_favorite,
+                         "Q": lambda: quit}
 
-        choice = input("Ton choix: ").strip().lower()
+        choice = input("Ton choix + ENTER: ").strip().lower()
 
         if choice not in valid_choices.keys():
             print(f"{choice} n'est pas une option valide")
             continue
         else:
-            action = valid_choices.get(choice, None)
-            action(data, FAV_PATH, verbose=True)
+            valid_choices[choice]()
 
 
 
