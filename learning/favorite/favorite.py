@@ -4,25 +4,25 @@ from typing import Any, Dict, List
 
 
 def main() -> Any:
+    """Entry point"""
     data = load_data(verbose=True)
 
     while True:
-        show_menu()
-        input_choice = strip_lower(input("Ton choix + ENTER: "))
-        handle_choices(input_choice, data)
+        user_choice = show_menu()
+        handle_choices(user_choice, data)
 
 
 def get_path(path: str) -> Path | None:
     """Returns the given path"""
-    CURRENT_FILE = Path(__file__).resolve()
+    current_file = Path(__file__).resolve()
 
     path_dict = {
-        "current_file": CURRENT_FILE,
-        "current_path": CURRENT_FILE.parent,
-        "json": CURRENT_FILE.parent / "favorites.json",
+        "current_file": current_file,
+        "current_path": current_file.parent,
+        "json": current_file.parent / "favorites.json",
     }
 
-    if path in path_dict.keys():
+    if path in path_dict:
         return path_dict.get(path, None)
 
 
@@ -75,12 +75,15 @@ def list_favorites(data):
     pass
 
 
-def show_menu():
+def show_menu() -> str:
     print("\nQue veux-tu faire ?")
     print("1 - Lister les favoris")
     print("2 - Ajouter un favori")
     print("3 - Supprimer un favori")
     print("q - Quitter")
+
+    input_choice = strip_lower(input("Ton choix + ENTER: "))
+    return input_choice
 
 
 def handle_choices(choice: str, data: List[Dict[str, str]]) -> Any:
@@ -91,8 +94,8 @@ def handle_choices(choice: str, data: List[Dict[str, str]]) -> Any:
         "q": lambda: quit_program(),
     }
 
-    if choice not in valid_choices.keys():
-        return f"{choice} n'est pas une option valide"
+    if choice not in valid_choices:
+        print(f"{choice} n'est pas une option valide")
     else:
         valid_choices.get(choice, lambda: print("Choix invalide"))()
 
@@ -100,8 +103,9 @@ def handle_choices(choice: str, data: List[Dict[str, str]]) -> Any:
 def quit_program():
     exit(0)
 
-def strip_lower(input: str) -> str:
-    return input.strip().lower()
+
+def strip_lower(text: str) -> str:
+    return text.strip().lower()
 
 
 if __name__ == "__main__":
