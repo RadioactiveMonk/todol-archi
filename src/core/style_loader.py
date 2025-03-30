@@ -1,6 +1,5 @@
 from PyQt6.QtWidgets import QApplication
 
-from core.cached_utils import get_stylesheet
 from core.logger import logger
 from core.settings_manager import get_setting
 from ui.ui_constants import DEFAULT_THEME
@@ -16,6 +15,8 @@ def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
     theme : str, optional
         by default DEFAULT_THEME
     """
+    
+    from core.cached_utils import get_stylesheet
 
     try:
         qss = get_stylesheet(theme)
@@ -27,6 +28,8 @@ def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
 
 def reload_theme(app: QApplication) -> None:
     """Reload the current theme"""
+    from core.cached_utils import get_stylesheet
+
     get_stylesheet.cache_clear()
     theme = get_setting("theme")
     app.setStyleSheet(get_stylesheet(theme))
