@@ -39,7 +39,7 @@ Créer un script CLI interactif pour gérer une liste de favoris (titre + URL), 
 
 Une fois le script finalisé (toutes les fonctions fonctionnelles), il servira de base pour explorer des notions avancées Python dans un contexte simple et maîtrisé. L’objectif sera d’apprendre à :
 
-- [ ] intégrer des helpers (is_valid_url(), print_favori()...)
+- [x] intégrer des helpers (is_valid_url(), print_favori()...)
 
 - [ ] tester des notions avancées de Python :
 

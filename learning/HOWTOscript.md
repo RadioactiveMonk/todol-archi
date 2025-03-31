@@ -167,38 +167,4 @@ def list_favoris(data: list, verbose: bool = False) -> None:
 - Penser à une structure claire dès le départ (ex: `Favori` en dataclass ?)
 
 
-## 🧰 Helpers utiles à intégrer
-
-Fonctions utilitaires simples à ajouter dans le script pour éviter les répétitions et clarifier le code :
-
-🔠 strip_lower(text: str) -> str
-
-Nettoie et normalise une entrée utilisateur :
-
-```python
-def strip_lower(text: str) -> str:
-    return text.strip().lower()
-```
-Usage :
-
-```python
-choice = strip_lower(input("Ton choix: "))
-```
-
-📁 get_path(name: str) -> Path
-
-Factory de chemins standardisés à partir d’un mot-clé :
-
-```python
-def get_path(name: str) -> Path:
-    base = Path(__file__).resolve()
-    return {
-        "current_file": base,
-        "current_path": base.parent,
-        "json": base.parent / "favorites.json",
-    }.get(name)
-```
-
-Permet d’éviter les constantes globales qui traînent et rend le code plus modulaire.
-
 
