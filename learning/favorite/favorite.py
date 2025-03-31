@@ -9,8 +9,8 @@ def main() -> Any:
     data = load_data(verbose=True)
 
     while True:
-        user_choice = show_menu()
-        handle_choices(user_choice, data)
+        choice = prompt_main_menu_choice()
+        handle_choices(data, choice)
 
 
 def get_path(path: str) -> Path | None:
@@ -64,6 +64,7 @@ def save_data(data: List[Dict[str, str]], verbose: bool = False) -> bool:
 
 
 def add_favorite(data: List[Dict[str, str]], favorite: Dict[str, str]) -> bool:
+    """Validate and add user inputs to the storage. Return false if inputs are not valid."""
     if validate_url(favorite["url"]) and favorite["title"]:
         data.append(favorite)
         save_data(data)
@@ -76,7 +77,7 @@ def add_favorite(data: List[Dict[str, str]], favorite: Dict[str, str]) -> bool:
 
 
 def show_add_favorite() -> Dict[str, str]:
-    """Show add favorite section"""
+    """Show add favorite section to ask user for inputs"""
     title = strip_lower(input("Entrez un titre:"))
     url = strip_lower(input("Entrez une url:"))
 
@@ -91,18 +92,40 @@ def validate_url(url: str) -> bool:
     return bool(re.match(pattern, url))
 
 
-def delete_favorite():
-    pass
+def delete_favorite(data: List[Dict[str, str]]) -> bool:
+    """Supprime le favoris par son index"""
+    if not data:
+        print("Aucun favoris à supprimer")
+        return False
+
+    list_favorites(data)
+
+    try:
+        index = int(input("\nNuméro du favoris à supprimer: ")) - 1
+        if not (0 <= index < len(data)):
+            print("Erreur: index hors limite")
+            return False
+
+        removed = data.pop(index)
+        save_data(data, verbose=True)
+        print(f"Favori supprimé: {removed['title']} - {removed['url']}")
+        return True
+
+    except ValueError:
+        print("Erreur: entrée invalide. Tapez un ID existant.")
+        return False
 
 
 def list_favorites(data: List[Dict[str, str]]):
+    """Shows the list of favorites"""
     if not data:
         print("Aucun favori enregistré.")
     for i, fav in enumerate(data, 1):
         print(f"{i}. {fav['title']} - {fav['url']}")
 
 
-def show_menu() -> str:
+def prompt_main_menu_choice() -> str:
+    """Prompt a menu for the user to choose an option, return the input."""
     print("\nQue veux-tu faire ?")
     print("1 - Lister les favoris")
     print("2 - Ajouter un favori")
@@ -113,11 +136,15 @@ def show_menu() -> str:
     return input_choice
 
 
-def handle_choices(choice: str, data: List[Dict[str, str]]) -> Any:
+def handle_choices(
+    data: List[Dict[str, str]],
+    choice: str,
+) -> Any:
+    """Handle the user choice with a dict dispatch to redirect to the asked section"""
     valid_choices = {
         "1": lambda: list_favorites(data),
         "2": lambda: add_favorite(data, show_add_favorite()),
-        "3": lambda: delete_favorite(),
+        "3": lambda: delete_favorite(data),
         "q": lambda: quit_program(),
     }
 
@@ -128,10 +155,12 @@ def handle_choices(choice: str, data: List[Dict[str, str]]) -> Any:
 
 
 def quit_program():
+    """Quit with code 0"""
     exit(0)
 
 
 def strip_lower(text: str) -> str:
+    """Lower the text to strip it"""
     return text.strip().lower()
 
 

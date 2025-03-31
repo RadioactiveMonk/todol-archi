@@ -16,22 +16,22 @@ Créer un script CLI interactif pour gérer une liste de favoris (titre + URL), 
 - [x] Afficher les options (ajouter / supprimer / lister / quitter)
 - [x] Boucle continue jusqu'à quitter volontairement
 
-### [ ] Ajouter un favori
+### [x] Ajouter un favori
 - [x] Demander une URL (vérifier qu'elle commence par http(s)/ftp et contient un `.`)
-- [ ] Tant qu’elle est invalide, redemander
-- [ ] Demander un titre (non vide)
-- [ ] Générer un ID (auto ou UUID)
-- [ ] Ajouter à la liste
-- [ ] Sauvegarder dans le JSON
+- [x] Tant qu’elle est invalide, redemander
+- [x] Demander un titre (non vide)
+- [x] Générer un ID (auto ou UUID)
+- [x] Ajouter à la liste
+- [x] Sauvegarder dans le JSON
 
-### [ ] Supprimer un favori
-- [ ] Afficher les favoris avec ID
-- [ ] Demander un ID à supprimer
-- [ ] Vérifier qu’il existe
-- [ ] Supprimer + sauvegarder
+### [x] Supprimer un favori
+- [x] Afficher les favoris avec ID
+- [x] Demander un ID à supprimer
+- [x] Vérifier qu’il existe
+- [x] Supprimer + sauvegarder
 
-### [ ] Lister les favoris
-- [ ] Afficher tous les favoris avec ID, titre, et URL (format lisible)
+### [x] Lister les favoris
+- [x] Afficher tous les favoris avec ID, titre, et URL (format lisible)
 
 
 
