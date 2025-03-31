@@ -69,10 +69,13 @@ print(f"{prefix}{message}", end=end)
 
 
 💥 Résumé ultra clair :
+
 Étape	But	Code
 1	Gérer les options	kwargs.get(...)
 2	Construire le message	join(args) + .upper()
 3	Afficher proprement	print() avec prefix, end
+
+
 🧠 Et le mindset général :
 
     🧱 “Je veux une fonction flexible → donc je sépare la structure (args) et les options (kwargs)”
