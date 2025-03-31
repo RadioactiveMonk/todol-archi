@@ -35,38 +35,4 @@ Créer un script CLI interactif pour gérer une liste de favoris (titre + URL), 
 
 
 
-📚 Refactoring Avancé à venir
-
-Une fois le script finalisé (toutes les fonctions fonctionnelles), il servira de base pour explorer des notions avancées Python dans un contexte simple et maîtrisé. L’objectif sera d’apprendre à :
-
-- [x] intégrer des helpers (is_valid_url(), print_favori()...)
-
-- [ ] tester des notions avancées de Python :
-
-- [ ] @property (sur une version dataclass d’un favori)
-
-- [ ] *args / **kwargs (helpers ou print dynamiques)
-
-- [ ] yield pour générer ligne par ligne (ex : export CSV paresseux)
-
-- [ ] @lru_cache pour du cache temporaire
-
-- [ ] defaultdict pour regrouper des favoris (par domaine, par type…)
-
-- [ ] := (walrus) dans une boucle interactive
-
-- [ ] création d’un context manager personnalisé
-
-- [ ] apprendre à structurer un script via des modules (cli.py, helpers.py, storage.py…)
-
-🎯 Le but : s’entraîner sur ce script pour être prêt à refactoriser Todol-Archi avec un vrai bagage.
-
-## Bonus (facultatif)
-- [ ] Tri par titre
-- [ ] Export CSV
-- [ ] Confirmation de suppression
-- [ ] Sauvegarde automatique de backup (favoris_backup.json)
-- [ ] Passer à argparse plus tard pour usage en CLI directe
-
-
 

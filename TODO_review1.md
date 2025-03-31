@@ -19,9 +19,10 @@
 ---
 
 ## 🧠 NOTIONS AVANCÉES À INTÉGRER
+- [ ] cohérence des interfaces. faire passer les même données sur des méthodes qui agissent sur ces données. (exemple del(data: List), add(data: List)). Les données prises sont les mêmes, c'est la méthode qui défini ce qu'on traite.
+- [ ] `@property` pour rendre certains accès plus élégants, préparer des des actions sur les données pour les recevoir différement ailleurs dans le code.
 - [ ] `*args`, `**kwargs` intelligemment utilisés (ex: handlers, UI)
 - [ ] `dict dispatch` pour éviter les `if` chaînés
-- [ ] `@property` pour rendre certains accès plus élégants
 - [ ] `@lru_cache` (déjà utilisé pour les settings, à généraliser ?)
 - [ ] `yield` pour génération paresseuse (CSV, logs…)
 - [ ] `defaultdict` pour regroupement sans vérif préalable
