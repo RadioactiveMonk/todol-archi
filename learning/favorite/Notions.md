@@ -43,6 +43,107 @@ def add_favorite(data, favorite):
 
 ➡️ Tu modifies **l’objet `data` en mémoire**, puis tu le sauvegardes pour qu’il reflète les changements dans le fichier.
 
+📐 Notion : Cohérence des interfaces de fonctions
+
+Une fonction bien pensée doit recevoir toujours le même type d'entrée pour le même type d'action.
+
+✅ Bonnes pratiques :
+
+Si tu agis sur data, passe data en premier paramètre
+
+Ne change pas l’ordre ou le type des paramètres selon la fonction
+
+N'utilise pas une fois un id, une autre fois un dict, ou une string — choisis un format clair et reste cohérent
+
+Exemple cohérent :
+
+def add_favorite(data: list, fav: dict) -> bool:
+    ...
+
+def delete_favorite(data: list) -> bool:
+    ...
+
+def list_favorites(data: list):
+    ...
+
+🚫 Exemple incohérent :
+
+def add_favorite(fav: dict):
+    data = load_data()
+    ...
+
+def delete_favorite(index: int):
+    ...
+
+➡️ Ici, chaque fonction manipule data à sa manière, ce qui rend le code fragile, illisible et difficile à tester.
+
+Bénéfices de la cohérence :
+
+Facilité de lecture
+
+Reproductibilité dans les tests (même signature → mêmes appels)
+
+Moins d’erreurs de logique
+
+Meilleure compréhension globale du projet
+
+🧠 Notions à garder à l’œil (à développer + tard si besoin)
+
+lambda qui retourne vs appelle une fonction ✅
+
+dict.get(key, lambda: fallback)() ✅
+
+Passage de liste (ou dict) par référence
+
+Factory de chemins (get_path())
+
+Helpers pour rendre le code fluide (strip_lower())
+
+Regex en Python (re.match, re.fullmatch, findall…)
+
+exit() vs sys.exit()
+
+Dispatch dynamique dans un menu CLI
+
+Gestion d’un menu CLI réactif, minimal, élégant
+
+Choix d’un data partagé ou non selon la logique du script
+
+Code de sortie (exit(0))
+
+Modèle main() : orchestration mais pas de logique métier directe
+
+🧰 Helpers utiles à intégrer
+
+Fonctions utilitaires simples à ajouter dans le script pour éviter les répétitions et clarifier le code :
+
+🔠 strip_lower(text: str) -> str
+
+Nettoie et normalise une entrée utilisateur :
+
+def strip_lower(text: str) -> str:
+    return text.strip().lower()
+
+Usage :
+
+choice = strip_lower(input("Ton choix: "))
+
+📁 get_path(name: str) -> Path
+
+Factory de chemins standardisés à partir d’un mot-clé :
+
+def get_path(name: str) -> Path:
+    base = Path(__file__).resolve()
+    return {
+        "current_file": base,
+        "current_path": base.parent,
+        "json": base.parent / "favorites.json",
+    }.get(name)
+
+Permet d’éviter les constantes globales qui traînent et rend le code plus modulaire.
+
+
+
 ---
 
 ## 🧠 Notions à garder à l’œil (à développer + tard si besoin)
