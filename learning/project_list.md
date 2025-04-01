@@ -1,5 +1,3 @@
-📋 Ta liste actuelle, elle est parfaite. On va les aborder un par un avec de petits scripts bien pensés :
-
 [x] @property → Créer un modèle Favori avec une propriété calculée
 [x] *args / **kwargs → Logger dynamique ou fonction d’aide générique
 [3️⃣] yield → Générer un export CSV paresseux ligne par ligne
