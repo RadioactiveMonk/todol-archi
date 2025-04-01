@@ -7,6 +7,7 @@
 
 ## 🧱 STRUCTURE & SIMPLIFICATION
 - [ ] Nettoyer le code mort, les doublons, les `print` oubliés
+- [ ] déplacer le logger dns helpers, le style loader dans ui/theme. changer imports
 - [ ] Identifier les fonctions/helpers réutilisables (DRY)
 - [ ] Réduire les `if` en utilisant `dict dispatch`, `strategy`, etc.
 - [ ] Ajouter un `helpers/` pour centraliser : 
