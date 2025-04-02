@@ -1,0 +1,78 @@
+{
+    // === CORE SETTINGS ===
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1500,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.snippetSuggestions": "inline",
+    "editor.showFoldingControls": "always",
+    // === FONTS & STYLE ===
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', 'FiraCode', 'JetBrains Mono', 'Consolas', 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.lineHeight": 22.5,
+    "editor.fontWeight": "500",
+    "editor.cursorSmoothCaretAnimation": "on",
+    // === TERMINAL ===
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.minimumContrastRatio": 1,
+    // === PYTHON INTELLISENSE CONFORT ===
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.terminal.activateEnvironment": true,
+    "python.autoComplete.extraPaths": [],
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "editor.quickSuggestionsDelay": 1000,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggest.showStatusBar": true,
+    // === UI COMFORT ===
+    "editor.guides.indentation": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.guides.highlightActiveBracketPair": true,
+    "editor.rulers": [
+        88,
+        100
+    ],
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.limit.enabled": false,
+    "workbench.activityBar.location": "bottom",
+    "window.customTitleBarVisibility": "auto",
+    "window.titleBarStyle": "custom",
+    "window.zoomLevel": 0.5,
+    "editor.semanticHighlighting.enabled": true,
+    // === FILE / SEARCH EXCLUDE ===
+    "files.exclude": {
+        "**/__pycache__/": true,
+        "**.pytest_cache/": true
+    },
+    "search.exclude": {
+        "**/__pycache__/": true,
+        "**.pytest_cache/": true
+    },
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "settingsSync.ignoredSettings": [
+        "telemetry.enableTelemetry",
+        "telemetry.enableCrashReporter"
+    ],
+    // === JSON FORMATTER ===
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.folders.color": "#7cb342",
+    "workbench.colorTheme": "One Dark Pro",
+}
