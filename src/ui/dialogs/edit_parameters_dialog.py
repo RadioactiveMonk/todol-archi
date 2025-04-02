@@ -15,7 +15,7 @@ from core.settings_manager import (
     load_settings,
     set_setting,
 )
-from core.style_loader import reload_theme
+from ui.theme.style_loader import reload_theme
 from ui.controls.category_selector import CategorySelector
 from ui.controls.theme_selector import ThemeSelector
 from ui.ui_constants import (
