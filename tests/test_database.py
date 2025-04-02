@@ -1,4 +1,3 @@
-import pytest
 from backend.models.task import Task
 
 
@@ -42,7 +41,7 @@ def test_update_task(in_memory_db):
     assert updated is True
     tasks = in_memory_db.get_tasks()
     assert tasks[0]["title"] == "Test task"
-    assert bool(tasks[0]["completed"]) == True
+    assert bool(tasks[0]["completed"])
 
 
 def test_delete_task(in_memory_db):

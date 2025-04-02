@@ -15,7 +15,7 @@ def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
     theme : str, optional
         by default DEFAULT_THEME
     """
-    
+
     from core.cached_utils import get_stylesheet
 
     try:

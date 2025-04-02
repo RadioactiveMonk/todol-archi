@@ -1,7 +1,3 @@
-from backend.database.db_controller import DbController
-from tests.conftest import in_memory_connection
-
-
 def test_persistant_connection(in_memory_connection):
     # On crée un controller avec une base mémoire partagée
     db = in_memory_connection

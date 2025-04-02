@@ -1,6 +1,5 @@
 from backend.core.cached_utils import get_categories, get_stylesheet
 from configuration.constants import DEFAULT_THEME
-import pytest
 
 
 def test_get_categories_returns_list():

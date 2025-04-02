@@ -25,6 +25,10 @@ lint:
 	@echo "Vérification du code avec Ruff..."
 	ruff check $(SRC) $(TESTS) --fix
 
+ruffall:
+	@echo "Formatage et linting avec Ruff..."
+	ruff format $(SRC) $(TESTS) && ruff check $(SRC) $(TESTS) --fix
+
 reload:
 	@echo "Lancement d'IPython avec reload_all..."
 	ipython -i scripts/reload_all.py
@@ -44,6 +48,7 @@ help:
 	@echo "  make test      → Lancer les tests"
 	@echo "  make format    → Formatter le code avec Ruff"
 	@echo "  make lint      → Linter le code avec Ruff"
+	@echo "  make ruffall   → Lint et formate avec Ruff"
 	@echo "  make reload    → Lancer IPython avec reload_all"
 	@echo "  make clean     → Nettoyer les fichiers temporaires"
 	@echo "  make gadd      → Ajouter les fichiers au dépôt Git"

@@ -1,7 +1,7 @@
 from pathlib import Path
-import pytest
-from configuration.constants import STYLESHEET_PATH
+
 from backend.core.style_loader import load_stylesheet
+from configuration.constants import STYLESHEET_PATH
 
 
 def test_load_qss(app, settings_manager):
@@ -32,7 +32,6 @@ def test_set_stylesheet(app, settings_manager):
     """Vérifie que le fichier .qss est bien appliqué dans l'application."""
     settings_manager.update("theme", "dark")
 
-    stylesheet_file = Path(STYLESHEET_PATH) / "dark.qss"
     applied_stylesheet = load_stylesheet(app)
 
     with open(applied_stylesheet, "r", encoding="utf-8") as f:

@@ -1,6 +1,5 @@
-from pytestqt.qtbot import QtBot
 from PyQt6.QtCore import Qt
-import pytest
+from pytestqt.qtbot import QtBot
 
 
 def test_add_category(edit_parameters_dialog, settings_manager, qtbot: QtBot):

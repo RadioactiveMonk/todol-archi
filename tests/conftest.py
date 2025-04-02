@@ -1,20 +1,13 @@
-import pytest
-import os
 import json
-import sqlite3
+import os
 from pathlib import Path
-from pytestqt.qtbot import QtBot
-from PyQt6.QtWidgets import QApplication, QWidget
-from configuration.constants import SETTINGS_FILE
-from configuration.settings_manager import (
-    get_setting,
-    set_setting,
-    save_settings,
-    load_settings,
-)
-from gui.dialogs.edit_parameters_dialog import EditParametersDialog
-from backend.database.db_manager import DbManager
+
+import pytest
 from backend.database.db_controller import DbController
+from backend.database.db_manager import DbManager
+from configuration.constants import SETTINGS_FILE
+from gui.dialogs.edit_parameters_dialog import EditParametersDialog
+from PyQt6.QtWidgets import QApplication, QWidget
 
 LOG_FILE = Path("logs/app.log")
 TEMP_DIR = Path("tests/temp")
