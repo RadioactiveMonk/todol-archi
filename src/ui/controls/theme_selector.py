@@ -10,7 +10,7 @@ class ThemeSelector(QComboBox):
         self.setCurrentText(get_setting("theme"))
 
     def refresh_themes(self):
-        from core.cached_utils import get_available_themes
+        from helpers.cached_utils import get_available_themes
 
         self.clear()
         self.addItems(get_available_themes())

@@ -1,5 +1,7 @@
+from helpers.cached_utils import get_available_themes, get_categories
+from ui.theme.style_loader import load_stylesheet, reload_theme
+
 from .app_constants import APP_NAME
-from .cached_utils import get_available_themes, get_categories
 from .config import AUTO_SAVE_INTERVAL, DEBUG
 from .database_config import (
     SQL_CREATE_TABLE,
@@ -20,7 +22,6 @@ from .path import (
     STYLESHEETS_DIR,
 )
 from .settings_manager import get_setting, load_settings, save_settings, set_setting
-from ui.theme.style_loader import load_stylesheet, reload_theme
 
 __all__ = [
     # App constants

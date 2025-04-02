@@ -13,7 +13,7 @@ class CategorySelector(QComboBox):
 
     def refresh_categories(self) -> None:
         """Refreshes the list of categories in the selector."""
-        from core.cached_utils import get_categories
+        from helpers.cached_utils import get_categories
 
         self.clear()
         categories: list[str] = list(get_categories())
