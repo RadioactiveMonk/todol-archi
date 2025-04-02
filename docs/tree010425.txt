@@ -1,18 +1,37 @@
 .
 ├── data
 │   ├── settings.json
-│   ├── tasks.db
 │   └── themes.json
 ├── docs
-│   ├── setup_notes.md
+│   ├── tree010425.txt
 │   ├── tree260325.txt
-│   └── workflow.md
-├── logs
-│   ├── app.log
-│   └── errors.log
+│   └── tree28-03.txt
+├── learning
+│   ├── bookmark
+│   │   ├── bookmark.py
+│   │   ├── notions_property_urlparser.md
+│   │   └── todo.md
+│   ├── favorite
+│   │   ├── favorite.py
+│   │   ├── favorites.json
+│   │   ├── notions_coherence_helpers_factory.md
+│   │   └── todo.md
+│   ├── logme
+│   │   ├── logme.py
+│   │   ├── log.txt
+│   │   ├── notions_args_kwargs_final.md
+│   │   ├── success.log
+│   │   └── todo.md
+│   ├── cs_vscode.md
+│   ├── howto_script.md
+│   ├── learning_map.md
+│   └── project_list.md
 ├── scripts
 │   ├── dev.sh
-│   └── gitadd.py
+│   ├── gitadd.py
+│   ├── README_dev.md
+│   ├── reload_all.py
+│   └── replace_imports.py
 ├── src
 │   ├── core
 │   │   ├── api
@@ -29,14 +48,16 @@
 │   │   ├── cached_utils.py
 │   │   ├── config.py
 │   │   ├── database_config.py
+│   │   ├── default_values.py
 │   │   ├── __init__.py
-│   │   ├── ipython_cfg.py
 │   │   ├── logger.py
 │   │   ├── path.py
 │   │   ├── settings_manager.py
+│   │   ├── status_constants.py
 │   │   └── style_loader.py
 │   ├── factory
 │   │   ├── dialog_factory.py
+│   │   ├── factory_utils.py
 │   │   ├── handler_factory.py
 │   │   ├── icon_factory.py
 │   │   ├── __init__.py
@@ -98,6 +119,7 @@
 │   │   ├── __init__.py
 │   │   ├── main_window.py
 │   │   └── ui_constants.py
+│   ├── __init__.py
 │   └── main.py
 ├── tests
 │   ├── temp
@@ -117,9 +139,11 @@
 │   └── test_task_table_model.py
 ├── credits.txt
 ├── LICENSE
+├── Makefile
 ├── migration_log.md
 ├── pyproject.toml
 ├── README.md
-└── TODO.md
+├── TODO.md
+└── TODO_review1.md
 
-26 directories, 97 files
+29 directories, 118 files

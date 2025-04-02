@@ -1,9 +1,3 @@
-# 🧪 Todol-Archi - Environnement de Développement
-
-Bienvenue dans le **laboratoire de développement** de `Todol-Archi` 🧬  
-Ce document regroupe tous les raccourcis, commandes et outils configurés pour un workflow efficace.
-
----
 
 ## 🚀 Lancer l’environnement de développement
 
@@ -37,7 +31,7 @@ Cela :
 - `scripts/` : outils dev (ex: `reload_all.py`, `gitadd.py`)
 - `tests/` : fichiers de test unitaires
 - `Makefile` : point d’entrée pour toutes les commandes automatisées
-- `.bashrc` : contient des alias personnalisés pour un dev rapide
+
 
 ---
 
@@ -76,7 +70,4 @@ pip install -r requirements.txt
 make run
 ```
 
----
 
-Bon dev 🧠⚙️  
-*Powered by IPython, Makefile, alias et amour du code propre.*
