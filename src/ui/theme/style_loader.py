@@ -6,7 +6,7 @@ from pathlib import Path
 
 from PyQt6.QtWidgets import QApplication
 
-from core.logger import logger
+from helpers.log_utils import logger
 from core.path import STYLESHEETS_DIR
 from core.settings_manager import get_setting
 from ui.ui_constants import DEFAULT_THEME

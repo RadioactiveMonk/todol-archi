@@ -4,7 +4,7 @@ from PyQt6.QtCore import QEvent, QModelIndex, Qt
 from PyQt6.QtGui import QMouseEvent
 from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem
 
-from core.logger import logger
+from helpers.log_utils import logger
 
 
 class StatusEditDelegate(QStyledItemDelegate):

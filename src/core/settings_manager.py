@@ -2,7 +2,7 @@ import json
 from typing import Any
 
 from core.default_values import CATEGORIES
-from core.logger import logger
+from helpers.log_utils import logger
 from core.path import SETTINGS_FILE
 from ui.ui_constants import DEFAULT_THEME
 

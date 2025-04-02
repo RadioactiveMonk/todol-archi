@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any
 
 from core.database_config import SQL_CREATE_TABLE, SQL_DROP_TABLE
-from core.logger import logger
+from helpers.log_utils import logger
 from core.path import DB_FILE
 
 

@@ -7,7 +7,7 @@ from core.database_config import (
     SQL_INSERT_TASK,
     SQL_SELECT_TASKS,
 )
-from core.logger import logger
+from helpers.log_utils import logger
 
 if TYPE_CHECKING:
     from models.task import Task

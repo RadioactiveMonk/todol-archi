@@ -10,7 +10,7 @@ from .database_config import (
     SQL_INSERT_TASK,
     SQL_SELECT_TASKS,
 )
-from .logger import logger
+from helpers.log_utils import logger
 from .path import (
     BASE_DIR,
     DATA_DIR,

@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QComboBox
 
-from core.logger import logger
+from helpers.log_utils import logger
 from core.settings_manager import get_setting, set_setting
 
 
