@@ -2,7 +2,6 @@ import json
 from functools import lru_cache
 
 from core.path import SETTINGS_FILE, STYLESHEETS_DIR
-from ui.ui_constants import DEFAULT_THEME
 
 
 @lru_cache
@@ -11,13 +10,6 @@ def get_categories() -> list[str]:
     with open(SETTINGS_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
     return data.get("categories", [])
-
-
-@lru_cache
-def get_stylesheet(theme: str = DEFAULT_THEME) -> str:
-    """Return the content of the .qss file corresponding to the theme"""
-    qss_path = STYLESHEETS_DIR / f"{theme}.qss"
-    return qss_path.read_text(encoding="utf-8")
 
 
 @lru_cache
