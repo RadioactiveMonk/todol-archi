@@ -6,7 +6,6 @@ from pathlib import Path
 
 from PyQt6.QtWidgets import QApplication
 
-from helpers.log_utils import logger
 from core.path import STYLESHEETS_DIR
 from core.settings_manager import get_setting
 from ui.ui_constants import DEFAULT_THEME
@@ -35,6 +34,8 @@ def get_stylesheet(theme: str) -> str:
 
     """
 
+    from helpers.log_utils import logger
+
     qss_file = Path(STYLESHEETS_DIR) / f"{theme}.qss"
     try:
         qss = qss_file.read_text()
@@ -55,6 +56,8 @@ def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
     theme : str, optional
         by default DEFAULT_THEME
     """
+
+    from helpers.log_utils import logger
 
     try:
         qss = get_stylesheet(theme)
