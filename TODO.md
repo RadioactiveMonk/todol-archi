@@ -1,85 +1,74 @@
 
-# ✅ TODO_review1.md — Plan de refactoring avancé (concepts à intégrer)
+# ✅ TODO.md — Plan de refactoring avancé (version organisée)
 
-> Une checklist ciblée pour refactorer Todol-Archi avec une approche **artisanale, élégante et pédagogique**, en intégrant les notions avancées de Python.
+> Une checklist progressive pour refactorer Todol-Archi avec une approche artisanale, élégante et pédagogique.
 
 ---
 
-## 🧱 STRUCTURE & SIMPLIFICATION
+## Phase 1 – 🔧 Stabilisation & nettoyage de fondation
 - [ ] Nettoyer le code mort, les doublons, les `print` oubliés
-- [ ] déplacer le logger dns helpers, le style loader dans ui/theme. changer imports
+- [ ] Déplacer le logger dans `helpers/`, le style loader dans `ui/theme/`, changer les imports
 - [ ] Identifier les fonctions/helpers réutilisables (DRY)
-- [ ] Réduire les `if` en utilisant `dict dispatch`, `strategy`, etc.
-- [ ] Ajouter un `helpers/` pour centraliser : 
+- [ ] Créer un dossier `helpers/` :
   - `dataclass_to_dict()`
   - `get_icon()`
   - `get_category_list()`
   - `export_csv()` (avec `yield`)
-- [ ] Créer un `factory_utils.py` si des patterns se répètent
+- [ ] Créer un `factory_utils.py` si logique partagée
 
 ---
 
-## 🧠 NOTIONS AVANCÉES À INTÉGRER
-- [ ] cohérence des interfaces. faire passer les même données sur des méthodes qui agissent sur ces données. (exemple del(data: List), add(data: List)). Les données prises sont les mêmes, c'est la méthode qui défini ce qu'on traite.
-- [ ] `@property` pour rendre certains accès plus élégants, préparer des des actions sur les données pour les recevoir différement ailleurs dans le code.
-- [ ] `*args`, `**kwargs` intelligemment utilisés (ex: handlers, UI)
-- [ ] `dict dispatch` pour éviter les `if` chaînés
-- [ ] `@lru_cache` (déjà utilisé pour les settings, à généraliser ?)
-- [ ] `yield` pour génération paresseuse (CSV, logs…)
-- [ ] `defaultdict` pour regroupement sans vérif préalable
-- [ ] `:=` (walrus operator) pour gagner en lisibilité
-- [ ] Créer un `context manager` custom pour les settings
-- [ ] Utiliser `@staticmethod`, `@classmethod` où pertinent
+## Phase 2 – 🧠 Refactoring avancé (notions Python modernes)
+- [ ] Rendre les interfaces cohérentes (`add(data: List)`, `del(data: List)`)
+- [ ] Réduire les `if` via `dict dispatch` ou stratégie
+- [ ] Utiliser `@property` pour des accès propres
+- [ ] Intégrer `*args`, `**kwargs` où pertinent (UI, handlers)
+- [ ] Ajouter ou généraliser `@lru_cache` (ex: config, constantes)
+- [ ] Intégrer `yield` pour CSV/logs paresseux
+- [ ] Utiliser `defaultdict` pour éviter les vérifications inutiles
+- [ ] Introduire `:=` (walrus operator) dans des affectations lisibles
+- [ ] Créer un `context manager` custom (`with open_settings():`)
+- [ ] Utiliser `@staticmethod`, `@classmethod` proprement
 
 ---
 
-## 🧩 DESIGN PYTHONIC
-- [ ] Rendre certaines classes plus idiomatiques :
-  - `__str__`, `__repr__`, `__eq__`, etc.
-  - Revoir les dataclasses et leur usage (`asdict` → `dataclass_to_dict`)
+## Phase 3 – 🧩 Design Pythonic & architecture élégante
+- [ ] Rendre les classes plus idiomatiques (`__str__`, `__repr__`, `__eq__`)
+- [ ] Revoir l'usage des dataclasses (`asdict()` → helper `dataclass_to_dict`)
 - [ ] Regrouper les classes/fonctions similaires (SoC, SRP)
-- [ ] Créer un vrai module `notifications` non bloquant (usine à `QLabel`)
-- [ ] Nettoyer les logs et créer un `log_utils.py` si besoin
+- [ ] Créer une vraie `notification_factory.py` (QLabel + Timer)
+- [ ] Nettoyer les logs et créer un `log_utils.py` propre
 
 ---
 
-## 🚀 TEST & VALIDATION
-- [ ] Valider chaque helper/fonction ajoutée dans IPython avant intégration
-- [ ] Ajouter des tests ciblés pour les fonctions refactorisées
-- [ ] Mettre à jour les tests existants selon les nouvelles signatures
-
-## Phase 3 – Fonctionnalités UI finales
-- [ ] Implémenter une barre de recherche fonctionnelle
-- [ ] Intégrer un filtrage dans `TaskTableModel` (`filterTasks()` ou équivalent)
-- [ ] Améliorer la présentation visuelle du tableau (alignements, focus, style)
-- [ ] Ajouter interactions UX (hover, fond dynamique, etc.)
+## Phase 4 – 🎨 UI & UX avancée
+- [ ] Implémenter une **barre de recherche**
+- [ ] Ajouter un filtrage dans `TaskTableModel` (`filterTasks()`)
+- [ ] Améliorer la présentation visuelle du tableau (alignement, focus, style)
+- [ ] Ajouter des interactions UX : hover, fond dynamique…
 
 ---
 
-## Phase 4 – Refactoring DRY / Propreté
-- [ ] Identifier et regrouper le code redondant (UI, handlers, settings…)
-- [ ] Créer des helpers/fonctions utilitaires génériques (validation, affichage, chemins)
-- [ ] Centraliser les logs, constantes, configs inutiles dans `core/`
-
----
-
-## Phase 5 – Tests & validation finale
-- [ ] Compléter les tests unitaires sur tous les modules critiques (handlers, db, settings)
-- [ ] Ajouter des tests d’intégration (simulateurs complets : add → toggle → delete)
+## Phase 5 – ✅ Tests & validation
+- [ ] Valider chaque helper dans IPython avant intégration
+- [ ] Ajouter des tests unitaires pour les fonctions refactorisées
+- [ ] Compléter les tests unitaires (handlers, db, settings)
+- [ ] Ajouter des tests d’intégration (workflow : add → toggle → delete)
 - [ ] Nettoyer les anciens tests ou doublons
-- [ ] (Optionnel) Ajouter un badge GitHub Actions + README
+- [ ] (Optionnel) Badge GitHub Actions + README
 
 ---
 
-## Phase 6 – Préparation au packaging
-- [ ] Relire le projet et supprimer le code mort ou inutilisé
-- [ ] Compléter `pyproject.toml` pour un packaging propre
-- [ ] Ajouter une commande `entry_point` si souhaité (CLI optionnelle)
+## Phase 6 – 📦 Packaging propre
+- [ ] Relire le projet final
+- [ ] Supprimer tout code mort ou inutilisé
+- [ ] Compléter le `pyproject.toml` pour un packaging clean
+- [ ] Ajouter une commande `entry_point` (CLI optionnelle)
 
 ---
 
-## Phase 7 – Expérimentations (Todol-Experimental)
-- [ ] Cloner le projet pour y tester des concepts avancés sans polluer le code stable
-- [ ] Tester des `context managers` persos (`with open_settings():`)
+## Phase 7 – 🧪 Todol-Experimental (libre)
+- [ ] Cloner le projet en version "expérimentale"
+- [ ] Tester des `context managers` persos
 - [ ] Ajouter des décorateurs custom (`@log_event`, `@require_setting`)
-- [ ] Approcher `threading`, `asyncio`, `yield`, `contextlib`, etc.
+- [ ] Approcher `threading`, `asyncio`, `yield`, `contextlib`...
