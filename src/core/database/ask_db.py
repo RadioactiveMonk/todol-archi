@@ -11,17 +11,22 @@ class AskDB:
             "create": self.create,
             "insert": self.insert,
             "select": self.select,
+            "select_one": self.select_one,
             "update": self.update,
             "delete": self.delete,
             "drop": self.drop,
         }
-
-    def dispatch(self, action: str, sql: str, *args):
-        logger.debug(f"Sql action route: {action} | {sql} | args={args}")
+    
+    def ask(self, action: str, sql: str, *args):
+        """Docstrings"""
 
         if action not in self.routes:
-            raise ValueError(f"Uknown DB action: {action}")
+            raise ValueError(f"Unknown DB action: '{action}'")
+        
+        logger.debug(f"Dispatching SQL actions via ask(): {action} -> {sql} | args={args}")
+
         return self.routes[action](sql, *args)
+
 
     def exec(self, sql: str, *args):
         logger.debug(f"Executing: {sql} | args={args}")
