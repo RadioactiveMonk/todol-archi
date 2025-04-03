@@ -1,16 +1,16 @@
 from helpers.cached_utils import get_available_themes, get_categories
+from helpers.log_utils import logger
 from ui.theme.style_loader import load_stylesheet, reload_theme
 
 from .app_constants import APP_NAME
 from .config import AUTO_SAVE_INTERVAL, DEBUG
 from .database_config import (
-    SQL_CREATE_TABLE,
-    SQL_DELETE_TASK,
-    SQL_DROP_TABLE,
+    SQL_DELETE_TASK_BY_ID,
     SQL_INSERT_TASK,
+    SQL_SELECT_TASK_BY_ID,
     SQL_SELECT_TASKS,
+    SQL_UPDATE_TASK_BY_ID,
 )
-from helpers.log_utils import logger
 from .path import (
     BASE_DIR,
     DATA_DIR,
@@ -47,11 +47,11 @@ __all__ = [
     "DB_FILE",
     "SETTINGS_FILE",
     # DB config
-    "SQL_CREATE_TABLE",
-    "SQL_DELETE_TASK",
-    "SQL_DROP_TABLE",
     "SQL_INSERT_TASK",
     "SQL_SELECT_TASKS",
+    "SQL_SELECT_TASK_BY_ID",
+    "SQL_UPDATE_TASK_BY_ID",
+    "SQL_DELETE_TASK_BY_ID",
     # Dev tools
     "logger",
     # Misc
