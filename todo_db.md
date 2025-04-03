@@ -24,7 +24,8 @@
 - [x] Ajouter `lastrowid` dans `.insert()` (retour de l’ID inséré)
 - [x] Ajouter une méthode `.select_one()` (équivalent de `.fetchone()`)
 - [x] Créer une méthode `.ask(action, sql, *args)` unifiée
-- [ ] Ajouter des alias métier (`add_task()`, `get_tasks_by_category()`, etc.)
+- [x] Ajouter des alias métier (`add_task()`, `get_tasks_by_category()`, etc.)
+- [ ] Recréation d'un `reload_all()`
 - [ ] Faire un init_db()
 - [x] Migration officielle vers `ask_db.py` et suppression de `db_controller.py`
 - [ ] Ajouter une gestion d’erreur propre (`try/except`, `raise`)

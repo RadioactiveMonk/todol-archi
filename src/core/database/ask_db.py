@@ -25,7 +25,7 @@ class AskDB:
             "drop": self.drop,
         }
 
-    def ask(self, action: str, sql: str, *args) -> Any:
+    def ask(self, action: str, sql: str, *args: Any) -> Any:
         """Docstrings"""
 
         if action not in self.routes:
@@ -37,45 +37,48 @@ class AskDB:
 
         return self.routes[action](sql, *args)
 
-    def exec(self, sql: str, *args):
+    def exec(self, sql: str, *args: Any) -> None:
         logger.debug(f"Executing: {sql} | args={args}")
 
         self.conn.execute(sql, args)
 
-    def create(self, sql: str):
+    def create(self, sql: str) -> None:
         logger.debug(f"Executing CREATE TABLE: {sql}")
 
         self.conn.execute(sql)
 
-    def insert(self, sql: str, *args):
+    def insert(self, sql: str, *args: Any) -> int | None:
         logger.debug(f"Executing INSERT INTO: {sql} | args={args}")
 
         cursor = self.conn.execute(sql, args)
         self.conn.commit()
         return cursor.lastrowid
 
-    def select(self, sql: str, *args):
+    def select(self, sql: str, *args: Any) -> List[tuple]:
         logger.debug(f"Executing SELECT: {sql} | args={args}")
 
         return self.conn.execute(sql, args).fetchall()
 
-    def select_one(self, sql: str, *args):
+    def select_one(self, sql: str, *args: Any) -> tuple | None:
         logger.debug(f"Executing SELECT: {sql} | args={args}")
 
         return self.conn.execute(sql, args).fetchone()
 
-    def update(self, sql: str, *args):
+    def update(self, sql: str, *args: Any) -> int:
         logger.debug(f"Executing UPDATE FROM: {sql} | args={args}")
 
-        self.conn.execute(sql, args)
+        cursor = self.conn.execute(sql, args)
+        self.conn.commit()
+        return cursor.rowcount
 
-    def delete(self, sql: str, *args):
+    def delete(self, sql: str, *args: Any) -> int:
         logger.debug(f"Executing DELETE FROM: {sql} | args={args}")
 
-        self.conn.execute(sql, args)
+        cursor = self.conn.execute(sql, args)
         self.conn.commit()
+        return cursor.rowcount
 
-    def drop(self, sql: str):
+    def drop(self, sql: str) -> None:
         logger.debug(f"Executing DROP TABLE: {sql}")
 
         self.conn.execute(sql)
@@ -115,6 +118,6 @@ class AskDB:
         return updated > 0
 
     def delete_task(self, task_id: int) -> bool:
-        
+
         deleted = self.delete(SQL_DELETE_TASK_BY_ID, task_id)
         return deleted > 0

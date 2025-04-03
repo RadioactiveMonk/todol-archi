@@ -77,3 +77,11 @@ WHERE id = ?;
 DELETE FROM tasks
 WHERE id = ?;
  | args=(34,)
+2025-04-03 18:27:22.534 | DEBUG    | core.database.ask_db:delete:75 - Executing DELETE FROM: 
+DELETE FROM tasks
+WHERE id = ?;
+ | args=(34,)
+2025-04-03 18:27:50.274 | DEBUG    | core.database.ask_db:delete:75 - Executing DELETE FROM: 
+DELETE FROM tasks
+WHERE id = ?;
+ | args=(35,)
