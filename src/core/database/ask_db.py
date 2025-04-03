@@ -1,6 +1,7 @@
 import sqlite3
 from typing import Any
 
+from core.database_config import SQL_INSERT_TASK
 from helpers.log_utils import logger
 
 
@@ -72,3 +73,10 @@ class AskDB:
         logger.debug(f"Executing DROP TABLE: {sql}")
 
         self.conn.execute(sql)
+
+    def add_task(
+        self, title: str, category: str, completed: bool, expiration: str, notes: str
+    ) -> int | None:
+        return self.insert(
+            SQL_INSERT_TASK, title, category, int(completed), expiration, notes
+        )
