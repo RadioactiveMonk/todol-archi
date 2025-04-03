@@ -4,7 +4,7 @@ from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QWidget
 
-from core.database.db_manager import DbManager
+# from core.database.db_manager import DbManager
 from handlers.task_handlers import TaskHandlers
 from helpers.log_utils import logger
 from models.task import Task
