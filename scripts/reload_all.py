@@ -6,9 +6,8 @@ sys.path.insert(0, "src")
 
 import core.database.db_controller as db_controller_module
 import core.database.db_manager as db_manager_module
+import helpers.log_utils as logger_module
 import models.task as task_module
-
-logger_module = importlib.import_module("core.logger")
 
 
 def reload_all() -> Tuple[object, type]:

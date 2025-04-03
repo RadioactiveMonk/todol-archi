@@ -1,0 +1,13 @@
+2025-04-03 14:21:50.380 | DEBUG    | core.database.db_controller:_create_table:102 - Attempting to create table
+2025-04-03 14:21:50.381 | DEBUG    | core.database.db_controller:_execute_query:51 - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-04-03 14:21:50.381 | DEBUG    | core.database.db_controller:_execute_query:61 - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-archi/data/tasks.db
+2025-04-03 14:21:50.381 | INFO     | core.database.db_controller:_create_table:106 - SQL: table 'tasks' created
+2025-04-03 14:23:19.865 | DEBUG    | core.database.ask_db:create:32 - Executing CREATE TABLE: CREATE TABLE IF NOT EXISTS test (id INTEGER)
+2025-04-03 14:23:35.468 | DEBUG    | core.database.ask_db:insert:37 - Executing INSERT: INSERT INTO test VALUES (?) | args=(1,)
+2025-04-03 14:23:47.429 | DEBUG    | core.database.ask_db:select:43 - Executing SELECT: SELECT * FROM test | args=()
+2025-04-03 14:29:13.252 | DEBUG    | core.database.db_controller:_create_table:102 - Attempting to create table
+2025-04-03 14:29:13.252 | DEBUG    | core.database.db_controller:_execute_query:51 - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-04-03 14:29:13.252 | DEBUG    | core.database.db_controller:_execute_query:61 - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-archi/data/tasks.db
+2025-04-03 14:29:13.253 | INFO     | core.database.db_controller:_create_table:106 - SQL: table 'tasks' created
+2025-04-03 14:29:36.962 | DEBUG    | core.database.ask_db:insert:37 - Executing INSERT: INSERT INTO test VALUES (?) | args=(2,)
+2025-04-03 14:29:36.982 | DEBUG    | core.database.ask_db:select:43 - Executing SELECT: SELECT * FROM test | args=()
