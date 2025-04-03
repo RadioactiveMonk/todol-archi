@@ -1,7 +1,11 @@
 import sqlite3
-from typing import Any
+from typing import Any, List
 
-from core.database_config import SQL_INSERT_TASK
+from core.database_config import (
+    SQL_INSERT_TASK,
+    SQL_SELECT_TASK_BY_ID,
+    SQL_SELECT_TASKS,
+)
 from helpers.log_utils import logger
 
 
@@ -80,3 +84,9 @@ class AskDB:
         return self.insert(
             SQL_INSERT_TASK, title, category, int(completed), expiration, notes
         )
+
+    def get_all_tasks(self) -> List[tuple]:
+        return self.select(SQL_SELECT_TASKS)
+
+    def get_task_by_id(self, task_id: int) -> tuple | None:
+        return self.select_one(SQL_SELECT_TASK_BY_ID, task_id)
