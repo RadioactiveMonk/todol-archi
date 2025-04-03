@@ -2,9 +2,11 @@ import sqlite3
 from typing import Any, List
 
 from core.database_config import (
+    SQL_DELETE_TASK_BY_ID,
     SQL_INSERT_TASK,
     SQL_SELECT_TASK_BY_ID,
     SQL_SELECT_TASKS,
+    SQL_UPDATE_TASK_BY_ID,
 )
 from helpers.log_utils import logger
 
@@ -90,3 +92,29 @@ class AskDB:
 
     def get_task_by_id(self, task_id: int) -> tuple | None:
         return self.select_one(SQL_SELECT_TASK_BY_ID, task_id)
+
+    def update_task(
+        self,
+        task_id: int,
+        title: str,
+        category: str,
+        completed: bool,
+        expiration: str,
+        notes: str,
+    ) -> bool:
+        
+        updated = self.update(
+            SQL_UPDATE_TASK_BY_ID,
+            title,
+            category,
+            int(completed),
+            expiration,
+            notes,
+            task_id,
+        )
+        return updated > 0
+
+    def delete_task(self, task_id: int) -> bool:
+        
+        deleted = self.delete(SQL_DELETE_TASK_BY_ID, task_id)
+        return deleted > 0

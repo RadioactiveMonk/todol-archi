@@ -63,3 +63,17 @@ SELECT id, title, category, completed, expiration, notes
 FROM tasks
 WHERE id = ?;
  | args=(34,)
+2025-04-03 17:45:53.003 | DEBUG    | core.database.ask_db:update:68 - Executing UPDATE FROM: 
+UPDATE tasks
+SET title = ?, category = ?, completed = ?, expiration = ?, notes = ?
+WHERE id = ?;
+ | args=('Modifiée via AskDB', 'dev', 1, '2025-04-15', 'Mise à jour réussie', 35)
+2025-04-03 17:45:53.003 | DEBUG    | core.database.ask_db:select_one:63 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks
+WHERE id = ?;
+ | args=(35,)
+2025-04-03 17:46:39.821 | DEBUG    | core.database.ask_db:delete:73 - Executing DELETE FROM: 
+DELETE FROM tasks
+WHERE id = ?;
+ | args=(34,)
