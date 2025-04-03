@@ -5,8 +5,8 @@ from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QWidget
 
 from core.database.db_manager import DbManager
-from helpers.log_utils import logger
 from handlers.task_handlers import TaskHandlers
+from helpers.log_utils import logger
 from models.task import Task
 from models.task_table_utils import (
     STATUS_COLUMN,

@@ -22,6 +22,7 @@ from .path import (
     STYLESHEETS_DIR,
 )
 from .settings_manager import get_setting, load_settings, save_settings, set_setting
+from .sql_schema import SQL_CREATE_TASKS_TABLE, SQL_DROP_TASKS_TABLE
 
 __all__ = [
     # App constants
@@ -52,6 +53,9 @@ __all__ = [
     "SQL_SELECT_TASK_BY_ID",
     "SQL_UPDATE_TASK_BY_ID",
     "SQL_DELETE_TASK_BY_ID",
+    # DB schema
+    "SQL_CREATE_TASKS_TABLE",
+    "SQL_DROP_TASKS_TABLE",
     # Dev tools
     "logger",
     # Misc
