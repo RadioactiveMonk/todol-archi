@@ -11,8 +11,8 @@
 - [x] Créer `src/core/database/ask_db.py`
 
 ### 2. Classe `AskDB` de base
-- [ ] Implémenter `__init__` avec une connexion SQLite
-- [ ] Méthodes de base : `create()`, `insert()`, `select()`, `update()`, `delete()`, `drop()`, `exec()`
+- [x] Implémenter `__init__` avec une connexion SQLite
+- [x] Méthodes de base : `create()`, `insert()`, `select()`, `update()`, `delete()`, `drop()`, `exec()`
 
 ### 3. Simplification DRY
 - [ ] Utiliser un point d’entrée unique `execute()` en interne
@@ -23,11 +23,11 @@
 - [ ] Rendre les appels plus souples et lisibles
 
 ### 5. Introduction du `dict dispatch`
-- [ ] Créer un routeur `self.routes` ou `self.dispatch()` pour router dynamiquement vers `insert`, `select`, etc.
+- [x] Créer un routeur `self.routes` ou `self.dispatch()` pour router dynamiquement vers `insert`, `select`, etc.
 - [ ] Ajouter une méthode `.ask(action, sql, *args)` pour unifier l’usage
 
 ### 6. Création d’un context manager propre
-- [ ] Implémenter `open_db(path)` avec `contextlib.contextmanager`
+- [x] Implémenter `open_db(path)` avec `contextlib.contextmanager`
 - [ ] Assurer ouverture/fermeture auto, et usage simple :
 
 ```python
