@@ -34,15 +34,21 @@ class AskDB:
         self.conn.execute(sql)
 
     def insert(self, sql: str, *args):
-        logger.debug(f"Executing INSERT: {sql} | args={args}")
+        logger.debug(f"Executing INSERT INTO: {sql} | args={args}")
 
-        self.conn.execute(sql, args)
+        cursor = self.conn.execute(sql, args)
         self.conn.commit()
+        return cursor.lastrowid
 
     def select(self, sql: str, *args):
         logger.debug(f"Executing SELECT: {sql} | args={args}")
 
         return self.conn.execute(sql, args).fetchall()
+    
+    def select_one(self, sql: str, *args):
+        logger.debug(f"Executing SELECT: {sql} | args={args}")
+
+        return self.conn.execute(sql, args).fetchone()
 
     def update(self, sql: str, *args):
         logger.debug(f"Executing UPDATE FROM: {sql} | args={args}")

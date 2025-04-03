@@ -21,7 +21,7 @@
 
 ## 🔁 Étape suivante – AskDB V2 : expressivité & ergonomie
 
-- [ ] Ajouter `lastrowid` dans `.insert()` (retour de l’ID inséré)
+- [x] Ajouter `lastrowid` dans `.insert()` (retour de l’ID inséré)
 - [ ] Ajouter une méthode `.select_one()` (équivalent de `.fetchone()`)
 - [ ] Créer une méthode `.ask(action, sql, *args)` unifiée
 - [ ] Ajouter des alias métier (`add_task()`, `get_tasks_by_category()`, etc.)

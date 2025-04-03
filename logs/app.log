@@ -11,3 +11,17 @@
 2025-04-03 14:29:13.253 | INFO     | core.database.db_controller:_create_table:106 - SQL: table 'tasks' created
 2025-04-03 14:29:36.962 | DEBUG    | core.database.ask_db:insert:37 - Executing INSERT: INSERT INTO test VALUES (?) | args=(2,)
 2025-04-03 14:29:36.982 | DEBUG    | core.database.ask_db:select:43 - Executing SELECT: SELECT * FROM test | args=()
+2025-04-03 15:26:56.590 | DEBUG    | core.database.db_controller:_create_table:102 - Attempting to create table
+2025-04-03 15:26:56.590 | DEBUG    | core.database.db_controller:_execute_query:51 - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-04-03 15:26:56.590 | DEBUG    | core.database.db_controller:_execute_query:61 - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-archi/data/tasks.db
+2025-04-03 15:26:56.590 | INFO     | core.database.db_controller:_create_table:106 - SQL: table 'tasks' created
+2025-04-03 15:27:33.385 | DEBUG    | core.database.ask_db:insert:37 - Executing INSERT INTO: INSERT INTO test VALUES (?) | args=(3,)
+2025-04-03 15:35:58.446 | DEBUG    | core.database.db_controller:_create_table:102 - Attempting to create table
+2025-04-03 15:35:58.446 | DEBUG    | core.database.db_controller:_execute_query:51 - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-04-03 15:35:58.446 | DEBUG    | core.database.db_controller:_execute_query:61 - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-archi/data/tasks.db
+2025-04-03 15:35:58.446 | INFO     | core.database.db_controller:_create_table:106 - SQL: table 'tasks' created
+2025-04-03 15:36:26.092 | DEBUG    | core.database.db_controller:_create_table:102 - Attempting to create table
+2025-04-03 15:36:26.092 | DEBUG    | core.database.db_controller:_execute_query:51 - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-04-03 15:36:26.092 | DEBUG    | core.database.db_controller:_execute_query:61 - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-archi/data/tasks.db
+2025-04-03 15:36:26.093 | INFO     | core.database.db_controller:_create_table:106 - SQL: table 'tasks' created
+2025-04-03 15:36:33.903 | DEBUG    | core.database.ask_db:select_one:49 - Executing SELECT: SELECT * FROM test WHERE id = ? | args=(2,)
