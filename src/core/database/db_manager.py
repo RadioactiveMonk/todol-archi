@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, List
 
 # from core.database.db_controller import DbController
 from core.database_config import (
-    SQL_DELETE_TASK,
+    SQL_DELETE_TASK_BY_ID,
     SQL_INSERT_TASK,
     SQL_SELECT_TASKS,
 )
