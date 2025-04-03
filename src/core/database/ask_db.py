@@ -1,4 +1,5 @@
 import sqlite3
+from typing import Any
 
 from helpers.log_utils import logger
 
@@ -16,17 +17,18 @@ class AskDB:
             "delete": self.delete,
             "drop": self.drop,
         }
-    
-    def ask(self, action: str, sql: str, *args):
+
+    def ask(self, action: str, sql: str, *args) -> Any:
         """Docstrings"""
 
         if action not in self.routes:
             raise ValueError(f"Unknown DB action: '{action}'")
-        
-        logger.debug(f"Dispatching SQL actions via ask(): {action} -> {sql} | args={args}")
+
+        logger.debug(
+            f"Dispatching SQL actions via ask(): {action} -> {sql} | args={args}"
+        )
 
         return self.routes[action](sql, *args)
-
 
     def exec(self, sql: str, *args):
         logger.debug(f"Executing: {sql} | args={args}")
@@ -49,7 +51,7 @@ class AskDB:
         logger.debug(f"Executing SELECT: {sql} | args={args}")
 
         return self.conn.execute(sql, args).fetchall()
-    
+
     def select_one(self, sql: str, *args):
         logger.debug(f"Executing SELECT: {sql} | args={args}")
 

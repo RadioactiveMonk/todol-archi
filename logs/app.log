@@ -39,3 +39,8 @@
 2025-04-03 15:47:09.083 | DEBUG    | core.database.ask_db:insert:42 - Executing INSERT INTO: INSERT INTO test VALUES (?) | args=(99,)
 2025-04-03 15:47:09.113 | DEBUG    | core.database.ask_db:ask:26 - Dispatching SQL actions via ask(): select_one -> SELECT * FROM test WHERE id = ? | args=(99,)
 2025-04-03 15:47:09.113 | DEBUG    | core.database.ask_db:select_one:54 - Executing SELECT: SELECT * FROM test WHERE id = ? | args=(99,)
+2025-04-03 15:58:58.998 | DEBUG    | core.database.db_controller:_create_table:102 - Attempting to create table
+2025-04-03 15:58:58.998 | DEBUG    | core.database.db_controller:_execute_query:51 - QUERY: CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, completed INTEGER NOT NULL DEFAULT 0, category TEXT NOT NULL, expiration TEXT NOT NULL, title TEXT NOT NULL, notes TEXT); | PARAMS: () | FETCHONE: False | FETCHALL: False | LASTROWID: False | ROWCOUNT: False
+2025-04-03 15:58:58.999 | DEBUG    | core.database.db_controller:_execute_query:61 - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-archi/data/tasks.db
+2025-04-03 15:58:58.999 | INFO     | core.database.db_controller:_create_table:106 - SQL: table 'tasks' created
+2025-04-03 15:59:06.808 | DEBUG    | core.database.ask_db:insert:43 - Executing INSERT INTO: INSERT INTO test VALUES (?) | args=(123,)
