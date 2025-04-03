@@ -26,21 +26,22 @@
 - [x] Créer une méthode `.ask(action, sql, *args)` unifiée
 - [x] Ajouter des alias métier (`add_task()`, `get_tasks_by_category()`, etc.)
 - [x] Faire un init_db()
-- [x] Migration vers `ask_db.py` et suppression de `db_controller.py`
-- [ ] Migration vers `ask_db.py` et suppression de `db_manager.py`, correction des __init__.py et des imports
-- [ ] Recréation d'un `reload_all()`
-- [ ] Ajouter une gestion d’erreur propre (`try/except`, `raise`)
-- [ ] Ajouter un paramètre `debug=True` pour afficher les requêtes exécutées
-- [ ] Créer des alias d’action (`.add()`, `.get()`, `.remove()`...)
+- [x] Suppression de `db_controller.py`
 
----
+## 🧪 Migration finale vers AskDB (phase de nettoyage) 
 
-## 🔁 Étape AskDB V3 : intégration au projet
+- [ ] Remplacer DbManager par open_db() + alias AskDB
+- [ ] Corriger tous les __init__.py impactés
+- [ ] Corriger tous les handlers/, models/ qui importent DbManager
+- [ ] Supprimer db_manager.py définitivement
+- [ ] Refaire reload_all.py proprement avec AskDB
+- [ ] Revalider l’ensemble du projet (make run, pytest, ipython) 
 
-- [ ] Supprimer progressivement `db_controller.py`
-- [ ] Adapter `db_manager.py` pour utiliser `AskDB` via `with open_db()`
-- [ ] Identifier les appels SQL encore faits ailleurs et les router via `AskDB`
-- [ ] Créer des tests ciblés autour d’`AskDB`
+## 🧪 Nettoyage & robustesse
+
+- [ ] Ajouter try/except dans ask_db.py pour les erreurs critiques
+- [ ] Ajouter debug=True pour afficher dynamiquement les requêtes
+- [ ] Ajouter les alias lisibles .add(), .get(), .remove() (optionnels)
 
 ---
 
@@ -61,5 +62,5 @@ Un système de gestion SQLite :
 - Solide à maintenir
 - Facile à tester
 - Proprement loggué
-- Adapté au style Pythonic que tu vises
+
 
