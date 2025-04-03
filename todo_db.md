@@ -8,7 +8,7 @@
 ## 🔧 Étapes de refactoring
 
 ### 1. Création du fichier de brouillon
-- [ ] Créer `src/core/database/ask_db.py`
+- [x] Créer `src/core/database/ask_db.py`
 
 ### 2. Classe `AskDB` de base
 - [ ] Implémenter `__init__` avec une connexion SQLite
