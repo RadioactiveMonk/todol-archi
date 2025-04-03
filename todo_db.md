@@ -5,63 +5,57 @@
 
 ---
 
-## 🔧 Étapes de refactoring
+## ✅ Étapes validées — AskDB V1 : fondations solides
 
-### 1. Création du fichier de brouillon
 - [x] Créer `src/core/database/ask_db.py`
-
-### 2. Classe `AskDB` de base
 - [x] Implémenter `__init__` avec une connexion SQLite
 - [x] Méthodes de base : `create()`, `insert()`, `select()`, `update()`, `delete()`, `drop()`, `exec()`
-
-### 3. Simplification DRY
-- [ ] Utiliser un point d’entrée unique `execute()` en interne
-- [ ] Centraliser `commit()` et `fetchall()` selon action
-
-### 4. Ajout de `*args`, `**kwargs`
-- [ ] Permettre de passer souplement des paramètres dans les requêtes
-- [ ] Rendre les appels plus souples et lisibles
-
-### 5. Introduction du `dict dispatch`
-- [x] Créer un routeur `self.routes` ou `self.dispatch()` pour router dynamiquement vers `insert`, `select`, etc.
-- [ ] Ajouter une méthode `.ask(action, sql, *args)` pour unifier l’usage
-
-### 6. Création d’un context manager propre
-- [x] Implémenter `open_db(path)` avec `contextlib.contextmanager`
-- [ ] Assurer ouverture/fermeture auto, et usage simple :
-
-```python
-with open_db(DB_FILE) as db:
-    db.insert(SQL_INSERT_TASK, "todo", "dev", False)
-```
+- [x] Créer un dict dispatch (`self.routes`)
+- [x] Implémenter `dispatch(action, sql, *args)` avec vérification
+- [x] Ajouter des logs avec `loguru` dans chaque méthode
+- [x] Créer `helpers/contextmanagers.py` avec `open_db()`
+- [x] Assurer ouverture/fermeture auto de la DB avec `with open_db(...) as db`
+- [x] Tester en IPython → OK
 
 ---
 
-## ✨ Objectif d’élégance
+## 🔁 Étape suivante – AskDB V2 : expressivité & ergonomie
 
-- Appels lisibles, comme un mini-DSL interne pour requêtes
-- Syntaxe humaine : `db.insert(...)`, `db.select(...)`, etc.
-- Isolation claire entre exécution SQL et logique métier
-- Compatible avec IPython pour tests interactifs
-
----
-
-## 🧠 Idées bonus à évaluer plus tard
-
-- [ ] Créer une Factory `DbFactory()` ? (si plusieurs bases à gérer)
-- [ ] Injecter un logger (`loguru`) dans la classe pour suivre les requêtes
-- [ ] Ajouter un fallback en cas d’échec (try/except autour des `.execute`)
-- [ ] Ajouter un mode `debug=True` pour afficher les requêtes exécutées
-- [ ] Créer des alias `.add()`, `.get()` pour certaines actions fréquentes
+- [ ] Ajouter `lastrowid` dans `.insert()` (retour de l’ID inséré)
+- [ ] Ajouter une méthode `.select_one()` (équivalent de `.fetchone()`)
+- [ ] Créer une méthode `.ask(action, sql, *args)` unifiée
+- [ ] Ajouter des alias métier (`add_task()`, `get_tasks_by_category()`, etc.)
+- [ ] Ajouter une gestion d’erreur propre (`try/except`, `raise`)
+- [ ] Ajouter un paramètre `debug=True` pour afficher les requêtes exécutées
+- [ ] Créer des alias d’action (`.add()`, `.get()`, `.remove()`...)
 
 ---
 
-## ✅ Étapes validées (à cocher ensemble)
-- [ ] Structure de base
-- [ ] Test via IPython
-- [ ] Intégration dans un handler/test
-- [ ] Adoption finale si pertinent
+## 🔁 Étape AskDB V3 : intégration au projet
+
+- [ ] Supprimer progressivement `db_controller.py`
+- [ ] Adapter `db_manager.py` pour utiliser `AskDB` via `with open_db()`
+- [ ] Identifier les appels SQL encore faits ailleurs et les router via `AskDB`
+- [ ] Créer des tests ciblés autour d’`AskDB`
 
 ---
 
-Let's build a readable and smart DB layer!
+## 💡 Idées bonus à évaluer plus tard
+
+- [ ] Créer une `DbFactory()` pour gérer plusieurs connexions (multi-db)
+- [ ] Ajouter un logger interne à la classe (plutôt que global)
+- [ ] Ajouter un décorateur `@db_action` pour logguer automatiquement
+- [ ] Ajouter des options de type `fetch="all"`, `fetch="one"` dans `.ask()`
+- [ ] Accepter aussi des requêtes SQL auto-générées depuis `dict` (future piste ORM-like)
+
+---
+
+## 🧪 Objectif final
+
+Un système de gestion SQLite :
+- Simple à utiliser
+- Solide à maintenir
+- Facile à tester
+- Proprement loggué
+- Adapté au style Pythonic que tu vises
+
