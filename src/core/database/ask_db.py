@@ -1,24 +1,61 @@
-class AskDb:
-    def __init__(self):
-        pass
+import sqlite3
 
-    def create(self):
-        pass
+from helpers.log_utils import logger
 
-    def insert(self):
-        pass
 
-    def select(self):
-        pass
+class AskDB:
+    def __init__(self, conn: sqlite3.Connection):
+        self.conn = conn
+        self.routes = {
+            "exec": self.exec,
+            "create": self.create,
+            "insert": self.insert,
+            "select": self.select,
+            "update": self.update,
+            "delete": self.delete,
+            "drop": self.drop,
+        }
 
-    def update(self):
-        pass
+    def dispatch(self, action: str, sql: str, *args):
+        logger.debug(f"Sql action route: {action} | {sql} | args={args}")
 
-    def delete(self):
-        pass
+        if action not in self.routes:
+            raise ValueError(f"Uknown DB action: {action}")
+        return self.routes[action](sql, *args)
 
-    def drop(self):
-        pass
+    def exec(self, sql: str, *args):
+        logger.debug(f"Executing: {sql} | args={args}")
 
-    def exec(self):
-        pass
+        self.conn.execute(sql, args)
+
+    def create(self, sql: str):
+        logger.debug(f"Executing CREATE TABLE: {sql}")
+
+        self.conn.execute(sql)
+
+    def insert(self, sql: str, *args):
+        logger.debug(f"Executing INSERT: {sql} | args={args}")
+
+        self.conn.execute(sql, args)
+        self.conn.commit()
+
+    def select(self, sql: str, *args):
+        logger.debug(f"Executing SELECT: {sql} | args={args}")
+
+        return self.conn.execute(sql, args).fetchall()
+
+    def update(self, sql: str, *args):
+        logger.debug(f"Executing UPDATE FROM: {sql} | args={args}")
+
+        self.conn.execute(sql, args)
+
+    def delete(self, sql: str, *args):
+        logger.debug(f"Executing DELETE FROM: {sql} | args={args}")
+
+        self.conn.execute(sql, args)
+        self.conn.commit()
+
+    def drop(self, sql: str):
+        logger.debug(f"Executing DROP TABLE: {sql}")
+
+        self.conn.execute(sql)
