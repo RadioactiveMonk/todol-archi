@@ -49,3 +49,17 @@
 2025-04-03 16:41:39.379 | DEBUG    | core.database.db_controller:_execute_query:61 - 📂 Using database file: /home/doyoudance/Desktop/Projects/todol-archi/data/tasks.db
 2025-04-03 16:41:39.380 | INFO     | core.database.db_controller:_create_table:106 - SQL: table 'tasks' created
 2025-04-03 16:41:47.907 | DEBUG    | core.database.ask_db:insert:45 - Executing INSERT INTO: INSERT INTO tasks (title, category, completed, expiration, notes) VALUES (?, ?, ?, ?, ?); | args=('Task via AskDB', 'dev', 0, '2025-04-10', 'Insérée proprement via alias métier')
+2025-04-03 17:13:53.135 | DEBUG    | core.database.ask_db:select:56 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-03 17:14:29.157 | DEBUG    | core.database.ask_db:select_one:61 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks
+WHERE id = ?;
+ | args=(1,)
+2025-04-03 17:14:56.805 | DEBUG    | core.database.ask_db:select_one:61 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks
+WHERE id = ?;
+ | args=(34,)
