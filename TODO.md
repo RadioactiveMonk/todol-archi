@@ -68,7 +68,13 @@
 ---
 
 ## Phase 7 – 🧪 Todol-Experimental (libre)
+  # Structures de données avancées et programmation asynchrone
 - [ ] Cloner le projet en version "expérimentale"
+- [ ] deque (collections, queue, stack efficaces)
+- [ ] Enum (valeurs symboliques propres et lisibles)
+- [ ] NamedTuple / dataclass vs tuple classique
+- [ ] LinkedList / Node (manuellement pour comprendre le chaînage)
+- [ ] Heap, Set, frozenset, defaultdict
 - [ ] Tester des `context managers` persos
 - [ ] Ajouter des décorateurs custom (`@log_event`, `@require_setting`)
 - [ ] Approcher `threading`, `asyncio`, `yield`, `contextlib`...

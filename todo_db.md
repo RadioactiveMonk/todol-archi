@@ -53,16 +53,6 @@
 - [ ] Ajouter des options de type `fetch="all"`, `fetch="one"` dans `.ask()`
 - [ ] Accepter aussi des requêtes SQL auto-générées depuis `dict` (future piste ORM-like)
 
-## Structures de données avancées
-
-- [ ] deque (collections, queue, stack efficaces)
-- [ ] Enum (valeurs symboliques propres et lisibles)
-- [ ] NamedTuple / dataclass vs tuple classique
-- [ ] LinkedList / Node (manuellement pour comprendre le chaînage)
-- [ ] Heap, Set, frozenset, defaultdict
-
----
-
 ## 🧪 Objectif final
 
 Un système de gestion SQLite :
