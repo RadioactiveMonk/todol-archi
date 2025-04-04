@@ -1,7 +1,9 @@
 from PyQt6.QtWidgets import QTableView, QWidget
-
-from core.database.db_manager import DbManager
+from typing import List, Dict, Any
+from core.database.ask_db import AskDB
+from core.path import DB_FILE
 from handlers.task_handlers import TaskHandlers
+from helpers.contextmanagers import open_db
 from models.task_table_model import TaskTableModel
 from models.task_table_utils import (
     COLUMN_WIDTHS,
@@ -16,20 +18,19 @@ class TaskTable(QTableView):
     """Display the tasks in a table"""
 
     def __init__(
-        self, db: DbManager | None = None, parent: QWidget | None = None
+        self, parent: QWidget | None = None, db: AskDB
     ) -> None:
         """Init the table: db, handlers, model, ui, delegates, signals
 
         Parameters
         ----------
-        db : DbManager | None, optional
-            the database manager, by default None
         parent : QWidget | None, optional
             the parent widget, by default None
         """
 
         super().__init__(parent)
-        self.db = db if db is not None else DbManager()
+        with open_db(DB_FILE) as db:
+            self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
         self.task_handlers = TaskHandlers()
         self.table_model = TaskTableModel(
             parent=self, db=self.db, task_handlers=self.task_handlers

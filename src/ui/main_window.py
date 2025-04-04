@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Dict, List, Union, Any
 
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
@@ -8,8 +8,9 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
-from core.database.db_manager import DbManager
-from core.path import ICONS_DIR
+from core.database.ask_db import AskDB
+from core.path import DB_FILE, ICONS_DIR
+from helpers.contextmanagers import open_db
 from models.task import Task
 from ui.containers.menu_bar import MenuBar
 from ui.containers.search_tasks import SearchTasks
@@ -23,7 +24,7 @@ from ui.ui_constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
 class MainWindow(QMainWindow):
     """Main window of the application"""
 
-    def __init__(self, db: DbManager | None = None) -> None:
+    def __init__(self, db: AskDB) -> None:
         """Init the main window
 
         Parameters
@@ -32,7 +33,8 @@ class MainWindow(QMainWindow):
             The database manager, by default None
         """
         super().__init__()
-        self.db = db if db is not None else DbManager()
+        with open_db(DB_FILE) as db:
+            self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
         self.setWindowTitle(MAIN_WINDOW_TITLE)
         self.setGeometry(*MAIN_WINDOW_GEOMETRY)
         self.setWindowIcon(QIcon(str(ICONS_DIR / "app_icon.png")))

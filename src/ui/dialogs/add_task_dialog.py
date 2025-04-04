@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Any, Dict, List, Union
 
 from PyQt6.QtCore import QDateTime, pyqtSignal
 from PyQt6.QtWidgets import (
@@ -11,8 +11,10 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
-from core.database.db_manager import DbManager
+from core.database.ask_db import AskDB
+from core.path import DB_FILE
 from core.status_constants import DEFAULT_STATUS
+from helpers.contextmanagers import open_db
 from models.task import Task
 from ui.controls.category_selector import CategorySelector
 from ui.controls.expiration_selector import ExpirationSelector
@@ -29,10 +31,11 @@ class AddTaskDialog(QDialog):
     ok_signal: pyqtSignal = pyqtSignal()
     # Envoie un signal, pour éviter d'incorporer logique métier
 
-    def __init__(self, parent: QWidget, task: Union["Task", None] = None) -> None:
+    def __init__(self, parent: QWidget, db: AskDB, task: Union["Task", None] = None) -> None:
         super().__init__(parent)
 
-        self.db = DbManager()
+        with open_db(DB_FILE) as db:
+            self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
         self.task = task
         self.setup_ui()
         self.populate_fields()
