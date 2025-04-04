@@ -9,8 +9,7 @@ from PyQt6.QtWidgets import (
 )
 
 from core.database.ask_db import AskDB
-from core.path import DB_FILE, ICONS_DIR
-from helpers.contextmanagers import open_db
+from core.path import ICONS_DIR
 from models.task import Task
 from ui.containers.menu_bar import MenuBar
 from ui.containers.search_tasks import SearchTasks
@@ -33,8 +32,7 @@ class MainWindow(QMainWindow):
             context manager to manage database via open_db()
         """
         super().__init__()
-        with open_db(DB_FILE) as db:
-            self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
+        self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
         self.setWindowTitle(MAIN_WINDOW_TITLE)
         self.setGeometry(*MAIN_WINDOW_GEOMETRY)
         self.setWindowIcon(QIcon(str(ICONS_DIR / "app_icon.png")))

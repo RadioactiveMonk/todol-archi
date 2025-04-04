@@ -1,5 +1,9 @@
+# src/factory/mainwindow_factory.py
+
 from PyQt6.QtWidgets import QMainWindow
 
+from core.path import DB_FILE
+from helpers.contextmanagers import open_db
 from ui.main_window import MainWindow
 
 
@@ -9,8 +13,7 @@ class MainWindowFactory:
     @staticmethod
     def create() -> QMainWindow:
         """Create a main window instance with all the components"""
-        # dialog_factory = DialogFactory()
-        # handler_factory = HandlerFactory()
-        # notification_factory = NotificationFactory()
-        main_window = MainWindow()
-        return main_window
+
+        with open_db(DB_FILE) as db:
+            main_window = MainWindow(db=db)
+            return main_window

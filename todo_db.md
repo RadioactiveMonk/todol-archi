@@ -34,13 +34,13 @@
 - [x] Corriger tous les __init__.py impactés
 - [x] Corriger tous les handlers/, models/ qui importent DbManager
 - [x] Supprimer db_manager.py définitivement
-- [ ] Refaire reload_all.py proprement avec AskDB
+- [x] Refaire reload_all.py proprement avec AskDB
 - [ ] Revalider l’ensemble du projet (make run, pytest, ipython) 
 
 ## 🧪 Nettoyage & robustesse
 
 - [ ] Ajouter try/except dans ask_db.py pour les erreurs critiques
-- [ ] Ajouter debug=True pour afficher dynamiquement les requêtes
+- [x] Ajouter debug=True pour afficher dynamiquement les requêtes
 - [ ] Ajouter les alias lisibles .add(), .get(), .remove() (optionnels)
 
 ---
