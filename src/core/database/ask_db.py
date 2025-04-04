@@ -6,7 +6,6 @@ from core.database_config import (
     SQL_INSERT_TASK,
     SQL_SELECT_TASK_BY_ID,
     SQL_SELECT_TASKS,
-    SQL_UPDATE_TASK_BY_ID,
 )
 from helpers.log_utils import logger
 
@@ -21,7 +20,6 @@ class AskDB:
             "insert": self.insert,
             "select": self.select,
             "select_one": self.select_one,
-            "update": self.update,
             "delete": self.delete,
             "drop": self.drop,
         }
@@ -67,13 +65,6 @@ class AskDB:
         row = self.conn.execute(sql, args).fetchone()
         return dict(row) if row else None
 
-    def update(self, sql: str, *args: Any) -> int:
-        logger.debug(f"Executing UPDATE FROM: {sql} | args={args}")
-
-        cursor = self.conn.execute(sql, args)
-        self.conn.commit()
-        return cursor.rowcount
-
     def delete(self, sql: str, *args: Any) -> int:
         logger.debug(f"Executing DELETE FROM: {sql} | args={args}")
 
@@ -117,7 +108,9 @@ class AskDB:
                 values.append(value)
 
         if not fields:
-            logger.warning(f"⚠️ Aucun champ fourni pour mise à jour de la tâche ID {task_id}")
+            logger.warning(
+                f"⚠️ Aucun champ fourni pour mise à jour de la tâche ID {task_id}"
+            )
             return False
 
         sql = f"UPDATE tasks SET {', '.join(fields)} WHERE id = ?;"
@@ -127,7 +120,6 @@ class AskDB:
         cursor = self.conn.execute(sql, values)
         self.conn.commit()
         return cursor.rowcount > 0
-
 
     def delete_task(self, task_id: int) -> bool:
         deleted = self.delete(SQL_DELETE_TASK_BY_ID, task_id)
