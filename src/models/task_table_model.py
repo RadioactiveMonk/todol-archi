@@ -25,6 +25,7 @@ class TaskTableModel(QAbstractTableModel):
         self,
         parent: QObject | None = None,
         task_handlers: TaskHandlers | None = None,
+        tasks=None,
     ) -> None:
         """Init the the database, the data model, the task handlers (edit, delete).
 
@@ -38,8 +39,7 @@ class TaskTableModel(QAbstractTableModel):
 
         super().__init__(parent)
 
-        with open_db(DB_FILE) as db:
-            self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
+        self._tasks = tasks if tasks is not None else []
 
         self.task_handlers = (
             task_handlers

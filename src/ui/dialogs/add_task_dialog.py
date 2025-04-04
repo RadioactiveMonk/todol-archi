@@ -1,4 +1,5 @@
-from typing import Any, Dict, List, Union
+from dataclasses import asdict
+from typing import Union
 
 from PyQt6.QtCore import QDateTime, pyqtSignal
 from PyQt6.QtWidgets import (
@@ -11,7 +12,6 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
-from core.database.ask_db import AskDB
 from core.path import DB_FILE
 from core.status_constants import DEFAULT_STATUS
 from helpers.contextmanagers import open_db
@@ -31,12 +31,11 @@ class AddTaskDialog(QDialog):
     ok_signal: pyqtSignal = pyqtSignal()
     # Envoie un signal, pour éviter d'incorporer logique métier
 
-    def __init__(self, parent: QWidget, db: AskDB, task: Union["Task", None] = None) -> None:
+    def __init__(self, parent: QWidget, task: Union["Task", None] = None) -> None:
         super().__init__(parent)
 
-        with open_db(DB_FILE) as db:
-            self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
         self.task = task
+
         self.setup_ui()
         self.populate_fields()
 
@@ -99,26 +98,21 @@ class AddTaskDialog(QDialog):
         if not title:
             return
 
-        task_data = Task(
+        task = Task(
             title=title,
             category=self.category_selector.currentText(),
+            completed=bool(int(DEFAULT_STATUS)),
             expiration=self.expiration_selector.dateTime().toString("yyyy-MM-dd HH:mm"),
             notes=self.notes_input.toPlainText().strip(),
-            completed=DEFAULT_STATUS,
         )
 
         if self.task:
             assert self.task.tid is not None
-            self.db.update_task(
-                task_id=self.task.tid,
-                completed=task_data.completed,
-                category=task_data.category,
-                expiration=task_data.expiration,
-                title=task_data.title,
-                notes=task_data.notes,
-            )
+            with open_db(DB_FILE) as db:
+                db.update_task(task_id=self.task.tid, **asdict(task))
         else:
-            self.db.add_task(task_data)
+            with open_db(DB_FILE) as db:
+                db.add_task(**asdict(task))
 
         self.ok_signal.emit()
         self.accept()

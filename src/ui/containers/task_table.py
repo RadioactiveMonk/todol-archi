@@ -33,7 +33,7 @@ class TaskTable(QTableView):
             self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
         self.task_handlers = TaskHandlers()
         self.table_model = TaskTableModel(
-            parent=self, db=self.db, task_handlers=self.task_handlers
+            parent=self, task_handlers=self.task_handlers, tasks=tasks
         )  # Create the model
 
         self.setModel(self.table_model)  # Set the model to the table
