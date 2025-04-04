@@ -85,3 +85,8 @@ WHERE id = ?;
 DELETE FROM tasks
 WHERE id = ?;
  | args=(35,)
+2025-04-04 11:06:49.951 | DEBUG    | core.database.ask_db:select_one:65 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks
+WHERE id = ?;
+ | args=(35,)

@@ -4,8 +4,9 @@ from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QWidget
 
-# from core.database.db_manager import DbManager
+from core.path import DB_FILE
 from handlers.task_handlers import TaskHandlers
+from helpers.contextmanagers import open_db
 from helpers.log_utils import logger
 from models.task import Task
 from models.task_table_utils import (
@@ -23,26 +24,28 @@ class TaskTableModel(QAbstractTableModel):
     def __init__(
         self,
         parent: QObject | None = None,
-        db: DbManager | None = None,
         task_handlers: TaskHandlers | None = None,
     ) -> None:
-        """Init the the model
+        """Init the the database, the data model, the task handlers (edit, delete).
 
         Parameters
         ----------
         parent : QObject | None, optional
             parent object, by default None
-        db : DbManager | None, optional
-            the database manager, by default None
         task_handlers : TaskHandlers | None, optional
             the task handlers, by default None
         """
 
         super().__init__(parent)
-        self.db = db if db is not None else DbManager()
 
-        self.tasks: List[Dict[str, Any]] = self.db.get_tasks()
-        self.task_handlers = task_handlers if task_handlers else TaskHandlers()
+        with open_db(DB_FILE) as db:
+            self._tasks: List[Dict[str, Any]] = db.get_all_tasks()
+
+        self.task_handlers = (
+            task_handlers
+            if task_handlers
+            else TaskHandlers(refresh_callback=self.refresh)
+        )
 
     def rowCount(self, parent: QModelIndex | None = None) -> int:
         """Retuor the number of rows in the table
@@ -57,7 +60,7 @@ class TaskTableModel(QAbstractTableModel):
         int
             the number of tasks
         """
-        return len(self.tasks)
+        return len(self._tasks)
 
     def columnCount(self, parent: QModelIndex | None = None) -> int:
         """Return the number of columns in the table
@@ -129,7 +132,7 @@ class TaskTableModel(QAbstractTableModel):
             return False
 
         row, column = index.row(), index.column()
-        task = self.tasks[row]
+        task = self._tasks[row]
 
         if TASK_TABLE_HEADERS[column] == STATUS_COLUMN:
             task_id = task["id"]
@@ -164,7 +167,7 @@ class TaskTableModel(QAbstractTableModel):
             return None
 
         row, column = index.row(), index.column()
-        task = self.tasks[row]
+        task = self._tasks[row]
 
         match role:
             case Qt.ItemDataRole.DisplayRole:
@@ -195,7 +198,8 @@ class TaskTableModel(QAbstractTableModel):
 
     def refresh(self) -> None:
         """Refresh the table with new tasks."""
-        self.tasks = self.db.get_tasks()
+        with open_db(DB_FILE) as db:
+            self._tasks = db.get_all_tasks()
         self.layoutChanged.emit()
 
     def handle_edit_task(self, row: int) -> None:
@@ -207,10 +211,10 @@ class TaskTableModel(QAbstractTableModel):
             the row index
         """
 
-        if row < 0 or row >= len(self.tasks):
+        if row < 0 or row >= len(self._tasks):
             return
 
-        task_data = self.tasks[row]
+        task_data = self._tasks[row]
 
         task = Task(
             tid=task_data["id"],
@@ -234,10 +238,10 @@ class TaskTableModel(QAbstractTableModel):
             the row index
         """
 
-        if row < 0 or row >= len(self.tasks):
+        if row < 0 or row >= len(self._tasks):
             return
 
-        task_id = self.tasks[row]["id"]
+        task_id = self._tasks[row]["id"]
         logger.debug(f"🗑 Suppression demandée pour la tâche {task_id}")
         self.task_handlers.delete_handler(task_id)
         self.refresh()
