@@ -1,24 +1,34 @@
-"""reload_all.py – Chargement rapide des modules pour IPython."""
+# scripts/reload_all.py
+
+"""Chargement rapide des modules pour IPython."""
 
 import sqlite3
 from importlib import reload
 
-import core.database.ask_db as askdb_module
-import models.task as task_module
+from core.database.ask_db import AskDB
+from core.database.init_db import init_db
 from core.path import DB_FILE
+from models import task
 
-# from helpers.contextmanagers import open_db
+# Rechargement du module task et instanciation
+reload(task)
+Task = task.Task
+test_task = Task(
+    completed=True,
+    category="Work",
+    expiration="2025-09-07 21:00",
+    title="Test task",
+    notes="Test notes",
+)
 
+# Initialisation DB
+init_db()
 
-def reload_all():
-    reload(task_module)
-    reload(askdb_module)
+# Connexion pour la session
+conn = sqlite3.connect(DB_FILE)
+conn.row_factory = sqlite3.Row
+db = AskDB(conn)
 
-    Task = task_module.Task
-    AskDB = askdb_module.AskDB
-
-    db = AskDB(sqlite3.connect(DB_FILE))
-    return db, Task
-
-
-print("✅ Modules reloaded successfully!")
+# Interface
+print("✅ DB session")
+print("📌 help(db) for commands.")
