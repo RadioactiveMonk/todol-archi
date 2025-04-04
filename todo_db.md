@@ -31,9 +31,9 @@
 ## 🧪 Migration finale vers AskDB (phase de nettoyage) 
 
 - [x] Remplacer DbManager par open_db() + alias AskDB
-- [ ] Corriger tous les __init__.py impactés
-- [ ] Corriger tous les handlers/, models/ qui importent DbManager
-- [ ] Supprimer db_manager.py définitivement
+- [x] Corriger tous les __init__.py impactés
+- [x] Corriger tous les handlers/, models/ qui importent DbManager
+- [x] Supprimer db_manager.py définitivement
 - [ ] Refaire reload_all.py proprement avec AskDB
 - [ ] Revalider l’ensemble du projet (make run, pytest, ipython) 
 
