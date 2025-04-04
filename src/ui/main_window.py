@@ -29,8 +29,8 @@ class MainWindow(QMainWindow):
 
         Parameters
         ----------
-        db : DbManager | None
-            The database manager, by default None
+        db : AskDB
+            context manager to manage database via open_db()
         """
         super().__init__()
         with open_db(DB_FILE) as db:
