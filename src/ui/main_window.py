@@ -1,4 +1,4 @@
-from typing import Dict, List, Union, Any
+from typing import Any, Dict, List, Union
 
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
@@ -74,7 +74,7 @@ class MainWindow(QMainWindow):
         main_layout.addLayout(action_layout)
 
         # Task table
-        self.task_table = TaskTable(self.db)
+        self.task_table = TaskTable()
         main_layout.addWidget(self.task_table)
 
         central_widget.setLayout(main_layout)
