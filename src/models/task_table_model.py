@@ -217,7 +217,7 @@ class TaskTableModel(QAbstractTableModel):
         task_data = self._tasks[row]
 
         task = Task(
-            tid=task_data["id"],
+            id=task_data["id"],
             completed=bool(task_data["completed"]),
             category=task_data["category"],
             expiration=task_data["expiration"],

@@ -107,9 +107,9 @@ class AddTaskDialog(QDialog):
         )
 
         if self.task:
-            assert self.task.tid is not None
+            assert self.task.id is not None
             with open_db(DB_FILE) as db:
-                db.update_task(task_id=self.task.tid, **asdict(task))
+                db.update_task(task_id=self.task.id, **asdict(task))
         else:
             with open_db(DB_FILE) as db:
                 db.add_task(**asdict(task))

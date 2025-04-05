@@ -10,10 +10,13 @@
 - [x] Déplacer le logger dans `helpers/`, le style loader dans `ui/theme/`, changer les imports
 - [x] Identifier les fonctions/helpers réutilisables (DRY)
 - [ ] Créer un dossier `helpers/` :
-  - `dataclass_to_dict()`
-  - `get_icon()`
-  - `get_category_list()`
-  - `export_csv()` (avec `yield`)
+  - `dataclass_to_dict()` OK
+  - status_label(task)
+  - task_from_row(dict)
+  - safe_get(dict, key, default)
+  - format_datetime(str)
+  - log_task(task)
+  - task_to_csv_row(task)
 - [ ] Créer un `factory_utils.py` si logique partagée
 
 ---

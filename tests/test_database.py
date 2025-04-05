@@ -10,7 +10,7 @@ def test_add_and_get_task(in_memory_db):
         notes="Test note",
     )
     in_memory_db.add_task(task)
-    assert task.tid is not None
+    assert task.id is not None
 
     tasks = in_memory_db.get_tasks()
     assert len(tasks) == 1
@@ -26,11 +26,11 @@ def test_update_task(in_memory_db):
         notes="Note",
     )
 
-    tid = in_memory_db.add_task(task)
-    task.tid = tid  # 🔥 important pour que .tid soit bien renseigné dans l'objet
+    id = in_memory_db.add_task(task)
+    task.id = id  # 🔥 important pour que .id soit bien renseigné dans l'objet
 
     updated = in_memory_db.update_task(
-        task_id=task.tid,
+        task_id=task.id,
         completed=True,  # on peut laisser bool ici, la méthode gère le cast
         category="Test",
         expiration="2025-01-01 12:00",
@@ -50,7 +50,7 @@ def test_delete_task(in_memory_db):
     )
     in_memory_db.add_task(task)
 
-    deleted = in_memory_db.delete_task(task.tid)
+    deleted = in_memory_db.delete_task(task.id)
     assert deleted is True
 
     tasks = in_memory_db.get_tasks()

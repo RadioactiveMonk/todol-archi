@@ -30,12 +30,12 @@ class TaskHandlers:
 
     def edit_handler(self, task: "Task") -> bool:
         """Edits a task in the DB"""
-        if task.tid is None:
+        if task.id is None:
             logger.warning("✏️ Cannot edit task: missing ID")
             return False
 
         data = asdict(task)
-        task_id = data.pop("tid")
+        task_id = data.pop("id")
         filtered_data = {k: v for k, v in data.items() if v is not None}
 
         if not filtered_data:

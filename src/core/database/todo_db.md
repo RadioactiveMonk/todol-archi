@@ -35,7 +35,7 @@
 - [x] Corriger tous les handlers/, models/ qui importent DbManager
 - [x] Supprimer db_manager.py définitivement
 - [x] Refaire reload_all.py proprement avec AskDB
-- [x] Revalider l’ensemble du projet (make run, pytest, ipython) # FIX: tid quand add_task
+- [x] Revalider l’ensemble du projet (make run, pytest, ipython) # FIX: id quand add_task
 
 ## 🧪 Nettoyage & robustesse
 
