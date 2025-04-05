@@ -3,7 +3,7 @@ from typing import Any
 
 from core.default_values import (
     DEFAULT_CATEGORY,
-    DEFAULT_DATETIME,
+    DEFAULT_DATETIME_TO_STR,
     DEFAULT_NOTES,
     DEFAULT_TITLE,
 )
@@ -18,9 +18,7 @@ class Task:
     id: int | None = None
     completed: bool = field(default=DEFAULT_STATUS)
     category: str = field(default=DEFAULT_CATEGORY)
-    expiration: str = field(
-        default_factory=lambda: DEFAULT_DATETIME.toString("yyyy-MM-dd HH:mm")
-    )
+    expiration: str = field(default=DEFAULT_DATETIME_TO_STR)
     title: str = field(default=DEFAULT_TITLE)
     notes: str = field(default=DEFAULT_NOTES)
 
@@ -50,7 +48,7 @@ class Task:
     # --------- Représentation ---------
 
     def __str__(self) -> str:
-        return f"[{'✔' if self.completed else ' '}] {self.title} ({self.category})"
+        return f"[{'ROCKED' if self.completed else 'PENDING'}] {self.title} ({self.category})"
 
     def __repr__(self) -> str:
         return (
