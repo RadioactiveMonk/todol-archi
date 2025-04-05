@@ -8,7 +8,7 @@
 ## Phase 1 – 🔧 Stabilisation & nettoyage de fondation
 - [x] Nettoyer le code mort, les doublons, les `print` oubliés
 - [x] Déplacer le logger dans `helpers/`, le style loader dans `ui/theme/`, changer les imports
-- [ ] Identifier les fonctions/helpers réutilisables (DRY)
+- [x] Identifier les fonctions/helpers réutilisables (DRY)
 - [ ] Créer un dossier `helpers/` :
   - `dataclass_to_dict()`
   - `get_icon()`

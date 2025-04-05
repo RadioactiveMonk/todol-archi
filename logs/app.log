@@ -80,3 +80,57 @@ FROM tasks;
 SELECT id, title, category, completed, expiration, notes
 FROM tasks;
  | args=()
+2025-04-05 15:42:23.071 | INFO     | core.database.init_db:init_db:14 - Initialisation de la base de données...
+2025-04-05 15:42:23.071 | DEBUG    | core.database.ask_db:create:62 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-05 15:42:23.072 | SUCCESS  | core.database.init_db:init_db:16 - ✔️ Table 'tasks' prête.
+2025-04-05 15:43:09.146 | INFO     | core.database.init_db:init_db:14 - Initialisation de la base de données...
+2025-04-05 15:43:09.146 | DEBUG    | core.database.ask_db:create:62 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-05 15:43:09.147 | SUCCESS  | core.database.init_db:init_db:16 - ✔️ Table 'tasks' prête.
+2025-04-05 15:43:19.815 | DEBUG    | core.database.ask_db:create:62 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-05 15:43:30.833 | DEBUG    | core.database.ask_db:insert:77 - Executing INSERT INTO: 
+INSERT INTO tasks (title, category, completed, expiration, notes)
+VALUES (?, ?, ?, ?, ?);
+ | args=('Tester AskDB', 'dev', 0, '2025-05-01', 'ajout via IPython')
+2025-04-05 15:43:42.424 | DEBUG    | core.database.ask_db:select:93 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-05 15:44:05.821 | DEBUG    | core.database.ask_db:select_one:108 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks
+WHERE id = ?;
+ | args=(37,)
+2025-04-05 15:44:15.994 | DEBUG    | core.database.ask_db:delete:124 - Executing DELETE FROM: 
+DELETE FROM tasks
+WHERE id = ?;
+ | args=(37,)
