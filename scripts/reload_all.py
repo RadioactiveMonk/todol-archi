@@ -15,13 +15,6 @@ from models import task
 reload(task)
 Task = task.Task
 
-test_task = Task(
-    completed=True,
-    category="Work",
-    expiration="2025-09-07 21:00",
-    title="Test task",
-    notes="Test notes",
-)
 
 # Initialisation DB
 init_db()
