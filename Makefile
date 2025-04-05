@@ -28,13 +28,13 @@ lint:
 
 ruffall:
 	@echo "🎨 Formatage avec Ruff..."
-	@ruff format src tests || echo '❌ Format échoué.'
+	ruff format src tests || echo '❌ Format échoué.'
 	@echo "🧼 Linting avec Ruff (fix)..."
-	@ruff check src tests --fix || echo '❌ Lint échoué.'
+ ruff check src tests --fix || echo '❌ Lint échoué.'
 
 reload:
 	@echo "🚀 Lancement d'IPython avec reload_all.py..."
-	@ipython -i scripts/reload_all.py || echo '⚠️ IPython a rencontré une erreur.'
+	ipython -i scripts/reload_all.py || echo '⚠️ IPython a rencontré une erreur.'
 
 gadd:
 	@echo "Ajout des fichiers au dépôt Git..."
