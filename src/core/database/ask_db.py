@@ -1,126 +1,192 @@
 import sqlite3
-from typing import Any, Dict, List
+from typing import Any, Callable
 
 from core.database_config import (
     SQL_DELETE_TASK_BY_ID,
     SQL_INSERT_TASK,
     SQL_SELECT_TASK_BY_ID,
     SQL_SELECT_TASKS,
+    SQL_UPDATE_TASK_BY_ID,
 )
+from core.sql_schema import SQL_CREATE_TASKS_TABLE
 from helpers.log_utils import logger
 
 
 class AskDB:
-    def __init__(self, conn: sqlite3.Connection):
-        conn.row_factory = sqlite3.Row
+    """
+    Classe d'accès simplifiée à la base de données SQLite.
+    Permet d'exécuter des opérations courantes de manière centralisée.
+    """
+
+    def __init__(self, conn: sqlite3.Connection) -> None:
+        """
+        Initialise une instance de AskDB.
+
+        Args:
+            conn: Une connexion sqlite3 active.
+        """
         self.conn = conn
-        self.routes = {
-            "exec": self.exec,
+
+        self.routes: dict[str, Callable[..., Any]] = {
             "create": self.create,
             "insert": self.insert,
             "select": self.select,
             "select_one": self.select_one,
             "delete": self.delete,
-            "drop": self.drop,
         }
 
     def ask(self, action: str, sql: str, *args: Any) -> Any:
-        """Docstrings"""
+        """
+        Route une commande SQL vers la bonne méthode (create, insert, select, etc).
 
-        if action not in self.routes:
-            raise ValueError(f"Unknown DB action: '{action}'")
+        Args:
+            action: Le nom de l'action (doit correspondre à une clé de self.routes)
+            sql: La requête SQL à exécuter.
+            *args: Les arguments de la requête.
 
+        Returns:
+            Le résultat de la méthode appelée.
+        """
         logger.debug(
             f"Dispatching SQL actions via ask(): {action} -> {sql} | args={args}"
         )
-
         return self.routes[action](sql, *args)
 
-    def exec(self, sql: str, *args: Any) -> None:
-        logger.debug(f"Executing: {sql} | args={args}")
-
-        self.conn.execute(sql, args)
-
     def create(self, sql: str) -> None:
-        logger.debug(f"Executing CREATE TABLE: {sql}")
+        """
+        Exécute une requête SQL de type CREATE TABLE.
 
+        Args:
+            sql: Requête SQL de création.
+        """
+        logger.debug(f"Executing CREATE TABLE: {sql}\n")
         self.conn.execute(sql)
+        self.conn.commit()
 
     def insert(self, sql: str, *args: Any) -> int | None:
-        logger.debug(f"Executing INSERT INTO: {sql} | args={args}")
+        """
+        Exécute une requête SQL de type INSERT INTO.
 
+        Args:
+            sql: Requête INSERT.
+            *args: Paramètres de la requête.
+
+        Returns:
+            ID de la dernière ligne insérée.
+        """
+        logger.debug(f"Executing INSERT INTO: {sql} | args={args}")
         cursor = self.conn.execute(sql, args)
         self.conn.commit()
         return cursor.lastrowid
 
-    def select(self, sql: str, *args: Any) -> List[Dict[str, Any]]:
+    def select(self, sql: str, *args: Any) -> list[dict[str, Any]]:
+        """
+        Exécute une requête SELECT et retourne toutes les lignes.
+
+        Args:
+            sql: Requête SELECT.
+            *args: Paramètres de la requête.
+
+        Returns:
+            Liste de dictionnaires représentant les lignes.
+        """
         logger.debug(f"Executing SELECT: {sql} | args={args}")
+        cursor = self.conn.execute(sql, args)
+        return [dict(row) for row in cursor.fetchall()]
 
-        rows = self.conn.execute(sql, args).fetchall()
-        return [dict(row) for row in rows]
+    def select_one(self, sql: str, *args: Any) -> dict[str, Any] | None:
+        """
+        Exécute une requête SELECT et retourne la première ligne (ou None).
 
-    def select_one(self, sql: str, *args: Any) -> Dict[str, Any] | None:
+        Args:
+            sql: Requête SELECT avec WHERE.
+            *args: Paramètres de la requête.
+
+        Returns:
+            Un dictionnaire ou None.
+        """
         logger.debug(f"Executing SELECT: {sql} | args={args}")
-
-        row = self.conn.execute(sql, args).fetchone()
+        cursor = self.conn.execute(sql, args)
+        row = cursor.fetchone()
         return dict(row) if row else None
 
-    def delete(self, sql: str, *args: Any) -> int:
-        logger.debug(f"Executing DELETE FROM: {sql} | args={args}")
+    def delete(self, sql: str, *args: Any) -> bool:
+        """
+        Exécute une requête DELETE.
 
+        Args:
+            sql: Requête DELETE.
+            *args: Paramètres de la requête.
+
+        Returns:
+            True si des lignes ont été supprimées, sinon False.
+        """
+        logger.debug(f"Executing DELETE FROM: {sql} | args={args}")
         cursor = self.conn.execute(sql, args)
         self.conn.commit()
-        return cursor.rowcount
+        return cursor.rowcount > 0
 
-    def drop(self, sql: str) -> None:
-        logger.debug(f"Executing DROP TABLE: {sql}")
+    # Méthodes alias spécifiques à l'application
 
-        self.conn.execute(sql)
+    def create_tasks_table(self) -> None:
+        """Crée la table principale des tâches si elle n'existe pas."""
+        self.create(SQL_CREATE_TASKS_TABLE)
 
     def add_task(
-        self, title: str, category: str, completed: bool, expiration: str, notes: str
+        self, *, title: str, category: str, completed: bool, expiration: str, notes: str
     ) -> int | None:
+        """
+        Insère une nouvelle tâche dans la base de données.
+
+        Returns:
+            ID de la tâche insérée.
+        """
         return self.insert(
             SQL_INSERT_TASK, title, category, int(completed), expiration, notes
         )
 
-    def get_all_tasks(self) -> List[Dict[str, Any]]:
+    def get_all_tasks(self) -> list[dict[str, Any]]:
+        """Retourne toutes les tâches enregistrées."""
         return self.select(SQL_SELECT_TASKS)
 
-    def get_task_by_id(self, task_id: int) -> Dict[str, Any] | None:
+    def get_task_by_id(self, task_id: int) -> dict[str, Any] | None:
+        """Retourne une tâche par son ID, ou None si introuvable."""
         return self.select_one(SQL_SELECT_TASK_BY_ID, task_id)
 
-    def update_task(self, task_id: int, **kwargs) -> bool:
+    def update_task(self, task_id: int, data: dict[str, Any]) -> bool:
         """
-        Met à jour une tâche avec les champs précisés.
-        Tous les paramètres sont optionnels, sauf l'ID.
+        Met à jour une tâche existante.
+
+        Args:
+            task_id: L'identifiant de la tâche à modifier.
+            data: Un dictionnaire contenant les champs à modifier.
+
+        Returns:
+            True si la tâche a été modifiée, sinon False.
         """
-        valid_keys = ("title", "category", "completed", "expiration", "notes")
-        fields = []
-        values = []
-
-        for key in valid_keys:
-            if key in kwargs:
-                fields.append(f"{key} = ?")
-                value = kwargs[key]
-                if key == "completed":
-                    value = int(value)
-                values.append(value)
-
-        if not fields:
-            logger.warning(
-                f"⚠️ Aucun champ fourni pour mise à jour de la tâche ID {task_id}"
-            )
-            return False
-
-        sql = f"UPDATE tasks SET {', '.join(fields)} WHERE id = ?;"
-        values.append(task_id)
-
-        logger.debug(f"Executing DYNAMIC UPDATE: {sql} | args={tuple(values)}")
-        cursor = self.conn.execute(sql, values)
-        self.conn.commit()
-        return cursor.rowcount > 0
+        return (
+            self.conn.execute(
+                SQL_UPDATE_TASK_BY_ID,
+                (
+                    data["title"],
+                    data["category"],
+                    int(data["completed"]),
+                    data["expiration"],
+                    data["notes"],
+                    task_id,
+                ),
+            ).rowcount
+            > 0
+        )
 
     def delete_task(self, task_id: int) -> bool:
-        deleted = self.delete(SQL_DELETE_TASK_BY_ID, task_id)
-        return deleted > 0
+        """
+        Supprime une tâche par son ID.
+
+        Args:
+            task_id: ID de la tâche à supprimer.
+
+        Returns:
+            True si la tâche a été supprimée, sinon False.
+        """
+        return self.delete(SQL_DELETE_TASK_BY_ID, task_id)
