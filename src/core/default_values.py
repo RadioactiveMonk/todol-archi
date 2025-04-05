@@ -1,4 +1,3 @@
-from PyQt6.QtCore import QDateTime
 
 # =====================================
 # DOMAIN DEFAULTS
@@ -14,8 +13,8 @@ CATEGORIES: list[str] = ["General", "Work", "Hobbies"]
 DEFAULT_CATEGORY: str = CATEGORIES[0]
 
 # Expiration
-DEFAULT_DATETIME: QDateTime = QDateTime.currentDateTime().addDays(1)
-DEFAULT_DATETIME_TO_STR: str = DEFAULT_DATETIME.toString("yyyy-MM-dd HH:mm")
+DEFAULT_DATETIME: str = "2025-01-01 00:00"
+DEFAULT_DATETIME_TO_STR: str = "2025-01-01 00:00"
 
 # Fallback
 NO_ID: int = -1

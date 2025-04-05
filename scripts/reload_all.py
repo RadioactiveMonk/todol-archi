@@ -12,15 +12,16 @@ from core.path import DB_FILE
 from models import task
 
 # Rechargement du module task et instanciation
-reload(task)
-Task = task.Task
-test_task = Task(
+""" reload(task)
+Task = task.Task """
+
+""" test_task = Task(
     completed=True,
     category="Work",
     expiration="2025-09-07 21:00",
     title="Test task",
     notes="Test notes",
-)
+) """
 
 # Initialisation DB
 init_db()

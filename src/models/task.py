@@ -18,7 +18,7 @@ class Task:
     id: int | None = None
     completed: bool = field(default=DEFAULT_STATUS)
     category: str = field(default=DEFAULT_CATEGORY)
-    expiration: str = field(default=DEFAULT_DATETIME_TO_STR)
+    expiration: str = "2025-01-01 00:00"
     title: str = field(default=DEFAULT_TITLE)
     notes: str = field(default=DEFAULT_NOTES)
 

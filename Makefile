@@ -25,22 +25,26 @@ lint:
 	@echo "Vérification du code avec Ruff..."
 	ruff check $(SRC) $(TESTS) --fix
 
+
 ruffall:
-	@echo "Formatage et linting avec Ruff..."
-	ruff format $(SRC) $(TESTS) && ruff check $(SRC) $(TESTS) --fix
+	@echo "🎨 Formatage avec Ruff..."
+	@ruff format src tests || echo '❌ Format échoué.'
+	@echo "🧼 Linting avec Ruff (fix)..."
+	@ruff check src tests --fix || echo '❌ Lint échoué.'
 
 reload:
-	@echo "Lancement d'IPython avec reload_all..."
-	ipython -i scripts/reload_all.py
+	@echo "🚀 Lancement d'IPython avec reload_all.py..."
+	@ipython -i scripts/reload_all.py || echo '⚠️ IPython a rencontré une erreur.'
 
 gadd:
 	@echo "Ajout des fichiers au dépôt Git..."
 	$(PYTHON) scripts/gitadd.py "$(msg)"
 
 clean:
-	@echo "Nettoyage des fichiers .pyc et __pycache__..."
-	find . -type d -name "__pycache__" -exec rm -r {} +;
-	find . -type f -name "*.pyc" -delete;
+	@echo "🧹 Nettoyage des fichiers compilés..."
+	@find . -type f -name "*.pyc" -delete
+	@find . -type d -name "__pycache__" -delete
+	@echo "✅ Pyc & __pycache__ supprimés."
 
 help:
 	@echo "Commandes disponibles :"
