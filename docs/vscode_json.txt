@@ -5,6 +5,10 @@
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff"
     },
+    "[makefile]": {
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": false
+    },
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1500,
     "editor.formatOnPaste": true,
@@ -75,4 +79,12 @@
     "workbench.iconTheme": "material-icon-theme",
     "material-icon-theme.folders.color": "#7cb342",
     "workbench.colorTheme": "One Dark Pro",
+    "autoDocstring.docstringFormat": "numpy",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": false
+    },
 }

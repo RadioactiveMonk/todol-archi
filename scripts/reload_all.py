@@ -7,7 +7,6 @@ from importlib import reload
 
 from core.database.ask_db import AskDB
 from core.database.init_db import init_db
-from core.database_config import SQL_INSERT_TASK
 from core.path import DB_FILE
 from models import task
 
@@ -27,6 +26,7 @@ db = AskDB(conn)
 # Interface
 print("✅ DB session")
 print("📌 help(db) for commands.")
+
 
 # Supprimer toutes les tâches (⚠️)
 def clear_tasks():
