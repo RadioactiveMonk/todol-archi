@@ -5,10 +5,11 @@ PYTHON := python
 VENV := .venv
 SRC := src
 TESTS := tests
+DOCS := docs
 REQUIREMENTS := requirements.txt
 
 # Cibles principales
-.PHONY: run test ruffall reload gadd clean install venv update_deps coverage typecheck sec_check help
+.PHONY: run test ruffall reload gadd clean install venv update_deps coverage typecheck sec_check black docs help
 
 run:
 	@echo "Lancement de l'application..."
@@ -67,6 +68,15 @@ sec_check:
 	@echo "🔐 Vérification de la sécurité avec Bandit..."
 	bandit -r $(SRC)
 
+black:
+	@echo "🎨 Formatage du code avec Black..."
+	black $(SRC) $(TESTS)
+
+docs:
+	@echo "📚 Génération de la documentation avec Sphinx..."
+	sphinx-apidoc -o $(DOCS) $(SRC)
+	sphinx-build -b html $(DOCS) $(DOCS)/_build
+
 help:
 	@echo "Commandes disponibles :"
 	@echo "  make run           → Lancer l'application"
@@ -81,4 +91,6 @@ help:
 	@echo "  make coverage      → Mesurer la couverture de code"
 	@echo "  make typecheck     → Vérifier les types avec Mypy"
 	@echo "  make sec_check     → Vérifier la sécurité avec Bandit"
+	@echo "  make black         → Formatter le code avec Black"
+	@echo "  make docs          → Générer la documentation avec Sphinx"
 	@echo "  make help          → Afficher cette aide"
