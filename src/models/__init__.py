@@ -1,3 +1,9 @@
+"""
+This module imports and re-exports the Task, TaskTableModel, and utility constants
+related to task management. It serves as a convenient entry point for accessing
+task-related classes and constants in the application.
+"""
+
 from .task import Task
 from .task_table_model import TaskTableModel
 from .task_table_utils import (
@@ -25,6 +31,3 @@ __all__ = [
     "STATUS_PENDING_UI",
     "TASK_TABLE_HEADERS",
 ]
-# This module imports and re-exports the Task, TaskTableModel, and utility constants
-# related to task management. It serves as a convenient entry point for accessing
-# task-related classes and constants in the application.
