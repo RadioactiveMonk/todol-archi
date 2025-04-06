@@ -1,4 +1,3 @@
-
 # ✅ TODO.md — Plan de refactoring avancé (version organisée)
 
 > Une checklist progressive pour refactorer Todol-Archi avec une approche artisanale, élégante et pédagogique.
@@ -11,13 +10,17 @@
 - [x] Identifier les fonctions/helpers réutilisables (DRY)
 - [ ] Créer un dossier `helpers/` :
   - `dataclass_to_dict()` OK
-  - status_label(task)
-  - task_from_row(dict)
+  - status_label(task) OK
+  - task_from_row(dict) (à refaire sur base stable)
   - safe_get(dict, key, default)
   - format_datetime(str)
   - log_task(task)
   - task_to_csv_row(task)
 - [ ] Créer un `factory_utils.py` si logique partagée
+- [ ] Centraliser les configurations :
+  - PYTHONPATH (Makefile, pytest, scripts/dev.sh)
+  - Options de test/lint/format dans pyproject.toml
+  - Fusionner dev.sh / reload / Makefile si possible
 
 ---
 
@@ -41,6 +44,7 @@
 - [ ] Regrouper les classes/fonctions similaires (SoC, SRP)
 - [ ] Créer une vraie `notification_factory.py` (QLabel + Timer)
 - [ ] Nettoyer les logs et créer un `log_utils.py` propre
+- [ ] (prévoir branche "task-core-exp" pour version alternative basée sur héritage clean)
 
 ---
 
@@ -52,7 +56,7 @@
 
 ---
 
-## Phase 5 – ✅ Tests & validation
+## Phase 5 – ✅ Tests & validation (à réactiver plus tard)
 - [ ] Valider chaque helper dans IPython avant intégration
 - [ ] Ajouter des tests unitaires pour les fonctions refactorisées
 - [ ] Compléter les tests unitaires (handlers, db, settings)
