@@ -1,3 +1,10 @@
+"""
+This module imports and re-exports various constants, utility functions, and
+configuration settings related to the application. It serves as a centralized
+location for accessing important paths, database configurations, settings
+management, and other application-wide constants.
+"""
+
 from helpers.cached_utils import get_available_themes, get_categories
 from helpers.log_utils import logger
 from ui.theme.style_loader import load_stylesheet, reload_theme
@@ -62,8 +69,3 @@ __all__ = [
     "AUTO_SAVE_INTERVAL",
     "DEBUG",
 ]
-
-# This module imports and re-exports various constants, utility functions, and
-# configuration settings related to the application. It serves as a centralized
-# location for accessing important paths, database configurations, settings
-# management, and other application-wide constants.
