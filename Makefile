@@ -7,7 +7,7 @@ SRC := src
 TESTS := tests
 
 # Cibles principales
-.PHONY: run test format lint ruffall reload gadd clean install help
+.PHONY: run test ruffall reload gadd clean install help
 
 run:
 	@echo "Lancement de l'application..."
@@ -16,14 +16,6 @@ run:
 test:
 	@echo "Lancement des tests Pytest..."
 	PYTHONPATH=$(SRC) pytest -v $(TESTS)
-
-format:
-	@echo "Formatage du code avec Ruff..."
-	ruff format $(SRC) $(TESTS)
-
-lint:
-	@echo "Vérification du code avec Ruff..."
-	ruff check $(SRC) $(TESTS) --fix
 
 ruffall:
 	@echo "🎨 Formatage avec Ruff..."
@@ -56,11 +48,9 @@ help:
 	@echo "Commandes disponibles :"
 	@echo "  make run       → Lancer l'application"
 	@echo "  make test      → Lancer les tests"
-	@echo "  make format    → Formatter le code avec Ruff"
-	@echo "  make lint      → Linter le code avec Ruff"
 	@echo "  make ruffall   → Lint et formate avec Ruff"
 	@echo "  make reload    → Lancer IPython avec reload_all"
 	@echo "  make clean     → Nettoyer les fichiers temporaires"
-	@echo "  make gadd m="msg"  → Add, commit, push
+	@echo "  make gadd m="msg"  → Add, commit, push"
 	@echo "  make install   → Installer les dépendances"
 	@echo "  make help      → Afficher cette aide"
