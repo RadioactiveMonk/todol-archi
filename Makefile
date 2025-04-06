@@ -7,7 +7,7 @@ SRC := src
 TESTS := tests
 
 # Cibles principales
-.PHONY: run test format lint reload clean help
+.PHONY: run test format lint ruffall reload gadd clean install help
 
 run:
 	@echo "Lancement de l'application..."
@@ -25,16 +25,15 @@ lint:
 	@echo "Vérification du code avec Ruff..."
 	ruff check $(SRC) $(TESTS) --fix
 
-
 ruffall:
 	@echo "🎨 Formatage avec Ruff..."
 	ruff format $(SRC) $(TESTS)
 	@echo "🧼 Linting avec Ruff (fix)..."
- 	ruff check $(SRC) $(TESTS) --fix 
+	ruff check $(SRC) $(TESTS) --fix 
 
 reload:
 	@echo "🚀 Lancement d'IPython avec reload_all.py..."
-	ipython -i scripts/reload_all.py || echo '⚠️ IPython a rencontré une erreur.'
+	ipython -i scripts/reload_all.py
 
 gadd:
 	@echo "Ajout des fichiers au dépôt Git..."
@@ -50,7 +49,6 @@ install:
 	@echo "📦 Installation des dépendances..."
 	pip install --upgrade pip
 	pip install .[dev]
-
 
 help:
 	@echo "Commandes disponibles :"

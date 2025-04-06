@@ -58,9 +58,6 @@ where = ["src"]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.pdm.scripts]
-fix = "ruff check --fix src"
-
 [project.optional-dependencies]
 dev = ["loguru"]
 
