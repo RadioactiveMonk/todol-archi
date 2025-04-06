@@ -1,87 +1,141 @@
-# ✅ TODO.md — Plan de refactoring avancé (version organisée)
+✅ TODO.md — Plan de refactoring structuré (progressif & pédagogique)
 
-> Une checklist progressive pour refactorer Todol-Archi avec une approche artisanale, élégante et pédagogique.
-
----
-
-## Phase 1 – 🔧 Stabilisation & nettoyage de fondation
-- [x] Nettoyer le code mort, les doublons, les `print` oubliés
-- [x] Déplacer le logger dans `helpers/`, le style loader dans `ui/theme/`, changer les imports
-- [x] Identifier les fonctions/helpers réutilisables (DRY)
-- [ ] Créer un dossier `helpers/` :
-  - `dataclass_to_dict()` OK
-  - status_label(task) OK
-  - task_from_row(dict) (à refaire sur base stable, créer une branche git)
-  - safe_get(dict, key, default)
-  - format_datetime(str)
-  - log_task(task)
-  - task_to_csv_row(task)
-- [ ] Créer un `factory_utils.py` si logique partagée
-- [ ] Centraliser les configurations :
-  - PYTHONPATH (Makefile, pytest, scripts/dev.sh)
-  - Options de test/lint/format dans pyproject.toml
-  - Fusionner dev.sh / reload / Makefile si possible
 
 ---
 
-## Phase 2 – 🧠 Refactoring avancé (notions Python modernes)
-- [ ] Rendre les interfaces cohérentes (`add(data: List)`, `del(data: List)`)
-- [ ] Réduire les `if` via `dict dispatch` ou stratégie
-- [ ] Utiliser `@property` pour des accès propres
-- [ ] Intégrer `*args`, `**kwargs` où pertinent (UI, handlers)
-- [ ] Ajouter ou généraliser `@lru_cache` (ex: config, constantes)
-- [ ] Intégrer `yield` pour CSV/logs paresseux
-- [ ] Utiliser `defaultdict` pour éviter les vérifications inutiles
-- [ ] Introduire `:=` (walrus operator) dans des affectations lisibles
-- [ ] Créer un `context manager` custom (`with open_settings():`)
-- [ ] Utiliser `@staticmethod`, `@classmethod` proprement
+Bloc A — Stabilisation & helpers fondamentaux
+
+> Préparer un socle propre, testable, et modulaire
+
+
+
+[x] Nettoyer le code mort, les print, les logs temporaires
+
+[x] Créer dossier helpers/ et y isoler les fonctions clés :
+
+[x] dataclass_to_dict()
+
+[x] status_label()
+
+[ ] task_from_row() (à refaire sur base stable)
+
+
+[x] Valider reload_all.py et l'accès IPython
+
+[x] Créer une Task propre
+
+[x] @dataclass complète
+
+[ ] Préparer base task_core si besoin (en branche task-core-exp)
+
+
+
 
 ---
 
-## Phase 3 – 🧩 Design Pythonic & architecture élégante
-- [ ] Rendre les classes plus idiomatiques (`__str__`, `__repr__`, `__eq__`)
-- [ ] Revoir l'usage des dataclasses (`asdict()` → helper `dataclass_to_dict`)
-- [ ] Regrouper les classes/fonctions similaires (SoC, SRP)
-- [ ] Créer une vraie `notification_factory.py` (QLabel + Timer)
-- [ ] Nettoyer les logs et créer un `log_utils.py` propre
-- [ ] (prévoir branche "task-core-exp" pour version alternative basée sur héritage clean)
+Bloc B — Organisation claire des responsabilités
+
+> Clarifier ce qui relève du domaine, de l’UI, de la DB...
+
+
+
+[ ] Nettoyer default_values.py
+
+[ ] Distinguer : status_constants, default_*, core.*
+
+[ ] Créer factory_utils.py si besoin de constructeurs spécialisés
+
+[ ] Centraliser la config du projet :
+
+[ ] Makefile unifié (test, format, lint...)
+
+[ ] dev.sh vs Makefile
+
+[ ] pyproject.toml pour pytest/ruff/config
+
+
+
 
 ---
 
-## Phase 4 – 🎨 UI & UX avancée
-- [ ] Implémenter une **barre de recherche**
-- [ ] Ajouter un filtrage dans `TaskTableModel` (`filterTasks()`)
-- [ ] Améliorer la présentation visuelle du tableau (alignement, focus, style)
-- [ ] Ajouter des interactions UX : hover, fond dynamique…
+Bloc C — Refactoring Pythonic & bonnes pratiques
+
+> Rendre le code élégant, DRY, et idiomatique
+
+
+
+[ ] Ajouter des propriétés @property, __str__, __repr__
+
+[ ] Ajouter safe_get(dict, key, default)
+
+[ ] Ajouter log_task() pour trace propre
+
+[ ] Ajouter format_datetime() helper lisible
+
+[ ] Préparer l'usage de *args, **kwargs, @staticmethod où pertinent
+
+[ ] Créer contextmanagers.py utiles
+
+
 
 ---
 
-## Phase 5 – ✅ Tests & validation (à réactiver plus tard)
-- [ ] Valider chaque helper dans IPython avant intégration
-- [ ] Ajouter des tests unitaires pour les fonctions refactorisées
-- [ ] Compléter les tests unitaires (handlers, db, settings)
-- [ ] Ajouter des tests d’intégration (workflow : add → toggle → delete)
-- [ ] Nettoyer les anciens tests ou doublons
-- [ ] (Optionnel) Badge GitHub Actions + README
+Bloc D — UI / UX (affichage et interactions)
+
+> Rendre l'application agréable à l’usage
+
+
+
+[ ] Améliorer TaskTableModel avec helpers
+
+[ ] Ajouter recherche et filtres
+
+[ ] Ajuster l’UI pour l’affichage dynamique (fond, hover...)
+
+[ ] Regrouper les helpers UI dans ui_helpers.py
+
+
 
 ---
 
-## Phase 6 – 📦 Packaging propre
-- [ ] Relire le projet final
-- [ ] Supprimer tout code mort ou inutilisé
-- [ ] Compléter le `pyproject.toml` pour un packaging clean
-- [ ] Ajouter une commande `entry_point` (CLI optionnelle)
+Bloc E — Tests, packaging, intégration
+
+> Valider, tester, distribuer proprement
+
+
+
+[ ] Phase 5 : Réactivation de pytest
+
+[ ] Ajouter tests unitaires pour les helpers
+
+[ ] Tester task_from_row(), status_label()...
+
+[ ] Ajouter tests d’intégration (add → delete)
+
+
+[ ] Packaging clean
+
+[ ] pyproject.toml complet
+
+[ ] entry_point CLI ?
+
+[ ] README & badge CI
+
+
+
 
 ---
 
-## Phase 7 – 🧪 Todol-Experimental (libre)
-  # Structures de données avancées et programmation asynchrone
-- [ ] Cloner le projet en version "expérimentale"
-- [ ] deque (collections, queue, stack efficaces)
-- [ ] Enum (valeurs symboliques propres et lisibles)
-- [ ] NamedTuple / dataclass vs tuple classique
-- [ ] LinkedList / Node (manuellement pour comprendre le chaînage)
-- [ ] Heap, Set, frozenset, defaultdict
-- [ ] Tester des `context managers` persos
-- [ ] Ajouter des décorateurs custom (`@log_event`, `@require_setting`)
-- [ ] Approcher `threading`, `asyncio`, `yield`, `contextlib`...
+Bonus — Explorations futures (Branche expérimentale)
+
+> Concepts avancés ou usages spécifiques
+
+
+
+[ ] Créer branche task-core-exp
+
+[ ] Tester : héritage Task vs TaskCore
+
+[ ] Ajouter structures avancées : deque, NamedTuple, contextlib, asyncio, yield...
+
+
