@@ -8,11 +8,10 @@ from core.path import DB_FILE
 from handlers.task_handlers import TaskHandlers
 from helpers.contextmanagers import open_db
 from helpers.log_utils import logger
+from helpers.status_constants import status_color, status_label
 from models.task import Task
 from models.task_table_utils import (
     STATUS_COLUMN,
-    STATUS_DONE_UI,
-    STATUS_PENDING_UI,
     TASK_TABLE_HEADERS,
 )
 from ui.dialogs.add_task_dialog import AddTaskDialog
@@ -263,11 +262,7 @@ class TaskTableModel(QAbstractTableModel):
         """
         match column:
             case 0:
-                return (
-                    STATUS_DONE_UI
-                    if task.get("completed", False)
-                    else STATUS_PENDING_UI
-                )
+                return status_label(task.get("completed", False))
             case 1:
                 return task.get("category", "")
             case 2:
@@ -292,5 +287,5 @@ class TaskTableModel(QAbstractTableModel):
         QBrush
             the background color
         """
-        color = "#b0db43" if task["completed"] else "#db2763"
+        color = status_color(task.get("completed", False))
         return QBrush(QColor(color))

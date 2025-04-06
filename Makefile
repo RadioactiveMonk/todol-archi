@@ -15,7 +15,7 @@ run:
 
 test:
 	@echo "Lancement des tests Pytest..."
-	pytest $(TESTS)
+	PYTHONPATH=$(SRC) pytest -v $(TESTS)
 
 format:
 	@echo "Formatage du code avec Ruff..."

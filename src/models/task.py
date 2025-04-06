@@ -3,7 +3,6 @@ from typing import Any
 
 from core.default_values import (
     DEFAULT_CATEGORY,
-    DEFAULT_DATETIME_TO_STR,
     DEFAULT_NOTES,
     DEFAULT_TITLE,
 )
