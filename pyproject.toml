@@ -30,7 +30,6 @@ include = ["src"]
 extraPaths = ["src"]
 typeCheckingMode = "basic"
 
-
 [tool.ruff]
 target-version = "py312"
 exclude = ["tests", "temp"]
@@ -59,6 +58,4 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project.optional-dependencies]
-dev = ["loguru"]
-
-
+dev = ["loguru", "bandit", "mypy", "black", "sphinx"]
