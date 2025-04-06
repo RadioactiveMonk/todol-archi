@@ -1,5 +1,4 @@
-from typing import Any, cast
-
+from typing import Any, cast, Optional
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QWidget
@@ -22,59 +21,31 @@ class TaskTableModel(QAbstractTableModel):
 
     def __init__(
         self,
-        parent: QObject | None = None,
-        task_handlers: TaskHandlers | None = None,
-        tasks=None,
+        parent: Optional[QObject] = None,
+        task_handlers: Optional[TaskHandlers] = None,
+        tasks: Optional[list[dict[str, Any]]] = None,
     ) -> None:
         """Init the the database, the data model, the task handlers (edit, delete).
 
         Parameters
         ----------
-        parent : QObject | None, optional
+        parent : Optional[QObject], optional
             parent object, by default None
-        task_handlers : TaskHandlers | None, optional
+        task_handlers : Optional[TaskHandlers], optional
             the task handlers, by default None
+        tasks : Optional[list[dict[str, Any]]], optional
+            initial tasks, by default None
         """
-
         super().__init__(parent)
-
         self._tasks = tasks if tasks is not None else []
+        self.task_handlers = task_handlers if task_handlers else TaskHandlers(refresh_callback=self.refresh)
 
-        self.task_handlers = (
-            task_handlers
-            if task_handlers
-            else TaskHandlers(refresh_callback=self.refresh)
-        )
-
-    def rowCount(self, parent: QModelIndex | None = None) -> int:
-        """Retuor the number of rows in the table
-
-        Parameters
-        ----------
-        parent : QModelIndex | None, optional
-            parent index, by default None
-
-        Returns
-        -------
-        int
-            the number of tasks
-        """
+    def rowCount(self, parent: Optional[QModelIndex] = None) -> int:
+        """Return the number of rows in the table"""
         return len(self._tasks)
 
-    def columnCount(self, parent: QModelIndex | None = None) -> int:
-        """Return the number of columns in the table
-
-        Parameters
-        ----------
-        parent : QModelIndex | None, optional
-            parent index, by default None
-
-        Returns
-        -------
-        int
-            the number of columns
-        """
-
+    def columnCount(self, parent: Optional[QModelIndex] = None) -> int:
+        """Return the number of columns in the table"""
         return len(TASK_TABLE_HEADERS)
 
     def headerData(
@@ -83,50 +54,13 @@ class TaskTableModel(QAbstractTableModel):
         orientation: Qt.Orientation,
         role: int = Qt.ItemDataRole.DisplayRole,
     ) -> Any:
-        """Return the header data for the table
-
-        Parameters
-        ----------
-        section : int
-            column index
-        orientation : Qt.Orientation
-            horizontal or vertical
-        role : int
-            role of the data
-
-        Returns
-        -------
-        Any
-            the header data for columns
-        """
-
-        if (
-            orientation == Qt.Orientation.Horizontal
-            and role == Qt.ItemDataRole.DisplayRole
-        ):
+        """Return the header data for the table"""
+        if orientation == Qt.Orientation.Horizontal and role == Qt.ItemDataRole.DisplayRole:
             return TASK_TABLE_HEADERS[section]
-
         return None
 
-    def setData(
-        self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole
-    ) -> bool:
-        """Set the data in the table
-
-        Parameters
-        ----------
-        index : QModelIndex
-            index of the cell
-        value : Any
-            value to set
-        role : int, optional
-            role of the data, by default Qt.ItemDataRole.EditRole
-
-        Returns
-        -------
-        bool
-            True if the data is set, False otherwise
-        """
+    def setData(self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole) -> bool:
+        """Set the data in the table"""
         if not index.isValid() or role != Qt.ItemDataRole.EditRole:
             return False
 
@@ -135,31 +69,15 @@ class TaskTableModel(QAbstractTableModel):
 
         if TASK_TABLE_HEADERS[column] == STATUS_COLUMN:
             task_id = task["id"]
-
             self.task_handlers.toggle_task_status(task_id)
             task["completed"] = not bool(task["completed"])
             logger.debug(f"[setData] Toggle task ID {task_id} -> {task['completed']}")
             self.dataChanged.emit(index, index)
-
             return True
         return False
 
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
-        """Return the data for the table
-
-        Parameters
-        ----------
-        index : QModelIndex
-            index of the cell
-        role : int, optional
-            role of the data, by default Qt.ItemDataRole.DisplayRole
-
-        Returns
-        -------
-        Any
-            the data for the cell
-        """
-
+        """Return the data for the table"""
         from ui.cell_properties import get_alignment
 
         if not index.isValid():
@@ -179,20 +97,8 @@ class TaskTableModel(QAbstractTableModel):
                 return None
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
-        """Return the flags for the table
-
-        Parameters
-        ----------
-        index : QModelIndex
-            index of the cell
-
-        Returns
-        -------
-        Qt.ItemFlag
-            the flags for the cell
-        """
+        """Return the flags for the table"""
         from ui.cell_properties import get_flags
-
         return get_flags(index)
 
     def refresh(self) -> None:
@@ -202,19 +108,11 @@ class TaskTableModel(QAbstractTableModel):
         self.layoutChanged.emit()
 
     def handle_edit_task(self, row: int) -> None:
-        """Logic to handle the edit task action for a given row
-
-        Parameters
-        ----------
-        row : int
-            the row index
-        """
-
+        """Logic to handle the edit task action for a given row"""
         if row < 0 or row >= len(self._tasks):
             return
 
         task_data = self._tasks[row]
-
         task = Task(
             id=task_data["id"],
             completed=bool(task_data["completed"]),
@@ -229,14 +127,7 @@ class TaskTableModel(QAbstractTableModel):
         dialog.exec()
 
     def handle_delete_task(self, row: int) -> None:
-        """Logic to handle the delete task action for a given row
-
-        Parameters
-        ----------
-        row : int
-            the row index
-        """
-
+        """Logic to handle the delete task action for a given row"""
         if row < 0 or row >= len(self._tasks):
             return
 
@@ -245,21 +136,8 @@ class TaskTableModel(QAbstractTableModel):
         self.task_handlers.delete_handler(task_id)
         self.refresh()
 
-    def _get_display_value(self, task: dict[str, Any], column: int) -> str | None:
-        """Return the value to show in the cell
-
-        Parameters
-        ----------
-        task : dict
-            the task data
-        column : int
-            column index
-
-        Returns
-        -------
-        str | None
-            the value to show in the cell or None if column is not found
-        """
+    def _get_display_value(self, task: dict[str, Any], column: int) -> Optional[str]:
+        """Return the value to show in the cell"""
         match column:
             case 0:
                 return status_label(task.get("completed", False))
@@ -275,17 +153,6 @@ class TaskTableModel(QAbstractTableModel):
                 return None
 
     def _get_status_background(self, task: dict[str, Any]) -> QBrush:
-        """Return the background color for the status column
-
-        Parameters
-        ----------
-        task : dict
-            the task data
-
-        Returns
-        -------
-        QBrush
-            the background color
-        """
+        """Return the background color for the status column"""
         color = status_color(task.get("completed", False))
         return QBrush(QColor(color))
