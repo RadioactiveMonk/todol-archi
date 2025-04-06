@@ -1,12 +1,11 @@
 # src/helpers/log_utils.py
 import sys
-
 from loguru import logger
-
 from core.path import LOG_DIR
 
 LOG_FILE = LOG_DIR / "app.log"
 
+# Custom log format
 log_format = (
     "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
     "<level>{level: <8}</level> | "
@@ -14,16 +13,17 @@ log_format = (
     "<level>{message}</level>"
 )
 
-logger.remove()  # Supprime le logger par défaut
+# Remove the default logger
+logger.remove()
 
-# Console (terminal)
+# Console (terminal) logger
 logger.add(
     sys.stderr,
     level="DEBUG",
     format=log_format,
 )
 
-# Fichier avec rotation et rétention
+# File logger with rotation and retention
 logger.add(
     LOG_FILE,
     rotation="500 KB",
