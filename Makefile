@@ -28,9 +28,9 @@ lint:
 
 ruffall:
 	@echo "🎨 Formatage avec Ruff..."
-	ruff format src tests || echo '❌ Format échoué.'
+	ruff format $(SRC) $(TESTS)
 	@echo "🧼 Linting avec Ruff (fix)..."
- ruff check src tests --fix || echo '❌ Lint échoué.'
+ 	ruff check $(SRC) $(TESTS) --fix 
 
 reload:
 	@echo "🚀 Lancement d'IPython avec reload_all.py..."
@@ -46,6 +46,12 @@ clean:
 	@find . -type d -name "__pycache__" -delete
 	@echo "✅ Pyc & __pycache__ supprimés."
 
+install:
+	@echo "📦 Installation des dépendances..."
+	pip install --upgrade pip
+	pip install .[dev]
+
+
 help:
 	@echo "Commandes disponibles :"
 	@echo "  make run       → Lancer l'application"
@@ -56,4 +62,5 @@ help:
 	@echo "  make reload    → Lancer IPython avec reload_all"
 	@echo "  make clean     → Nettoyer les fichiers temporaires"
 	@echo "  make gadd      → Ajouter les fichiers au dépôt Git"
+	@echo "  make install   → Installer les dépendances"
 	@echo "  make help      → Afficher cette aide"
