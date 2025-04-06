@@ -11,7 +11,7 @@
 - [ ] Créer un dossier `helpers/` :
   - `dataclass_to_dict()` OK
   - status_label(task) OK
-  - task_from_row(dict) (à refaire sur base stable)
+  - task_from_row(dict) (à refaire sur base stable, créer une branche git)
   - safe_get(dict, key, default)
   - format_datetime(str)
   - log_task(task)
