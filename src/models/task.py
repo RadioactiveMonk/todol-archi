@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, Optional
 
 from core.default_values import (
     DEFAULT_CATEGORY,
@@ -14,7 +14,7 @@ from helpers.converters import dataclass_to_dict
 class Task:
     """Représente une tâche de l'application."""
 
-    id: int | None = None
+    id: Optional[int] = None
     completed: bool = field(default=DEFAULT_STATUS)
     category: str = field(default=DEFAULT_CATEGORY)
     expiration: str = "2025-01-01 00:00"
@@ -35,14 +35,18 @@ class Task:
 
     # --------- Conversions ---------
 
-    def to_dict(self, exclude: set[str] | None = None) -> dict[str, Any]:
+    def to_dict(self, exclude: Optional[set[str]] = None) -> dict[str, Any]:
         """Retourne la tâche sous forme de dictionnaire."""
         return dataclass_to_dict(self, exclude=exclude)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "Task":
         """Crée une instance de Task à partir d’un dictionnaire."""
-        return cls(**data)
+        try:
+            return cls(**data)
+        except TypeError as e:
+            logger.error(f"Failed to create Task from dict: {e}")
+            raise
 
     # --------- Représentation ---------
 
