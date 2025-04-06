@@ -37,7 +37,9 @@ reload:
 
 gadd:
 	@echo "Ajout des fichiers au dépôt Git..."
-	$(PYTHON) scripts/gitadd.py "$(msg)"
+	git add .
+	git commit -m "$m"
+	git push origin main
 
 clean:
 	@echo "🧹 Nettoyage des fichiers compilés..."
@@ -59,6 +61,6 @@ help:
 	@echo "  make ruffall   → Lint et formate avec Ruff"
 	@echo "  make reload    → Lancer IPython avec reload_all"
 	@echo "  make clean     → Nettoyer les fichiers temporaires"
-	@echo "  make gadd      → Ajouter les fichiers au dépôt Git"
+	@echo "  make gadd m="msg"  → Add, commit, push
 	@echo "  make install   → Installer les dépendances"
 	@echo "  make help      → Afficher cette aide"
