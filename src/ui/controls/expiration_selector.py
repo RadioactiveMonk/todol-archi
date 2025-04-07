@@ -8,7 +8,7 @@ class ExpirationSelector(QDateTimeEdit):
     """Sélecteur de date"""
 
     def __init__(
-        self, default: QDateTime = DEFAULT_DATETIME, parent: QWidget | None = None
+        self, default: QDateTime = QDateTime.fromString(DEFAULT_DATETIME), parent: QWidget | None = None
     ) -> None:
         super().__init__(parent)
         self.setCalendarPopup(True)

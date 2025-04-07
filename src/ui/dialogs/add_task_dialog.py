@@ -112,7 +112,7 @@ class AddTaskDialog(QDialog):
                 db.update_task(task_id=self.task.id, **asdict(task))
         else:
             with open_db(DB_FILE) as db:
-                db.add_task(**asdict(task))
+                db.add_task(**task.to_dict(exclude={"id"}))
 
         self.ok_signal.emit()
         self.accept()

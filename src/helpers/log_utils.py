@@ -9,7 +9,7 @@ LOG_FILE = LOG_DIR / "app.log"
 
 # Improved log format
 log_format = (
-    "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
+    "<white>{time:YYYY-MM-DD HH:mm:ss.SSS}</white> | "
     "<level>{level: <8}</level> | "
     "<cyan>{module}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> | "
     "<magenta>{process.id}</magenta> - "

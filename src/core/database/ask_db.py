@@ -26,6 +26,7 @@ class AskDB:
             conn: Une connexion sqlite3 active.
         """
         self.conn = conn
+        self.conn.row_factory = sqlite3.Row
 
         self.routes: dict[str, Callable[..., Any]] = {
             "create": self.create,

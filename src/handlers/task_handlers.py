@@ -68,7 +68,7 @@ class TaskHandlers:
                 return False
 
             new_status = not bool(task["completed"])
-            success = db.update_task(task_id=task_id, completed=new_status)
+            success = db.update_task(task_id=task_id, data=task)
 
         if success:
             logger.info(

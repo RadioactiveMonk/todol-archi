@@ -25,7 +25,6 @@ htmlcov/
 tests/__pycache__/
 
 # Logs / cache
-logs
 *.log
 *.db
 *.sqlite

@@ -1,0 +1,234 @@
+2025-04-07 18:33:52.621 | INFO     | init_db:init_db:14 | 15888 - Initialisation de la base de données...
+2025-04-07 18:33:52.621 | DEBUG    | ask_db:create:62 | 15888 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 18:33:52.621 | SUCCESS  | init_db:init_db:16 | 15888 - ✔️ Table 'tasks' prête.
+2025-04-07 18:33:52.674 | DEBUG    | ask_db:select:93 | 15888 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:33:52.740 | DEBUG    | ask_db:select:93 | 15888 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:39:38.100 | INFO     | init_db:init_db:14 | 16454 - Initialisation de la base de données...
+2025-04-07 18:39:38.100 | DEBUG    | ask_db:create:62 | 16454 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 18:39:38.100 | SUCCESS  | init_db:init_db:16 | 16454 - ✔️ Table 'tasks' prête.
+2025-04-07 18:39:38.108 | DEBUG    | ask_db:select:93 | 16454 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:39:38.134 | DEBUG    | ask_db:select:93 | 16454 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:40:08.175 | INFO     | settings_manager:load_settings:20 | 16454 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-04-07 18:40:08.177 | INFO     | settings_manager:load_settings:20 | 16454 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-04-07 18:45:05.828 | INFO     | init_db:init_db:14 | 16618 - Initialisation de la base de données...
+2025-04-07 18:45:05.828 | DEBUG    | ask_db:create:62 | 16618 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 18:45:05.828 | SUCCESS  | init_db:init_db:16 | 16618 - ✔️ Table 'tasks' prête.
+2025-04-07 18:45:05.836 | DEBUG    | ask_db:select:93 | 16618 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:45:05.862 | DEBUG    | ask_db:select:93 | 16618 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:52:06.393 | INFO     | init_db:init_db:14 | 16766 - Initialisation de la base de données...
+2025-04-07 18:52:06.393 | DEBUG    | ask_db:create:62 | 16766 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 18:52:06.394 | SUCCESS  | init_db:init_db:16 | 16766 - ✔️ Table 'tasks' prête.
+2025-04-07 18:52:06.401 | DEBUG    | ask_db:select:93 | 16766 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:52:06.427 | DEBUG    | ask_db:select:93 | 16766 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:52:11.120 | DEBUG    | ask_db:insert:77 | 16766 - Executing INSERT INTO: 
+INSERT INTO tasks (title, category, completed, expiration, notes)
+VALUES (?, ?, ?, ?, ?);
+ | args=('test', 'Work', 0, '2000-01-01 00:00', '')
+2025-04-07 18:52:11.138 | DEBUG    | ask_db:select:93 | 16766 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:58:37.175 | INFO     | init_db:init_db:14 | 16917 - Initialisation de la base de données...
+2025-04-07 18:58:37.175 | DEBUG    | ask_db:create:63 | 16917 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 18:58:37.176 | SUCCESS  | init_db:init_db:16 | 16917 - ✔️ Table 'tasks' prête.
+2025-04-07 18:58:37.184 | DEBUG    | ask_db:select:94 | 16917 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:58:37.210 | DEBUG    | ask_db:select:94 | 16917 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:58:45.590 | DEBUG    | status_delegate:editorEvent:26 | 16917 - Click detected
+2025-04-07 18:58:45.591 | DEBUG    | ask_db:select:94 | 16917 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:59:10.250 | DEBUG    | task_table_model:handle_delete_task:146 | 16917 - 🗑 Suppression demandée pour la tâche 1
+2025-04-07 18:59:10.252 | DEBUG    | ask_db:delete:125 | 16917 - Executing DELETE FROM: 
+DELETE FROM tasks
+WHERE id = ?;
+ | args=(1,)
+2025-04-07 18:59:10.272 | INFO     | task_handlers:delete_handler:22 | 16917 - 🗑 Task deleted successfully (id=1)
+2025-04-07 18:59:10.273 | DEBUG    | ask_db:select:94 | 16917 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:59:15.615 | DEBUG    | ask_db:insert:78 | 16917 - Executing INSERT INTO: 
+INSERT INTO tasks (title, category, completed, expiration, notes)
+VALUES (?, ?, ?, ?, ?);
+ | args=('test', 'Work', 0, '2000-01-01 00:00', '')
+2025-04-07 18:59:15.631 | DEBUG    | ask_db:select:94 | 16917 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 18:59:30.315 | DEBUG    | status_delegate:editorEvent:26 | 16917 - Click detected
+2025-04-07 18:59:30.317 | DEBUG    | ask_db:select:94 | 16917 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:16.284 | INFO     | init_db:init_db:14 | 17699 - Initialisation de la base de données...
+2025-04-07 19:11:16.285 | DEBUG    | ask_db:create:63 | 17699 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 19:11:16.285 | SUCCESS  | init_db:init_db:16 | 17699 - ✔️ Table 'tasks' prête.
+2025-04-07 19:11:16.294 | DEBUG    | ask_db:select:94 | 17699 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:16.320 | DEBUG    | ask_db:select:94 | 17699 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:18.682 | DEBUG    | status_delegate:editorEvent:26 | 17699 - Click detected
+2025-04-07 19:11:18.682 | DEBUG    | ask_db:select:94 | 17699 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:18.682 | INFO     | task_handlers:toggle_task_status:74 | 17699 - [toggle_status] Tâche ID 2 -> completed = True
+2025-04-07 19:11:18.683 | DEBUG    | task_table_model:setData:84 | 17699 - [setData] Toggle task ID 2 -> True
+2025-04-07 19:11:31.920 | DEBUG    | status_delegate:editorEvent:26 | 17699 - Click detected
+2025-04-07 19:11:31.925 | DEBUG    | ask_db:select:94 | 17699 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:31.927 | INFO     | task_handlers:toggle_task_status:74 | 17699 - [toggle_status] Tâche ID 2 -> completed = True
+2025-04-07 19:11:31.927 | DEBUG    | task_table_model:setData:84 | 17699 - [setData] Toggle task ID 2 -> False
+2025-04-07 19:11:34.290 | DEBUG    | status_delegate:editorEvent:26 | 17699 - Click detected
+2025-04-07 19:11:34.290 | DEBUG    | ask_db:select:94 | 17699 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:34.291 | INFO     | task_handlers:toggle_task_status:74 | 17699 - [toggle_status] Tâche ID 2 -> completed = True
+2025-04-07 19:11:34.291 | DEBUG    | task_table_model:setData:84 | 17699 - [setData] Toggle task ID 2 -> True
+2025-04-07 19:11:38.017 | INFO     | init_db:init_db:14 | 17905 - Initialisation de la base de données...
+2025-04-07 19:11:38.018 | DEBUG    | ask_db:create:63 | 17905 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 19:11:38.018 | SUCCESS  | init_db:init_db:16 | 17905 - ✔️ Table 'tasks' prête.
+2025-04-07 19:11:38.026 | DEBUG    | ask_db:select:94 | 17905 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:38.054 | DEBUG    | ask_db:select:94 | 17905 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:46.073 | DEBUG    | status_delegate:editorEvent:26 | 17905 - Click detected
+2025-04-07 19:11:46.074 | DEBUG    | ask_db:select:94 | 17905 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:46.076 | INFO     | task_handlers:toggle_task_status:74 | 17905 - [toggle_status] Tâche ID 2 -> completed = True
+2025-04-07 19:11:46.076 | DEBUG    | task_table_model:setData:84 | 17905 - [setData] Toggle task ID 2 -> True
+2025-04-07 19:11:52.133 | INFO     | init_db:init_db:14 | 17916 - Initialisation de la base de données...
+2025-04-07 19:11:52.133 | DEBUG    | ask_db:create:63 | 17916 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 19:11:52.133 | SUCCESS  | init_db:init_db:16 | 17916 - ✔️ Table 'tasks' prête.
+2025-04-07 19:11:52.142 | DEBUG    | ask_db:select:94 | 17916 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
+2025-04-07 19:11:52.167 | DEBUG    | ask_db:select:94 | 17916 - Executing SELECT: 
+SELECT id, title, category, completed, expiration, notes
+FROM tasks;
+ | args=()
