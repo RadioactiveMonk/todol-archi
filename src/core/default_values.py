@@ -5,12 +5,13 @@ from helpers.log_utils import logger
 # =====================================
 # DOMAIN DEFAULTS
 # =====================================
+NO_ID: int = -1
 
 # Category
-CATEGORIES: list[str] = ["Général", "Work", "Hobbies"]
+CATEGORIES: list[str] = ["General", "Work", "Hobbies"]
 
 # Task values
-DEFAULT_TITLE: str = "Nouvelle tâche"
+DEFAULT_TITLE: str = "New task"
 DEFAULT_CATEGORY: str = CATEGORIES[0]
 DEFAULT_STATUS: bool = False
 DEFAULT_EXPIRATION: str = "2025-01-01 00:00"
@@ -39,7 +40,3 @@ def get_all_defaults() -> dict:
     """Retourne une copie du dictionnaire de toutes les valeurs par défaut."""
     logger.debug("Accessing all default values.")
     return _DEFAULTS.copy()
-
-
-# Fallback
-NO_ID: int = -1
