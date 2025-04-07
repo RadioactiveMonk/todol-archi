@@ -16,10 +16,10 @@ class Task:
     """Représente une tâche de l'application."""
 
     id: Optional[int] = None
-    completed: bool = field(default=DEFAULT_STATUS)
+    title: str = field(default=DEFAULT_TITLE)
     category: str = field(default=DEFAULT_CATEGORY)
     expiration: str = "2025-01-01 00:00"
-    title: str = field(default=DEFAULT_TITLE)
+    completed: bool = field(default=DEFAULT_STATUS)
     notes: str = field(default=DEFAULT_NOTES)
 
     # --------- Propriétés utiles ---------

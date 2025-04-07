@@ -5,6 +5,7 @@ task-related classes and constants in the application.
 """
 
 from .task import Task
+from .task_core import TaskCore
 from .task_table_model import TaskTableModel
 from .task_table_utils import (
     COLUMN_MAPPING,
@@ -20,6 +21,7 @@ from .task_table_utils import (
 
 __all__ = [
     "Task",
+    "TaskCore",
     "TaskTableModel",
     "COLUMN_MAPPING",
     "COLUMN_WIDTHS",
