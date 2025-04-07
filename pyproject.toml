@@ -1,23 +1,32 @@
-[project]
+[tool.poetry]
 name = "todol-archi"
 version = "0.1.0"
 description = "Todol-archi - laboratoire Python"
-authors = [{ name = "Sébastien 'doyouDance' Reisen" }]
-requires-python = ">=3.12"
-dependencies = [
-  "PyQt6==6.8.1",
-  "PyQt6-Qt6==6.8.2",
-  "PyQt6_sip==13.10.0",
-  "ipython==9.0.0",
-  "pylint==3.3.5",
-  "pytest==8.3.5",
-  "pytest-cov==6.0.0",
-  "pytest-qt==4.4.0",
-  "ruff>=0.5.3",
-  "coverage==7.6.12",
-  "rich==13.9.4",
-  "Pyment==0.3.3"
-]
+authors = ["Sébastien 'doyouDance' Reisen"]
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+PyQt6 = "6.8.1"
+PyQt6-Qt6 = "6.8.2"
+PyQt6_sip = "13.10.0"
+ipython = "9.0.0"
+pylint = "3.3.5"
+pytest = "8.3.5"
+pytest-cov = "6.0.0"
+pytest-qt = "4.4.0"
+ruff = ">=0.5.3"
+coverage = "7.6.12"
+rich = "13.9.4"
+Pyment = "0.3.3"
+
+[tool.poetry.group.dev.dependencies]
+loguru = "*"
+bandit = "*"
+mypy = "*"
+black = "*"
+sphinx = "*"
 
 [tool.pytest.ini_options]
 minversion = "7.0"
@@ -38,7 +47,7 @@ src = ["src"]
 line-length = 88
 
 [tool.ruff.lint]
-extend-select = ["I"]  # ← isort intégré (tri des imports)
+extend-select = ["I"]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -47,15 +56,6 @@ line-ending = "lf"
 docstring-code-format = true
 preview = true
 
-[tool.setuptools]
-package-dir = { "" = "src" }
-
-[tool.setuptools.packages.find]
-where = ["src"]
-
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project.optional-dependencies]
-dev = ["loguru", "bandit", "mypy", "black", "sphinx"]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
