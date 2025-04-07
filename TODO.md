@@ -38,6 +38,8 @@ Bloc B — Organisation claire des responsabilités
 
 [ ] Distinguer : status_constants, default_*, core.*
 
+[ ] A propos du cached_utils ?
+
 [ ] task_from_row() (à refaire sur base stable)
 
 [ ] Créer factory_utils.py si besoin de constructeurs spécialisés
