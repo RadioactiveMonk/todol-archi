@@ -160,3 +160,16 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 
 2025-04-07 16:57:59.361 | SUCCESS  | init_db:init_db:16 | 11839 - ✔️ Table 'tasks' prête.
+2025-04-07 17:15:52.298 | INFO     | init_db:init_db:14 | 12767 - Initialisation de la base de données...
+2025-04-07 17:15:52.299 | DEBUG    | ask_db:create:62 | 12767 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 17:15:52.299 | SUCCESS  | init_db:init_db:16 | 12767 - ✔️ Table 'tasks' prête.
