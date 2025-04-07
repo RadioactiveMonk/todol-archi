@@ -3,7 +3,7 @@ from typing import Any, Dict, Optional
 
 from core.default_values import (
     DEFAULT_CATEGORY,
-    DEFAULT_DATETIME,
+    DEFAULT_EXPIRATION,
     DEFAULT_NOTES,
     DEFAULT_STATUS,
     DEFAULT_TITLE,
@@ -18,7 +18,7 @@ class TaskCore:
     title: str = DEFAULT_TITLE
     category: str = DEFAULT_CATEGORY
     completed: bool = DEFAULT_STATUS
-    expiration: str = DEFAULT_DATETIME
+    expiration: str = DEFAULT_EXPIRATION
     notes: str = DEFAULT_NOTES
 
     @classmethod

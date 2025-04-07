@@ -232,3 +232,17 @@ FROM tasks;
 SELECT id, title, category, completed, expiration, notes
 FROM tasks;
  | args=()
+2025-04-07 20:15:45.739 | INFO     | init_db:init_db:14 | 20766 - Initialisation de la base de données...
+2025-04-07 20:15:45.739 | DEBUG    | ask_db:create:63 | 20766 - Executing CREATE TABLE: 
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+
+
+2025-04-07 20:15:45.739 | SUCCESS  | init_db:init_db:16 | 20766 - ✔️ Table 'tasks' prête.
+2025-04-07 20:16:08.190 | DEBUG    | default_values:get_default:30 | 20766 - Accessing default values: title
