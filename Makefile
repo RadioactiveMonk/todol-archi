@@ -27,7 +27,7 @@ ruffall:
 
 reload:
 	@echo "🚀 Lancement d'IPython avec reload_all.py..."
-	ipython -i scripts/reload_all.py
+	PYTHONPATH=$(SRC) ipython -i scripts/reload_all.py
 
 gpush:
 	@echo "Ajout des fichiers au dépôt Git..."
