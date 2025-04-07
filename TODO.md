@@ -42,6 +42,8 @@ Bloc B — Organisation claire des responsabilités
 
 [ ] task_from_row() (à refaire sur base stable)
 
+[ ] appliquer get_default() ?
+
 [ ] Créer factory_utils.py si besoin de constructeurs spécialisés
 
 [ ] Centraliser la config du projet :
