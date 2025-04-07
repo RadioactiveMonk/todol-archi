@@ -26,7 +26,7 @@ Bloc A — Stabilisation & helpers fondamentaux
 
 [x] @dataclass complète
 
-[ ] Préparer base task_core si besoin (en branche task-core-exp)
+[x] Préparer base task_core si besoin (en branche task-core-exp)
 
 
 
