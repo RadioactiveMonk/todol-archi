@@ -1,14 +1,14 @@
 from PyQt6.QtCore import QDateTime
 from PyQt6.QtWidgets import QDateTimeEdit, QWidget
 
-from core.default_values import DEFAULT_DATETIME
+from core.default_values import DEFAULT_EXPIRATION
 
 
 class ExpirationSelector(QDateTimeEdit):
     """Sélecteur de date"""
 
     def __init__(
-        self, default: QDateTime = QDateTime.fromString(DEFAULT_DATETIME), parent: QWidget | None = None
+        self, default: QDateTime = QDateTime.fromString(DEFAULT_EXPIRATION), parent: QWidget | None = None
     ) -> None:
         super().__init__(parent)
         self.setCalendarPopup(True)

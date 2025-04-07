@@ -26,13 +26,19 @@ _DEFAULTS: dict = {
 
 
 def get_default(key: str) -> Any:
-    """Return default values for a task"""
+    """Retourne une valeur par défaut via une clé dict"""
     try:
         logger.debug(f"Accessing default values: {key}")
         return _DEFAULTS[key]
     except KeyError:
         logger.error(f"Couldn't access {key} in _DEFAULTS")
         raise
+
+
+def get_all_defaults() -> dict:
+    """Retourne une copie du dictionnaire de toutes les valeurs par défaut."""
+    logger.debug("Accessing all default values.")
+    return _DEFAULTS.copy()
 
 
 # Fallback
