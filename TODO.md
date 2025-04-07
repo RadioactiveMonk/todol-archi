@@ -36,7 +36,7 @@ Bloc B — Organisation claire des responsabilités
 
 [x] Nettoyer default_values.py
 
-[ ] Distinguer : status_constants, default_*, core.*
+[ ] Distinguer : status_constants, default_*, core.*, cached_utils, ...
 
 [ ] A propos du cached_utils ?
 
