@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from typing import Any, Dict, Optional
 
 
@@ -39,5 +39,5 @@ class TaskCore:
         Dict[str, Any]
             the task in a dict format
         """
-        return self.__dict__
+        return asdict(self)
 
