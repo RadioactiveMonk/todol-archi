@@ -35,6 +35,10 @@ gpush:
 	git commit -m "$(m)"
 	git push -u origin $(git branch --show-current)
 
+gmain:
+	@echo "Sur branche 'main'"
+	git switch main
+
 clean:
 	@echo "🧹 Nettoyage des fichiers compilés..."
 	@find . -type f -name "*.pyc" -delete
