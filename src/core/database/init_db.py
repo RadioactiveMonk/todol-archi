@@ -11,7 +11,7 @@ def init_db() -> None:
     """Crée la table 'tasks' si elle n'existe pas."""
     try:
         with open_db(DB_FILE) as db:
-            logger.info("Initialisation de la base de données...")
+            logger.debug("Initialisation de la base de données...")
             db.create(SQL_CREATE_TASKS_TABLE)
             logger.success("✔️ Table 'tasks' prête.")
     except Exception as e:

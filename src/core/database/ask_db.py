@@ -26,7 +26,7 @@ class AskDB:
             conn: Une connexion sqlite3 active.
         """
         self.conn = conn
-        self.conn.row_factory = sqlite3.Row
+        self.conn.row_factory = sqlite3.Row  # Récupérer les rangées sous forme de dict
 
         self.routes: dict[str, Callable[..., Any]] = {
             "create": self.create,
