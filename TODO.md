@@ -17,9 +17,6 @@ Bloc A — Stabilisation & helpers fondamentaux
 
 [x] status_label()
 
-[ ] task_from_row() (à refaire sur base stable)
-
-
 [x] Valider reload_all.py et l'accès IPython
 
 [x] Créer une Task propre
@@ -27,8 +24,6 @@ Bloc A — Stabilisation & helpers fondamentaux
 [x] @dataclass complète
 
 [x] Préparer base task_core si besoin (en branche task-core-exp)
-
-
 
 
 ---
@@ -42,6 +37,8 @@ Bloc B — Organisation claire des responsabilités
 [ ] Nettoyer default_values.py
 
 [ ] Distinguer : status_constants, default_*, core.*
+
+[ ] task_from_row() (à refaire sur base stable)
 
 [ ] Créer factory_utils.py si besoin de constructeurs spécialisés
 

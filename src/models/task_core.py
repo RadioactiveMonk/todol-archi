@@ -1,17 +1,25 @@
 from dataclasses import asdict, dataclass
 from typing import Any, Dict, Optional
 
+from core.default_values import (
+    DEFAULT_CATEGORY,
+    DEFAULT_DATETIME,
+    DEFAULT_NOTES,
+    DEFAULT_STATUS,
+    DEFAULT_TITLE,
+)
+
 
 @dataclass
 class TaskCore:
     """Représente une tâche de l'application."""
 
     id: Optional[int] = None
-    title: str = ""
-    category: str = ""
-    completed: bool = False
-    expiration: str = "2025-08-08 00:00"
-    notes: str = ""
+    title: str = DEFAULT_TITLE
+    category: str = DEFAULT_CATEGORY
+    completed: bool = DEFAULT_STATUS
+    expiration: str = DEFAULT_DATETIME
+    notes: str = DEFAULT_NOTES
 
     @classmethod
     def from_dict(cls, data: dict) -> "TaskCore":
