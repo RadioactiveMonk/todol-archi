@@ -33,7 +33,7 @@ class TaskCore:
 
         Returns
         -------
-        TaskCore
+        TaskCore: cls
             an instance of the class TaskCore from 'data'
         """
         return cls(**data)
