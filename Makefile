@@ -27,13 +27,13 @@ ruffall:
 
 reload:
 	@echo "🚀 Lancement d'IPython avec reload_all.py..."
-	ipython -i scripts/reload_all.py
+	PYTHONPATH=$(SRC) ipython -i scripts/reload_all.py
 
-gadd:
+gpush:
 	@echo "Ajout des fichiers au dépôt Git..."
 	git add .
 	git commit -m "$(m)"
-	git push origin main
+	git push -u origin $(git branch --show-current)
 
 clean:
 	@echo "🧹 Nettoyage des fichiers compilés..."
@@ -84,7 +84,7 @@ help:
 	@echo "  make ruffall       → Lint et formate avec Ruff"
 	@echo "  make reload        → Lancer IPython avec reload_all"
 	@echo "  make clean         → Nettoyer les fichiers temporaires"
-	@echo "  make gadd m="msg"  → Add, commit, push"
+	@echo "  make gpush m="msg" → Add, commit, push"
 	@echo "  make install       → Installer les dépendances"
 	@echo "  make venv          → Créer l'environnement virtuel"
 	@echo "  make update_deps   → Mettre à jour les dépendances"

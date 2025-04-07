@@ -6,6 +6,7 @@
 # Task values
 DEFAULT_TITLE: str = "TASK"
 DEFAULT_NOTES: str = ""
+DEFAULT_STATUS: bool = False
 
 # Category
 CATEGORIES: list[str] = ["General", "Work", "Hobbies"]
