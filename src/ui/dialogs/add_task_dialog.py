@@ -12,8 +12,8 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
+from core.default_values import DEFAULT_STATUS
 from core.path import DB_FILE
-from core.status_constants import DEFAULT_STATUS
 from helpers.contextmanagers import open_db
 from models.task import Task
 from ui.controls.category_selector import CategorySelector

@@ -4,11 +4,11 @@ from typing import Any, Optional
 from core.default_values import (
     DEFAULT_CATEGORY,
     DEFAULT_NOTES,
+    DEFAULT_STATUS,
     DEFAULT_TITLE,
 )
 from helpers.converters import dataclass_to_dict
 from helpers.log_utils import logger
-from helpers.status_constants import DEFAULT_STATUS
 
 
 @dataclass
