@@ -14,7 +14,7 @@ CATEGORIES: list[str] = ["General", "Work", "Hobbies"]
 DEFAULT_TITLE: str = "New task"
 DEFAULT_CATEGORY: str = CATEGORIES[0]
 DEFAULT_STATUS: bool = False
-DEFAULT_EXPIRATION: str = "2025-01-01 00:00"
+DEFAULT_EXPIRATION: str = "2023-10-31 08:30"
 DEFAULT_NOTES: str = ""
 
 _DEFAULTS: dict = {
