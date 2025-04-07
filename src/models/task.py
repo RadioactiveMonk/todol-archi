@@ -1,32 +1,20 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Optional
 
-from core.default_values import (
-    DEFAULT_CATEGORY,
-    DEFAULT_NOTES,
-    DEFAULT_STATUS,
-    DEFAULT_TITLE,
-)
 from helpers.converters import dataclass_to_dict
 from helpers.log_utils import logger
+from models.task_core import TaskCore
 
 
 @dataclass
-class Task:
-    """Représente une tâche de l'application."""
-
-    id: Optional[int] = None
-    title: str = field(default=DEFAULT_TITLE)
-    category: str = field(default=DEFAULT_CATEGORY)
-    expiration: str = "2025-01-01 00:00"
-    completed: bool = field(default=DEFAULT_STATUS)
-    notes: str = field(default=DEFAULT_NOTES)
+class Task(TaskCore):
+    """Représente une tâche complète avec affichage, helpers et validations."""
 
     # --------- Propriétés utiles ---------
 
     @property
     def is_completed(self) -> bool:
-        """Renvoie l'état de complétion (alias plus lisible)."""
+        """Alias plus lisible pour completed."""
         return self.completed
 
     @is_completed.setter
