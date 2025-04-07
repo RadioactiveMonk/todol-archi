@@ -15,8 +15,8 @@ BASE_DIR = SRC_DIR.parent
 
 # Core directories
 CONFIG_DIR = SRC_DIR / "core"  # Directory for core configuration files
-DATA_DIR = BASE_DIR / "data"   # Directory for data storage
-LOG_DIR = BASE_DIR / "logs"    # Directory for log files
+DATA_DIR = BASE_DIR / "data"  # Directory for data storage
+LOG_DIR = BASE_DIR / "logs"  # Directory for log files
 RESOURCES_DIR = SRC_DIR / "ui" / "resources"  # Directory for UI resources
 ICONS_DIR = RESOURCES_DIR / "icons"  # Directory for icon files
 STYLESHEETS_DIR = RESOURCES_DIR / "stylesheets"  # Directory for stylesheet files

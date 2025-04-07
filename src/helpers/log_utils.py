@@ -1,6 +1,8 @@
 # src/helpers/log_utils.py
 import sys
+
 from loguru import logger
+
 from core.path import LOG_DIR
 
 LOG_FILE = LOG_DIR / "app.log"

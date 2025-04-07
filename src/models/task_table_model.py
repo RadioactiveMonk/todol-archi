@@ -1,4 +1,5 @@
-from typing import Any, cast, Optional
+from typing import Any, Optional, cast
+
 from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QWidget
@@ -38,7 +39,11 @@ class TaskTableModel(QAbstractTableModel):
         """
         super().__init__(parent)
         self._tasks = tasks if tasks is not None else []
-        self.task_handlers = task_handlers if task_handlers else TaskHandlers(refresh_callback=self.refresh)
+        self.task_handlers = (
+            task_handlers
+            if task_handlers
+            else TaskHandlers(refresh_callback=self.refresh)
+        )
 
     def rowCount(self, parent: Optional[QModelIndex] = None) -> int:
         """Return the number of rows in the table"""
@@ -55,11 +60,16 @@ class TaskTableModel(QAbstractTableModel):
         role: int = Qt.ItemDataRole.DisplayRole,
     ) -> Any:
         """Return the header data for the table"""
-        if orientation == Qt.Orientation.Horizontal and role == Qt.ItemDataRole.DisplayRole:
+        if (
+            orientation == Qt.Orientation.Horizontal
+            and role == Qt.ItemDataRole.DisplayRole
+        ):
             return TASK_TABLE_HEADERS[section]
         return None
 
-    def setData(self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole) -> bool:
+    def setData(
+        self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole
+    ) -> bool:
         """Set the data in the table"""
         if not index.isValid() or role != Qt.ItemDataRole.EditRole:
             return False
@@ -99,6 +109,7 @@ class TaskTableModel(QAbstractTableModel):
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Return the flags for the table"""
         from ui.cell_properties import get_flags
+
         return get_flags(index)
 
     def refresh(self) -> None:

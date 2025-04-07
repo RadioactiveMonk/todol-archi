@@ -76,7 +76,7 @@ def set_setting(key: str, value: Any) -> bool:
     """
     settings = load_settings()
     settings[key] = value
-    
+
     success = save_settings(settings)
     if success:
         logger.info(f"Setting updated successfully: {key} = {value}")
