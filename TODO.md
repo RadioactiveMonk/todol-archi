@@ -34,7 +34,7 @@ Bloc B — Organisation claire des responsabilités
 
 
 
-[ ] Nettoyer default_values.py
+[x] Nettoyer default_values.py
 
 [ ] Distinguer : status_constants, default_*, core.*
 
