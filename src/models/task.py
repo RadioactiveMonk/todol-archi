@@ -25,12 +25,12 @@ class Task:
     # --------- Propriétés utiles ---------
 
     @property
-    def is_done(self) -> bool:
+    def is_completed(self) -> bool:
         """Renvoie l'état de complétion (alias plus lisible)."""
         return self.completed
 
-    @is_done.setter
-    def is_done(self, value: bool) -> None:
+    @is_completed.setter
+    def is_completed(self, value: bool) -> None:
         """Permet de modifier completed via l'alias."""
         self.completed = bool(value)
 
