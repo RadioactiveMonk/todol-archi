@@ -8,9 +8,9 @@ default_values.py (modele !!)
 
 category utils (get category , get all categories ..)
 status utils ( status label, ..)
-db utils
+db utils (géré par ask_db)
 csv utils
-log utils
+log utils ( a valider)
 app utils 
 path utils (get path: logs, ...)
 task table headers utils (headers, mapping .. )
