@@ -37,7 +37,7 @@ Objectif → passer fichier par fichier, maintenant que tout est centralisé, po
 
     🧹 Nettoyer le code résiduel (non utilisé, dupliqué…)
 
-    🧠 Regrouper ou fusionner si des fichiers se recoupent
+    🧠 Regrouper ou fusionner si des fichiers se recoupent. db_utils et sql_utils ?(fusion je pense) status_pending_ui (get status label). default_values.py semble un bon modèle pour façonner les autres . renommer CATÉGORIES EN DEFAULT CATÉGORIES . fichier theme_utils pour les thèmes ? (pfiouu)
 
     🧰 Ajouter des fonctions de gestion simples et utiles :
 
