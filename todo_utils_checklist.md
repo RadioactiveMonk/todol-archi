@@ -19,11 +19,11 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 
 ## ✅ 3. Migrer les fichiers existants
 
-- [ ] `default_values.py` ➜ utils/
-- [ ] `status_constants.py` ➜ utils/
-- [ ] `log_utils.py` (si applicable) ➜ utils/
-- [ ] `task_table_utils.py` ➜ utils/
-- [ ] `csv_utils.py` (à évaluer) ➜ utils/
+- [x] `default_values.py` ➜ utils/
+- [x] `status_constants.py` ➜ utils/
+- [x] `log_utils.py` (si applicable) ➜ utils/
+- [x] `task_table_utils.py` ➜ utils/
+- [x] `csv_utils.py` (à évaluer) ➜ utils/
 - [ ] Autres `*_utils.py` à identifier
 
 ---
