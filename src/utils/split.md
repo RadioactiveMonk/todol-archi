@@ -15,7 +15,7 @@ default_values.py (modele !!)
 
 cachedutils (a vider pour mettre dans thème utils et category utils)
 category utils (get category , get all categories ..)
-status utils ( status label, ..)
+status utils ( dict:completed, label)
 db utils (géré par ask_db)
 csv utils
 log utils ( a valider)
