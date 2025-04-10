@@ -1,3 +1,9 @@
+!!! faire un contextmanager (helpers): open_settings (facilitera les get catégories etc)
+
+
+
+
+
  creer fichiers .py (vide si besoin, mais prêt), pas de logique poussée , juste gestion.
 regrouper les valeurs et la factorisation dans le fichier. mettre le pencil derrière l'oreille pour être sûr.
 
@@ -6,6 +12,8 @@ default_values.py (modele !!)
 
 1ère approche globale (a élargir probablement )
 
+
+cachedutils (a vider pour mettre dans thème utils et category utils)
 category utils (get category , get all categories ..)
 status utils ( status label, ..)
 db utils (géré par ask_db)
