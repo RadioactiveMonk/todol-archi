@@ -30,7 +30,7 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 
 ## ✅ 4. Nettoyer et organiser
 
-- [ ] Renommer les fichiers si nécessaire (ex: `ui_utils.py`, `db_utils.py`, etc.)
+- [x] Renommer les fichiers si nécessaire (ex: `ui_utils.py`, `db_utils.py`, etc.)
 - [ ] Supprimer ou fusionner les doublons
 - [ ] Regrouper constantes et fonctions associées
 

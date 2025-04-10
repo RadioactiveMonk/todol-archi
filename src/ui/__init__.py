@@ -1,4 +1,4 @@
-from .cell_properties import get_alignment, get_flags
+from ..utils.cell_utils import get_alignment, get_flags
 from .main_window import MainWindow
 
 # from .ui_constants import

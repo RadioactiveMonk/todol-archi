@@ -88,7 +88,7 @@ class TaskTableModel(QAbstractTableModel):
 
     def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
         """Return the data for the table"""
-        from ui.cell_properties import get_alignment
+        from utils.cell_utils import get_alignment
 
         if not index.isValid():
             return None
@@ -108,7 +108,7 @@ class TaskTableModel(QAbstractTableModel):
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlag:
         """Return the flags for the table"""
-        from ui.cell_properties import get_flags
+        from utils.cell_utils import get_flags
 
         return get_flags(index)
 

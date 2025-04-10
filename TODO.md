@@ -38,8 +38,6 @@ Bloc B — Organisation claire des responsabilités
 
 [ ] Distinguer : status_constants, default_*, core.*, cached_utils, ...
 
-[ ] A propos du cached_utils ?
-
 [ ] task_from_row() (à refaire sur base stable)
 
 [ ] appliquer get_default() ?
