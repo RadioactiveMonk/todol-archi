@@ -31,8 +31,33 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 ## ✅ 4. Nettoyer et organiser
 
 - [x] Renommer les fichiers si nécessaire (ex: `ui_utils.py`, `db_utils.py`, etc.)
-- [ ] Supprimer ou fusionner les doublons
-- [ ] Regrouper constantes et fonctions associées
+🔄 Étape suivante : Revue ciblée des fichiers
+
+Objectif → passer fichier par fichier, maintenant que tout est centralisé, pour :
+
+    🧹 Nettoyer le code résiduel (non utilisé, dupliqué…)
+
+    🧠 Regrouper ou fusionner si des fichiers se recoupent
+
+    🧰 Ajouter des fonctions de gestion simples et utiles :
+
+        get_columns(), get_column_width(), get_status_label(), etc.
+
+    📦 Poser les bases d’APIs propres pour l’UI, la DB, etc.
+
+    🔁 Plan d’enchaînement proposé :
+    Étape	Fichier	Objectif
+    1	status_utils.py	Vérifier label, color, et ajouter une fonction get_all_statuses() ?
+    2	task_table_utils.py	Encapsuler accès aux colonnes (get_column_index("Edit"))
+    3	ui_utils.py	Clarifier les constantes par catégorie (window/dialog/icons...)
+    4	path_utils.py	Ajouter des helpers comme get_log_path()
+    5	default_values.py	Re-check des usages, alias possibles, éventuel split ?
+    6	app_utils.py	Fusion possible avec config.py ? Regrouper les infos globales.
+    🔄 Ensuite :
+
+        On scanne le reste (sql_utils, db_utils, etc.) pour voir si on factorise des requêtes ou des modèles communs.
+
+        Et on prépare la transition vers le Bloc C, en te listant ce qu’on pourra "refactorer proprement".
 
 ---
 
