@@ -24,7 +24,7 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] `log_utils.py` (si applicable) ➜ utils/
 - [x] `task_table_utils.py` ➜ utils/
 - [x] `csv_utils.py` (à évaluer) ➜ utils/
-- [ ] Autres `*_utils.py` à identifier
+- [x] Autres `*_utils.py` à identifier -> la majorité des fichiers de config ont migrés vers utils/
 
 ---
 
