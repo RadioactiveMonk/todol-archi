@@ -10,7 +10,7 @@ regrouper les valeurs et la factorisation dans le fichier. mettre le pencil derr
 
 default_values.py (modele !!)
 
-1ère approche globale (a élargir probablement )
+1ère approche globale (a élargir probablement, penser a update le migration log)
 
 
 cachedutils (a vider pour mettre dans thème utils et category utils)
@@ -37,6 +37,8 @@ Quand tout est bien trié :
 
 modifier imports 
 test ipython
+
+
 branche git (utils management)
 réfléchir à la gestion (dict dispatch , factory , fonction ..)
 réflexion (cell utils > dispatch pour flags(section), alignment(section) au lieu de juste édit et status)
