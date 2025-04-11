@@ -1,4 +1,4 @@
-!!! faire un contextmanager (helpers): open_settings (facilitera les get catégories etc)
+I!!! faire un contextmanager (helpers): open_settings (facilitera les get catégories etc)
 
 
 
@@ -39,6 +39,6 @@ modifier imports
 test ipython
 branche git (utils management)
 réfléchir à la gestion (dict dispatch , factory , fonction ..)
-réflexion 
+réflexion (cell utils > dispatch pour flags(section), alignment(section) au lieu de juste édit et status)
 
 
