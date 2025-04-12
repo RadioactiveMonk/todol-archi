@@ -66,6 +66,7 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] `get_categories()` + cache
 - [x] `get_available_themes()` + validation
 - [x] `status_label()` / `status_color()` / `get_status_ui()`
+- [ ] 
 
 ---
 
