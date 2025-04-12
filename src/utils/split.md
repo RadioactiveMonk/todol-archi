@@ -1,11 +1,11 @@
-I!!! faire un contextmanager (helpers): open_settings (facilitera les get catégories etc)
+I!!! faire un contextmanager (helpers): open_settings (facilitera les get catégories etc) OK
 
 
 
 
 
  creer fichiers .py (vide si besoin, mais prêt), pas de logique poussée , juste gestion.
-regrouper les valeurs et la factorisation dans le fichier. mettre le pencil derrière l'oreille pour être sûr.
+regrouper les valeurs et la factorisation dans le fichier. mettre le pencil derrière l'oreille pour être sûr. OK
 
 
 default_values.py (modele !!)

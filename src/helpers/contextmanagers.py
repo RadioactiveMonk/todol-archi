@@ -4,6 +4,7 @@ import json
 import sqlite3
 from contextlib import contextmanager
 from pathlib import Path
+from typing import Any
 
 from core.database.ask_db import AskDB
 from utils.log_utils import logger
@@ -28,7 +29,7 @@ def open_db(path: Path):
 
 
 @contextmanager
-def open_settings(mode: str = "r", encoding: str = "utf-8"):
+def open_settings(mode: str = "r", encoding: str = "utf-8") -> Any:
     """
     Context manager for reading or writing the settings.json file.
 
@@ -43,7 +44,6 @@ def open_settings(mode: str = "r", encoding: str = "utf-8"):
     logger.debug(f"Accessing settings file in mode '{mode}': {SETTINGS_FILE}")
     with open(SETTINGS_FILE, mode, encoding=encoding) as f:
         if "r" in mode:
-            data = json.load(f)
-            yield data
+            yield json.load(f)
         else:
-            yield f  # raw file object for writing
+            yield f
