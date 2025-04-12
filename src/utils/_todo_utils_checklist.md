@@ -20,19 +20,64 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 ## ✅ 3. Migrer les fichiers existants
 
 - [x] `default_values.py` ➜ utils/
-- [x] `status_constants.py` ➜ utils/
-- [x] `log_utils.py` (si applicable) ➜ utils/
+- [x] `status_constants.py` ➜ utils/status_utils.py
+- [x] `log_utils.py` ➜ utils/
 - [x] `task_table_utils.py` ➜ utils/
-- [x] `csv_utils.py` (à évaluer) ➜ utils/
-- [x] Autres `*_utils.py` à identifier -> la majorité des fichiers de config ont migrés vers utils/
+- [x] `csv_utils.py` ➜ utils/
+- [x] `path.py` ➜ utils/path_utils.py
+- [x] `ui_utils.py` ➜ découpé en plusieurs fichiers spécialisés
+- [x] `cached_utils.py` ➜ contenu redispatché dans `category_utils.py` et `ui_theme_utils.py`
 
 ---
 
-## ✅ 4. Nettoyer et organiser
+## ✅ 4. Factoriser les utils pour gérer les constantes
 
-- [x] Renommer les fichiers si nécessaire (ex: `ui_utils.py`, `db_utils.py`, etc.)
-- [ ] Factoriser les utils pour gérer les constantes
-    - [x] category_utils.py
-    - [x] path_utils.py
-    - [x] ui_theme_utils.py
-    - [x] status_utils.py
+- [x] default_values.py
+- [x] category_utils.py
+- [x] path_utils.py
+- [x] ui_theme_utils.py
+- [x] status_utils.py
+- [ ] db_utils.py
+- [ ] task_table_utils.py
+- [ ] ui_icons_utils.py
+- [ ] ui_text_utils.py
+- [ ] ui_geometry_utils.py
+- [ ] task_table_geometry_utils.py
+- [ ] task_table_headers_utils.py
+- [ ] task_table_cell_utils.py
+- [ ] app_utils.py
+- [ ] csv_utils.py
+
+---
+
+## ✅ 5. Revoir les usages et les imports
+
+- [x] Vider temporairement `core/__init__.py`
+- [x] Corriger les imports à la main au fil des tests
+- [ ] (Optionnel) Automatiser le remplacement avec `replace_imports.py`
+
+---
+
+## ✅ 6. Valider tous les modules dans IPython
+
+- [x] `get_path()` / `get_all_paths()`
+- [x] `get_categories()` + cache
+- [x] `get_available_themes()` + validation
+- [x] `status_label()` / `status_color()` / `get_status_ui()`
+
+---
+
+## ✅ 7. Refactorings appliqués
+
+- [x] Ajout de `open_settings()` dans `helpers/contextmanagers.py`
+- [x] Application du modèle “3 blocs” (constantes + dict + fonctions)
+- [x] Logs ajoutés sur les fonctions accédant à des fichiers ou caches
+
+---
+
+## ✅ 8. Finalisation
+
+- [ ] Réécrire un `__init__.py` propre pour `core/`
+- [ ] Finaliser le remplacement des anciens imports
+- [ ] Ajouter des tests unitaires `utils/` (plus tard)
+- [ ] Documenter l'organisation des `utils` dans README ou `docs/`
