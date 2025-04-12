@@ -33,5 +33,5 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] Renommer les fichiers si nécessaire (ex: `ui_utils.py`, `db_utils.py`, etc.)
 - [ ] Factoriser les utils pour gérer les constantes
     - [x] category_utils.py
-    - [ ] path_utils.py
+    - [x] path_utils.py
     - [ ] ui_theme_utils.py
