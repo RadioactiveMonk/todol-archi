@@ -44,14 +44,18 @@ _PATHS: dict[str, Path] = {
 # =====================================
 
 
-def get_path(key: str) -> Path:
-    """Return a Path from the dispatch table."""
-    try:
-        logger.debug(f"Accessing path: {key}")
-        return _PATHS[key]
-    except KeyError:
-        logger.error(f"Path key not found: {key}")
-        raise
+def get_path(key: str, default: Path | None = None) -> Path:
+    """Return a Path from the dispatch table, or a default if provided."""
+    if key not in _PATHS:
+        if default is not None:
+            logger.warning(f"Path key '{key}' not found, returning fallback.")
+            return default
+        logger.error(f"Invalid path key: '{key}'")
+        raise KeyError(f"Unknown path key: '{key}'")
+
+    path = _PATHS[key]
+    logger.debug(f"Accessing path: {key} → {path}")
+    return path
 
 
 def get_all_paths() -> dict[str, Path]:

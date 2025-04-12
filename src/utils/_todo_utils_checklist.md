@@ -48,6 +48,8 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [ ] app_utils.py
 - [ ] csv_utils.py
 
+- [ ] faire les vérification de paramètres dans les fonctions
+
 ---
 
 ## ✅ 5. Revoir les usages et les imports
