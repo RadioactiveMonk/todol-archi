@@ -56,4 +56,5 @@ def get_path(key: str) -> Path:
 
 def get_all_paths() -> dict[str, Path]:
     """Return a copy of all known paths."""
+    logger.debug("Getting all paths")
     return _PATHS.copy()

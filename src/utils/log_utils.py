@@ -3,7 +3,7 @@ import sys
 
 from loguru import logger
 
-from core.path import LOG_DIR
+from utils.path_utils import LOG_DIR
 
 LOG_FILE = LOG_DIR / "app.log"
 

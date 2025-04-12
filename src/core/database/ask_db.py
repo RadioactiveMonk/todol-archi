@@ -1,15 +1,15 @@
 import sqlite3
 from typing import Any, Callable
 
-from core.database_config import (
+from utils.db_utils import (
+    SQL_CREATE_TASKS_TABLE,
     SQL_DELETE_TASK_BY_ID,
     SQL_INSERT_TASK,
     SQL_SELECT_TASK_BY_ID,
     SQL_SELECT_TASKS,
     SQL_UPDATE_TASK_BY_ID,
 )
-from core.sql_schema import SQL_CREATE_TASKS_TABLE
-from helpers.log_utils import logger
+from utils.log_utils import logger
 
 
 class AskDB:
