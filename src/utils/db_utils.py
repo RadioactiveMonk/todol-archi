@@ -28,3 +28,16 @@ SQL_DELETE_TASK_BY_ID: str = """
 DELETE FROM tasks
 WHERE id = ?;
 """
+
+SQL_CREATE_TASKS_TABLE = """
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    expiration TEXT NOT NULL,
+    notes TEXT
+);
+"""
+
+SQL_DROP_TASKS_TABLE = "DROP TABLE IF EXISTS tasks;"

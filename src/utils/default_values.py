@@ -1,6 +1,6 @@
 from typing import Any
 
-from helpers.log_utils import logger
+from utils.log_utils import logger
 
 # =====================================
 # DOMAIN DEFAULTS
