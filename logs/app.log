@@ -265,3 +265,4 @@ CREATE TABLE IF NOT EXISTS tasks (
 2025-04-12 20:16:30.088 | DEBUG    | contextmanagers:open_settings:44 | 10128 - Accessing settings file in mode 'r': /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json
 2025-04-12 20:17:17.137 | DEBUG    | contextmanagers:open_settings:44 | 10128 - Accessing settings file in mode 'r': /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json
 2025-04-12 20:24:30.792 | DEBUG    | ui_theme_utils:get_available_themes:13 | 10309 - Accessings themes folder: /home/doyoudance/Desktop/Projects/todol-archi/src/ui/resources/stylesheets
+2025-04-12 20:43:47.462 | DEBUG    | default_values:get_all_defaults:41 | 10772 - Accessing all default values.
