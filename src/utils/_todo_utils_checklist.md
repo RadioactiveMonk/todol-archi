@@ -34,4 +34,5 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [ ] Factoriser les utils pour gérer les constantes
     - [x] category_utils.py
     - [x] path_utils.py
-    - [ ] ui_theme_utils.py
+    - [x] ui_theme_utils.py
+    - [x] status_utils.py

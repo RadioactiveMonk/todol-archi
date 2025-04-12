@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from typing import Any, Optional
 
 from helpers.converters import dataclass_to_dict
-from helpers.log_utils import logger
 from models.task_core import TaskCore
+from utils.log_utils import logger
 
 
 @dataclass

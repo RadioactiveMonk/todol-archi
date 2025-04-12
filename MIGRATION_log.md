@@ -21,6 +21,7 @@ Création d’un dossier `utils/` pour regrouper tous les fichiers de constantes
   - `get_path()` / `get_all_paths()` → OK
   - `get_categories()` + `lru_cache` + `open_settings()` → OK
   - `get_available_themes()` + `is_theme_available()` → OK
+  - `get_status_ui()`, `status_label()`, `status_color()` → OK
 - ✅ Ajout de logs pour la traçabilité
 - ♻️ Quelques imports corrigés au fil des tests
 

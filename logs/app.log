@@ -266,3 +266,12 @@ CREATE TABLE IF NOT EXISTS tasks (
 2025-04-12 20:17:17.137 | DEBUG    | contextmanagers:open_settings:44 | 10128 - Accessing settings file in mode 'r': /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json
 2025-04-12 20:24:30.792 | DEBUG    | ui_theme_utils:get_available_themes:13 | 10309 - Accessings themes folder: /home/doyoudance/Desktop/Projects/todol-archi/src/ui/resources/stylesheets
 2025-04-12 20:43:47.462 | DEBUG    | default_values:get_all_defaults:41 | 10772 - Accessing all default values.
+2025-04-12 21:13:37.156 | DEBUG    | status_utils:get_status_ui:40 | 11624 - Accessing status color and label
+2025-04-12 21:13:53.593 | DEBUG    | status_utils:status_label:46 | 11624 - Accessing status label
+2025-04-12 21:13:53.594 | DEBUG    | status_utils:get_status_ui:40 | 11624 - Accessing status color and label
+2025-04-12 21:14:30.253 | DEBUG    | status_utils:get_status_ui:40 | 11661 - Accessing status color and label
+2025-04-12 21:14:36.086 | DEBUG    | status_utils:status_label:46 | 11661 - Accessing status label
+2025-04-12 21:14:36.086 | DEBUG    | status_utils:get_status_ui:40 | 11661 - Accessing status color and label
+2025-04-12 21:15:55.638 | DEBUG    | status_utils:get_status_ui:40 | 11707 - Accessing status datas
+2025-04-12 21:16:03.052 | DEBUG    | status_utils:get_status_ui:40 | 11707 - Accessing status datas
+2025-04-12 21:16:45.290 | DEBUG    | status_utils:get_status_ui:40 | 11707 - Accessing status datas
