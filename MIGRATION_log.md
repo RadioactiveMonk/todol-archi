@@ -5,16 +5,26 @@ Création d’un dossier `utils/` pour regrouper tous les fichiers de constantes
 
 **Actions** :
 - Création de `utils/` + `__init__.py`
-- Déplacement de :
-  - `default_values.py`
-  - `status_constants.py` → renommé `status_utils.py`
-  - `task_table_utils.py`, `log_utils.py`, `sql_utils.py`, `db_utils.py`
-  - `ui_utils.py`, `cached_utils.py`, `path.py` → renommé `path_utils.py`
 - Révision complète des noms pour uniformiser : `*_utils.py`
 - Nettoyage des imports à venir avec `replace_imports.py`
 
-**Prochaines étapes** :
-- Évaluer le déplacement de :
-  - `core/config.py` (→ `app_utils.py` ?)
-  - `ui/cell_properties.py` (→ `cell_utils.py` ?)
-  - `core/api/utils.py` (→ `api_utils.py` ?)
+---
+
+## 📆 2025-04-12 — Validation des premiers `utils` + tests IPython
+
+**Objectif :**
+- Vérifier la bonne mise en place des nouveaux fichiers `utils/` de manière indépendante et testable
+
+**Actions réalisées :**
+- 🔧 Vidage temporaire de `core/__init__.py` pour permettre l'import modulaire
+- 🧪 Tests manuels via `PYTHONPATH=src ipython` :
+  - `get_path()` / `get_all_paths()` → OK
+  - `get_categories()` + `lru_cache` + `open_settings()` → OK
+  - `get_available_themes()` + `is_theme_available()` → OK
+- ✅ Ajout de logs pour la traçabilité
+- ♻️ Quelques imports corrigés au fil des tests
+
+**Résultat :**
+- Tous les `utils` testés fonctionnent correctement en isolation
+- Cache fonctionnel et contrôlable (`cache_info`, `cache_clear`)
+- Chemins, constantes et accès fichiers centralisés et validés
