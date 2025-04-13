@@ -58,7 +58,20 @@ def build_update_query():
     pass
 
 def is_query(sql: str) -> bool:
-    options = {}
-    return sql.strip().lower().startswith(option) if option in options else False
+    """
+    Checks if a given SQL string starts with a valid SQL command.
+
+    Parameters
+    ----------
+    sql : str
+        The SQL string to check.
+
+    Returns
+    -------
+    bool
+        True if the SQL string starts with a valid command, False otherwise.
+    """
+    valid_commands = {"select", "insert", "update", "delete", "create", "drop"}
+    return sql.strip().lower().split()[0] in valid_commands if sql.strip() else False
 
 
