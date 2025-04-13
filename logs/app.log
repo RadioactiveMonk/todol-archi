@@ -275,3 +275,11 @@ CREATE TABLE IF NOT EXISTS tasks (
 2025-04-12 21:15:55.638 | DEBUG    | status_utils:get_status_ui:40 | 11707 - Accessing status datas
 2025-04-12 21:16:03.052 | DEBUG    | status_utils:get_status_ui:40 | 11707 - Accessing status datas
 2025-04-12 21:16:45.290 | DEBUG    | status_utils:get_status_ui:40 | 11707 - Accessing status datas
+2025-04-13 13:42:57.554 | DEBUG    | db_utils:get_query:53 | 5134 - Accessing query: select
+2025-04-13 13:42:57.559 | ERROR    | db_utils:get_query:56 | 5134 - Unknown SQL query key: select
+2025-04-13 13:43:22.356 | DEBUG    | db_utils:get_query:53 | 5134 - Accessing query: select_all
+2025-04-13 13:44:10.795 | DEBUG    | db_utils:build_where_clause:74 | 5134 - WHERE clause: category = ? AND completed = ? | args=['Work', 0]
+2025-04-13 13:45:15.259 | DEBUG    | db_utils:build_update_query:107 | 5134 - UPDATE query: UPDATE tasks SET title = ?, completed = ? WHERE id = ? | args=['New task', 1]
+2025-04-13 13:45:57.415 | DEBUG    | db_utils:get_query:53 | 5134 - Accessing query: select_all
+2025-04-13 13:46:18.018 | DEBUG    | db_utils:is_query:126 | 5134 - Validating SQL query: IF tasks
+2025-04-13 13:46:35.515 | DEBUG    | db_utils:is_query:126 | 5134 - Validating SQL query: DELETE FROM table

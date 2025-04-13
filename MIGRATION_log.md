@@ -29,3 +29,20 @@ Création d’un dossier `utils/` pour regrouper tous les fichiers de constantes
 - Tous les `utils` testés fonctionnent correctement en isolation
 - Cache fonctionnel et contrôlable (`cache_info`, `cache_clear`)
 - Chemins, constantes et accès fichiers centralisés et validés
+
+## 📆 2025-04-13 — Ajout de db_utils.py + helpers SQL dynamiques
+
+**Objectif :**
+- Extraire les requêtes SQL statiques de la classe AskDB - Créer une base de helpers SQL réutilisables et testables 
+
+**Actions réalisées :**
+- [x] Création de utils/db_utils.py 
+- [x] Ajout de toutes les requêtes SQL liées à la table tasks 
+- [x] Implémentation de get_query() et is_query() 
+- [x] Helpers dynamiques : - build_where_clause() (avec retour tuple clause +
+args) - build_update_query() (génération de requête UPDATE et valeurs) 
+- [x] Tests interactifs dans IPython sur tous les helpers 
+- [x] Validation de la compatibilité avec cursor.execute(...) 
+
+**Résultat :** 
+- db.py (ex ask_db.py) sera allégé et plus lisible - La couche SQL est désormais centralisée, modulaire et testé

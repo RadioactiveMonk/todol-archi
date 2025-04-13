@@ -5,6 +5,10 @@ Requêtes SQL de base et helpers pour la couche d'accès aux données.
 Ce module contient les requêtes statiques, un dispatch facultatif, et des fonctions d'accès.
 """
 
+from typing import Any
+
+from utils.log_utils import logger
+
 # =====================================
 # Requêtes SQL constantes
 # =====================================
@@ -43,19 +47,66 @@ _QUERIES = {
 # Fonctions d'accès ou helpers
 # =====================================
 
+
 def get_query(key: str) -> str:
-    from utils.log_utils import logger
     try:
+        logger.debug(f"Accessing query: {key}")
         return _QUERIES[key]
     except KeyError:
         logger.error(f"Unknown SQL query key: {key}")
         raise
 
-def build_where_clause():
-    pass
 
-def build_update_query():
-    pass
+def build_where_clause(filters: dict[str, Any]) -> tuple[str, list[Any]]:
+    """
+    Builds a dynamic WHERE clause from a dictionary.
+
+    Returns
+    -------
+    str : WHERE clause (e.g., "category = ? AND completed = ?")
+    list : List of values to inject into the query
+    """
+    if not filters:
+        return "", []
+
+    clause = " AND ".join([f"{key} = ?" for key in filters])
+    values = list(filters.values())
+    logger.debug(f"WHERE clause: {clause} | args={values}")
+    return clause, values
+
+
+def build_update_query(
+    table: str, data: dict[str, Any], where_clause: str
+) -> tuple[str, list[Any]]:
+    """
+    Generates a dynamic UPDATE query with SET and WHERE clauses.
+
+    Parameters
+    ----------
+    table : str
+        Name of the table (e.g., 'tasks')
+    data : dict
+        Data to update (e.g., {'title': 'New title', 'completed': 1})
+    where_clause : str
+        Final WHERE clause (e.g., 'id = ?')
+
+    Returns
+    -------
+    str
+        SQL query
+    list
+        Values to inject in order
+    """
+    if not data:
+        raise ValueError("Empty data dict for update query")
+
+    set_clause = ", ".join([f"{key} = ?" for key in data])
+    sql = f"UPDATE {table} SET {set_clause} WHERE {where_clause}"
+    args = list(data.values())
+
+    logger.debug(f"UPDATE query: {sql} | args={args}")
+    return sql, args
+
 
 def is_query(sql: str) -> bool:
     """
@@ -71,7 +122,7 @@ def is_query(sql: str) -> bool:
     bool
         True if the SQL string starts with a valid command, False otherwise.
     """
+
+    logger.debug(f"Validating SQL query: {sql}")
     valid_commands = {"select", "insert", "update", "delete", "create", "drop"}
     return sql.strip().lower().split()[0] in valid_commands if sql.strip() else False
-
-
