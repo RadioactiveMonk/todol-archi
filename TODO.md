@@ -62,7 +62,7 @@ Bloc C — Refactoring Pythonic & bonnes pratiques
 > Rendre le code élégant, DRY, et idiomatique
 
 
-[ ] Pydantic ?
+[ ] Pydantic ? Pre commit hooks
 
 [ ] Ajouter des propriétés @property, __str__, __repr__
 
