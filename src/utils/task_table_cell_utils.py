@@ -1,41 +1,25 @@
-from PyQt6.QtCore import QModelIndex, Qt
+from PyQt6.QtCore import Qt
 
-from utils.task_table_headers_utils import (
-    EDIT_COLUMN_INDEX,
-    STATUS_COLUMN_INDEX,
-)
+from utils.log_utils import logger
+
+_COLUMN_FLAGS = {
+    "Edit": Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable,
+    "Status": Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsUserCheckable,
+}
+
+DEFAULT_FLAGS = Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsEditable
 
 
-def get_flags(
-    index: QModelIndex,
-    edit_section: int = EDIT_COLUMN_INDEX,
-    status_section: int = STATUS_COLUMN_INDEX,
-) -> Qt.ItemFlag:
+def get_column_flags(column: str) -> Qt.ItemFlag:
     """
-    Retourne les propriétés (flags) associées à une cellule du tableau.
-
-    - Colonne Status : sélectionnable + éditable (permet le toggle)
-    - Colonne Edit   : activée uniquement (clic sur bouton)
-    - Autres colonnes : désactivées par défaut ici (gérées ailleurs)
-
-    Args:
-        index (QModelIndex): index de la cellule
-        edit_section (int): index de la colonne d'édition (par défaut la dernière)
-        status_section (int): index de la colonne de statut (par défaut 0)
-
-    Returns:
-        Qt.ItemFlags: combinaisons de flags Qt pour la cellule
+    Retourne les Qt.ItemFlags associés à une colonne du tableau.
     """
-    if not index.isValid():
-        return Qt.ItemFlag.NoItemFlags
+    if column in _COLUMN_FLAGS:
+        return _COLUMN_FLAGS[column]
 
-    if index.column() == edit_section:
-        return Qt.ItemFlag.ItemIsEnabled
-
-    if index.column() == status_section:
-        return Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsEditable
-
-    return Qt.ItemFlag.NoItemFlags
+    logger.debug(f"No specific flags set for column '{column}', using default.")
+    return DEFAULT_FLAGS
+    
 
 
 def get_alignment(column: int) -> Qt.AlignmentFlag:

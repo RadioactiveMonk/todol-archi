@@ -79,6 +79,7 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - [x] Suppression de `task_table_utils.py` (devenu vide)
 - [x] Ajout de `get_column_index()` et `get_column_name()` avec gestion d’erreurs
 - [x] Test fonctionnel dans IPython (`get_column_index("Title")` → OK)
+- [x] Restructuration de task_table_cell_utils.py: dispatch pour les flags de colonne
 
 **Résultat :**
 - Structure plus claire et modulaire
