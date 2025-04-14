@@ -283,3 +283,18 @@ CREATE TABLE IF NOT EXISTS tasks (
 2025-04-13 13:45:57.415 | DEBUG    | db_utils:get_query:53 | 5134 - Accessing query: select_all
 2025-04-13 13:46:18.018 | DEBUG    | db_utils:is_query:126 | 5134 - Validating SQL query: IF tasks
 2025-04-13 13:46:35.515 | DEBUG    | db_utils:is_query:126 | 5134 - Validating SQL query: DELETE FROM table
+2025-04-14 13:25:15.719 | DEBUG    | db:select:96 | 5281 - Executing SELECT: SELECT * FROM tasks; | args=()
+2025-04-14 13:26:01.444 | DEBUG    | db:update_task:164 | 5281 - Updating task #2 with data: {'completed': 1}
+2025-04-14 13:26:01.445 | DEBUG    | db_utils:build_update_query:107 | 5281 - UPDATE query: UPDATE tasks SET completed = ? WHERE id = ? | args=[1]
+2025-04-14 13:26:07.982 | DEBUG    | db:select:96 | 5281 - Executing SELECT: SELECT * FROM tasks; | args=()
+2025-04-14 13:26:44.526 | DEBUG    | db_utils:build_where_clause:74 | 5281 - WHERE clause: category = ? | args=['Hobbies']
+2025-04-14 13:26:44.527 | DEBUG    | db:filter_tasks:192 | 5281 - Filtering tasks with: SELECT * FROM tasks;WHERE category = ? | args=['Hobbies']
+2025-04-14 13:26:57.965 | DEBUG    | db_utils:build_where_clause:74 | 5281 - WHERE clause: category = ? | args=['Work']
+2025-04-14 13:26:57.965 | DEBUG    | db:filter_tasks:192 | 5281 - Filtering tasks with: SELECT * FROM tasks;WHERE category = ? | args=['Work']
+2025-04-14 13:30:12.029 | DEBUG    | db:select:96 | 5511 - Executing SELECT: SELECT * FROM tasks; | args=()
+2025-04-14 13:30:52.723 | DEBUG    | db_utils:build_where_clause:74 | 5511 - WHERE clause: category = ? | args=['Work']
+2025-04-14 13:30:52.723 | DEBUG    | db:filter_tasks:192 | 5511 - Filtering tasks with: SELECT * FROM tasks; WHERE category = ? | args=['Work']
+2025-04-14 13:35:54.981 | DEBUG    | db_utils:build_where_clause:74 | 5643 - WHERE clause: category = ? | args=['Work']
+2025-04-14 13:35:54.982 | DEBUG    | db:filter_tasks:191 | 5643 - Filtering tasks with: SELECT * FROM tasks | args=['Work']
+2025-04-14 13:36:02.950 | DEBUG    | db_utils:build_where_clause:74 | 5643 - WHERE clause: category = ? | args=['Wor']
+2025-04-14 13:36:02.950 | DEBUG    | db:filter_tasks:191 | 5643 - Filtering tasks with: SELECT * FROM tasks | args=['Wor']

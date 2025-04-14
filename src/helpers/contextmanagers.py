@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
-from core.database.ask_db import AskDB
+from core.db import DB
 from utils.log_utils import logger
 from utils.path_utils import SETTINGS_FILE
 
@@ -14,7 +14,7 @@ from utils.path_utils import SETTINGS_FILE
 @contextmanager
 def open_db(path: Path):
     """
-    Context manager for accessing the SQLite database using AskDB.
+    Context manager for accessing the SQLite database using DB.
 
     Usage:
         with open_db(DB_FILE) as db:
@@ -23,7 +23,7 @@ def open_db(path: Path):
 
     conn = sqlite3.connect(path)
     try:
-        yield AskDB(conn)
+        yield DB(conn)
     finally:
         conn.close()
 

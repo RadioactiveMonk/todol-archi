@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
-from core.database.ask_db import AskDB
+from core.db import DB
 from core.path import ICONS_DIR
 from models.task import Task
 from ui.containers.menu_bar import MenuBar
@@ -23,12 +23,12 @@ from ui.ui_constants import MAIN_WINDOW_GEOMETRY, MAIN_WINDOW_TITLE
 class MainWindow(QMainWindow):
     """Main window of the application"""
 
-    def __init__(self, db: AskDB) -> None:
+    def __init__(self, db: DB) -> None:
         """Init the main window
 
         Parameters
         ----------
-        db : AskDB
+        db : DB
             context manager to manage database via open_db()
         """
         super().__init__()

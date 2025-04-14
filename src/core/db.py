@@ -8,11 +8,13 @@ from utils.db_utils import (
     SQL_SELECT_TASK_BY_ID,
     SQL_SELECT_TASKS,
     SQL_UPDATE_TASK_BY_ID,
+    build_update_query,
+    build_where_clause,
 )
 from utils.log_utils import logger
 
 
-class AskDB:
+class DB:
     """
     Classe d'accès simplifiée à la base de données SQLite.
     Permet d'exécuter des opérations courantes de manière centralisée.
@@ -20,7 +22,7 @@ class AskDB:
 
     def __init__(self, conn: sqlite3.Connection) -> None:
         """
-        Initialise une instance de AskDB.
+        Initialise une instance de DB.
 
         Args:
             conn: Une connexion sqlite3 active.
@@ -157,28 +159,40 @@ class AskDB:
     def update_task(self, task_id: int, data: dict[str, Any]) -> bool:
         """
         Met à jour une tâche existante.
-
-        Args:
-            task_id: L'identifiant de la tâche à modifier.
-            data: Un dictionnaire contenant les champs à modifier.
-
-        Returns:
-            True si la tâche a été modifiée, sinon False.
         """
-        return (
-            self.conn.execute(
-                SQL_UPDATE_TASK_BY_ID,
-                (
-                    data["title"],
-                    data["category"],
-                    int(data["completed"]),
-                    data["expiration"],
-                    data["notes"],
-                    task_id,
-                ),
-            ).rowcount
-            > 0
-        )
+
+        logger.debug(f"Updating task #{task_id} with data: {data}")
+        sql, args = build_update_query("tasks", data, "id = ?")
+        args.append(task_id)
+
+        result = self.conn.execute(sql, args)
+        self.conn.commit()
+        return result.rowcount > 0
+
+    def filter_tasks(self, filters: dict[str, Any]) -> list[dict[str, Any]]:
+        """Returns a list of dictionnaries containing ONLY tasks
+        that correspond to the given filters
+
+        Parameters
+        ----------
+        filters : dict[str, Any]
+            dictionnary with the data to filter (e.g.: {category: "Work", completed: 1})
+
+        Returns
+        -------
+        list[dict[str, Any]]
+            the list of filtered tasks
+        """
+
+        where_clause, args = build_where_clause(filters)
+        sql = SQL_SELECT_TASKS
+
+        if where_clause:
+            logger.debug(f"Filtering tasks with: {sql} | args={args}")
+            sql += f" WHERE {where_clause}"
+
+        cursor = self.conn.execute(sql, args)
+        return [dict(row) for row in cursor.fetchall()]
 
     def delete_task(self, task_id: int) -> bool:
         """

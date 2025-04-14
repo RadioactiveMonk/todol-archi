@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 );
 """
 
-SQL_SELECT_TASKS = "SELECT * FROM tasks;"
+SQL_SELECT_TASKS = "SELECT * FROM tasks"
 SQL_SELECT_TASK_BY_ID = "SELECT * FROM tasks WHERE id = ?;"
 SQL_INSERT_TASK = "INSERT INTO tasks (title, category, completed, expiration, notes) VALUES (?, ?, ?, ?, ?);"
 SQL_UPDATE_TASK_BY_ID = "UPDATE tasks SET title = ?, category = ?, completed = ?, expiration = ?, notes = ? WHERE id = ?;"
