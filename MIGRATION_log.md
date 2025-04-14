@@ -65,3 +65,21 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Interface `DB` plus propre et modulaire
 - Helpers SQL utilisés en conditions réelles
 - Fonctionnement validé étape par étape avec logs et retours attendus
+
+## 📆 2025-04-14 — Découpage complet de `task_table_utils.py` en modules spécialisés
+
+**Objectif :**
+- Répartir proprement les constantes liées à l’interface de la table des tâches
+- Séparer la logique par type : entêtes, géométrie, comportements cellule
+
+**Actions réalisées :**
+- [x] Création de `task_table_headers_utils.py` pour les entêtes et index
+- [x] Création de `task_table_geometry_utils.py` pour les largeurs de colonnes
+- [x] Création de `task_table_cell_utils.py` pour les Qt.ItemFlags et alignements
+- [x] Suppression de `task_table_utils.py` (devenu vide)
+- [x] Ajout de `get_column_index()` et `get_column_name()` avec gestion d’erreurs
+- [x] Test fonctionnel dans IPython (`get_column_index("Title")` → OK)
+
+**Résultat :**
+- Structure plus claire et modulaire
+- Responsabilités isolées, facilement testables et maintenables
