@@ -46,3 +46,22 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 
 **Résultat :** 
 - db.py (ex ask_db.py) sera allégé et plus lisible - La couche SQL est désormais centralisée, modulaire et testé
+
+## 📆 2025-04-14 — Intégration de db_utils dans DB + validation IPython
+
+**Objectif :**
+- Refactorer `update_task()` avec `build_update_query()`
+- Ajouter une méthode `filter_tasks()` basée sur `build_where_clause()`
+- Vérifier la cohérence entre les requêtes SQL et les helpers dynamiques
+
+**Actions réalisées :**
+- [x] `update_task()` refait proprement avec requête dynamique
+- [x] `filter_tasks()` ajoutée avec clause WHERE générée dynamiquement
+- [x] Suppression du point-virgule dans les constantes SQL concaténées
+- [x] Logs intégrés pour chaque appel
+- [x] Tests interactifs dans IPython sur `update_task()` et `filter_tasks()`
+
+**Résultat :**
+- Interface `DB` plus propre et modulaire
+- Helpers SQL utilisés en conditions réelles
+- Fonctionnement validé étape par étape avec logs et retours attendus
