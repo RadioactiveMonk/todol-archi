@@ -9,7 +9,7 @@ DOCS := docs
 REQUIREMENTS := requirements.txt
 
 # Cibles principales
-.PHONY: run test ruffall reload gadd clean install venv update_deps coverage typecheck sec_check black docs help
+.PHONY: run test ruffall reload gpush clean install venv update_deps coverage typecheck sec_check black docs help
 
 run:
 	@echo "Lancement de l'application..."
