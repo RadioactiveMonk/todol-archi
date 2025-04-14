@@ -298,3 +298,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 2025-04-14 13:35:54.982 | DEBUG    | db:filter_tasks:191 | 5643 - Filtering tasks with: SELECT * FROM tasks | args=['Work']
 2025-04-14 13:36:02.950 | DEBUG    | db_utils:build_where_clause:74 | 5643 - WHERE clause: category = ? | args=['Wor']
 2025-04-14 13:36:02.950 | DEBUG    | db:filter_tasks:191 | 5643 - Filtering tasks with: SELECT * FROM tasks | args=['Wor']
+2025-04-14 17:05:48.118 | DEBUG    | task_table_headers_utils:get_column_index:30 | 5865 - Accessing TASK_TABLE_HEADERS column index for Title
+2025-04-14 17:07:23.828 | DEBUG    | task_table_headers_utils:get_column_index:30 | 5865 - Accessing TASK_TABLE_HEADERS column index for Title
+2025-04-14 17:07:44.055 | DEBUG    | task_table_headers_utils:get_column_index:30 | 5865 - Accessing TASK_TABLE_HEADERS column index for Tite
+2025-04-14 17:07:44.055 | ERROR    | task_table_headers_utils:get_column_index:33 | 5865 - Column Tite not found in TASK_TABLE_HEADERS

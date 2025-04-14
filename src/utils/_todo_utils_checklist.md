@@ -37,8 +37,8 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] path_utils.py
 - [x] ui_theme_utils.py
 - [x] status_utils.py
-- [ ] db_utils.py
-- [ ] task_table_utils.py
+- [x] db_utils.py
+- [x] task_table_utils.py
 - [ ] ui_icons_utils.py
 - [ ] ui_text_utils.py
 - [ ] ui_geometry_utils.py
