@@ -1,7 +1,7 @@
 from dataclasses import asdict, dataclass
 from typing import Any, Dict, Optional
 
-from core.default_values import (
+from utils.default_values import (
     DEFAULT_CATEGORY,
     DEFAULT_EXPIRATION,
     DEFAULT_NOTES,
