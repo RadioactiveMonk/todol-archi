@@ -302,3 +302,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 2025-04-14 17:07:23.828 | DEBUG    | task_table_headers_utils:get_column_index:30 | 5865 - Accessing TASK_TABLE_HEADERS column index for Title
 2025-04-14 17:07:44.055 | DEBUG    | task_table_headers_utils:get_column_index:30 | 5865 - Accessing TASK_TABLE_HEADERS column index for Tite
 2025-04-14 17:07:44.055 | ERROR    | task_table_headers_utils:get_column_index:33 | 5865 - Column Tite not found in TASK_TABLE_HEADERS
+2025-04-22 19:13:31.867 | DEBUG    | path_utils:get_path:57 | 4983 - Accessing path: icons → /home/doyoudance/Desktop/Projects/todol-archi/src/ui/resources/icons
+2025-04-22 19:13:46.111 | DEBUG    | path_utils:get_path:57 | 4983 - Accessing path: icons → /home/doyoudance/Desktop/Projects/todol-archi/src/ui/resources/icons
+2025-04-22 19:13:46.112 | WARNING  | ui_icons_utils:get_icon_path:30 | 4983 - Unknown icon name: settis
+2025-04-22 19:14:33.922 | DEBUG    | path_utils:get_path:57 | 4983 - Accessing path: icons → /home/doyoudance/Desktop/Projects/todol-archi/src/ui/resources/icons

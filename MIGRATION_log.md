@@ -8,7 +8,6 @@ Création d’un dossier `utils/` pour regrouper tous les fichiers de constantes
 - Révision complète des noms pour uniformiser : `*_utils.py`
 - Nettoyage des imports à venir avec `replace_imports.py`
 
----
 
 ## 📆 2025-04-12 — Validation des premiers `utils` + tests IPython
 
@@ -30,6 +29,7 @@ Création d’un dossier `utils/` pour regrouper tous les fichiers de constantes
 - Cache fonctionnel et contrôlable (`cache_info`, `cache_clear`)
 - Chemins, constantes et accès fichiers centralisés et validés
 
+
 ## 📆 2025-04-13 — Ajout de db_utils.py + helpers SQL dynamiques
 
 **Objectif :**
@@ -46,6 +46,7 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 
 **Résultat :** 
 - db.py (ex ask_db.py) sera allégé et plus lisible - La couche SQL est désormais centralisée, modulaire et testé
+
 
 ## 📆 2025-04-14 — Intégration de db_utils dans DB + validation IPython
 
@@ -66,6 +67,7 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Helpers SQL utilisés en conditions réelles
 - Fonctionnement validé étape par étape avec logs et retours attendus
 
+
 ## 📆 2025-04-14 — Découpage complet de `task_table_utils.py` en modules spécialisés
 
 **Objectif :**
@@ -85,6 +87,7 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Structure plus claire et modulaire
 - Responsabilités isolées, facilement testables et maintenables
 
+
 ## 📆 2025-04-27 — Refactor complet avec `TaskTableColumn` + suppression des dispatchs Qt
 
 **Objectif :**
@@ -103,3 +106,21 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Structure de colonne claire, extensible, et déclarative
 - Plus de code dupliqué ou dispatché séparément pour les flags
 - Base solide posée pour des extensions futures (`apply_column_config()`, etc.)
+
+## 📆 2025-04-22 — Création de `ui_icons_utils.py` + mapping centralisé
+
+**Objectif :**
+- Centraliser l’accès aux icônes de l’application
+- Remplacer les appels en dur aux chemins d’icônes dans l’UI
+
+**Actions réalisées :**
+- [x] Création de `_ICONS` (nom logique → nom de fichier)
+- [x] `get_icon_path(name)` retourne un `Path` absolu depuis `get_path("icons")`
+- [x] `get_icon(name)` utilise un `@lru_cache` et fallback sur `app_icon.png` si manquant
+- [x] Fichier entièrement testable en IPython (sauf `QIcon` → nécessite un `QApplication`)
+- [x] Logger intégré avec message d’erreur clair sur les icônes inconnues
+
+**Résultat :**
+- Code plus lisible, plus sûr et plus modulaire
+- Plus de répétition de chemins en dur
+- Base posée pour un futur système de `LogManager`
