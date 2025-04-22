@@ -143,3 +143,19 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Découpage clair par type de ressource UI
 - Suppression d’un fichier devenu inutile
 - Lecture facilitée des valeurs spécifiques à l’interface
+
+
+## 📆 2025-04-22 — Création de `core/app_metadata.py`
+
+**Objectif :**
+- Centraliser toutes les métadonnées et constantes globales de l’application
+
+**Actions réalisées :**
+- [x] Création du fichier `app_metadata.py` dans `core/`
+- [x] Ajout des informations de base : nom, version, auteur, licence, description
+- [x] Ajout de paramètres globaux : `DEBUG`, `AUTO_SAVE_INTERVAL`
+- [x] Possibilité d’étendre avec `APP_WEBSITE` ou des helpers type `get_app_title()`
+
+**Résultat :**
+- Toutes les métadonnées et constantes globales sont accessibles à un seul endroit
+- Prêt à être utilisé dans `main.py`, les dialogues d’infos, ou la configuration générale

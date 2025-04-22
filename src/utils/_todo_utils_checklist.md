@@ -47,7 +47,7 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] ui_icons_utils.py
 - [x] ui_text_utils.py
 - [x] ui_geometry_utils.py
-- [ ] app_utils.py (pour utiliser dans le menu 'about' ?)
+- [x] app_utils.py (pour utiliser dans le menu 'about' ?)
 - [ ] csv_utils.py
 
 - [ ] faire les vérification de paramètres dans les fonctions
