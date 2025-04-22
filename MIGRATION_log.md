@@ -84,3 +84,22 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 **Résultat :**
 - Structure plus claire et modulaire
 - Responsabilités isolées, facilement testables et maintenables
+
+## 📆 2025-04-27 — Refactor complet avec `TaskTableColumn` + suppression des dispatchs Qt
+
+**Objectif :**
+- Centraliser toutes les propriétés des colonnes de la table dans une dataclass claire et modulaire
+- Supprimer le dispatch `task_table_cell_utils.py` en le fusionnant dans `task_table_column_utils.py`
+
+**Actions réalisées :**
+- [x] Création de la dataclass `TaskTableColumn` avec `name`, `field`, `width`, `editable`, `alignment`, `flags`
+- [x] Ajout de fonctions helper : `flags_editable()`, `flags_selectable()`, `flags_checkbox()`, `text_alignment()`
+- [x] Mise en place d’un fallback intelligent pour `flags` via `get_flags_for_column()`
+- [x] Migration de toutes les colonnes dans `TASK_TABLE_COLUMNS`
+- [x] Suppression de `task_table_cell_utils.py` (devenu inutile)
+- [x] Tests interactifs validés dans IPython sur `get_column_by_name()`, `get_flags_for_column()`, `text_alignment()`
+
+**Résultat :**
+- Structure de colonne claire, extensible, et déclarative
+- Plus de code dupliqué ou dispatché séparément pour les flags
+- Base solide posée pour des extensions futures (`apply_column_config()`, etc.)
