@@ -107,6 +107,7 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Plus de code dupliqué ou dispatché séparément pour les flags
 - Base solide posée pour des extensions futures (`apply_column_config()`, etc.)
 
+
 ## 📆 2025-04-22 — Création de `ui_icons_utils.py` + mapping centralisé
 
 **Objectif :**
@@ -124,3 +125,21 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Code plus lisible, plus sûr et plus modulaire
 - Plus de répétition de chemins en dur
 - Base posée pour un futur système de `LogManager`
+
+
+## 📆 2025-04-22 — Découpage et suppression de `ui_utils.py`
+
+**Objectif :**
+- Supprimer le fichier fourre-tout `ui_utils.py` en répartissant proprement son contenu dans des modules spécialisés
+
+**Actions réalisées :**
+- [x] Création de `ui_text_utils.py` pour les titres et labels d’interface
+- [x] Création de `ui_geometry_utils.py` pour les géométries de fenêtres et tailles d’icônes
+- [x] Suppression de `ui_utils.py` (devenu vide)
+- [x] Confirmation que `APP_THEMES`, `DEFAULT_THEME`, etc. sont déjà gérés proprement dans `ui_theme_utils.py`
+- [x] Pas de création de `ui_edit_section_utils.py` (non nécessaire pour l’instant)
+
+**Résultat :**
+- Découpage clair par type de ressource UI
+- Suppression d’un fichier devenu inutile
+- Lecture facilitée des valeurs spécifiques à l’interface

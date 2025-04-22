@@ -1,0 +1,4 @@
+MAIN_WINDOW_TITLE = "Todol archi"
+TASK_DIALOG_TITLE = "New task"
+EDIT_TASK_DIALOG_TITLE = "Edit task"
+EDIT_PARAMETERS_DIALOG_TITLE = "Parameters"
