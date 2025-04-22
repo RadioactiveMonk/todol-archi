@@ -39,13 +39,15 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] status_utils.py
 - [x] db_utils.py
 - [x] task_table_utils.py
+- [x] task_table_headers_utils.py ➜ intégré dans `task_table_column_utils.py`
+- [x] task_table_geometry_utils.py 
+- [x] task_table_cell_utils.py ➜ contenu migré dans `task_table_column_utils.py`
+- [x] task_table_column_utils.py (faire bannières pour structurer)
+- [ ] supprimer task table cell et task table geometry, test Ipython de task table column utils
 - [ ] ui_icons_utils.py
 - [ ] ui_text_utils.py
 - [ ] ui_geometry_utils.py
-- [ ] task_table_geometry_utils.py
-- [ ] task_table_headers_utils.py
-- [ ] task_table_cell_utils.py
-- [ ] app_utils.py
+- [ ] app_utils.py (pour utiliser dans le menu 'about' ?)
 - [ ] csv_utils.py
 
 - [ ] faire les vérification de paramètres dans les fonctions
@@ -67,7 +69,7 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] `get_available_themes()` + validation
 - [x] `status_label()` / `status_color()` / `get_status_ui()`
 - [x] db_utils.py
-- [ ] 
+- [x] task_table_column_utils.py (remplace headers/cell/geometry)
 
 ---
 
@@ -85,3 +87,17 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [ ] Finaliser le remplacement des anciens imports
 - [ ] Ajouter des tests unitaires `utils/` (plus tard)
 - [ ] Documenter l'organisation des `utils` dans README ou `docs/`
+
+---
+
+## 🛠️ À venir / sous le coude
+
+- [ ] Ajouter `visible`, `tooltip`, ou `flags` dynamiques à `TaskTableColumn`
+- [ ] Créer `apply_column_config(view)` pour appliquer les configs aux `QTableView`
+- [ ] Étudier un switch vers `PySide6` (officiel Qt) :
+    - `poetry remove pyqt6`
+    - `poetry add pyside6`
+    - remplacer les imports `from PyQt6` → `from PySide6`
+- [ ] Explorer une future `LogManager` (structurée)
+- [ ] Revoir les cas où l’approche par `dataclass` est pertinente
+- [ ] Penser au pattern Strategy pour un futur `export_utils.py`
