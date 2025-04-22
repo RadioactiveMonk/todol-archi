@@ -43,7 +43,7 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] task_table_geometry_utils.py 
 - [x] task_table_cell_utils.py ➜ contenu migré dans `task_table_column_utils.py`
 - [x] task_table_column_utils.py (faire bannières pour structurer)
-- [ ] supprimer task table cell et task table geometry, test Ipython de task table column utils
+- [x] supprimer task table cell et task table geometry, test Ipython de task table column utils
 - [ ] ui_icons_utils.py
 - [ ] ui_text_utils.py
 - [ ] ui_geometry_utils.py
