@@ -306,3 +306,5 @@ CREATE TABLE IF NOT EXISTS tasks (
 2025-04-22 19:13:46.111 | DEBUG    | path_utils:get_path:57 | 4983 - Accessing path: icons → /home/doyoudance/Desktop/Projects/todol-archi/src/ui/resources/icons
 2025-04-22 19:13:46.112 | WARNING  | ui_icons_utils:get_icon_path:30 | 4983 - Unknown icon name: settis
 2025-04-22 19:14:33.922 | DEBUG    | path_utils:get_path:57 | 4983 - Accessing path: icons → /home/doyoudance/Desktop/Projects/todol-archi/src/ui/resources/icons
+2025-04-24 10:12:47.812 | DEBUG    | path_utils:get_path:57 | 6180 - Accessing path: data → /home/doyoudance/Desktop/Projects/todol-archi/data
+2025-04-24 10:12:47.816 | INFO     | csv_utils:export_to_csv:37 | 6180 - CSV exported successfully: /home/doyoudance/Desktop/Projects/todol-archi/data/export.csv

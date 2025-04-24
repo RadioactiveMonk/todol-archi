@@ -159,3 +159,21 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 **Résultat :**
 - Toutes les métadonnées et constantes globales sont accessibles à un seul endroit
 - Prêt à être utilisé dans `main.py`, les dialogues d’infos, ou la configuration générale
+
+
+## 📆 2025-04-24 — Intégration de `csv_utils.py`
+
+**Objectif :**
+- Créer un module d’export CSV simple et réutilisable
+
+**Actions réalisées :**
+- [x] Création de `csv_utils.py` dans `utils/`
+- [x] Fonction `export_to_csv(data, filename)` avec typage `Sequence[Mapping]`
+- [x] Usage du module `csv` natif avec `DictWriter`
+- [x] Intégration des chemins via `get_path("data")`
+- [x] Ajout de logs pour l’export (succès et erreur)
+- [x] Tests validés dans IPython avec un exemple de données
+
+**Résultat :**
+- Fonctionnelle, testée, typée, et prête pour intégration dans le menu `Export` de l’app
+- Design extensible pour Bloc C : pattern Strategy, formats alternatifs, options dynamiques
