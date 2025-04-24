@@ -83,6 +83,10 @@ OK
 
 ## ✅ 8. Finalisation
 
+- [ ] Switch vers `PySide6` (officiel Qt) :
+    - `poetry remove pyqt6`
+    - `poetry add pyside6`
+    - remplacer les imports `from PyQt6` → `from PySide6`
 - [ ] Réécrire un `__init__.py` propre pour `core/`
 - [ ] Finaliser le remplacement des anciens imports
 - [ ] Ajouter des tests unitaires `utils/` (plus tard)
@@ -94,10 +98,7 @@ OK
 
 - [ ] Ajouter `visible`, `tooltip`, ou `flags` dynamiques à `TaskTableColumn`
 - [ ] Créer `apply_column_config(view)` pour appliquer les configs aux `QTableView`
-- [ ] Étudier un switch vers `PySide6` (officiel Qt) :
-    - `poetry remove pyqt6`
-    - `poetry add pyside6`
-    - remplacer les imports `from PyQt6` → `from PySide6`
+
 - [ ] Explorer une future `LogManager` (structurée)
 - [ ] Revoir les cas où l’approche par `dataclass` est pertinente
 - [ ] Penser au pattern Strategy pour un futur `export_utils.py`
