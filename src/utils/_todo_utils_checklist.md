@@ -50,7 +50,7 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] app_utils.py (pour utiliser dans le menu 'about' ?)
 - [x] csv_utils.py
 
-- [ ] faire les vérification de paramètres dans les fonctions
+- [x] faire les vérification de paramètres dans les fonctions
 
 ---
 
@@ -58,7 +58,6 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 
 - [x] Vider temporairement `core/__init__.py`
 - [x] Corriger les imports à la main au fil des tests
-- [ ] (Optionnel) Automatiser le remplacement avec `replace_imports.py`
 
 ---
 
@@ -70,6 +69,7 @@ Suivre cette checklist étape par étape pour organiser proprement les fichiers 
 - [x] `status_label()` / `status_color()` / `get_status_ui()`
 - [x] db_utils.py
 - [x] task_table_column_utils.py (remplace headers/cell/geometry)
+OK
 
 ---
 
