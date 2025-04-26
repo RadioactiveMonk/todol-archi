@@ -60,7 +60,10 @@ Bloc B — Organisation claire des responsabilités
 Bloc C — Refactoring Pythonic & bonnes pratiques
 
 > Rendre le code élégant, DRY, et idiomatique
+apply_column_config(view)
+Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
 
+[ ] SettingsManager
 
 [ ] Pydantic ? Pre commit hooks
 
