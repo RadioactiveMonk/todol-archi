@@ -3,8 +3,8 @@ import sys
 from PySide6.QtWidgets import QApplication
 from rich.traceback import install
 
-from core.database.init_db import init_db
 from factory.mainwindow_factory import MainWindowFactory
+from utils.init_db import init_db
 
 
 def main():

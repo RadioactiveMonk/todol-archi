@@ -177,3 +177,23 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 **Résultat :**
 - Fonctionnelle, testée, typée, et prête pour intégration dans le menu `Export` de l’app
 - Design extensible pour Bloc C : pattern Strategy, formats alternatifs, options dynamiques
+
+
+## 📆 2025-04-26 — Migration de PyQt6 vers PySide6 (switch officiel Qt)
+
+**Objectif :**
+- Se baser sur la version officielle de Qt pour Python (PySide6)
+- Uniformiser les imports, améliorer la compatibilité future du projet
+
+**Actions réalisées :**
+- [x] Suppression de `pyqt6` avec `poetry remove pyqt6`
+- [x] Ajout de `pyside6` avec `poetry add pyside6`
+- [x] Ajout de `python = ">=3.12,<3.14"` dans `pyproject.toml` pour compatibilité PySide6
+- [x] Création d'un script `replace_imports.py` pour automatiser le changement d'import :
+    - `from PyQt6` → `from PySide6`
+- [x] Validation finale dans IPython (`from PySide6.QtCore import Qt`) sans erreur
+
+**Résultat :**
+- Projet désormais basé sur PySide6 (officiel Qt)
+- Structure identique, fonctionnement garanti
+- Prêt pour les prochaines étapes de structuration et d'UI
