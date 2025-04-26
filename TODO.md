@@ -38,19 +38,19 @@ Bloc B — Organisation claire des responsabilités
 
 [x] Distinguer : status_constants, default_*, core.*, cached_utils, ...
 
-[ ] Regroupement dans utils/, tri
+[x] Regroupement dans utils/, tri
 
 [ ] task_from_row() (à refaire sur base stable)
 
 [ ] Créer factory_utils.py si besoin de constructeurs spécialisés
 
-[ ] Centraliser la config du projet :
+[x] Centraliser la config du projet :
 
-[ ] Makefile unifié (test, format, lint...)
+[x] Makefile unifié (test, format, lint...)
 
-[ ] dev.sh vs Makefile
+[x] dev.sh vs Makefile
 
-[ ] pyproject.toml pour pytest/ruff/config
+[x] pyproject.toml pour pytest/ruff/config
 
 
 
