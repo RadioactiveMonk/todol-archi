@@ -7,10 +7,7 @@ readme = "README.md"
 packages = [{ include = "src" }]
 
 [tool.poetry.dependencies]
-python = ">=3.12"
-PyQt6 = "6.8.1"
-PyQt6-Qt6 = "6.8.2"
-PyQt6_sip = "13.10.0"
+python = ">=3.12,<3.14"
 ipython = "9.0.0"
 pylint = "3.3.5"
 pytest = "8.3.5"
@@ -20,6 +17,7 @@ ruff = ">=0.5.3"
 coverage = "7.6.12"
 rich = "13.9.4"
 Pyment = "0.3.3"
+pyside6 = "^6.9.0"
 
 [tool.poetry.group.dev.dependencies]
 loguru = "*"

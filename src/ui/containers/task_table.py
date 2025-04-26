@@ -1,6 +1,6 @@
 from typing import Any, Dict, List
 
-from PyQt6.QtWidgets import QTableView, QWidget
+from PySide6.QtWidgets import QTableView, QWidget
 
 from core.path import DB_FILE
 from handlers.task_handlers import TaskHandlers

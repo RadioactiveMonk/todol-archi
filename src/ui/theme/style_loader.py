@@ -4,7 +4,7 @@
 from functools import lru_cache
 from pathlib import Path
 
-from PyQt6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication
 
 from core.path import STYLESHEETS_DIR
 from core.settings_manager import get_setting

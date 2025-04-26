@@ -1,6 +1,6 @@
 import sys
 
-from PyQt6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication
 from rich.traceback import install
 
 from core.database.init_db import init_db

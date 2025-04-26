@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QComboBox
+from PySide6.QtWidgets import QComboBox
 
 from core.settings_manager import get_setting
 

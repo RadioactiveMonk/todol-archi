@@ -1,6 +1,6 @@
-from PyQt6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, pyqtSignal
-from PyQt6.QtGui import QIcon, QMouseEvent, QPainter
-from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
+from PySide6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, pyqtSignal
+from PySide6.QtGui import QIcon, QMouseEvent, QPainter
+from PySide6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
 
 from core.path import ICONS_DIR
 from ui.ui_constants import (

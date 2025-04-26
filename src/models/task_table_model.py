@@ -1,8 +1,8 @@
 from typing import Any, Optional, cast
 
-from PyQt6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
-from PyQt6.QtGui import QBrush, QColor
-from PyQt6.QtWidgets import QWidget
+from PySide6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
+from PySide6.QtGui import QBrush, QColor
+from PySide6.QtWidgets import QWidget
 
 from core.path import DB_FILE
 from handlers.task_handlers import TaskHandlers

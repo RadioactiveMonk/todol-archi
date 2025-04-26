@@ -1,6 +1,6 @@
 # src/factory/mainwindow_factory.py
 
-from PyQt6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow
 
 from core.path import DB_FILE
 from helpers.contextmanagers import open_db

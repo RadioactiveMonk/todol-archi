@@ -1,8 +1,8 @@
 from typing import Any
 
-from PyQt6.QtCore import QEvent, QModelIndex, Qt
-from PyQt6.QtGui import QMouseEvent
-from PyQt6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem
+from PySide6.QtCore import QEvent, QModelIndex, Qt
+from PySide6.QtGui import QMouseEvent
+from PySide6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem
 
 from helpers.log_utils import logger
 

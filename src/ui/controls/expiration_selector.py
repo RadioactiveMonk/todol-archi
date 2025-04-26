@@ -1,5 +1,5 @@
-from PyQt6.QtCore import QDateTime
-from PyQt6.QtWidgets import QDateTimeEdit, QWidget
+from PySide6.QtCore import QDateTime
+from PySide6.QtWidgets import QDateTimeEdit, QWidget
 
 from core.default_values import DEFAULT_EXPIRATION
 

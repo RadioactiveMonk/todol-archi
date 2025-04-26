@@ -2,7 +2,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
-from PyQt6.QtGui import QIcon
+from PySide6.QtGui import QIcon
 
 from utils.log_utils import logger
 from utils.path_utils import get_path

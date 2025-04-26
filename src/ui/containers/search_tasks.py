@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QLineEdit, QWidget
+from PySide6.QtWidgets import QLineEdit, QWidget
 
 
 class SearchTasks(QLineEdit):

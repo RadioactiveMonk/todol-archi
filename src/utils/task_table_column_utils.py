@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from PyQt6.QtCore import Qt
+from PySide6.QtCore import Qt
 
 from utils.log_utils import logger
 

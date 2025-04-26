@@ -1,8 +1,8 @@
 from dataclasses import asdict
 from typing import Union
 
-from PyQt6.QtCore import QDateTime, pyqtSignal
-from PyQt6.QtWidgets import (
+from PySide6.QtCore import QDateTime, pyqtSignal
+from PySide6.QtWidgets import (
     QDialog,
     QFormLayout,
     QLineEdit,
