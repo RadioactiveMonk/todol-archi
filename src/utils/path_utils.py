@@ -51,7 +51,7 @@ def get_path(key: str, default: Path | None = None) -> Path:
             logger.warning(f"Path key '{key}' not found, returning fallback.")
             return default
         logger.error(f"Invalid path key: '{key}'")
-        raise KeyError(f"Unknown path key: '{key}'")
+        raise
 
     path = _PATHS[key]
     logger.debug(f"Accessing path: {key} → {path}")
