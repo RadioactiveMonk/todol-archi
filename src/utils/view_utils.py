@@ -19,9 +19,4 @@ def apply_column_config(view: TaskTableView, columns: list[TaskTableColumn]) -> 
                 column.tooltip,
                 role=Qt.ItemDataRole.ToolTipRole,
             )
-        if column.delegate:
-            delegate_instance = column.delegate(view)
-            view.setItemDelegateForColumn(index, delegate_instance)
-
-            if hasattr(view, "column_delegates"):
-                view.column_delegates[index] = delegate_instance
+        

@@ -62,12 +62,10 @@ Bloc B — Organisation claire des responsabilités
 > Rendre le code élégant, DRY, et idiomatique
 [x] apply_column_config(view)
 [x] Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
-[ ] Rendre les delegates eux-mêmes configurables via TASK_TABLE_COLUMNS
-
+[ ] Trier les éléments UI (signals, delegates, ...) voir ui_checklist.md
+    Rendre les delegates eux-mêmes configurables via TASK_TABLE_COLUMNS 
     Avoir des mappings dynamiques field → delegate
-    (ce qui te permettra demain d'ajouter facilement d’autres types de colonnes interactives sans toucher TaskTableView !)
-
-
+    
 
 [ ] SettingsManager
 

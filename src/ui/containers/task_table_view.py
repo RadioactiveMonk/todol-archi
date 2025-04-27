@@ -53,8 +53,4 @@ class TaskTableView(QTableView):
 
     def setup_signals(self):
         """Connect the signals to the slots dynamically based on delegates"""
-        for delegate in self.column_delegates.values():
-            if hasattr(delegate, "deleteClicked"):
-                delegate.deleteClicked.connect(self.table_model.handle_delete_task)
-            if hasattr(delegate, "editClicked"):
-                delegate.editClicked.connect(self.table_model.handle_edit_task)
+        pass
