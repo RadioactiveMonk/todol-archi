@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 
 def ask_replacements() -> Dict[str, str]:
-    text = input("Type text to replace (src/): ")
+    text = input("Type text to replace (src/*.py): ")
     new_text = input("Type new text: ")
     return {text: new_text}
 
