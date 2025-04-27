@@ -3,9 +3,8 @@ import sys
 
 from loguru import logger
 
-from utils.path_utils import LOG_DIR
+from utils.path_utils import APP_LOG_FILE
 
-LOG_FILE = LOG_DIR / "app.log"
 
 # Improved log format
 log_format = (
@@ -28,7 +27,7 @@ logger.add(
 
 # File logger with rotation and retention
 logger.add(
-    LOG_FILE,
+    APP_LOG_FILE,
     rotation="500 KB",
     retention="10 days",
     level="DEBUG",
