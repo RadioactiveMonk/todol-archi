@@ -76,6 +76,10 @@ black:
 	@echo "🎨 Formatage du code avec Black..."
 	black $(SRC) $(TESTS)
 
+filepath:
+	@echo "Adding path comment to files ..."
+	$(PYTHON) scripts/comment_filepath.py
+
 docs:
 	@echo "📚 Génération de la documentation avec Sphinx..."
 	sphinx-apidoc -o $(DOCS) $(SRC)
@@ -97,5 +101,6 @@ help:
 	@echo "  make typecheck     → Vérifier les types avec Mypy"
 	@echo "  make sec_check     → Vérifier la sécurité avec Bandit"
 	@echo "  make black         → Formatter le code avec Black"
+	@echo "  make filepath      → Ajoute le chemin du fichier en première ligne"
 	@echo "  make docs          → Générer la documentation avec Sphinx"
 	@echo "  make help          → Afficher cette aide"
