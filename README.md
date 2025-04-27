@@ -12,102 +12,107 @@ Expérimentation de patterns avancés (Factory, SOLID, Inversion de dépendance,
 
 ## Base
 
-- PyQt6
+- PySide6
 - SQLite
 - Architecture modulaire orientée objets
 
-## Structure (07-04-25)
+## Structure (27-04-25)
 
 ```bash
-src
+src/
+├── config
+│   └── __init__.py
 ├── core
-│   ├── api
-│   │   ├── dependencies.py
-│   │   ├── __init__.py
-│   │   ├── routes.py
-│   │   ├── schemas.py
-│   │   └── utils.py
-│   ├── database
-│   │   ├── ask_db.py
-│   │   ├── init_db.py
-│   │   ├── __init__.py
-│   │   └── todo_db.md
-│   ├── app_constants.py
-│   ├── config.py
-│   ├── database_config.py
-│   ├── default_values.py
-│   ├── __init__.py
-│   ├── path.py
-│   ├── settings_manager.py
-│   └── sql_schema.py
+│   ├── api
+│   │   ├── api_utils.py
+│   │   ├── dependencies.py
+│   │   ├── __init__.py
+│   │   ├── routes.py
+│   │   └── schemas.py
+│   ├── app_metadata.py
+│   ├── db.py
+│   ├── __init__.py
+│   ├── settings_manager.py
+│   └── todo_db.md
 ├── factory
-│   ├── dialog_factory.py
-│   ├── factory_utils.py
-│   ├── handler_factory.py
-│   ├── icon_factory.py
-│   ├── __init__.py
-│   ├── mainwindow_factory.py
-│   └── notification_factory.py
+│   ├── dialog_factory.py
+│   ├── factory_utils.py
+│   ├── handler_factory.py
+│   ├── icon_factory.py
+│   ├── __init__.py
+│   ├── mainwindow_factory.py
+│   └── notification_factory.py
 ├── handlers
-│   ├── __init__.py
-│   └── task_handlers.py
+│   ├── __init__.py
+│   └── task_handlers.py
 ├── helpers
-│   ├── cached_utils.py
-│   ├── contextmanagers.py
-│   ├── converters.py
-│   ├── csv_utils.py
-│   ├── __init__.py
-│   ├── log_utils.py
-│   ├── status_constants.py
-│   └── ui_helpers.py
+│   ├── contextmanagers.py
+│   ├── converters.py
+│   └── __init__.py
 ├── models
-│   ├── __init__.py
-│   ├── task_core.py
-│   ├── task.py
-│   ├── task_table_model.py
-│   └── task_table_utils.py
+│   ├── __init__.py
+│   ├── task_core.py
+│   ├── task.py
+│   └── task_table_model.py
+├── todol_archi.egg-info
+│   ├── dependency_links.txt
+│   ├── PKG-INFO
+│   ├── requires.txt
+│   ├── SOURCES.txt
+│   └── top_level.txt
 ├── ui
-│   ├── containers
-│   │   ├── __init__.py
-│   │   ├── menu_bar.py
-│   │   ├── search_tasks.py
-│   │   └── task_table.py
-│   ├── controls
-│   │   ├── category_selector.py
-│   │   ├── custom_button.py
-│   │   ├── expiration_selector.py
-│   │   ├── __init__.py
-│   │   └── theme_selector.py
-│   ├── delegates
-│   │   ├── edit_delegate.py
-│   │   ├── __init__.py
-│   │   └── status_delegate.py
-│   ├── dialogs
-│   │   ├── add_task_dialog.py
-│   │   ├── edit_parameters_dialog.py
-│   │   └── __init__.py
-│   ├── resources
-│   │   ├── icons
-│   │   │   ├── app_icon.png
-│   │   │   ├── check_task.png
-│   │   │   ├── check_task.svg
-│   │   │   ├── delete_task.png
-│   │   │   ├── delete_task.svg
-│   │   │   ├── edit_settings.png
-│   │   │   ├── edit_task.png
-│   │   │   ├── edit_task.svg
-│   │   │   └── new_task.png
-│   │   └── stylesheets
-│   │       ├── dark.qss
-│   │       ├── default.qss
-│   │       └── system.qss
-│   ├── theme
-│   │   ├── style_loader.py
-│   │   └── themes.json
-│   ├── cell_properties.py
-│   ├── __init__.py
-│   ├── main_window.py
-│   └── ui_constants.py
+│   ├── containers
+│   │   ├── __init__.py
+│   │   ├── menu_bar.py
+│   │   ├── search_tasks.py
+│   │   └── task_table_view.py
+│   ├── controls
+│   │   ├── category_selector.py
+│   │   ├── custom_button.py
+│   │   ├── expiration_selector.py
+│   │   ├── __init__.py
+│   │   └── theme_selector.py
+│   ├── delegates
+│   │   ├── edit_delegate.py
+│   │   ├── __init__.py
+│   │   └── status_delegate.py
+│   ├── dialogs
+│   │   ├── add_task_dialog.py
+│   │   ├── edit_parameters_dialog.py
+│   │   └── __init__.py
+│   ├── resources
+│   │   ├── icons
+│   │   │   ├── app_icon.png
+│   │   │   ├── delete_task.png
+│   │   │   ├── edit_settings.png
+│   │   │   ├── edit_task.png
+│   │   │   └── new_task.png
+│   │   └── stylesheets
+│   │       ├── dark.qss
+│   │       ├── default.qss
+│   │       └── system.qss
+│   ├── theme
+│   │   ├── style_loader.py
+│   │   └── themes.json
+│   ├── __init__.py
+│   └── main_window.py
+├── utils
+│   ├── category_utils.py
+│   ├── csv_utils.py
+│   ├── db_utils.py
+│   ├── default_values.py
+│   ├── init_db.py
+│   ├── __init__.py
+│   ├── log_utils.py
+│   ├── path_utils.py
+│   ├── README.md
+│   ├── status_utils.py
+│   ├── task_table_column_utils.py
+│   ├── ui_geometry_utils.py
+│   ├── ui_icons_utils.py
+│   ├── ui_text_utils.py
+│   ├── ui_theme_utils.py
+│   └── view_utils.py
 ├── __init__.py
 └── main.py
 ```
