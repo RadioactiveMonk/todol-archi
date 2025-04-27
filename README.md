@@ -33,7 +33,7 @@ src/
 │   ├── db.py
 │   ├── __init__.py
 │   ├── settings_manager.py
-│   └── todo_db.md
+│   
 ├── factory
 │   ├── dialog_factory.py
 │   ├── factory_utils.py
@@ -54,12 +54,6 @@ src/
 │   ├── task_core.py
 │   ├── task.py
 │   └── task_table_model.py
-├── todol_archi.egg-info
-│   ├── dependency_links.txt
-│   ├── PKG-INFO
-│   ├── requires.txt
-│   ├── SOURCES.txt
-│   └── top_level.txt
 ├── ui
 │   ├── containers
 │   │   ├── __init__.py
