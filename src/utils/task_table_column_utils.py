@@ -94,7 +94,10 @@ def get_column_by_name(name: str) -> TaskTableColumn:
 
 
 def get_column_index(field: str) -> Optional[int]:
-    """Return the index of the column with the given field name."""
+    """
+    Return the index of the column with the given field name.
+    Return None if no column found.
+    """
     for index, column in enumerate(TASK_TABLE_COLUMNS):
         if column.field == field:
             return index
