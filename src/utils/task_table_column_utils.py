@@ -65,7 +65,7 @@ TASK_TABLE_COLUMNS = [
         editable=False,
         flags=flags_selectable(),
     ),
-    TaskTableColumn(name="Title", field="title", width=250),
+    TaskTableColumn(name="Title", field="title", width=250, tooltip="Task title"),
     TaskTableColumn(name="Category", field="category"),
     TaskTableColumn(
         name="Status",
@@ -91,6 +91,13 @@ def get_column_by_name(name: str) -> TaskTableColumn:
             return column
     logger.error(f"Column '{name}' not found.")
     raise
+
+def get_column_index(field: str) -> Optional[int]:
+    """Return the index of the column with the given field name."""
+    for index, column in enumerate(TASK_TABLE_COLUMNS):
+        if column.field == field:
+            return index
+    return None
 
 
 def get_all_column_names() -> list[str]:

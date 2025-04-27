@@ -9,11 +9,11 @@ from PySide6.QtWidgets import (
 )
 
 from core.db import DB
-from core.path import ICONS_DIR
+from utils.path_utils import ICONS_DIR
 from models.task import Task
 from ui.containers.menu_bar import MenuBar
 from ui.containers.search_tasks import SearchTasks
-from ui.containers.task_table import TaskTable
+from ui.containers.task_table_view import TaskTableView
 from ui.controls.custom_button import CustomButton
 from ui.dialogs.add_task_dialog import AddTaskDialog
 from ui.dialogs.edit_parameters_dialog import EditParametersDialog

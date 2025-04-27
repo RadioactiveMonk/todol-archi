@@ -2,20 +2,17 @@ from typing import Any, Dict, List
 
 from PySide6.QtWidgets import QTableView, QWidget
 
-from core.path import DB_FILE
 from handlers.task_handlers import TaskHandlers
 from helpers.contextmanagers import open_db
 from models.task_table_model import TaskTableModel
-from models.task_table_utils import (
-    COLUMN_WIDTHS,
-    EDIT_COLUMN,
-    TASK_TABLE_HEADERS,
-)
 from ui.delegates.edit_delegate import EditDelegate
 from ui.delegates.status_delegate import StatusEditDelegate
+from utils.path_utils import DB_FILE
+from utils.task_table_column_utils import TASK_TABLE_COLUMNS
+from utils.view_utils import apply_column_config
 
 
-class TaskTable(QTableView):
+class TaskTableView(QTableView):
     """Display the tasks in a table"""
 
     def __init__(self, parent: QWidget | None = None) -> None:
@@ -54,16 +51,28 @@ class TaskTable(QTableView):
         if vheader:
             vheader.setVisible(False)
 
-        for col, width in COLUMN_WIDTHS.items():
-            self.setColumnWidth(col, width)
+        apply_column_config(self, TASK_TABLE_COLUMNS)
 
     def setup_delegates(self):
         """Setup the delegates for the table"""
         self.delegate = EditDelegate(self)
-        self.setItemDelegateForColumn(
-            TASK_TABLE_HEADERS.index(EDIT_COLUMN), self.delegate
+
+        # Trouver dynamiquement l'index pour "Edit"
+        edit_column_index = next(
+            (i for i, col in enumerate(TASK_TABLE_COLUMNS) if col.field == "edit"), None
         )
-        self.setItemDelegateForColumn(0, StatusEditDelegate())
+
+        if edit_column_index is not None:
+            self.setItemDelegateForColumn(edit_column_index, self.delegate)
+
+        # Trouver dynamiquement l'index pour "Status"
+        status_column_index = next(
+            (i for i, col in enumerate(TASK_TABLE_COLUMNS) if col.field == "completed"),
+            None,
+        )
+
+        if status_column_index is not None:
+            self.setItemDelegateForColumn(status_column_index, StatusEditDelegate())
 
     def setup_signals(self):
         """Connect the signals to the slots"""
