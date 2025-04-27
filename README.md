@@ -20,95 +20,62 @@ Expérimentation de patterns avancés (Factory, SOLID, Inversion de dépendance,
 
 ```bash
 src/
-├── config
+├── config/                  # Fichiers de configuration de l'application
 │   └── __init__.py
-├── core
-│   ├── api
-│   │   ├── api_utils.py
-│   │   ├── dependencies.py
-│   │   ├── __init__.py
-│   │   ├── routes.py
-│   │   └── schemas.py
-│   ├── app_metadata.py
-│   ├── db.py
-│   ├── __init__.py
-│   ├── settings_manager.py
-│   
-├── factory
-│   ├── dialog_factory.py
-│   ├── factory_utils.py
-│   ├── handler_factory.py
-│   ├── icon_factory.py
-│   ├── __init__.py
-│   ├── mainwindow_factory.py
-│   └── notification_factory.py
-├── handlers
-│   ├── __init__.py
-│   └── task_handlers.py
-├── helpers
+│
+├── core/                     # Composants centraux (logique principale et fondations)
+│   ├── api/                  # Endpoints de l'API et schémas de validation
+│   ├── factory/              # Fabriques d'objets complexes (UI, dialogues, icônes)
+│   ├── app_metadata.py       # Métadonnées de l'application
+│   ├── db.py                 # Gestion de la base de données
+│   ├── settings_manager.py   # Gestion centralisée des paramètres utilisateur
+│   └── __init__.py
+│
+├── handlers/                 # Logique métier spécifique aux actions de l'application
+│   ├── task_handlers.py      # Gestion des actions sur les tâches
+│   └── __init__.py
+│
+├── helpers/                  # Utilitaires spécialisés (context managers, conversions)
 │   ├── contextmanagers.py
 │   ├── converters.py
 │   └── __init__.py
-├── models
-│   ├── __init__.py
-│   ├── task_core.py
+│
+├── models/                   # Représentation des entités métier (modèles de données)
 │   ├── task.py
-│   └── task_table_model.py
-├── ui
-│   ├── containers
-│   │   ├── __init__.py
-│   │   ├── menu_bar.py
-│   │   ├── search_tasks.py
-│   │   └── task_table_view.py
-│   ├── controls
-│   │   ├── category_selector.py
-│   │   ├── custom_button.py
-│   │   ├── expiration_selector.py
-│   │   ├── __init__.py
-│   │   └── theme_selector.py
-│   ├── delegates
-│   │   ├── edit_delegate.py
-│   │   ├── __init__.py
-│   │   └── status_delegate.py
-│   ├── dialogs
-│   │   ├── add_task_dialog.py
-│   │   ├── edit_parameters_dialog.py
-│   │   └── __init__.py
-│   ├── resources
-│   │   ├── icons
-│   │   │   ├── app_icon.png
-│   │   │   ├── delete_task.png
-│   │   │   ├── edit_settings.png
-│   │   │   ├── edit_task.png
-│   │   │   └── new_task.png
-│   │   └── stylesheets
-│   │       ├── dark.qss
-│   │       ├── default.qss
-│   │       └── system.qss
-│   ├── theme
-│   │   ├── style_loader.py
-│   │   └── themes.json
-│   ├── __init__.py
-│   └── main_window.py
-├── utils
+│   ├── task_core.py
+│   ├── task_table_model.py
+│   └── __init__.py
+│
+├── ui/                       # Composants visibles et interactifs (interface graphique)
+│   ├── containers/           # Grandes sections UI (menus, tables)
+│   ├── controls/             # Composants interactifs (boutons, sélecteurs)
+│   ├── delegates/            # Délégués de rendu / édition pour les vues
+│   ├── dialogs/              # Fenêtres de dialogue (ajout, édition)
+│   ├── resources/            # Ressources statiques (icônes, stylesheets)
+│   ├── theme/                # Gestion des thèmes graphiques
+│   ├── main_window.py        # Fenêtre principale de l'application
+│   └── __init__.py
+│
+├── utils/                    # Fonctions utilitaires transversales (non spécifiques à un module)
 │   ├── category_utils.py
 │   ├── csv_utils.py
 │   ├── db_utils.py
 │   ├── default_values.py
 │   ├── init_db.py
-│   ├── __init__.py
 │   ├── log_utils.py
 │   ├── path_utils.py
-│   ├── README.md
 │   ├── status_utils.py
 │   ├── task_table_column_utils.py
 │   ├── ui_geometry_utils.py
 │   ├── ui_icons_utils.py
 │   ├── ui_text_utils.py
 │   ├── ui_theme_utils.py
-│   └── view_utils.py
-├── __init__.py
-└── main.py
+│   ├── view_utils.py
+│   ├── README.md
+│   └── __init__.py
+│
+├── main.py                   # Point d'entrée principal de l'application
+└── __init__.py
 ```
 
 
