@@ -21,7 +21,7 @@ class TaskTableView(QTableView):
         parent : QWidget | None, optional
             the parent widget, by default None
         """
-
+        
         super().__init__(parent)
         with open_db(DB_FILE) as db:
             tasks: List[Dict[str, Any]] = db.get_all_tasks()

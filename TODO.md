@@ -65,7 +65,7 @@ Bloc B — Organisation claire des responsabilités
 
 [x] Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
 
-### ui_checklist.md
+### ui_checklist.md (renvoyer lien git)
     Trier les éléments UI (signals, delegates, ...)
     Rendre les delegates eux-mêmes configurables via TASK_TABLE_COLUMNS 
     Avoir des mappings dynamiques field → delegate
