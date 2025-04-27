@@ -1,10 +1,10 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QTableView
 
+from ui.containers.task_table_view import TaskTableView
 from utils.task_table_column_utils import TaskTableColumn
 
 
-def apply_column_config(view: QTableView, columns: list[TaskTableColumn]) -> None:
+def apply_column_config(view: TaskTableView, columns: list[TaskTableColumn]) -> None:
     """
     Apply column configuration to a QTableView based on provided TaskTableColumn list.
     """
@@ -19,3 +19,9 @@ def apply_column_config(view: QTableView, columns: list[TaskTableColumn]) -> Non
                 column.tooltip,
                 role=Qt.ItemDataRole.ToolTipRole,
             )
+        if column.delegate:
+            delegate_instance = column.delegate(view)
+            view.setItemDelegateForColumn(index, delegate_instance)
+
+            if hasattr(view, "column_delegates"):
+                view.column_delegates[index] = delegate_instance

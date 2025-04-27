@@ -1,14 +1,12 @@
 from typing import Any, Dict, List
 
-from PySide6.QtWidgets import QTableView, QWidget
+from PySide6.QtWidgets import QStyledItemDelegate, QTableView, QWidget
 
 from handlers.task_handlers import TaskHandlers
 from helpers.contextmanagers import open_db
 from models.task_table_model import TaskTableModel
-from ui.delegates.edit_delegate import EditDelegate
-from ui.delegates.status_delegate import StatusEditDelegate
 from utils.path_utils import DB_FILE
-from utils.task_table_column_utils import TASK_TABLE_COLUMNS, get_column_index
+from utils.task_table_column_utils import TASK_TABLE_COLUMNS
 from utils.view_utils import apply_column_config
 
 
@@ -31,10 +29,10 @@ class TaskTableView(QTableView):
         self.table_model = TaskTableModel(
             parent=self, task_handlers=self.task_handlers, tasks=tasks
         )  # Create the model
+        self.column_delegates: dict[int, QStyledItemDelegate] = {}
 
         self.setModel(self.table_model)  # Set the model to the table
         self.setup_ui()
-        self.setup_delegates()
         self.setup_signals()
 
     def setup_ui(self):
@@ -53,23 +51,10 @@ class TaskTableView(QTableView):
 
         apply_column_config(self, TASK_TABLE_COLUMNS)
 
-    def setup_delegates(self):
-        """Setup the delegates for the table"""
-        self.delegate = EditDelegate(self)
-
-        # Trouver dynamiquement l'index pour "Edit"
-        edit_column_index = get_column_index("edit")
-
-        if edit_column_index is not None:
-            self.setItemDelegateForColumn(edit_column_index, self.delegate)
-
-        # Trouver dynamiquement l'index pour "Status"
-        status_column_index = get_column_index("completed")
-
-        if status_column_index is not None:
-            self.setItemDelegateForColumn(status_column_index, StatusEditDelegate())
-
     def setup_signals(self):
-        """Connect the signals to the slots"""
-        self.delegate.deleteClicked.connect(self.table_model.handle_delete_task)
-        self.delegate.editClicked.connect(self.table_model.handle_edit_task)
+        """Connect the signals to the slots dynamically based on delegates"""
+        for delegate in self.column_delegates.values():
+            if hasattr(delegate, "deleteClicked"):
+                delegate.deleteClicked.connect(self.table_model.handle_delete_task)
+            if hasattr(delegate, "editClicked"):
+                delegate.editClicked.connect(self.table_model.handle_edit_task)

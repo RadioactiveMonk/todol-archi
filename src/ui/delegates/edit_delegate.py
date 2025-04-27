@@ -16,8 +16,8 @@ class EditDelegate(QStyledItemDelegate):
     Affiche des icônes (ex: edit, delete) et gère les clics dessus.
     """
 
-    editClicked = pyqtSignal(int)  # row index
-    deleteClicked = pyqtSignal(int)  # row index
+    editClicked = Signal(int)  # row index
+    deleteClicked = Signal(int)  # row index
 
     def __init__(self, parent: QWidget | None = None):
         """Initialise les icônes"""
