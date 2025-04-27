@@ -15,15 +15,19 @@ def preview_and_apply(src_dir: Path = Path("src")) -> Any:
 
     for file in src_dir.rglob("*.py"):
         content = file.read_text(encoding="utf-8")
-        original = content
+        original_content = content 
+
+        # Applique les remplacements
         for old, new in replacements.items():
             content = content.replace(old, new)
 
-        if content != original:
+        if content != original_content:
             changes_found = True
             print(f"\n--- Changes proposed for: {file} ---")
             print("-" * 50)
-            print(content)
+            print(
+                "\n".join(content.splitlines()[:20])
+            )  # <--- Affiche seulement les 20 lignes modifiées
             print("-" * 50)
 
             choice = input("Do you wish to apply these changes? (y/n): ").lower()
