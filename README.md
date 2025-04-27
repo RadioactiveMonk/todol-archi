@@ -16,7 +16,7 @@ Expérimentation de patterns avancés (Factory, SOLID, Inversion de dépendance,
 - SQLite
 - Architecture modulaire orientée objets
 
-## Structure (27-04-25)
+## Structure non définitive (27-04-25)
 
 ```bash
 src/
