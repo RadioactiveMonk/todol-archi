@@ -53,6 +53,8 @@ class TaskTableColumn:
     editable: bool = True
     alignment: Qt.AlignmentFlag = text_alignment("center")
     flags: Optional[Qt.ItemFlag] = None
+    visible: bool = True
+    tooltip: Optional[str] = None
 
 
 TASK_TABLE_COLUMNS = [
