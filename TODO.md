@@ -60,13 +60,16 @@ Bloc B — Organisation claire des responsabilités
 ## Bloc C — Refactoring Pythonic & bonnes pratiques
 
 > Rendre le code élégant, DRY, et idiomatique
+
 [x] apply_column_config(view)
+
 [x] Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
-[ ] Trier les éléments UI (signals, delegates, ...) voir ui_checklist.md
+
+### ui_checklist.md
+    Trier les éléments UI (signals, delegates, ...)
     Rendre les delegates eux-mêmes configurables via TASK_TABLE_COLUMNS 
     Avoir des mappings dynamiques field → delegate
     
-
 [ ] SettingsManager
 
 [ ] Pydantic ? Pre commit hooks
