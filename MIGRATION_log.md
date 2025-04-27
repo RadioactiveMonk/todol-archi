@@ -197,3 +197,17 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Projet désormais basé sur PySide6 (officiel Qt)
 - Structure identique, fonctionnement garanti
 - Prêt pour les prochaines étapes de structuration et d'UI
+
+
+
+## ----------------------------- Refactoring -------------------------------
+
+## 📆 27/04/2025
+- Création branche `refacto`
+- Renommage TaskTable -> TaskTableView
+- Création dossier config/
+- Création view_utils.py + fonction apply_column_config()
+- Ajout attributs visible, tooltip à TaskTableColumn
+- Création helper get_column_index()
+- Adaptation de setup_delegates() pour appels dynamiques (plus de valeurs magiques)
+- Validation OK sans warning

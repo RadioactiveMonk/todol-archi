@@ -8,7 +8,7 @@ from models.task_table_model import TaskTableModel
 from ui.delegates.edit_delegate import EditDelegate
 from ui.delegates.status_delegate import StatusEditDelegate
 from utils.path_utils import DB_FILE
-from utils.task_table_column_utils import TASK_TABLE_COLUMNS
+from utils.task_table_column_utils import TASK_TABLE_COLUMNS, get_column_index
 from utils.view_utils import apply_column_config
 
 
@@ -58,18 +58,13 @@ class TaskTableView(QTableView):
         self.delegate = EditDelegate(self)
 
         # Trouver dynamiquement l'index pour "Edit"
-        edit_column_index = next(
-            (i for i, col in enumerate(TASK_TABLE_COLUMNS) if col.field == "edit"), None
-        )
+        edit_column_index = get_column_index("edit")
 
         if edit_column_index is not None:
             self.setItemDelegateForColumn(edit_column_index, self.delegate)
 
         # Trouver dynamiquement l'index pour "Status"
-        status_column_index = next(
-            (i for i, col in enumerate(TASK_TABLE_COLUMNS) if col.field == "completed"),
-            None,
-        )
+        status_column_index = get_column_index("completed")
 
         if status_column_index is not None:
             self.setItemDelegateForColumn(status_column_index, StatusEditDelegate())
