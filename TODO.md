@@ -57,11 +57,17 @@ Bloc B — Organisation claire des responsabilités
 
 ---
 
-Bloc C — Refactoring Pythonic & bonnes pratiques
+## Bloc C — Refactoring Pythonic & bonnes pratiques
 
 > Rendre le code élégant, DRY, et idiomatique
-apply_column_config(view)
-Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
+[x] apply_column_config(view)
+[x] Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
+[ ] Rendre les delegates eux-mêmes configurables via TASK_TABLE_COLUMNS
+
+    Avoir des mappings dynamiques field → delegate
+    (ce qui te permettra demain d'ajouter facilement d’autres types de colonnes interactives sans toucher TaskTableView !)
+
+
 
 [ ] SettingsManager
 
