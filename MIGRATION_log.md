@@ -211,3 +211,4 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Création helper get_column_index()
 - Adaptation de setup_delegates() pour appels dynamiques (plus de valeurs magiques)
 - Validation OK sans warning
+- Préparation pour une meilleur séparation des responsabilités pour TaskTableView
