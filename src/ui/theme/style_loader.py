@@ -6,9 +6,9 @@ from pathlib import Path
 
 from PySide6.QtWidgets import QApplication
 
-from core.path import STYLESHEETS_DIR
+from utils.path_utils import STYLESHEETS_DIR
 from core.settings_manager import get_setting
-from ui.ui_constants import DEFAULT_THEME
+from utils.ui_geometry_utils import DEFAULT_THEME
 
 
 def apply_stylesheet(app: QApplication, qss: str) -> None:
@@ -34,7 +34,7 @@ def get_stylesheet(theme: str) -> str:
 
     """
 
-    from helpers.log_utils import logger
+    from utils.log_utils import logger
 
     qss_file = Path(STYLESHEETS_DIR) / f"{theme}.qss"
     try:
@@ -57,7 +57,7 @@ def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
         by default DEFAULT_THEME
     """
 
-    from helpers.log_utils import logger
+    from utils.log_utils import logger
 
     try:
         qss = get_stylesheet(theme)

@@ -1,7 +1,7 @@
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QPushButton, QWidget
 
-from core.path import ICONS_DIR
+from utils.path_utils import ICONS_DIR
 
 
 class CustomButton(QPushButton):

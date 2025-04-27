@@ -1,9 +1,9 @@
-from PySide6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, pyqtSignal
+from PySide6.QtCore import QAbstractItemModel, QEvent, QModelIndex, QRect, Signal
 from PySide6.QtGui import QIcon, QMouseEvent, QPainter
 from PySide6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
 
-from core.path import ICONS_DIR
-from ui.ui_constants import (
+from utils.path_utils import ICONS_DIR
+from utils.ui_geometry_utils import (
     EDIT_ICON_SIZE,
     EDIT_ICON_SPACING,
     EDIT_SECTION_POSITIONS,

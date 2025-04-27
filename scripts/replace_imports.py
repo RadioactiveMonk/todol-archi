@@ -1,13 +1,14 @@
 from pathlib import Path
-from typing import Any
-
-# Mapping des constantes déplacées
-replacements = {
-    "from PyQt6": "from PySide6",
-}
+from typing import Any, Dict
 
 
-def preview_and_apply(src_dir: Path = Path("src")) -> Any:
+def ask_replacements() -> Dict[str, str]:
+    text = input("Type text to replace (src/): ")
+    new_text = input("Type new text: ")
+    return {text: new_text}
+
+
+def preview_and_apply(replacements: Dict[str, str], src_dir: Path = Path("src")) -> Any:
     """
     Display a preview of the changes and ask confirmation before applying.
     """
@@ -15,7 +16,7 @@ def preview_and_apply(src_dir: Path = Path("src")) -> Any:
 
     for file in src_dir.rglob("*.py"):
         content = file.read_text(encoding="utf-8")
-        original_content = content 
+        original_content = content
 
         # Applique les remplacements
         for old, new in replacements.items():
@@ -23,11 +24,17 @@ def preview_and_apply(src_dir: Path = Path("src")) -> Any:
 
         if content != original_content:
             changes_found = True
-            print(f"\n--- Changes proposed for: {file} ---")
+            original_lines = original_content.splitlines()
+            modified_lines = content.splitlines()
+
+            print(f"\n🟦 Lines modification in: {file}")
             print("-" * 50)
-            print(
-                "\n".join(content.splitlines()[:20])
-            )  # <--- Affiche seulement les 20 lignes modifiées
+
+            for orig, mod in zip(original_lines, modified_lines):
+                if orig != mod:
+                    print(f"🟧 {orig}")
+                    print(f"🟩 {mod}")
+
             print("-" * 50)
 
             choice = input("Do you wish to apply these changes? (y/n): ").lower()
@@ -45,4 +52,5 @@ def preview_and_apply(src_dir: Path = Path("src")) -> Any:
 
 
 if __name__ == "__main__":
-    preview_and_apply()
+    replacements = ask_replacements()
+    preview_and_apply(replacements)

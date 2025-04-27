@@ -2,9 +2,9 @@ import json
 from typing import Any, Dict
 
 from core.default_values import CATEGORIES
-from core.path import SETTINGS_FILE
-from helpers.log_utils import logger
-from ui.ui_constants import DEFAULT_THEME
+from utils.path_utils import SETTINGS_FILE
+from utils.log_utils import logger
+from utils.ui_geometry_utils import DEFAULT_THEME
 
 
 def load_settings() -> Dict[str, Any]:

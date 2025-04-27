@@ -18,7 +18,7 @@ from core.settings_manager import (
 from ui.controls.category_selector import CategorySelector
 from ui.controls.theme_selector import ThemeSelector
 from ui.theme.style_loader import reload_theme
-from ui.ui_constants import (
+from utils.ui_geometry_utils import (
     EDIT_PARAMETERS_DIALOG_GEOMETRY,
     EDIT_PARAMETERS_DIALOG_TITLE,
 )

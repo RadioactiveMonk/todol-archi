@@ -2,7 +2,7 @@
 
 from PySide6.QtWidgets import QMainWindow
 
-from core.path import DB_FILE
+from utils.path_utils import DB_FILE
 from helpers.contextmanagers import open_db
 from ui.main_window import MainWindow
 
