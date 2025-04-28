@@ -7,6 +7,7 @@ from helpers.contextmanagers import open_db
 from models.task_table_model import TaskTableModel
 from utils.delegate_utils import apply_delegate_for_column
 from utils.path_utils import DB_FILE
+from utils.signal_utils import connect_delegate_signals
 from utils.task_table_column_utils import TASK_TABLE_COLUMNS
 from utils.view_utils import apply_column_config
 
@@ -55,4 +56,4 @@ class TaskTableView(QTableView):
 
     def setup_signals(self):
         """Connect the signals to the slots dynamically based on delegates"""
-        pass
+        connect_delegate_signals(self)
