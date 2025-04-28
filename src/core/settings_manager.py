@@ -1,9 +1,9 @@
 import json
 from typing import Any, Dict
 
-from core.default_values import CATEGORIES
-from utils.path_utils import SETTINGS_FILE
+from utils.default_values import CATEGORIES
 from utils.log_utils import logger
+from utils.path_utils import SETTINGS_FILE
 from utils.ui_geometry_utils import DEFAULT_THEME
 
 

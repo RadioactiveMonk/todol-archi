@@ -1,10 +1,10 @@
-# src/factory/mainwindow_factory.py
+# src/core/factory/mainwindow_factory.py
 
 from PySide6.QtWidgets import QMainWindow
 
-from utils.path_utils import DB_FILE
 from helpers.contextmanagers import open_db
 from ui.main_window import MainWindow
+from utils.path_utils import DB_FILE
 
 
 class MainWindowFactory:

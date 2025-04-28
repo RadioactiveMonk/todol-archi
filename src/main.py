@@ -3,7 +3,7 @@ import sys
 from PySide6.QtWidgets import QApplication
 from rich.traceback import install
 
-from factory.mainwindow_factory import MainWindowFactory
+from core.factory.mainwindow_factory import MainWindowFactory
 from utils.init_db import init_db
 
 
