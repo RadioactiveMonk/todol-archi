@@ -4,6 +4,7 @@
 PYTHON := python
 VENV := .venv
 SRC := src
+TOOLS := tools
 TESTS := tests
 DOCS := docs
 REQUIREMENTS := requirements.txt
@@ -13,27 +14,23 @@ REQUIREMENTS := requirements.txt
 
 run:
 	@echo "Lancement de l'application..."
-	$(PYTHON) $(SRC)/main.py
+	poetry run python $(SRC)/main.py
 
 test:
 	@echo "Lancement des tests Pytest..."
-	PYTHONPATH=$(SRC) pytest -v $(TESTS)
+	poetry run pytest -v $(TESTS)
 
 ruffall:
-	@echo "🎨 Formatage avec Ruff..."
-	ruff format $(SRC) $(TESTS)
-	@echo "🧼 Linting avec Ruff (fix)..."
-	ruff check $(SRC) $(TESTS) --fix 
-
-reload:
-	@echo "🚀 Lancement d'IPython avec reload_all.py..."
-	PYTHONPATH=$(SRC) ipython -i scripts/reload_all.py
+	@echo "🎨 Formatage avec Ruff via Poetry..."
+	poetry run ruff $(SRC) $(TESTS) --fix
+	@echo "🧼 Linting avec Ruff via Poetry..."
+	poetry run ruff check $(SRC) $(TESTS)
 
 gpush:
 	@echo "Ajout des fichiers au dépôt Git..."
 	git add .
 	git commit -m "$(m)"
-	git push -u origin $(git branch --show-current)
+	git push -u origin $$(git branch --show-current)
 
 gmain:
 	@echo "Switch sur branche 'main'"
@@ -46,51 +43,49 @@ clean:
 	@echo "✅ Pyc & __pycache__ supprimés."
 
 install:
-	@echo "📦 Installation des dépendances..."
-	pip install --upgrade pip
-	pip install .[dev]
+	@echo "📦 Installation des dépendances avec Poetry..."
+	poetry install
 
 venv:
-	@echo "📦 Création de l'environnement virtuel..."
-	$(PYTHON) -m venv $(VENV)
+	@echo "📦 Création de l'environnement virtuel avec Poetry..."
+	poetry env use $(PYTHON)
 
 update_deps:
-	@echo "📦 Mise à jour des dépendances..."
-	pip install --upgrade -r $(REQUIREMENTS)
+	@echo "📦 Mise à jour des dépendances avec Poetry..."
+	poetry update
 
 coverage:
 	@echo "📊 Mesure de la couverture de code..."
-	coverage run -m pytest $(TESTS)
-	coverage report
-	coverage html
+	poetry run coverage run -m pytest $(TESTS)
+	poetry run coverage report
+	poetry run coverage html
 
 typecheck:
-	@echo "🔍 Vérification des types avec Mypy..."
-	mypy $(SRC) $(TESTS)
+	@echo "🔍 Vérification des types avec Mypy via Poetry..."
+	poetry run mypy $(SRC) $(TESTS)
 
 sec_check:
-	@echo "🔐 Vérification de la sécurité avec Bandit..."
-	bandit -r $(SRC)
+	@echo "🔐 Vérification de la sécurité avec Bandit via Poetry..."
+	poetry run bandit -r $(SRC)
 
 black:
-	@echo "🎨 Formatage du code avec Black..."
-	black $(SRC) $(TESTS)
+	@echo "🎨 Formatage du code avec Black via Poetry..."
+	poetry run black $(SRC) $(TESTS)
 
 filepath:
 	@echo "Adding path comment to files ..."
-	$(PYTHON) scripts/comment_filepath.py
+	poetry run $(PYTHON) tools/comment_filepath.py
 
 docs:
-	@echo "📚 Génération de la documentation avec Sphinx..."
-	sphinx-apidoc -o $(DOCS) $(SRC)
-	sphinx-build -b html $(DOCS) $(DOCS)/_build
+	@echo "📚 Génération de la documentation avec Sphinx via Poetry..."
+	poetry run sphinx-apidoc -o $(DOCS) $(SRC)
+	poetry run sphinx-build -b html $(DOCS) $(DOCS)/_build
 
 help:
 	@echo "Commandes disponibles :"
 	@echo "  make run           → Lancer l'application"
 	@echo "  make test          → Lancer les tests"
 	@echo "  make ruffall       → Lint et formate avec Ruff"
-	@echo "  make reload        → Lancer IPython avec reload_all"
 	@echo "  make clean         → Nettoyer les fichiers temporaires"
 	@echo "  make gpush m="msg" → Add, commit, push"
 	@echo "  make gmain         → Switch vers la branche principale"
