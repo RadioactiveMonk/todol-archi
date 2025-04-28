@@ -16,7 +16,7 @@
 
 ### 1. Finalisation du système de configuration
 
-- [ ] Créer une vraie classe `SettingsManager`
+- [ ] Créer une vraie classe `SettingsManager` (besoin de helpers ? de utils ?) 
 - [ ] Permettre chargement, sauvegarde, mise à jour facile du `settings.json`
 - [ ] Définir clairement où sont stockés les paramètres utilisateurs
 - [ ] Poser des valeurs par défaut gérées proprement
