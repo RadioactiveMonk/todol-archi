@@ -6,7 +6,8 @@
   - **Affichage pur** (headers, tailles, visibilité, tooltips…)
   - **Comportements** (delegates interactifs)
   - **Signaux** (connexion des actions personnalisées)
-- Rendre l’UI **modulaire**, **propre**, **facile à maintenir** et **agréable à étendre**.
+- Réaligner **TaskTableModel** et **TaskTableView** sur la nouvelle base **TASK_TABLE_COLUMNS**
+- Rendre l’UI **modulaire**, **propre**, **facile à maintenir**, et **évolutive**.
 
 ---
 
@@ -14,41 +15,45 @@
 
 ### 1. Séparation des responsabilités
 
-| Cible | Action |
-|:------|:-------|
-| `apply_column_config(view, columns)` | Conserver ➔ dans `view_utils.py` |
-| `apply_delegate_for_column(view, columns)` | Créer ➔ (poser les delegates interactifs) |
-| `connect_delegate_signals(view)` | Créer ➔ (connecter dynamiquement les signaux) |
+- [x] `apply_column_config(view, columns)` ➔ dans `view_utils.py`
+- [x] `apply_delegate_for_column(view, columns)` ➔ créé dans `delegate_utils.py`
+- [x] `connect_delegate_signals(view)` ➔ créé dans `signal_utils.py`
 
 ---
 
-### 2. Nettoyage du `TaskTableView`
+### 2. Refondre le `TaskTableModel`
 
-| Action | Détail |
-|:-------|:-------|
-| Nettoyer `setup_ui()` | Ne laisser que l'affichage visuel |
-| Nettoyer `setup_signals()` | Remplacer par un appel à `connect_delegate_signals()` |
-| Supprimer `setup_delegates()` actuel | (plus utile, remplacé par `apply_delegate_for_column`) |
-| Appeler proprement les 2-3 helpers dans `__init__()` | Ex : `apply_column_config`, `apply_delegate_for_column`, `connect_delegate_signals` |
-
----
-
-### 3. Typage et sécurité
-
-| Action | Détail |
-|:-------|:-------|
-| Vérifier les attributs (`column_delegates`) | OK avec `hasattr()` ou cast dynamique si besoin |
-| Vérifier la présence des signaux avant connexion (`hasattr(delegate, "editClicked")`) | |
+- [ ] Nettoyer `rowCount()` et `columnCount()` (basés sur `TASK_TABLE_COLUMNS`)
+- [ ] Adapter `headerData()` (utiliser `TaskTableColumn.name`)
+- [ ] Adapter `data()` (utiliser `TaskTableColumn.field`)
+- [ ] Adapter `flags()` (utiliser `get_flags_for_column()`)
+- [ ] Adapter alignements (utiliser `text_alignment()`)
+- [ ] Supprimer l’usage de `TASK_TABLE_HEADERS` et reliques
 
 ---
 
-### 4. Tri des fichiers UI (bonus)
+### 3. Nettoyage du `TaskTableView`
 
-| Action | Détail |
-|:-------|:-------|
-| S'assurer que tout ce qui est "comportement" est dans un fichier dédié | (ex: `delegate_utils.py`) |
-| S'assurer que tout ce qui est "connexion de signaux" est proprement isolé | (ex: `signal_utils.py` si besoin) |
-| Regrouper les helpers visuels de base dans `view_utils.py` | |
+- [x] Nettoyer `setup_ui()` (séparer affichage uniquement)
+- [x] Nettoyer `setup_signals()` (connecter via `connect_delegate_signals()`)
+- [x] Supprimer `setup_delegates()` actuel (remplacé par `apply_delegate_for_column`)
+- [ ] Vérifier l'appel clair aux helpers dans `__init__()`
+
+---
+
+### 4. Typage et sécurité
+
+- [x] Vérifier les attributs (`column_delegates`) (OK avec `hasattr()`)
+- [x] Vérifier la présence des signaux avant connexion (`hasattr(delegate, "editClicked")`)
+
+---
+
+### 5. Tri des fichiers UI (bonus)
+
+- [x] Créer `view_utils.py` pour helpers visuels purs
+- [x] Créer `delegate_utils.py` pour helpers delegates
+- [x] Créer `signal_utils.py` pour helpers signaux
+- [ ] Nettoyage final si d’autres petits helpers spécifiques apparaissent
 
 ---
 
@@ -57,21 +62,24 @@
 | Fichier | Contenu prévu |
 |:--------|:--------------|
 | `view_utils.py` | Helpers visuels purs (colonnes, headers, tooltips…) |
-| `delegate_utils.py` ou `view_behavior_utils.py` | Helpers pour poser les delegates |
-| `signal_utils.py` (optionnel) | Helpers pour connecter dynamiquement les signaux |
-| `task_table_view.py` | Code UI ultra léger : instanciation + appels propres aux helpers |
+| `delegate_utils.py` | Helpers pour poser les delegates |
+| `signal_utils.py` | Helpers pour connecter dynamiquement les signaux |
+| `task_table_model.py` | Modèle basé sur `TASK_TABLE_COLUMNS` uniquement |
+| `task_table_view.py` | UI ultra légère : instanciation + appels propres aux helpers |
 
 ---
 
 ## 🔥 Objectif final visé
 
-- `TaskTableView` qui contient **seulement** 5-10 lignes dans `setup_ui` / `setup_signals`
-- Aucun comportement codé en dur
-- Possibilité d’ajouter/modifier des colonnes/delegates/signaux en **modifiant uniquement la config** (`TASK_TABLE_COLUMNS`)
+- `TaskTableView` minimaliste
+- `TaskTableModel` piloté uniquement par `TASK_TABLE_COLUMNS`
+- Plus aucun affichage ou comportement codé en dur
+- UI totalement pilotée par la config, évolutive et professionnelle
 
 ---
 
 # ✨ Note finale
-**On ne rush pas.**
+
+**Pas de rush.**
 **On découpe. On trie.**
-**On transforme petit à petit ce vieux bloc hérité en un vrai bijou modulable.**
+**On reconstruit calmement pour un projet solide et durable.**
