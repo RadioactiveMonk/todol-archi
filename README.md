@@ -12,155 +12,71 @@ Expérimentation de patterns avancés (Factory, SOLID, Inversion de dépendance,
 
 ## Base
 
-- PyQt6
+- PySide6
 - SQLite
 - Architecture modulaire orientée objets
 
-## Structure (28-03-25)
-
-```
-.todol-archi
-├── data
-│   ├── settings.json
-│   ├── tasks.db
-│   └── themes.json
-├── docs
-│   ├── tree260325.txt
-│   └── tree28-03.txt
-├── logs
-│   ├── app.log
-│   └── errors.log
-├── scripts
-│   ├── dev.sh
-│   ├── gitadd.py
-│   ├── README_dev.md
-│   ├── reload_all.py
-│   └── replace_imports.py
-├── src
-│   ├── core
-│   │   ├── api
-│   │   │   ├── dependencies.py
-│   │   │   ├── __init__.py
-│   │   │   ├── routes.py
-│   │   │   ├── schemas.py
-│   │   │   └── utils.py
-│   │   ├── database
-│   │   │   ├── db_controller.py
-│   │   │   ├── db_manager.py
-│   │   │   └── __init__.py
-│   │   ├── app_constants.py
-│   │   ├── cached_utils.py
-│   │   ├── config.py
-│   │   ├── database_config.py
-│   │   ├── default_values.py
-│   │   ├── __init__.py
-│   │   ├── logger.py
-│   │   ├── path.py
-│   │   ├── settings_manager.py
-│   │   ├── status_constants.py
-│   │   └── style_loader.py
-│   ├── factory
-│   │   ├── dialog_factory.py
-│   │   ├── factory_utils.py
-│   │   ├── handler_factory.py
-│   │   ├── icon_factory.py
-│   │   ├── __init__.py
-│   │   ├── mainwindow_factory.py
-│   │   └── notification_factory.py
-│   ├── handlers
-│   │   ├── __init__.py
-│   │   └── task_handlers.py
-│   ├── models
-│   │   ├── __init__.py
-│   │   ├── task.py
-│   │   ├── task_table_model.py
-│   │   └── task_table_utils.py
-│   ├── todol_archi.egg-info
-│   │   ├── dependency_links.txt
-│   │   ├── PKG-INFO
-│   │   ├── requires.txt
-│   │   ├── SOURCES.txt
-│   │   └── top_level.txt
-│   ├── ui
-│   │   ├── containers
-│   │   │   ├── __init__.py
-│   │   │   ├── menu_bar.py
-│   │   │   ├── search_tasks.py
-│   │   │   └── task_table.py
-│   │   ├── controls
-│   │   │   ├── category_selector.py
-│   │   │   ├── custom_button.py
-│   │   │   ├── expiration_selector.py
-│   │   │   ├── __init__.py
-│   │   │   └── theme_selector.py
-│   │   ├── delegates
-│   │   │   ├── edit_delegate.py
-│   │   │   ├── __init__.py
-│   │   │   └── status_delegate.py
-│   │   ├── dialogs
-│   │   │   ├── add_task_dialog.py
-│   │   │   ├── edit_parameters_dialog.py
-│   │   │   └── __init__.py
-│   │   ├── resources
-│   │   │   ├── fonts
-│   │   │   ├── icons
-│   │   │   │   ├── app_icon.png
-│   │   │   │   ├── check_task.png
-│   │   │   │   ├── check_task.svg
-│   │   │   │   ├── delete_task.png
-│   │   │   │   ├── delete_task.svg
-│   │   │   │   ├── edit_settings.png
-│   │   │   │   ├── edit_task.png
-│   │   │   │   ├── edit_task.svg
-│   │   │   │   └── new_task.png
-│   │   │   ├── images
-│   │   │   ├── stylesheets
-│   │   │   │   ├── dark.qss
-│   │   │   │   ├── default.qss
-│   │   │   │   └── system.qss
-│   │   │   └── translations
-│   │   ├── cell_properties.py
-│   │   ├── __init__.py
-│   │   ├── main_window.py
-│   │   └── ui_constants.py
-│   ├── __init__.py
-│   └── main.py
-├── tests
-│   ├── temp
-│   ├── conftest.py
-│   ├── __init__.py
-│   ├── test_add_task_dialog.py
-│   ├── test_cached_utils.py
-│   ├── test_connection.py
-│   ├── test_constants.py
-│   ├── test_database.py
-│   ├── test_edit_parameters_dialog.py
-│   ├── test_settings.py
-│   ├── test_status_handler.py
-│   ├── test_style_loader.py
-│   ├── test_task_handlers.py
-│   ├── test_task.py
-│   └── test_task_table_model.py
-├── credits.txt
-├── learning_map.md
-├── LICENSE
-├── Makefile
-├── migration_log.md
-├── pyproject.toml
-├── README.md
-├── TODO.md
-└── TODO_review1.md
-```
-
-## Démarrage
+## Structure non définitive (27-04-25)
 
 ```bash
-git clone git@github.com:RadioactiveMonk/todol-archi.git
-cd todol-archi
-python -m venv .venv
-source .venv/bin/activate  # ou .venv\\Scripts\\activate sous Windows
-pip install -e .
+src/
+├── config/                  # Fichiers de configuration de l'application
+│   └── __init__.py
+│
+├── core/                     # Composants centraux (logique principale et fondations)
+│   ├── api/                  # Endpoints de l'API et schémas de validation
+│   ├── factory/              # Fabriques d'objets complexes (UI, dialogues, icônes)
+│   ├── app_metadata.py       # Métadonnées de l'application
+│   ├── db.py                 # Gestion de la base de données
+│   ├── settings_manager.py   # Gestion centralisée des paramètres utilisateur
+│   └── __init__.py
+│
+├── handlers/                 # Logique métier spécifique aux actions de l'application
+│   ├── task_handlers.py      # Gestion des actions sur les tâches
+│   └── __init__.py
+│
+├── helpers/                  # Utilitaires spécialisés (context managers, conversions)
+│   ├── contextmanagers.py
+│   ├── converters.py
+│   └── __init__.py
+│
+├── models/                   # Représentation des entités métier (modèles de données)
+│   ├── task.py
+│   ├── task_core.py
+│   ├── task_table_model.py
+│   └── __init__.py
+│
+├── ui/                       # Composants visibles et interactifs (interface graphique)
+│   ├── containers/           # Grandes sections UI (menus, tables)
+│   ├── controls/             # Composants interactifs (boutons, sélecteurs)
+│   ├── delegates/            # Délégués de rendu / édition pour les vues
+│   ├── dialogs/              # Fenêtres de dialogue (ajout, édition)
+│   ├── resources/            # Ressources statiques (icônes, stylesheets)
+│   ├── theme/                # Gestion des thèmes graphiques
+│   ├── main_window.py        # Fenêtre principale de l'application
+│   └── __init__.py
+│
+├── utils/                    # Fonctions utilitaires transversales (non spécifiques à un module)
+│   ├── category_utils.py
+│   ├── csv_utils.py
+│   ├── db_utils.py
+│   ├── default_values.py
+│   ├── init_db.py
+│   ├── log_utils.py
+│   ├── path_utils.py
+│   ├── status_utils.py
+│   ├── task_table_column_utils.py
+│   ├── ui_geometry_utils.py
+│   ├── ui_icons_utils.py
+│   ├── ui_text_utils.py
+│   ├── ui_theme_utils.py
+│   ├── view_utils.py
+│   ├── README.md
+│   └── __init__.py
+│
+├── main.py                   # Point d'entrée principal de l'application
+└── __init__.py
+```
 
-# Lancement de l'app
-python -m src.main
+
 
