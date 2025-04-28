@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QStyledItemDelegate, QTableView, QWidget
 from handlers.task_handlers import TaskHandlers
 from helpers.contextmanagers import open_db
 from models.task_table_model import TaskTableModel
+from utils.delegate_utils import apply_delegate_for_column
 from utils.path_utils import DB_FILE
 from utils.task_table_column_utils import TASK_TABLE_COLUMNS
 from utils.view_utils import apply_column_config
@@ -50,6 +51,7 @@ class TaskTableView(QTableView):
             vheader.setVisible(False)
 
         apply_column_config(self, TASK_TABLE_COLUMNS)
+        apply_delegate_for_column(self, TASK_TABLE_COLUMNS)
 
     def setup_signals(self):
         """Connect the signals to the slots dynamically based on delegates"""
