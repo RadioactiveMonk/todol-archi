@@ -1,11 +1,17 @@
-from ..utils.cell_utils import get_alignment, get_flags
+from utils.task_table_column_utils import (
+    get_all_column_names,
+    get_column_by_name,
+    get_column_index,
+    get_flags_for_column,
+)
+
 from .main_window import MainWindow
 
-# from .ui_constants import
-
 __all__ = [
-    "get_alignment",
-    "get_flags",
+    "get_flags_for_column",
+    "get_column_by_name",
+    "get_all_column_names",
+    "get_column_index",
     "MainWindow",
 ]
 # This module imports and re-exports the MainWindow class and utility functions
