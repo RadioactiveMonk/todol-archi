@@ -1,4 +1,8 @@
 # 🧱 Core Checklist – Bloc C (Stabilisation de la base)
+[1] Nouvelle fonctionnalité / refacto
+[2] Test rapide en IPython
+[3] Validation ou micro-correction
+[4] Ensuite passage à l'étape suivante
 
 ## 🎯 Objectif général
 
@@ -67,6 +71,10 @@
 - UI prête à consommer le système en mode "service stable"
 
 ---
+
+## 🔥 On the way
+
+- ThemeManager()
 
 ## Bonus — Explorations futures (Branche expérimentale)
 
