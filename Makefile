@@ -28,7 +28,7 @@ ruffall:
 gpush:
 	@echo "⬆️ Ajout des fichiers au dépôt Git..."
 	git add .
-	git commit -m "see todo/ or MIGRATION_log.md"
+	git commit -m "see tasks/ or MIGRATION_log.md"
 	git push -u origin $(git branch --show-current)
 
 gmain:
