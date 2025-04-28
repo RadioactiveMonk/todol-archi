@@ -10,7 +10,7 @@ DOCS := docs
 REQUIREMENTS := requirements.txt
 
 # Cibles principales
-.PHONY: run test ruffall reload gpush clean install venv update_deps coverage typecheck sec_check black docs help
+.PHONY: run test ruffall gpush gmain clean install venv update_deps coverage typecheck sec_check black filepath docs help
 
 run:
 	@echo "🎬 Lancement de l'application..."
@@ -74,7 +74,7 @@ black:
 
 filepath:
 	@echo "🤖 Adding path comment to files ..."
-	poetry run $(PYTHON) tools/comment_filepath.py
+	poetry run $(PYTHON) $(TOOLS)/comment_filepath.py
 
 docs:
 	@echo "📚 Génération de la documentation avec Sphinx via Poetry..."
