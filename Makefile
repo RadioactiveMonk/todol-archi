@@ -39,7 +39,8 @@ clean:
 	@echo "🧹 Nettoyage des fichiers compilés..."
 	@find . -type f -name "*.pyc" -delete
 	@find . -type d -name "__pycache__" -delete
-	@echo "✅ Pyc & __pycache__ supprimés."
+	@echo "*.pyc, __pycache__"
+	@echo "✅ DONE"
 
 install:
 	@echo "📦 Installation des dépendances avec Poetry..."
@@ -86,7 +87,7 @@ help:
 	@echo "  make test          → Lancer les tests"
 	@echo "  make ruffall       → Lint et formate avec Ruff"
 	@echo "  make clean         → Nettoyer les fichiers temporaires"
-	@echo "  make gpush m="msg" → Add, commit, push"
+	@echo "  make gpush         → Add, commit, push"
 	@echo "  make gmain         → Switch vers la branche principale"
 	@echo "  make install       → Installer les dépendances"
 	@echo "  make venv          → Créer l'environnement virtuel"
