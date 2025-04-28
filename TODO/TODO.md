@@ -40,10 +40,6 @@ Bloc B — Organisation claire des responsabilités
 
 [x] Regroupement dans utils/, tri
 
-[ ] task_from_row() (à refaire sur base stable)
-
-[ ] Créer factory_utils.py si besoin de constructeurs spécialisés
-
 [x] Centraliser la config du projet :
 
 [x] Makefile unifié (test, format, lint...)
@@ -64,11 +60,6 @@ Bloc B — Organisation claire des responsabilités
 [x] apply_column_config(view)
 
 [x] Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
-
-### ui_checklist.md (renvoyer lien git)
-    Trier les éléments UI (signals, delegates, ...)
-    Rendre les delegates eux-mêmes configurables via TASK_TABLE_COLUMNS 
-    Avoir des mappings dynamiques field → delegate
     
 [ ] SettingsManager
 
@@ -95,7 +86,6 @@ Bloc D — UI / UX (affichage et interactions)
 > Rendre l'application agréable à l’usage
 
 
-
 [ ] Améliorer TaskTableModel avec helpers
 
 [ ] Ajouter recherche et filtres
@@ -105,23 +95,19 @@ Bloc D — UI / UX (affichage et interactions)
 [ ] Regrouper les helpers UI dans ui_helpers.py
 
 
-
 ---
 
 Bloc E — Tests, packaging, intégration
 
 > Valider, tester, distribuer proprement
 
-
-
 [ ] Phase 5 : Réactivation de pytest
 
 [ ] Ajouter tests unitaires pour les helpers
 
-[ ] Tester task_from_row(), status_label()...
+[ ] Tester 
 
 [ ] Ajouter tests d’intégration (add → delete)
-
 
 [ ] Packaging clean
 
@@ -139,12 +125,6 @@ Bloc E — Tests, packaging, intégration
 Bonus — Explorations futures (Branche expérimentale)
 
 > Concepts avancés ou usages spécifiques
-
-
-
-[ ] Créer branche task-core-exp
-
-[ ] Tester : héritage Task vs TaskCore
 
 [ ] Ajouter structures avancées : deque, NamedTuple, contextlib, asyncio, yield...
 

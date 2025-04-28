@@ -1,0 +1,77 @@
+# 🧱 Core Checklist – Bloc C (Stabilisation de la base)
+
+## 🎯 Objectif général
+
+- Solidifier tout ce qui est "bas niveau" (core, modèle, config, gestion).
+- Préparer une architecture propre avant de remonter vers l'UI.
+- Construire un socle fiable, extensible, maintenable et agréable à utiliser.
+
+---
+
+## 🛠️ Plan de migration étape par étape
+
+### 1. Finalisation du système de configuration
+
+- [ ] Créer une vraie classe `SettingsManager`
+- [ ] Permettre chargement, sauvegarde, mise à jour facile du `settings.json`
+- [ ] Définir clairement où sont stockés les paramètres utilisateurs
+- [ ] Poser des valeurs par défaut gérées proprement
+
+---
+
+### 2. Finalisation du système de logging
+
+- [ ] Réfléchir à l'intérêt de créer un `LogManager`
+- [ ] Centraliser les logs console et fichiers proprement
+- [ ] Gérer la rotation et la rétention dans la config
+- [ ] Préparer une fonction simple de log enrichi (`log_task()`, etc.)
+
+---
+
+### 3. Refondre `TaskTableModel`
+
+- [ ] Adapter `rowCount()` et `columnCount()` (pilotés par `TASK_TABLE_COLUMNS`)
+- [ ] Adapter `headerData()` pour utiliser `TaskTableColumn.name`
+- [ ] Adapter `data()` pour utiliser `TaskTableColumn.field`
+- [ ] Adapter `flags()` pour utiliser `get_flags_for_column()`
+- [ ] Adapter alignements via `text_alignment()`
+- [ ] Supprimer tout vieux code dur (ex: `TASK_TABLE_HEADERS`, constantes mortes)
+
+---
+
+### 4. Helpers fondamentaux (bonus)
+
+- [ ] Créer `safe_get(d, key, default)` pour accès sûr aux dictionnaires
+- [ ] Créer `format_datetime(dt)` pour afficher les dates proprement
+- [ ] Ajouter des décorateurs ou outils d'enrichissement (`@property`, `__str__`, `__repr__` sur les dataclass)
+- [ ] Préparer `contextmanagers.py` utiles (si besoin futur)
+
+---
+
+## 📋 Détail par fichier
+
+| Fichier | Contenu prévu |
+|:--------|:--------------|
+| `core/settings_manager.py` | Gestion des paramètres utilisateur |
+| `core/log_manager.py` (optionnel) | Gestion centralisée du logging |
+| `models/task_table_model.py` | Modèle refondu basé sur `TASK_TABLE_COLUMNS` |
+| `helpers/*.py` | Tous les petits outils stables et testables |
+
+---
+
+## 🔥 Objectif final visé
+
+- Core solide et fonctionnel
+- Modèle aligné à 100% sur la config
+- Plus aucun vieux code dur ou fragile
+- UI prête à consommer le système en mode "service stable"
+
+---
+
+## Bonus — Explorations futures (Branche expérimentale)
+
+> Concepts avancés ou usages spécifiques
+
+[ ] Ajouter structures avancées : deque, NamedTuple, contextlib, asyncio, yield...
+
+
