@@ -19,4 +19,3 @@ def apply_column_config(view: QTableView, columns: list[TaskTableColumn]) -> Non
                 column.tooltip,
                 role=Qt.ItemDataRole.ToolTipRole,
             )
-        

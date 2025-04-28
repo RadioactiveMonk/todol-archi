@@ -37,7 +37,7 @@ class TaskCore:
             an instance of the class TaskCore from 'data'
         """
         return cls(**data)
-    
+
     def to_dict(self) -> Dict[str, Any]:
         """
         Convert the class instance to a dictionnary
@@ -48,4 +48,3 @@ class TaskCore:
             the task in a dict format
         """
         return asdict(self)
-

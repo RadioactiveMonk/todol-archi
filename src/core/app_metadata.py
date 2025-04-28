@@ -21,5 +21,6 @@ AUTO_SAVE_INTERVAL: int = 5
 # HELPERS
 # =====================================
 
+
 def get_app_title() -> str:
     return f"{APP_NAME} v{APP_VERSION}"

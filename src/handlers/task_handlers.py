@@ -1,10 +1,10 @@
 from dataclasses import asdict
 from typing import Callable
 
-from utils.path_utils import DB_FILE
 from helpers.contextmanagers import open_db
-from utils.log_utils import logger
 from models.task import Task
+from utils.log_utils import logger
+from utils.path_utils import DB_FILE
 
 
 class TaskHandlers:

@@ -26,7 +26,7 @@ def export_to_csv(data: Sequence[Mapping], filename: str = "export.csv") -> Path
     if not data:
         logger.warning("No data to export.")
         return get_path("data") / filename
-    
+
     export_path = get_path("data") / filename
 
     try:
@@ -39,5 +39,3 @@ def export_to_csv(data: Sequence[Mapping], filename: str = "export.csv") -> Path
         logger.error(f"Failed to export CSV: {e}")
 
     return export_path
-
-

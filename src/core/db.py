@@ -7,7 +7,6 @@ from utils.db_utils import (
     SQL_INSERT_TASK,
     SQL_SELECT_TASK_BY_ID,
     SQL_SELECT_TASKS,
-    SQL_UPDATE_TASK_BY_ID,
     build_update_query,
     build_where_clause,
 )

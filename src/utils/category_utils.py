@@ -13,4 +13,3 @@ def get_categories() -> List[str]:
     with open_settings() as settings:
         categories = settings.get("categories", [])
         return categories if isinstance(categories, list) else []
-    

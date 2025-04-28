@@ -74,7 +74,7 @@ TASK_TABLE_COLUMNS = [
         name="Status",
         field="completed",
         flags=flags_checkbox(),
-        delegate=StatusEditDelegate
+        delegate=StatusEditDelegate,
     ),
     TaskTableColumn(name="Expiration", field="expiration"),
     TaskTableColumn(name="Notes", field="notes"),
@@ -84,7 +84,7 @@ TASK_TABLE_COLUMNS = [
         width=100,
         editable=False,
         flags=flags_selectable(),
-        delegate=EditDelegate
+        delegate=EditDelegate,
     ),
 ]
 
@@ -120,4 +120,3 @@ def get_flags_for_column(name: str) -> Qt.ItemFlag:
     if column.flags is not None:
         return column.flags
     return flags_editable() if column.editable else flags_selectable()
-

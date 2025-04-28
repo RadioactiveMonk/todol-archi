@@ -4,10 +4,8 @@ from PySide6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PySide6.QtGui import QBrush, QColor
 from PySide6.QtWidgets import QWidget
 
-from utils.path_utils import DB_FILE
 from handlers.task_handlers import TaskHandlers
 from helpers.contextmanagers import open_db
-from utils.log_utils import logger
 from helpers.status_constants import status_color, status_label
 from models.task import Task
 from models.task_table_utils import (
@@ -15,6 +13,8 @@ from models.task_table_utils import (
     TASK_TABLE_HEADERS,
 )
 from ui.dialogs.add_task_dialog import AddTaskDialog
+from utils.log_utils import logger
+from utils.path_utils import DB_FILE
 
 
 class TaskTableModel(QAbstractTableModel):

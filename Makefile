@@ -13,27 +13,26 @@ REQUIREMENTS := requirements.txt
 .PHONY: run test ruffall reload gpush clean install venv update_deps coverage typecheck sec_check black docs help
 
 run:
-	@echo "Lancement de l'application..."
+	@echo "🎬 Lancement de l'application..."
 	poetry run python $(SRC)/main.py
 
 test:
-	@echo "Lancement des tests Pytest..."
+	@echo "🧪 Lancement des tests Pytest..."
 	poetry run pytest -v $(TESTS)
 
 ruffall:
-	@echo "🎨 Formatage avec Ruff via Poetry..."
-	poetry run ruff $(SRC) $(TESTS) --fix
-	@echo "🧼 Linting avec Ruff via Poetry..."
-	poetry run ruff check $(SRC) $(TESTS)
+	@echo "🎨 Formatage et linting avec Ruff via Poetry..."
+	poetry run ruff format $(SRC) $(TESTS) $(TOOLS)
+	poetry run ruff check $(SRC) $(TESTS) $(TOOLS)
 
 gpush:
-	@echo "Ajout des fichiers au dépôt Git..."
+	@echo "⬆️ Ajout des fichiers au dépôt Git..."
 	git add .
-	git commit -m "see todo notes"
+	git commit -m "see todo/ or MIGRATION_log.md"
 	git push -u origin $(git branch --show-current)
 
 gmain:
-	@echo "Switch sur branche 'main'"
+	@echo "🪐 Switch sur branche 'main'"
 	git switch main
 
 clean:
@@ -73,7 +72,7 @@ black:
 	poetry run black $(SRC) $(TESTS)
 
 filepath:
-	@echo "Adding path comment to files ..."
+	@echo "🤖 Adding path comment to files ..."
 	poetry run $(PYTHON) tools/comment_filepath.py
 
 docs:

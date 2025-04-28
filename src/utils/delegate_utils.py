@@ -1,5 +1,5 @@
-from ui.containers.task_table_view import TaskTableView
 from PySide6.QtWidgets import QTableView
+
 from utils.task_table_column_utils import TaskTableColumn
 
 
@@ -22,6 +22,3 @@ def apply_delegate_for_column(view: QTableView, columns: list[TaskTableColumn]) 
 
             if hasattr(view, "column_delegates"):
                 view.column_delegates[index] = delegate_instance
-
-
-
