@@ -29,8 +29,8 @@ ruffall:
 gpush:
 	@echo "Ajout des fichiers au dépôt Git..."
 	git add .
-	git commit -m "$(m)"
-	git push -u origin $$(git branch --show-current)
+	git commit -m "see todo notes"
+	git push -u origin $(git branch --show-current)
 
 gmain:
 	@echo "Switch sur branche 'main'"
