@@ -2,7 +2,7 @@ from functools import lru_cache
 from typing import List
 
 from helpers.contextmanagers import open_settings
-from utils.log_utils import logger
+from core.log_manager import logger
 
 
 @lru_cache

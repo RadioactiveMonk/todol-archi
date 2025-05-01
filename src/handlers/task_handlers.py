@@ -3,7 +3,7 @@ from typing import Callable
 
 from helpers.contextmanagers import open_db
 from models.task import Task
-from utils.log_utils import logger
+from core.log_manager import logger
 from utils.path_utils import DB_FILE
 
 

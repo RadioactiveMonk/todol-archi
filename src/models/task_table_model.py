@@ -13,7 +13,7 @@ from models.task_table_utils import (
     TASK_TABLE_HEADERS,
 )
 from ui.dialogs.add_task_dialog import AddTaskDialog
-from utils.log_utils import logger
+from core.log_manager import logger
 from utils.path_utils import DB_FILE
 
 

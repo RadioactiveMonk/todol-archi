@@ -5,7 +5,7 @@ from PySide6.QtCore import Qt
 
 from ui.delegates.edit_delegate import EditDelegate
 from ui.delegates.status_delegate import StatusEditDelegate
-from utils.log_utils import logger
+from core.log_manager import logger
 
 
 def flags_editable() -> Qt.ItemFlag:

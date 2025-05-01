@@ -5,7 +5,7 @@ Logique de représentation visuelle des statuts de tâche :
 association entre un booléen de complétion et son label + couleur.
 """
 
-from utils.log_utils import logger
+from core.log_manager import logger
 
 STATUS_PENDING: bool = False
 STATUS_DONE: bool = True

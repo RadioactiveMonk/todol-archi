@@ -3,7 +3,7 @@ from typing import Any, Optional
 
 from helpers.converters import dataclass_to_dict
 from models.task_core import TaskCore
-from utils.log_utils import logger
+from core.log_manager import logger
 
 
 @dataclass

@@ -4,7 +4,7 @@ from typing import Optional
 
 from PySide6.QtGui import QIcon
 
-from utils.log_utils import logger
+from core.log_manager import logger
 from utils.path_utils import get_path
 
 # === Icon mapping (logical name → filename) ===

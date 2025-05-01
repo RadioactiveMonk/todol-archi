@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from utils.log_utils import logger
+from core.log_manager import logger
 from utils.path_utils import STYLESHEETS_DIR
 
 DEFAULT_THEME = "default"

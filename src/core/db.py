@@ -10,7 +10,7 @@ from utils.db_utils import (
     build_update_query,
     build_where_clause,
 )
-from utils.log_utils import logger
+from core.log_manager import logger
 
 
 class DB:

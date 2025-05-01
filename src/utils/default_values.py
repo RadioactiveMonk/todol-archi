@@ -1,6 +1,6 @@
 from typing import Any
 
-from utils.log_utils import logger
+from core.log_manager import logger
 from utils.ui_theme_utils import DEFAULT_THEME
 
 # =====================================

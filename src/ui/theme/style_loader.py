@@ -34,7 +34,7 @@ def get_stylesheet(theme: str) -> str:
 
     """
 
-    from utils.log_utils import logger
+    from core.log_manager import logger
 
     qss_file = Path(STYLESHEETS_DIR) / f"{theme}.qss"
     try:
@@ -57,7 +57,7 @@ def load_stylesheet(app: QApplication, theme: str = DEFAULT_THEME) -> None:
         by default DEFAULT_THEME
     """
 
-    from utils.log_utils import logger
+    from core.log_manager import logger
 
     try:
         qss = get_stylesheet(theme)

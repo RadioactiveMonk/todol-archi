@@ -2,7 +2,7 @@ import json
 from typing import Any
 
 from utils.default_values import DEFAULT_SETTINGS
-from utils.log_utils import logger
+from core.log_manager import logger
 from utils.path_utils import SETTINGS_FILE
 
 

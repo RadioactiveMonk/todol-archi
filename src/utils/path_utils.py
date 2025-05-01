@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from utils.log_utils import logger
+from core.log_manager import logger
 
 # =====================================
 # PATH CONSTANTS

@@ -2,7 +2,7 @@
 
 from core.sql_schema import SQL_CREATE_TASKS_TABLE
 from helpers.contextmanagers import open_db
-from utils.log_utils import logger
+from core.log_manager import logger
 from utils.path_utils import DB_FILE
 
 

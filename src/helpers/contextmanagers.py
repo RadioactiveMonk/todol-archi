@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from core.db import DB
-from utils.log_utils import logger
+from core.log_manager import logger
 from utils.path_utils import SETTINGS_FILE
 
 

@@ -7,7 +7,7 @@ Ce module contient les requêtes statiques, un dispatch facultatif, et des fonct
 
 from typing import Any
 
-from utils.log_utils import logger
+from core.log_manager import logger
 
 # =====================================
 # Requêtes SQL constantes
