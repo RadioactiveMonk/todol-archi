@@ -1,6 +1,7 @@
 from typing import Any
 
 from utils.log_utils import logger
+from utils.ui_theme_utils import DEFAULT_THEME
 
 # =====================================
 # DOMAIN DEFAULTS
@@ -8,11 +9,17 @@ from utils.log_utils import logger
 NO_ID: int = -1
 
 # Category
-CATEGORIES: list[str] = ["General", "Work", "Hobbies"]
+DEFAULT_CATEGORIES: list[str] = ["General", "Work", "Hobbies"]
+
+# Settings
+DEFAULT_SETTINGS: dict[str, Any] = {
+    "theme": DEFAULT_THEME,
+    "categories": DEFAULT_CATEGORIES,
+}
 
 # Task values
 DEFAULT_TITLE: str = "New task"
-DEFAULT_CATEGORY: str = CATEGORIES[0]
+DEFAULT_CATEGORY: str = DEFAULT_CATEGORIES[0]
 DEFAULT_STATUS: bool = False
 DEFAULT_EXPIRATION: str = "2023-10-31 08:30"
 DEFAULT_NOTES: str = ""

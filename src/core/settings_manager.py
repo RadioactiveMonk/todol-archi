@@ -1,83 +1,62 @@
 import json
-from typing import Any, Dict
+from typing import Any
 
-from utils.default_values import CATEGORIES
+from utils.default_values import DEFAULT_SETTINGS
 from utils.log_utils import logger
 from utils.path_utils import SETTINGS_FILE
-from utils.ui_theme_utils import DEFAULT_THEME
 
 
-def load_settings() -> Dict[str, Any]:
-    """
-    Load settings from the 'settings.json' file.
+class SettingsManager:
+    """Manage settings values from the settings.json file in data/"""
 
-    Returns:
-        A dictionary containing the settings.
-    """
-    try:
-        with open(SETTINGS_FILE, "r", encoding="utf-8") as f:
-            settings = json.load(f)
-            logger.info(f"{SETTINGS_FILE} loaded successfully")
-            return settings
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        logger.error(f"Failed to load settings: {e}")
-        return {}
+    def __init__(self):
+        """DOC"""
+        self._path = SETTINGS_FILE
+        self._defaults = DEFAULT_SETTINGS
+        self._settings = self._load()
 
+    def _load(self) -> dict:
+        """Loads the json file and its values and stores it into 'settings'"""
+        try:
+            with open(self._path, "r", encoding="utf-8") as f:
+                settings = json.load(f)
+                logger.info(f"{self._path} loaded successfully")
+                return settings
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            logger.error(
+                f"Failed to load settings with {self._path}, falling back to default: {e}"
+            )
+            return self._defaults
 
-def save_settings(data: Dict[str, Any]) -> bool:
-    """
-    Save settings to the 'settings.json' file.
+    def _save(self) -> bool:
+        """Saves the json file. Return true if data are stored, otherwise returns false"""
+        try:
+            with open(self._path, "w", encoding="utf-8") as f:
+                json.dump(
+                    self._settings, f, indent=4
+                )  # dumps what stored in self._settings (self._load) into the file
+                logger.info(f"{self._path} saved successfully: {self._settings}")
+                return True
+        except Exception as e:
+            logger.error(f"Failed to save settings: {e}")
+            return False
 
-    Args:
-        data: A dictionary containing the settings to save.
+    def get(self, key: str) -> Any:
+        """Get the value for the given setting key"""
+        return self._settings.get(key, self._defaults.get(key))  # Fallback
 
-    Returns:
-        True if settings were saved successfully, False otherwise.
-    """
-    try:
-        with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=4)
-            logger.info(f"{SETTINGS_FILE} saved successfully: {data}")
-            return True
-    except Exception as e:
-        logger.error(f"Failed to save settings: {e}")
-        return False
+    def set(self, key: str, value: Any) -> bool:
+        """Set the value for the given setting key, saves the file"""
+        self._settings[key] = value
+        return self._save()
 
+    def all(self) -> dict:
+        """DOC"""
+        merged = self._defaults.copy()
+        merged.update(self._settings)
+        return merged
 
-def get_setting(key: str, default: Any = None) -> Any:
-    """
-    Retrieve a setting value from 'settings.json'.
-
-    Args:
-        key: The key of the setting to retrieve.
-        default: The default value to return if the setting is not found.
-
-    Returns:
-        The value of the setting, or the default value if the setting is not found.
-    """
-    settings = load_settings()
-
-    if default is None:
-        default = DEFAULT_THEME if key == "theme" else CATEGORIES
-
-    return settings.get(key, default)
-
-
-def set_setting(key: str, value: Any) -> bool:
-    """
-    Update a setting value in 'settings.json'.
-
-    Args:
-        key: The key of the setting to update.
-        value: The new value of the setting.
-
-    Returns:
-        True if the setting was updated and saved successfully, False otherwise.
-    """
-    settings = load_settings()
-    settings[key] = value
-
-    success = save_settings(settings)
-    if success:
-        logger.info(f"Setting updated successfully: {key} = {value}")
-    return success
+    def reset(self) -> None:
+        """Reset all settings to default values and save."""
+        self._settings = DEFAULT_SETTINGS
+        self._save()

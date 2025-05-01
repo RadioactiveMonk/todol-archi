@@ -10,7 +10,7 @@ DOCS := docs
 REQUIREMENTS := requirements.txt
 
 # Cibles principales
-.PHONY: run test ruffall gpush gmain clean install venv update_deps coverage typecheck sec_check black filepath docs help
+.PHONY: run test ruffall gpush gmain clean install venv update_deps coverage typecheck sec_check black filepath docs shell help
 
 run:
 	@echo "🎬 Lancement de l'application..."
@@ -81,6 +81,10 @@ docs:
 	poetry run sphinx-apidoc -o $(DOCS) $(SRC)
 	poetry run sphinx-build -b html $(DOCS) $(DOCS)/_build
 
+ipy:
+	@echo "🧪 Tests en Ipython (path=src/)"
+	PYTHONPATH=$(SRC) ipython
+
 help:
 	@echo "Commandes disponibles :"
 	@echo "  make run           → Lancer l'application"
@@ -98,4 +102,5 @@ help:
 	@echo "  make black         → Formatter le code avec Black"
 	@echo "  make filepath      → Ajoute le chemin du fichier en première ligne"
 	@echo "  make docs          → Générer la documentation avec Sphinx"
+	@echo "  make ipy           → Shell IPython pour tests live"
 	@echo "  make help          → Afficher cette aide"
