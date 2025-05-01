@@ -1,8 +1,8 @@
 import json
 from typing import Any
 
-from utils.default_values import DEFAULT_SETTINGS
 from core.log_manager import logger
+from utils.default_values import DEFAULT_SETTINGS
 from utils.path_utils import SETTINGS_FILE
 
 
@@ -10,7 +10,7 @@ class SettingsManager:
     """Manage settings values from the settings.json file in data/"""
 
     def __init__(self):
-        """DOC"""
+        """Initializing path to settings, default settings values. Load the file when called."""
         self._path = SETTINGS_FILE
         self._defaults = DEFAULT_SETTINGS
         self._settings = self._load()
@@ -54,7 +54,7 @@ class SettingsManager:
         return self._save()
 
     def all(self) -> dict:
-        """DOC"""
+        """Returns a copy of all settings keys and values (defaults if no changes)"""
         merged = self._defaults.copy()
         merged.update(self._settings)
         return merged

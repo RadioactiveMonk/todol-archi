@@ -1,5 +1,3 @@
-# src/utils/log_utils.py
-
 import sys
 
 from loguru import logger
