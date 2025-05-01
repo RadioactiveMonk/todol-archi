@@ -212,6 +212,7 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Adaptation de setup_delegates() pour appels dynamiques (plus de valeurs magiques)
 - Validation OK sans warning
 - Préparation pour une meilleur séparation des responsabilités pour TaskTableView
+- Repassage sur le backend avant de replonger sur l'UI.
 
 
 ### ✅ Refonte complète du SettingsManager
