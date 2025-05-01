@@ -10,7 +10,7 @@ class SettingsManager:
     """Manage settings values from the settings.json file in data/"""
 
     def __init__(self):
-        """Initializing path to settings, default settings values. Load the file when called."""
+        """Initializing path to settings and default settings values. Load the file when instanciated."""
         self._path = SETTINGS_FILE
         self._defaults = DEFAULT_SETTINGS
         self._settings = self._load()
