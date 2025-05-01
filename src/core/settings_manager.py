@@ -43,10 +43,13 @@ class SettingsManager:
 
     def get(self, key: str) -> Any:
         """Get the value for the given setting key"""
-        return self._settings.get(key, self._defaults.get(key))  # Fallback
+        return self._settings.get(key, self._defaults.get(key, None))  # Fallback
 
     def set(self, key: str, value: Any) -> bool:
-        """Set the value for the given setting key, saves the file"""
+        """Set a value for the given setting key. Returns false if key doesn't exist. Saves the file."""
+        if not key:
+            logger.warning("Attempted to set setting with empty key.")
+            return False
         self._settings[key] = value
         return self._save()
 

@@ -308,3 +308,5 @@ CREATE TABLE IF NOT EXISTS tasks (
 2025-04-22 19:14:33.922 | DEBUG    | path_utils:get_path:57 | 4983 - Accessing path: icons → /home/doyoudance/Desktop/Projects/todol-archi/src/ui/resources/icons
 2025-04-24 10:12:47.812 | DEBUG    | path_utils:get_path:57 | 6180 - Accessing path: data → /home/doyoudance/Desktop/Projects/todol-archi/data
 2025-04-24 10:12:47.816 | INFO     | csv_utils:export_to_csv:37 | 6180 - CSV exported successfully: /home/doyoudance/Desktop/Projects/todol-archi/data/export.csv
+2025-05-01 17:49:23.475 | INFO     | settings_manager:_load:23 | 21017 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-05-01 17:49:55.205 | INFO     | settings_manager:_save:38 | 21017 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'default', 'categories': ['Work', 'Personal']}

@@ -200,10 +200,10 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 
 
 
-## ----------------------------- Refactoring -------------------------------
+## ----------------------------- Bloc C (Refactoring selon core_checklist.md) -------------------------------
 
-## 📆 27/04/2025
-- Création branche `refacto`
+### 📆 27/04/2025
+- Création branche `refacto-settings`
 - Renommage TaskTable -> TaskTableView
 - Création dossier config/
 - Création view_utils.py + fonction apply_column_config()
@@ -212,3 +212,32 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Adaptation de setup_delegates() pour appels dynamiques (plus de valeurs magiques)
 - Validation OK sans warning
 - Préparation pour une meilleur séparation des responsabilités pour TaskTableView
+
+
+### ✅ Refonte complète du SettingsManager
+
+**Type**: Refonte core  
+**Objectif**: Créer une vraie classe `SettingsManager` pour gérer les préférences utilisateur
+
+**Actions réalisées**:
+- Création de la classe `SettingsManager` (`get`, `set`, `all`, `_save`, `_load`)
+- Ajout de fallback automatique sur les valeurs par défaut
+- Extraction des defaults dans un fichier `default_values.py`
+- Séparation claire des valeurs "utilisateur" vs "logique métier"
+- Testé avec succès en IPython
+
+**Résultat**:
+`SettingsManager` réutilisable, robuste, testé et intégré.  
+Prêt à être utilisé dans toute l’app.  
+Architecture extensible pour un futur `ThemeManager`, etc.
+
+**Commentaire**:  
+Deuxième vrai composant du Core posé avec méthode : propre, testable, modulaire.  
+Un excellent socle pour les futurs modules (`LogManager`, `ThemeManager`, etc.)
+
+---
+
+## ✅ Prochaine étape (au choix) :
+- `LogManager` (si besoin)
+- Refonte de `TaskTableModel`
+- Autres points du `core_checklist.md`
