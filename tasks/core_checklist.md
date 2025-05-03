@@ -25,10 +25,10 @@
 
 ### 2. Finalisation du système de logging
 
-- [ ] Réfléchir à l'intérêt de créer un `LogManager`
-- [ ] Centraliser les logs console et fichiers proprement
-- [ ] Gérer la rotation et la rétention dans la config
-- [ ] Préparer une fonction simple de log enrichi (`log_task()`, etc.)
+- [x] Réfléchir à l'intérêt de créer un `LogManager`
+- [x] Centraliser les logs console et fichiers proprement
+- [x] Gérer la rotation et la rétention dans la config
+- [x] Préparer une fonction simple de log enrichi (`log_task()`, etc.)
 
 ---
 

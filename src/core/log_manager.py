@@ -39,4 +39,4 @@ def log_task(task: TaskCore, action: str = "saved") -> None:
     logger.info(f"[TASK] {action.upper()} – {task}")
 
 
-__all__ = ["logger"]
+__all__ = ["logger", "log_task"]
