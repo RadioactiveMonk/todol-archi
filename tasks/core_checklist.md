@@ -39,6 +39,7 @@
 - [x] Adapter `headerData()` (name + tooltip)
 - [x] Adapter `data()` (field + alignment + checkbox)
 - [x] Adapter `flags()` (via column.flags)
+- [] Supprimer statusdelegate (géré directement par le modèle) 
 - [ ] Supprimer toutes les constantes mortes
 
 ---
