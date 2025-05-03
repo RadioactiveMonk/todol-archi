@@ -2,8 +2,11 @@ import sys
 
 from loguru import logger
 
-# Improved log format
-log_format = (
+from models.task_core import TaskCore
+from utils.path_utils import APP_LOG_FILE
+
+# Format
+LOG_FORMAT = (
     "<white>{time:YYYY-MM-DD HH:mm:ss.SSS}</white> | "
     "<level>{level: <8}</level> | "
     "<cyan>{module}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> | "
@@ -11,29 +14,29 @@ log_format = (
     "<level>{message}</level>"
 )
 
-# Remove the default logger
+# Suppression du logger d'origine
 logger.remove()
 
-# Console (terminal) logger
+# Console
 logger.add(
     sys.stderr,
     level="DEBUG",
-    format=log_format,
+    format=LOG_FORMAT,
 )
 
-# Defer the APP_LOG_FILE import here to avoid circular import
-try:
-    from utils.path_utils import APP_LOG_FILE
+# Fichier (rotation 500 KB, rétention 10 jours)
+logger.add(
+    APP_LOG_FILE,
+    rotation="500 KB",
+    retention="10 days",
+    level="DEBUG",
+    format=LOG_FORMAT,
+)
 
-    logger.add(
-        APP_LOG_FILE,
-        rotation="500 KB",
-        retention="10 days",
-        level="DEBUG",
-        format=log_format,
-    )
-except ImportError:
-    # Optional: you can log a warning or ignore silently during certain startup phases
-    logger.warning("APP_LOG_FILE could not be imported at log setup time.")
+
+def log_task(task: TaskCore, action: str = "saved") -> None:
+    """Log special actions for in app tasks manipulation"""
+    logger.info(f"[TASK] {action.upper()} – {task}")
+
 
 __all__ = ["logger"]
