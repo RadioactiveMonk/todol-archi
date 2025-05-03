@@ -34,11 +34,11 @@
 
 ### 3. Refondre `TaskTableModel`
 
-- [ ] Injecter `TASK_TABLE_COLUMNS` dans le modèle
-- [ ] Nettoyer `rowCount()` / `columnCount()`
-- [ ] Adapter `headerData()` (name + tooltip)
-- [ ] Adapter `data()` (field + alignment + checkbox)
-- [ ] Adapter `flags()` (via column.flags)
+- [x] Injecter `TASK_TABLE_COLUMNS` dans le modèle
+- [x] Nettoyer `rowCount()` / `columnCount()`
+- [x] Adapter `headerData()` (name + tooltip)
+- [x] Adapter `data()` (field + alignment + checkbox)
+- [x] Adapter `flags()` (via column.flags)
 - [ ] Supprimer toutes les constantes mortes
 
 ---

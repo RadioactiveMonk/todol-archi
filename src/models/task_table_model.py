@@ -78,7 +78,9 @@ class TaskTableModel(QAbstractTableModel):
         column = TASK_TABLE_COLUMNS[index.column()]
         return column.flags or Qt.ItemFlag.ItemIsEnabled
 
-    def setData(self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole) -> bool:
+    def setData(
+        self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole
+    ) -> bool:
         """Set table datas"""
         if not index.isValid() or role != Qt.ItemDataRole.EditRole:
             return False
@@ -96,7 +98,6 @@ class TaskTableModel(QAbstractTableModel):
             return True
 
         return False
-    
 
-    def refresh():
+    def refresh(self):
         pass
