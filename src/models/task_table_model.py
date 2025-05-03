@@ -1,0 +1,60 @@
+from typing import Any, Optional, cast
+
+from PySide6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
+from PySide6.QtGui import QBrush, QColor
+from PySide6.QtWidgets import QWidget
+
+from core.log_manager import logger
+from handlers.task_handlers import TaskHandlers
+from helpers.contextmanagers import open_db
+from models.task import Task
+from ui.dialogs.add_task_dialog import AddTaskDialog
+from utils.path_utils import DB_FILE
+from utils.status_utils import STATUS_UI
+from utils.task_table_column_utils import TASK_TABLE_COLUMNS, get_column_by_name
+
+
+class TaskTableModel(QAbstractTableModel):
+    """Data model for the task table"""
+
+    def __init__(
+        self,
+        parent: Optional[QObject] = None,
+        task_handlers: Optional[TaskHandlers] = None,
+        tasks: Optional[list[dict[str, Any]]] = None,
+    ) -> None:
+        """Initialize tasks and handlers at init"""
+        super().__init__(parent)
+        self._tasks = tasks if tasks is not None else []
+        self.task_handlers = (
+            task_handlers or TaskHandlers()
+        )  # FIXME see TaskHandlers, refresh_callback ?
+
+    def rowCount(self, parent: Optional[QModelIndex] = None) -> int:
+        """Returns the number of rows equal to number of tasks"""
+        return len(self._tasks)
+    
+    def columnCount(self, parent: Optional[QModelIndex] = None) -> int:
+        """Returns the number of columns in 'TASK_TABLE_COLUMNS'"""
+        return len(TASK_TABLE_COLUMNS)
+    
+    def headerData(self, section: int, orientation: Qt.Orientation, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
+        """Set header datas for the table"""
+        if orientation == Qt.Orientation.Horizontal:
+            column = TASK_TABLE_COLUMNS[section]
+            if role == Qt.ItemDataRole.DisplayRole:
+                return column.name
+            elif role == Qt.ItemDataRole.ToolTipRole and column.tooltip:
+                return column.tooltip
+        return None
+    
+    def data(self, index, /, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
+        """Set table datas"""
+        if not index.isValid():
+            return None
+        
+        row, col_index = index.row(), index.column()
+        return super().data(index, role)
+
+    def refresh():
+        pass

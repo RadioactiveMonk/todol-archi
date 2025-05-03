@@ -1,9 +1,9 @@
 from dataclasses import asdict
 from typing import Callable
 
+from core.log_manager import logger
 from helpers.contextmanagers import open_db
 from models.task import Task
-from core.log_manager import logger
 from utils.path_utils import DB_FILE
 
 
