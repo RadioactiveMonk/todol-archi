@@ -2,7 +2,6 @@ import sys
 
 from loguru import logger
 
-from models.task_core import TaskCore
 from utils.path_utils import APP_LOG_FILE
 
 # Format
@@ -34,8 +33,10 @@ logger.add(
 )
 
 
-def log_task(task: TaskCore, action: str = "saved") -> None:
+# Avoid importing TaskCore here to prevent circular import
+def log_task(task, action: str = "saved") -> None:
     """Log special actions for in app tasks manipulation"""
     logger.info(f"[TASK] {action.upper()} – {task}")
+
 
 __all__ = ["logger"]
