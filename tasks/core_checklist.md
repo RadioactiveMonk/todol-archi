@@ -34,12 +34,12 @@
 
 ### 3. Refondre `TaskTableModel`
 
-- [ ] Adapter `rowCount()` et `columnCount()` (pilotés par `TASK_TABLE_COLUMNS`)
-- [ ] Adapter `headerData()` pour utiliser `TaskTableColumn.name`
-- [ ] Adapter `data()` pour utiliser `TaskTableColumn.field`
-- [ ] Adapter `flags()` pour utiliser `get_flags_for_column()`
-- [ ] Adapter alignements via `text_alignment()`
-- [ ] Supprimer tout vieux code dur (ex: `TASK_TABLE_HEADERS`, constantes mortes)
+- [ ] Injecter `TASK_TABLE_COLUMNS` dans le modèle
+- [ ] Nettoyer `rowCount()` / `columnCount()`
+- [ ] Adapter `headerData()` (name + tooltip)
+- [ ] Adapter `data()` (field + alignment + checkbox)
+- [ ] Adapter `flags()` (via column.flags)
+- [ ] Supprimer toutes les constantes mortes
 
 ---
 

@@ -3,9 +3,9 @@ from typing import Optional
 
 from PySide6.QtCore import Qt
 
+from core.log_manager import logger
 from ui.delegates.edit_delegate import EditDelegate
 from ui.delegates.status_delegate import StatusEditDelegate
-from core.log_manager import logger
 
 
 def flags_editable() -> Qt.ItemFlag:
