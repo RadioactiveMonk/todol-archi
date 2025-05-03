@@ -1,6 +1,7 @@
 import sqlite3
 from typing import Any, Callable
 
+from core.log_manager import logger
 from utils.db_utils import (
     SQL_CREATE_TASKS_TABLE,
     SQL_DELETE_TASK_BY_ID,
@@ -10,7 +11,6 @@ from utils.db_utils import (
     build_update_query,
     build_where_clause,
 )
-from core.log_manager import logger
 
 
 class DB:
