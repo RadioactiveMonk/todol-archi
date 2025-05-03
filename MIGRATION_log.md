@@ -215,7 +215,7 @@ args) - build_update_query() (génération de requête UPDATE et valeurs)
 - Repassage sur le backend avant de replonger sur l'UI.
 
 
-### ✅ Refonte complète du SettingsManager
+### ✅ 30/04/25 Refonte complète du SettingsManager
 
 **Type**: Refonte core  
 **Objectif**: Créer une vraie classe `SettingsManager` pour gérer les préférences utilisateur
@@ -238,7 +238,20 @@ Un excellent socle pour les futurs modules (`LogManager`, `ThemeManager`, etc.)
 
 ---
 
-## ✅ Prochaine étape (au choix) :
-- `LogManager` (si besoin)
-- Refonte de `TaskTableModel`
-- Autres points du `core_checklist.md`
+### ✅ 03/05/25 Mise en place d’un `logger` centralisé
+
+**Type**: Refonte core  
+**Objectif**: Centraliser la configuration du logging avec `loguru` (console + fichier)
+
+**Actions réalisées**:
+- Création du fichier `core/log_manager.py`
+- Suppression de l’ancien `utils/log_utils.py`
+- Définition d’un format de log clair (`LOG_FORMAT`)
+- Ajout d’un logger console (`sys.stderr` → `sys.stdout` si besoin IPython)
+- Ajout d’un logger fichier avec rotation et rétention
+- Ajout de la fonction `log_task()` pour loguer des actions métier
+
+**Résultat**:
+Logger central prêt à l’emploi (`from core.log_manager import logger`)  
+Traçabilité propre et extensible. IPython OK.  
+Intégration projet en cours (progressive).
