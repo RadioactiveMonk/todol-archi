@@ -10,7 +10,7 @@ from helpers.contextmanagers import open_db
 from models.task import Task
 from ui.dialogs.add_task_dialog import AddTaskDialog
 from utils.path_utils import DB_FILE
-from utils.status_utils import STATUS_UI
+from utils.status_utils import get_status_ui, status_color, status_label
 from utils.task_table_column_utils import TASK_TABLE_COLUMNS, get_column_by_name
 
 
@@ -33,12 +33,17 @@ class TaskTableModel(QAbstractTableModel):
     def rowCount(self, parent: Optional[QModelIndex] = None) -> int:
         """Returns the number of rows equal to number of tasks"""
         return len(self._tasks)
-    
+
     def columnCount(self, parent: Optional[QModelIndex] = None) -> int:
         """Returns the number of columns in 'TASK_TABLE_COLUMNS'"""
         return len(TASK_TABLE_COLUMNS)
-    
-    def headerData(self, section: int, orientation: Qt.Orientation, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
+
+    def headerData(
+        self,
+        section: int,
+        orientation: Qt.Orientation,
+        role: int = Qt.ItemDataRole.DisplayRole,
+    ) -> Any:
         """Set header datas for the table"""
         if orientation == Qt.Orientation.Horizontal:
             column = TASK_TABLE_COLUMNS[section]
@@ -47,14 +52,51 @@ class TaskTableModel(QAbstractTableModel):
             elif role == Qt.ItemDataRole.ToolTipRole and column.tooltip:
                 return column.tooltip
         return None
-    
+
     def data(self, index, /, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
-        """Set table datas"""
+        """Table datas"""
         if not index.isValid():
             return None
-        
+
         row, col_index = index.row(), index.column()
+        task = self._tasks[row]
+        column = TASK_TABLE_COLUMNS[col_index]
+        value = task.get(column.field)
+
+        if column.field == "completed" and isinstance(value, bool):
+            if role == Qt.ItemDataRole.DisplayRole:
+                return status_label(value)
+            elif role == Qt.ItemDataRole.BackgroundRole:
+                return QBrush(QColor(status_color(value)))
+            elif role == Qt.ItemDataRole.CheckStateRole:
+                return Qt.CheckState.Checked if value else Qt.CheckState.Unchecked
+
         return super().data(index, role)
+
+    def flags(self, index: QModelIndex) -> Qt.ItemFlag:
+        """Returns columns flags if any, otherwise returns flag 'ItemIsEnabled'"""
+        column = TASK_TABLE_COLUMNS[index.column()]
+        return column.flags or Qt.ItemFlag.ItemIsEnabled
+
+    def setData(self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole) -> bool:
+        """Set table datas"""
+        if not index.isValid() or role != Qt.ItemDataRole.EditRole:
+            return False
+
+        row, col_index = index.row(), index.column()
+        column = TASK_TABLE_COLUMNS[col_index]
+        task = self._tasks[row]
+
+        if column.field == "completed":
+            task_id = task["id"]
+            self.task_handlers.toggle_task_status(task_id)
+            task["completed"] = not task["completed"]
+            logger.debug(f"[setData] Toggle task ID {task_id} -> {task['completed']}")
+            self.dataChanged.emit(index, index)
+            return True
+
+        return False
+    
 
     def refresh():
         pass
