@@ -10,31 +10,43 @@ class SettingsManager:
     """Manage settings values from the settings.json file in data/"""
 
     def __init__(self):
-        """Initializing path to settings and default settings values. Load the file when instanciated."""
+        """Initialize SettingsManager.
+
+        Loads the settings from a JSON file located at the given path, 
+        falling back to default values if loading fails.
+        """
         self._path = SETTINGS_FILE
-        self._defaults = DEFAULT_SETTINGS
+        self._defaults = DEFAULT_SETTINGS.copy()
         self._settings = self._load()
 
     def _load(self) -> dict:
-        """Loads the json file and its values and stores it into 'settings'"""
+        """Load the settings from the JSON file.
+
+        Returns
+        -------
+        dict
+            Dictionary of loaded settings, or a copy of defaults if the file cannot be read.
+        """
         try:
             with open(self._path, "r", encoding="utf-8") as f:
                 settings = json.load(f)
                 logger.info(f"{self._path} loaded successfully")
                 return settings
         except (FileNotFoundError, json.JSONDecodeError) as e:
-            logger.error(
-                f"Failed to load settings with {self._path}, falling back to default: {e}"
-            )
-            return self._defaults
+            logger.error(f"Failed to load settings from {self._path}, falling back to defaults: {e}")
+            return self._defaults.copy()
 
     def _save(self) -> bool:
-        """Saves the json file. Return true if data are stored, otherwise returns false"""
+        """Save the current settings to the JSON file.
+
+        Returns
+        -------
+        bool
+            True if the settings were saved successfully, False otherwise.
+        """
         try:
             with open(self._path, "w", encoding="utf-8") as f:
-                json.dump(
-                    self._settings, f, indent=4
-                )  # dumps what stored in self._settings (self._load) into the file
+                json.dump(self._settings, f, indent=4)
                 logger.info(f"{self._path} saved successfully: {self._settings}")
                 return True
         except Exception as e:
@@ -42,24 +54,59 @@ class SettingsManager:
             return False
 
     def get(self, key: str) -> Any:
-        """Get the value for the given setting key"""
-        return self._settings.get(key, self._defaults.get(key, None))  # Fallback
+        """Get a setting value by key.
+
+        Parameters
+        ----------
+        key : str
+            The setting key to retrieve.
+
+        Returns
+        -------
+        Any
+            The value associated with the key, or a default value if not found.
+        """
+        return self._settings.get(key, self._defaults.get(key))
 
     def set(self, key: str, value: Any) -> bool:
-        """Set a value for the given setting key. Returns false if key doesn't exist. Saves the file."""
-        if not key:
-            logger.warning("Attempted to set setting with empty key.")
+        """Set a value for a setting key.
+
+        Parameters
+        ----------
+        key : str
+            The key to update.
+        value : Any
+            The new value to assign.
+
+        Returns
+        -------
+        bool
+            True if the key is valid and the setting is saved successfully, False otherwise.
+        """
+        if not key or key not in self._defaults:
+            logger.warning(f"Attempted to set invalid or unknown key: '{key}'.")
             return False
         self._settings[key] = value
         return self._save()
 
     def all(self) -> dict:
-        """Returns a copy of all settings keys and values (defaults if no changes)"""
+        """Get a dictionary of all settings, merged with defaults.
+
+        Returns
+        -------
+        dict
+            A copy of the default settings with current settings overrides.
+        """
         merged = self._defaults.copy()
         merged.update(self._settings)
         return merged
 
     def reset(self) -> None:
-        """Reset all settings to default values and save."""
-        self._settings = DEFAULT_SETTINGS
+        """Reset all settings to default values and save to file.
+
+        Returns
+        -------
+        None
+        """
+        self._settings = self._defaults.copy()
         self._save()
