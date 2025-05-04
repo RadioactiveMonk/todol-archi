@@ -61,15 +61,15 @@ Bloc B — Organisation claire des responsabilités
 
 [x] Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
     
-[ ] SettingsManager
+[x] SettingsManager
 
-[ ] Pydantic ? Pre commit hooks
+[o] Pydantic ? Pre commit hooks
 
 [ ] Ajouter des propriétés @property, __str__, __repr__
 
 [ ] Ajouter safe_get(dict, key, default)
 
-[ ] Ajouter log_task() pour trace propre
+[x] Ajouter log_task() pour trace propre
 
 [ ] Ajouter format_datetime() helper lisible
 
