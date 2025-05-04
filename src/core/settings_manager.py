@@ -8,9 +8,10 @@ from utils.path_utils import SETTINGS_FILE
 
 
 class SettingsModel(BaseModel):
-    theme: str = "light"
+    theme: str = "default"
+    categories: list = DEFAULT_CATEGORIES
     autosave: bool = True
-    font_size: int = 14
+    
 
 
 class SettingsManager:
