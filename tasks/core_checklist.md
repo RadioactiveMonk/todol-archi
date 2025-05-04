@@ -39,8 +39,20 @@
 - [x] Adapter `headerData()` (name + tooltip)
 - [x] Adapter `data()` (field + alignment + checkbox)
 - [x] Adapter `flags()` (via column.flags)
-- [] Supprimer statusdelegate (géré directement par le modèle) 
-- [ ] Supprimer toutes les constantes mortes
+
+
+### 3b. Simplification du statut + réorganisation pré-helpers
+
+- [ ] Supprimer `StatusDelegate` (delegate supprimé, checkbox suffira)
+- [ ] Nettoyer `status_utils.py` (ou déplacer `status_color()` dans un `ui_helpers`)
+- [ ] Supprimer les mappings `ROCKED!`, etc.
+- [ ] Supprimer constantes mortes liées au statut
+- [ ] Split `task_table_column_utils.py` :
+    - `TaskTableColumn` + data = à déplacer vers `models/task_table_config.py`
+    - `get_flags_for_column`, `text_alignment`, etc. → vers `helpers/ui_helpers.py`
+- [ ] Préparer `helpers/` (premiers modules cohérents à thème)
+- [ ] Recalibrer le modele
+- [ ] Migration log
 
 ---
 
@@ -58,9 +70,12 @@
 | Fichier | Contenu prévu |
 |:--------|:--------------|
 | `core/settings_manager.py` | Gestion des paramètres utilisateur |
-| `core/log_manager.py` (optionnel) | Gestion centralisée du logging |
+| `core/log_manager.py` | Gestion centralisée du logging |
 | `models/task_table_model.py` | Modèle refondu basé sur `TASK_TABLE_COLUMNS` |
-| `helpers/*.py` | Tous les petits outils stables et testables |
+| `models/task_table_config.py` | Structure des colonnes (métier pur) |
+| `helpers/ui_helpers.py` | Alignement, flags Qt, rôles d'affichage |
+| `helpers/status_helpers.py` (éventuel) | Couleur ou labels pour completed |
+| `core/defaults.py` (bonus) | Valeurs par défaut centralisées |
 
 ---
 
@@ -70,17 +85,3 @@
 - Modèle aligné à 100% sur la config
 - Plus aucun vieux code dur ou fragile
 - UI prête à consommer le système en mode "service stable"
-
----
-
-## 🔥 On the way
-
-- ThemeManager()
-
-## Bonus — Explorations futures (Branche expérimentale)
-
-> Concepts avancés ou usages spécifiques
-
-[ ] Ajouter structures avancées : deque, NamedTuple, contextlib, asyncio, yield...
-
-
