@@ -47,6 +47,7 @@
 - [ ] Nettoyer `status_utils.py` (ou déplacer `status_color()` dans un `ui_helpers`)
 - [ ] Supprimer les mappings `ROCKED!`, etc.
 - [ ] Supprimer constantes mortes liées au statut
+- [ ] Déplacement default_values.py > core/defaults.py
 - [ ] Split `task_table_column_utils.py` :
     - `TaskTableColumn` + data = à déplacer vers `models/task_table_config.py`
     - `get_flags_for_column`, `text_alignment`, etc. → vers `helpers/ui_helpers.py`
