@@ -46,12 +46,12 @@ def get_column_by_field(
     return next((c for c in columns if c.field == field), None)
 
 
-def get_column_index(name: str, columns: list[TaskTableColumn]) -> Optional[int]:
+def get_column_index(field: str, columns: list[TaskTableColumn]) -> Optional[int]:
     """
     Return the index of the column with the given field name.
     Return None if no column found.
     """
-    return next((i for i, col in enumerate(columns) if col.name == name), None)
+    return next((i for i, col in enumerate(columns) if col.field == field), None)
 
 
 def get_all_column_names(columns: list[TaskTableColumn]) -> list[str]:

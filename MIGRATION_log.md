@@ -270,3 +270,13 @@ Intégration projet en cours (progressive).
   - Gestion complète des rôles Qt (`Display`, `CheckState`, `Background`, `Alignment`)
   - Intégration propre du `refresh_callback` via `TaskHandlers`
 - Aucun warning, typage et imports validés
+
+### ✅ 2025-05-05 — Refactor final du modèle : split colonne / config / données
+
+- Séparation de `TaskTableColumn` dans `models/task_table_column.py` (purement déclaratif)
+- Déplacement de `TASK_TABLE_COLUMNS` dans `models/task_table_data.py` (aucune dépendance UI)
+- `ui_helpers.py` n'importe plus jamais `task_table_config.py`
+- Fonctions comme `get_column_by_field()` acceptent `columns` en argument (plus de dépendance globale)
+- Fin des imports croisés et des modules partiellement initialisés
+- Tests IPython validés ✅
+
