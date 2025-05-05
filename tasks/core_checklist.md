@@ -53,7 +53,7 @@
     - `get_flags_for_column`, `text_alignment`, etc. → vers `helpers/ui_helpers.py`
 - [x] Préparer `helpers/` (premiers modules cohérents à thème, tri des utils)
 - [x] Recalibrer le modele
-- [ ] Migration log
+- [x] Migration log
 
 ---
 
