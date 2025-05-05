@@ -7,9 +7,9 @@ _(sans casser le fonctionnement, mais en préparant le terrain pour la suite)_
 
 ## 1. Tri & regroupement des `ui_*.py`
 
-- [ ] Identifier les doublons, fichiers trop petits ou trop spécialisés  
-- [ ] Fusionner ce qui va ensemble (`ui_geometry_utils`, `ui_icons_utils`, `ui_text_utils`, etc.)
-- [ ] Créer si besoin un dossier `ui_helpers/` avec fichiers clairs :
+- [x] Identifier les doublons, fichiers trop petits ou trop spécialisés  
+- [x] Fusionner ce qui va ensemble (`ui_geometry_utils`, `ui_icons_utils`, `ui_text_utils`, etc.)
+- [x] Créer si besoin un dossier `ui_helpers/` avec fichiers clairs :
   - `geometry.py`
   - `icons.py`
   - `text.py`
