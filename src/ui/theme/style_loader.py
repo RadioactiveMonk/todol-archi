@@ -8,7 +8,7 @@ from PySide6.QtWidgets import QApplication
 
 from core.settings_manager import get_setting
 from utils.path_utils import STYLESHEETS_DIR
-from utils.ui_geometry_utils import DEFAULT_THEME
+from ui.constants.geometry import DEFAULT_THEME
 
 
 def apply_stylesheet(app: QApplication, qss: str) -> None:

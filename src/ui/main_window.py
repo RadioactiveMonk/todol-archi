@@ -10,6 +10,8 @@ from PySide6.QtWidgets import (
 
 from core.db import DB
 from models.task import Task
+from ui.constants.geometry import MAIN_WINDOW_GEOMETRY
+from ui.constants.text import MAIN_WINDOW_TITLE
 from ui.containers.menu_bar import MenuBar
 from ui.containers.search_tasks import SearchTasks
 from ui.containers.task_table_view import TaskTableView
@@ -17,8 +19,6 @@ from ui.controls.custom_button import CustomButton
 from ui.dialogs.add_task_dialog import AddTaskDialog
 from ui.dialogs.edit_parameters_dialog import EditParametersDialog
 from utils.path_utils import ICONS_DIR
-from utils.ui_geometry_utils import MAIN_WINDOW_GEOMETRY
-from utils.ui_text_utils import MAIN_WINDOW_TITLE
 
 
 class MainWindow(QMainWindow):

@@ -18,7 +18,7 @@ from models.task import Task
 from ui.controls.category_selector import CategorySelector
 from ui.controls.expiration_selector import ExpirationSelector
 from utils.path_utils import DB_FILE
-from utils.ui_geometry_utils import (
+from ui.constants.geometry import (
     EDIT_TASK_DIALOG_TITLE,
     TASK_DIALOG_GEOMETRY,
     TASK_DIALOG_TITLE,

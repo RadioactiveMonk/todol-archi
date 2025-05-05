@@ -3,7 +3,7 @@ from PySide6.QtGui import QIcon, QMouseEvent, QPainter
 from PySide6.QtWidgets import QStyledItemDelegate, QStyleOptionViewItem, QWidget
 
 from utils.path_utils import ICONS_DIR
-from utils.ui_geometry_utils import (
+from ui.constants.geometry import (
     EDIT_ICON_SIZE,
     EDIT_ICON_SPACING,
     EDIT_SECTION_POSITIONS,

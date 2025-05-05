@@ -8,7 +8,7 @@ from helpers.ui.table_view_config import apply_column_config, apply_delegate_for
 from models.task_table_data import TASK_TABLE_COLUMNS
 from models.task_table_model import TaskTableModel
 from utils.path_utils import DB_FILE
-from utils.signal_utils import connect_delegate_signals
+from helpers.ui.signal_connectors import connect_delegate_signals
 
 
 class TaskTableView(QTableView):

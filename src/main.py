@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QApplication
 from rich.traceback import install
 
 from core.factories.mainwindow_factory import MainWindowFactory
-from utils.init_db import init_db
+from utils.db_initializer import init_db
 
 
 def main():
