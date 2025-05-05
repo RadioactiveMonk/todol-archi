@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Any, Optional
 
+from core.log_manager import logger
 from helpers.converters import dataclass_to_dict
 from models.task_core import TaskCore
-from core.log_manager import logger
 
 
 @dataclass

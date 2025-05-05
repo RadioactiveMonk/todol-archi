@@ -12,7 +12,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from core.default_values import DEFAULT_STATUS
+from core.defaults import DEFAULT_STATUS
 from helpers.contextmanagers import open_db
 from models.task import Task
 from ui.controls.category_selector import CategorySelector

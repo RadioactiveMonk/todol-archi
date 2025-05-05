@@ -1,8 +1,8 @@
 from functools import lru_cache
 from typing import List
 
-from helpers.contextmanagers import open_settings
 from core.log_manager import logger
+from helpers.contextmanagers import open_settings
 
 
 @lru_cache

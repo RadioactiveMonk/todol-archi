@@ -1,8 +1,8 @@
 import json
 from typing import Any
 
+from core.defaults import DEFAULT_SETTINGS
 from core.log_manager import logger
-from utils.default_values import DEFAULT_SETTINGS
 from utils.path_utils import SETTINGS_FILE
 
 
@@ -12,7 +12,7 @@ class SettingsManager:
     def __init__(self):
         """Initialize SettingsManager.
 
-        Loads the settings from a JSON file located at the given path, 
+        Loads the settings from a JSON file located at the given path,
         falling back to default values if loading fails.
         """
         self._path = SETTINGS_FILE
@@ -33,7 +33,9 @@ class SettingsManager:
                 logger.info(f"{self._path} loaded successfully")
                 return settings
         except (FileNotFoundError, json.JSONDecodeError) as e:
-            logger.error(f"Failed to load settings from {self._path}, falling back to defaults: {e}")
+            logger.error(
+                f"Failed to load settings from {self._path}, falling back to defaults: {e}"
+            )
             return self._defaults.copy()
 
     def _save(self) -> bool:
@@ -102,11 +104,6 @@ class SettingsManager:
         return merged
 
     def reset(self) -> None:
-        """Reset all settings to default values and save to file.
-
-        Returns
-        -------
-        None
-        """
+        """Reset all settings to default values and save to file."""
         self._settings = self._defaults.copy()
         self._save()

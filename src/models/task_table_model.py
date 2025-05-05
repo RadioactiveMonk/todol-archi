@@ -1,17 +1,12 @@
-from typing import Any, Optional, cast
+from typing import Any, Optional
 
 from PySide6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
 from PySide6.QtGui import QBrush, QColor
-from PySide6.QtWidgets import QWidget
 
 from core.log_manager import logger
 from handlers.task_handlers import TaskHandlers
-from helpers.contextmanagers import open_db
-from models.task import Task
-from ui.dialogs.add_task_dialog import AddTaskDialog
-from utils.path_utils import DB_FILE
-from utils.status_utils import get_status_ui, status_color, status_label
-from utils.task_table_column_utils import TASK_TABLE_COLUMNS, get_column_by_name
+from utils.status_utils import status_color, status_label
+from utils.task_table_column_utils import TASK_TABLE_COLUMNS
 
 
 class TaskTableModel(QAbstractTableModel):

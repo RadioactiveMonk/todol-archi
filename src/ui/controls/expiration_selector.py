@@ -1,7 +1,7 @@
 from PySide6.QtCore import QDateTime
 from PySide6.QtWidgets import QDateTimeEdit, QWidget
 
-from core.default_values import DEFAULT_EXPIRATION
+from core.defaults import DEFAULT_EXPIRATION
 
 
 class ExpirationSelector(QDateTimeEdit):

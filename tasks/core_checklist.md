@@ -43,7 +43,7 @@
 
 ### 3b. Simplification du statut + réorganisation pré-helpers
 
-- [ ] Supprimer `StatusDelegate` (delegate supprimé, checkbox suffira)
+- [x] Supprimer `StatusDelegate` (delegate supprimé, checkbox suffira)
 - [ ] Nettoyer `status_utils.py` (ou déplacer `status_color()` dans un `ui_helpers`)
 - [ ] Supprimer les mappings `ROCKED!`, etc.
 - [ ] Supprimer constantes mortes liées au statut

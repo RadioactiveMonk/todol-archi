@@ -15,6 +15,8 @@ DEFAULT_CATEGORIES: list[str] = ["General", "Work", "Hobbies"]
 DEFAULT_SETTINGS: dict[str, Any] = {
     "theme": DEFAULT_THEME,
     "categories": DEFAULT_CATEGORIES,
+    "debug": False,
+    "autosave_interval": 5
 }
 
 # Task values

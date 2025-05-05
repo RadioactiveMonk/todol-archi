@@ -1,8 +1,8 @@
 """init_db.py – Initialise la base de données si la table 'tasks' n'existe pas."""
 
+from core.log_manager import logger
 from core.sql_schema import SQL_CREATE_TASKS_TABLE
 from helpers.contextmanagers import open_db
-from core.log_manager import logger
 from utils.path_utils import DB_FILE
 
 
