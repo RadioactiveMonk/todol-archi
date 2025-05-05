@@ -1,17 +1,14 @@
-# utils/db_utils.py
+# Path: utils/db_utils.py
 
 """
-Requêtes SQL de base et helpers pour la couche d'accès aux données.
-Ce module contient les requêtes statiques, un dispatch facultatif, et des fonctions d'accès.
+Contient des templates SQL et des helpers pour la génération dynamique de requêtes.
 """
 
 from typing import Any
 
 from core.log_manager import logger
 
-# =====================================
-# Requêtes SQL constantes
-# =====================================
+# === SQL queries ===
 
 SQL_CREATE_TASKS_TABLE = """
 CREATE TABLE IF NOT EXISTS tasks (
@@ -30,9 +27,7 @@ SQL_INSERT_TASK = "INSERT INTO tasks (title, category, completed, expiration, no
 SQL_UPDATE_TASK_BY_ID = "UPDATE tasks SET title = ?, category = ?, completed = ?, expiration = ?, notes = ? WHERE id = ?;"
 SQL_DELETE_TASK_BY_ID = "DELETE FROM tasks WHERE id = ?;"
 
-# =====================================
-# Dispatch facultatif (clé → requête)
-# =====================================
+# === Dispatch ===
 
 _QUERIES = {
     "create_table": SQL_CREATE_TASKS_TABLE,
@@ -43,9 +38,7 @@ _QUERIES = {
     "delete": SQL_DELETE_TASK_BY_ID,
 }
 
-# =====================================
-# Fonctions d'accès ou helpers
-# =====================================
+# === Helpers ===
 
 
 def get_query(key: str) -> str:

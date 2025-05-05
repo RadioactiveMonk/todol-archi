@@ -1,4 +1,4 @@
-from helpers.ui_helpers import flags_checkbox, flags_selectable
+from helpers.ui.ui_helpers import flags_checkbox, flags_selectable
 from models.task_table_column import TaskTableColumn
 
 TASK_TABLE_COLUMNS = [

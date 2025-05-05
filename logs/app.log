@@ -4,3 +4,5 @@
 2025-05-05 11:27:56.584 | INFO     | settings_manager:_load:33 | 5234 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
 2025-05-05 11:28:06.652 | INFO     | settings_manager:_save:52 | 5234 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'default', 'categories': ['General', 'Work', 'Hobbies'], 'debug': False, 'autosave_interval': 5}
 2025-05-05 11:29:01.639 | INFO     | settings_manager:_save:52 | 5234 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'dark', 'categories': ['General', 'Work', 'Hobbies'], 'debug': False, 'autosave_interval': 5}
+2025-05-05 18:16:40.276 | DEBUG    | settings_helpers:get_categories:12 | 9054 - Accessing task categories
+2025-05-05 18:16:40.281 | DEBUG    | contextmanagers:open_settings:44 | 9054 - Accessing settings file in mode 'r': /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json

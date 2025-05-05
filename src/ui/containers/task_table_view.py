@@ -4,12 +4,11 @@ from PySide6.QtWidgets import QStyledItemDelegate, QTableView, QWidget
 
 from handlers.task_handlers import TaskHandlers
 from helpers.contextmanagers import open_db
+from helpers.ui.table_view_config import apply_column_config, apply_delegate_for_column
+from models.task_table_data import TASK_TABLE_COLUMNS
 from models.task_table_model import TaskTableModel
-from utils.delegate_utils import apply_delegate_for_column
 from utils.path_utils import DB_FILE
 from utils.signal_utils import connect_delegate_signals
-from utils.task_table_column_utils import TASK_TABLE_COLUMNS
-from utils.view_utils import apply_column_config
 
 
 class TaskTableView(QTableView):
@@ -28,9 +27,7 @@ class TaskTableView(QTableView):
         with open_db(DB_FILE) as db:
             tasks: List[Dict[str, Any]] = db.get_all_tasks()
         self.task_handlers = TaskHandlers()
-        self.table_model = TaskTableModel(
-            parent=self, task_handlers=self.task_handlers, tasks=tasks
-        )  # Create the model
+        self.table_model = TaskTableModel()
         self.column_delegates: dict[int, QStyledItemDelegate] = {}
 
         self.setModel(self.table_model)  # Set the model to the table
