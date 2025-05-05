@@ -1,37 +1,28 @@
 from typing import Any, Optional
 
-from PySide6.QtCore import QAbstractTableModel, QModelIndex, QObject, Qt
-from PySide6.QtGui import QBrush, QColor
+from PySide6.QtCore import QAbstractTableModel, QModelIndex, Qt
 
-from core.log_manager import logger
 from handlers.task_handlers import TaskHandlers
+from helpers.contextmanagers import open_db
 from helpers.status_helpers import status_color
-from models.task_table_config import TASK_TABLE_COLUMNS
+from helpers.ui_helpers import text_alignment
+from models.task import Task
+from models.task_table_config import TASK_TABLE_COLUMNS, TaskTableColumn
+from utils.path_utils import DB_FILE
 
 
 class TaskTableModel(QAbstractTableModel):
-    """Data model for the task table"""
+    def __init__(self):
+        super().__init__()
+        self._tasks: list[Task] = self._load()
+        self._columns: list[TaskTableColumn] = TASK_TABLE_COLUMNS
+        self.handlers = TaskHandlers(refresh_callback=self.refresh)
 
-    def __init__(
-        self,
-        parent: Optional[QObject] = None,
-        task_handlers: Optional[TaskHandlers] = None,
-        tasks: Optional[list[dict[str, Any]]] = None,
-    ) -> None:
-        """Initialize tasks and handlers at init"""
-        super().__init__(parent)
-        self._tasks = tasks if tasks is not None else []
-        self.task_handlers = (
-            task_handlers or TaskHandlers()
-        )  # FIXME see TaskHandlers, refresh_callback ?
-
-    def rowCount(self, parent: Optional[QModelIndex] = None) -> int:
-        """Returns the number of rows equal to number of tasks"""
+    def rowCount(self, parent: QModelIndex = QModelIndex()) -> int:
         return len(self._tasks)
 
-    def columnCount(self, parent: Optional[QModelIndex] = None) -> int:
-        """Returns the number of columns in 'TASK_TABLE_COLUMNS'"""
-        return len(TASK_TABLE_COLUMNS)
+    def columnCount(self, parent: QModelIndex = QModelIndex()) -> int:
+        return len(self._columns)
 
     def headerData(
         self,
@@ -39,58 +30,67 @@ class TaskTableModel(QAbstractTableModel):
         orientation: Qt.Orientation,
         role: int = Qt.ItemDataRole.DisplayRole,
     ) -> Any:
-        """Set header datas for the table"""
-        if orientation == Qt.Orientation.Horizontal:
-            column = TASK_TABLE_COLUMNS[section]
-            if role == Qt.ItemDataRole.DisplayRole:
-                return column.name
-            elif role == Qt.ItemDataRole.ToolTipRole and column.tooltip:
-                return column.tooltip
+        if (
+            orientation == Qt.Orientation.Horizontal
+            and role == Qt.ItemDataRole.DisplayRole
+        ):
+            return self._columns[section].name
+        if (
+            orientation == Qt.Orientation.Horizontal
+            and role == Qt.ItemDataRole.ToolTipRole
+        ):
+            return self._columns[section].tooltip
         return None
 
-    def data(self, index, /, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
-        """Table datas"""
+    def data(self, index: QModelIndex, role: int = Qt.ItemDataRole.DisplayRole) -> Any:
         if not index.isValid():
             return None
 
-        row_index, col_index = index.row(), index.column()
-        task = self._tasks[row_index]
-        column = TASK_TABLE_COLUMNS[col_index]
-        value = task.get(column.field)
+        task = self._tasks[index.row()]
+        column = self._columns[index.column()]
+        value = getattr(task, column.field)
 
-        if column.field == "completed" and isinstance(value, bool):
-            if role == Qt.ItemDataRole.BackgroundRole:
-                return QBrush(QColor(status_color(value)))
-            elif role == Qt.ItemDataRole.CheckStateRole:
-                return Qt.CheckState.Checked if value else Qt.CheckState.Unchecked
+        if role == Qt.ItemDataRole.DisplayRole:
+            return value
 
-        return super().data(index, role)
+        if role == Qt.ItemDataRole.TextAlignmentRole:
+            return column.alignment or text_alignment("left")
 
-    def flags(self, index: QModelIndex) -> Qt.ItemFlag:
-        """Returns columns flags if any, otherwise returns flag 'ItemIsEnabled'"""
-        column = TASK_TABLE_COLUMNS[index.column()]
-        return column.flags or Qt.ItemFlag.ItemIsEnabled
+        if role == Qt.ItemDataRole.CheckStateRole and isinstance(value, bool):
+            return Qt.CheckState.Checked if value else Qt.CheckState.Unchecked
+
+        if role == Qt.ItemDataRole.BackgroundRole and column.field == "completed":
+            return status_color(value)
+
+        return None
 
     def setData(
         self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole
     ) -> bool:
-        """Set table datas"""
-        if not index.isValid() or role != Qt.ItemDataRole.EditRole:
+        if not index.isValid():
             return False
 
-        row_index, col_index = index.row(), index.column()
-        column = TASK_TABLE_COLUMNS[col_index]
-        task = self._tasks[row_index]
-
-        if column.field == "completed":
-            task_id = task["id"]
-            self.task_handlers.toggle_task_status(task_id)
-            task["completed"] = not task["completed"]
-            logger.debug(f"[setData] Toggle task ID {task_id} -> {task['completed']}")
-            self.dataChanged.emit(index, index)
-            return True
+        column = self._columns[index.column()]
+        if role == Qt.ItemDataRole.CheckStateRole and column.field == "completed":
+            task = self._tasks[index.row()]
+            if task.id:
+                self.handlers.toggle_task_status(task.id)
+                return True
 
         return False
 
+    def flags(self, index: QModelIndex) -> Optional[Qt.ItemFlag]:
+        if not index.isValid():
+            return Qt.ItemFlag.ItemIsEnabled
+
+        return self._columns[index.column()].flags
+
     def refresh(self):
-        pass
+        self.beginResetModel()
+        self._tasks = self._load()
+        self.endResetModel()
+
+    def _load(self) -> list[Task]:
+        with open_db(DB_FILE) as db:
+            rows = db.get_all_tasks()
+            return [Task(**row) for row in rows]
