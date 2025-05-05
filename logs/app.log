@@ -1,2 +1,6 @@
 2025-05-03 12:44:29.277 | INFO     | <ipython-input-2-3360b13c1914>:<module>:1 | 3267 - Test log depuis LogManager
 2025-05-03 12:45:08.391 | INFO     | log_manager:log_task:39 | 3267 - [TASK] DELETED – Task XYZ
+2025-05-05 11:27:44.666 | INFO     | settings_manager:_load:33 | 5234 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-05-05 11:27:56.584 | INFO     | settings_manager:_load:33 | 5234 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json loaded successfully
+2025-05-05 11:28:06.652 | INFO     | settings_manager:_save:52 | 5234 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'default', 'categories': ['General', 'Work', 'Hobbies'], 'debug': False, 'autosave_interval': 5}
+2025-05-05 11:29:01.639 | INFO     | settings_manager:_save:52 | 5234 - /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json saved successfully: {'theme': 'dark', 'categories': ['General', 'Work', 'Hobbies'], 'debug': False, 'autosave_interval': 5}
