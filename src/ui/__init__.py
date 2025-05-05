@@ -1,8 +1,8 @@
-from utils.task_table_column_utils import (
+from helpers.ui_helpers import get_flags_for_column
+from models.task_table_config import (
     get_all_column_names,
     get_column_by_name,
     get_column_index,
-    get_flags_for_column,
 )
 
 from .main_window import MainWindow
