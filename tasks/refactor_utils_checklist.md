@@ -42,5 +42,5 @@ _(sans casser le fonctionnement, mais en préparant le terrain pour la suite)_
 
 ## 5. (bonus) Marquer ce qui pourrait devenir testable
 
-- [ ] Annoter les fonctions pures ou isolables pour futur test unitaire
+- [ ] Annoter les fonctions pures ou isolables pour futur tests unitaires
 - [ ] Lister ce qui dépend encore trop de PyQt ou de l’UI pour le séparer plus tard
