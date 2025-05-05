@@ -2,8 +2,7 @@ from typing import Optional
 
 from PySide6.QtCore import Qt
 
-from core.log_manager import logger
-from models.task_table_config import TASK_TABLE_COLUMNS, TaskTableColumn
+from models.task_table_column import TaskTableColumn
 
 
 def flags_editable() -> Qt.ItemFlag:
@@ -22,55 +21,39 @@ def flags_selectable() -> Qt.ItemFlag:
 
 def flags_checkbox() -> Qt.ItemFlag:
     """Return flags to make column checkable"""
-    return (
-        Qt.ItemFlag.ItemIsEnabled
-        | Qt.ItemFlag.ItemIsSelectable
-        | Qt.ItemFlag.ItemIsUserCheckable
-    )
+    return Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsUserCheckable
 
 
-def text_alignment(position: str) -> Qt.AlignmentFlag:
+def text_alignment(align: str) -> Qt.AlignmentFlag:
     """Returns text alignment for columns"""
-    options = {
+    return {
         "left": Qt.AlignmentFlag.AlignLeft,
         "center": Qt.AlignmentFlag.AlignCenter,
         "right": Qt.AlignmentFlag.AlignRight,
-    }
-    if position in options:
-        return options[position]
-
-    logger.error(f"Unknown alignment position '{position}', falling back to center.")
-    return Qt.AlignmentFlag.AlignCenter
+    }.get(align, Qt.AlignmentFlag.AlignLeft)
 
 
-def get_flags_for_column(name: str) -> Qt.ItemFlag:
+def get_flags_for_column(
+    field: str, columns: list[TaskTableColumn]
+) -> Optional[Qt.ItemFlag]:
     """Return the flags for the given column, with fallback if not explicitly set."""
-    column = get_column_by_name(name)
-    if column.flags is not None:
-        return column.flags
-    return flags_editable() if column.editable else flags_selectable()
+    return next((c.flags for c in columns if c.field == field), None)
 
 
-def get_column_by_name(name: str) -> TaskTableColumn:
-    """Returns column name or raise an error if not found"""
-    for column in TASK_TABLE_COLUMNS:
-        if column.name == name:
-            return column
-    logger.error(f"Column '{name}' not found.")
-    raise
+def get_column_by_field(
+    field: str, columns: list[TaskTableColumn]
+) -> Optional[TaskTableColumn]:
+    return next((c for c in columns if c.field == field), None)
 
 
-def get_column_index(field: str) -> Optional[int]:
+def get_column_index(name: str, columns: list[TaskTableColumn]) -> Optional[int]:
     """
     Return the index of the column with the given field name.
     Return None if no column found.
     """
-    for index, column in enumerate(TASK_TABLE_COLUMNS):
-        if column.field == field:
-            return index
-    return None
+    return next((i for i, col in enumerate(columns) if col.name == name), None)
 
 
-def get_all_column_names() -> list[str]:
+def get_all_column_names(columns: list[TaskTableColumn]) -> list[str]:
     """Returns a list of all columns names"""
-    return [col.name for col in TASK_TABLE_COLUMNS]
+    return [c.name for c in columns]

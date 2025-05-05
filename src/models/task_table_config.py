@@ -1,30 +1,6 @@
-from dataclasses import dataclass
-from typing import Optional
-
-from PySide6.QtCore import Qt
-
-from helpers.ui_helpers import (
-    flags_checkbox,
-    flags_selectable,
-    text_alignment,
-)
+from helpers.ui_helpers import flags_checkbox, flags_selectable
+from models.task_table_column import TaskTableColumn
 from ui.delegates import EditDelegate
-
-
-@dataclass(frozen=True)
-class TaskTableColumn:
-    """Representation of task table columns"""
-
-    name: str
-    field: str
-    width: int = 150
-    editable: bool = True
-    alignment: Qt.AlignmentFlag = text_alignment("center")
-    flags: Optional[Qt.ItemFlag] = None
-    visible: bool = True
-    tooltip: Optional[str] = None
-    delegate: Optional[type] = None
-
 
 TASK_TABLE_COLUMNS = [
     TaskTableColumn(
@@ -52,6 +28,3 @@ TASK_TABLE_COLUMNS = [
         delegate=EditDelegate,
     ),
 ]
-
-
-
