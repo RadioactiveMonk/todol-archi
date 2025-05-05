@@ -11,5 +11,6 @@ APP_WEBSITE = "https://github.com/RadioactiveMonk/todol-archi"
 
 # === Helpers ===
 
+
 def get_app_title() -> str:
     return f"{APP_NAME} v{APP_VERSION}"

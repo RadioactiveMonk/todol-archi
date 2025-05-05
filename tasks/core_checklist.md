@@ -44,11 +44,11 @@
 ### 3b. Simplification du statut + réorganisation pré-helpers
 
 - [x] Supprimer `StatusDelegate` (delegate supprimé, checkbox suffira)
-- [ ] Nettoyer `status_utils.py` (ou déplacer `status_color()` dans un `ui_helpers`)
-- [ ] Supprimer les mappings `ROCKED!`, etc.
-- [ ] Supprimer constantes mortes liées au statut
-- [ ] Déplacement default_values.py > core/defaults.py
-- [ ] Split `task_table_column_utils.py` :
+- [x] Nettoyer `status_utils.py` (ou déplacer `status_color()` dans un `ui_helpers`)
+- [x] Supprimer les mappings `ROCKED!`, etc.
+- [x] Supprimer constantes mortes liées au statut
+- [x] Déplacement default_values.py > core/defaults.py
+- [x] Split `task_table_column_utils.py` :
     - `TaskTableColumn` + data = à déplacer vers `models/task_table_config.py`
     - `get_flags_for_column`, `text_alignment`, etc. → vers `helpers/ui_helpers.py`
 - [ ] Préparer `helpers/` (premiers modules cohérents à thème, tri des utils)

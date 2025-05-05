@@ -5,8 +5,8 @@ from PySide6.QtGui import QBrush, QColor
 
 from core.log_manager import logger
 from handlers.task_handlers import TaskHandlers
-from utils.status_utils import status_color, status_label
-from utils.task_table_column_utils import TASK_TABLE_COLUMNS
+from helpers.status_helpers import status_color
+from models.task_table_config import TASK_TABLE_COLUMNS
 
 
 class TaskTableModel(QAbstractTableModel):
@@ -59,9 +59,7 @@ class TaskTableModel(QAbstractTableModel):
         value = task.get(column.field)
 
         if column.field == "completed" and isinstance(value, bool):
-            if role == Qt.ItemDataRole.DisplayRole:
-                return status_label(value)
-            elif role == Qt.ItemDataRole.BackgroundRole:
+            if role == Qt.ItemDataRole.BackgroundRole:
                 return QBrush(QColor(status_color(value)))
             elif role == Qt.ItemDataRole.CheckStateRole:
                 return Qt.CheckState.Checked if value else Qt.CheckState.Unchecked

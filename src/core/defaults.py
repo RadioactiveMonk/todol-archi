@@ -16,7 +16,7 @@ DEFAULT_SETTINGS: dict[str, Any] = {
     "theme": DEFAULT_THEME,
     "categories": DEFAULT_CATEGORIES,
     "debug": False,
-    "autosave_interval": 5
+    "autosave_interval": 5,
 }
 
 # Task values
