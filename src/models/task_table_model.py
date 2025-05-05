@@ -53,8 +53,8 @@ class TaskTableModel(QAbstractTableModel):
         if not index.isValid():
             return None
 
-        row, col_index = index.row(), index.column()
-        task = self._tasks[row]
+        row_index, col_index = index.row(), index.column()
+        task = self._tasks[row_index]
         column = TASK_TABLE_COLUMNS[col_index]
         value = task.get(column.field)
 
@@ -78,9 +78,9 @@ class TaskTableModel(QAbstractTableModel):
         if not index.isValid() or role != Qt.ItemDataRole.EditRole:
             return False
 
-        row, col_index = index.row(), index.column()
+        row_index, col_index = index.row(), index.column()
         column = TASK_TABLE_COLUMNS[col_index]
-        task = self._tasks[row]
+        task = self._tasks[row_index]
 
         if column.field == "completed":
             task_id = task["id"]
