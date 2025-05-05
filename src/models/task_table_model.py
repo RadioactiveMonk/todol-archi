@@ -6,7 +6,7 @@ from handlers.task_handlers import TaskHandlers
 from helpers.contextmanagers import open_db
 from helpers.status_helpers import status_color
 from models.task import Task
-from models.task_table_config import TASK_TABLE_COLUMNS, TaskTableColumn
+from models.task_table_data import TASK_TABLE_COLUMNS, TaskTableColumn
 from utils.path_utils import DB_FILE
 
 
