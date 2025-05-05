@@ -3,7 +3,6 @@ from typing import Optional
 
 from PySide6.QtCore import Qt
 
-from core.log_manager import logger
 from helpers.ui_helpers import (
     flags_checkbox,
     flags_selectable,
@@ -55,26 +54,4 @@ TASK_TABLE_COLUMNS = [
 ]
 
 
-def get_column_by_name(name: str) -> TaskTableColumn:
-    """Returns column name or raise an error if not found"""
-    for column in TASK_TABLE_COLUMNS:
-        if column.name == name:
-            return column
-    logger.error(f"Column '{name}' not found.")
-    raise
 
-
-def get_column_index(field: str) -> Optional[int]:
-    """
-    Return the index of the column with the given field name.
-    Return None if no column found.
-    """
-    for index, column in enumerate(TASK_TABLE_COLUMNS):
-        if column.field == field:
-            return index
-    return None
-
-
-def get_all_column_names() -> list[str]:
-    """Returns a list of all columns names"""
-    return [col.name for col in TASK_TABLE_COLUMNS]

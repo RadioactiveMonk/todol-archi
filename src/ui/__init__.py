@@ -1,17 +1,9 @@
 from helpers.ui_helpers import get_flags_for_column
-from models.task_table_config import (
-    get_all_column_names,
-    get_column_by_name,
-    get_column_index,
-)
 
 from .main_window import MainWindow
 
 __all__ = [
     "get_flags_for_column",
-    "get_column_by_name",
-    "get_all_column_names",
-    "get_column_index",
     "MainWindow",
 ]
 # This module imports and re-exports the MainWindow class and utility functions
