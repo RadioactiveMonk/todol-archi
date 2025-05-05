@@ -255,3 +255,18 @@ Un excellent socle pour les futurs modules (`LogManager`, `ThemeManager`, etc.)
 Logger central prêt à l’emploi (`from core.log_manager import logger`)  
 Traçabilité propre et extensible. IPython OK.  
 Intégration projet en cours (progressive).
+
+### ✅ 2025-05-05 — Refonte modèle + simplification status + split helpers
+
+- Suppression complète du `StatusDelegate` remplacé par `CheckStateRole` natif
+- Nettoyage de `status_utils.py` → `status_helpers.py` (juste `status_color`)
+- Suppression de tous les anciens labels (ROCKED!, PENDING…) et constantes inutiles
+- Split de `task_table_column_utils.py` :
+  - `TaskTableColumn`, `TASK_TABLE_COLUMNS`, accès → `models/task_table_config.py`
+  - fonctions Qt (`get_flags_for_column`, `text_alignment`) → `helpers/ui_helpers.py`
+- Création du fichier `task_table_model.py` propre :
+  - Alimentation via DB avec `open_db()`
+  - Méthode `refresh()` pour synchroniser dynamiquement avec la base
+  - Gestion complète des rôles Qt (`Display`, `CheckState`, `Background`, `Alignment`)
+  - Intégration propre du `refresh_callback` via `TaskHandlers`
+- Aucun warning, typage et imports validés

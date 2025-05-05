@@ -51,8 +51,8 @@
 - [x] Split `task_table_column_utils.py` :
     - `TaskTableColumn` + data = à déplacer vers `models/task_table_config.py`
     - `get_flags_for_column`, `text_alignment`, etc. → vers `helpers/ui_helpers.py`
-- [ ] Préparer `helpers/` (premiers modules cohérents à thème, tri des utils)
-- [ ] Recalibrer le modele
+- [x] Préparer `helpers/` (premiers modules cohérents à thème, tri des utils)
+- [x] Recalibrer le modele
 - [ ] Migration log
 
 ---

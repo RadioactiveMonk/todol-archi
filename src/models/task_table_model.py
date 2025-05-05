@@ -5,7 +5,6 @@ from PySide6.QtCore import QAbstractTableModel, QModelIndex, Qt
 from handlers.task_handlers import TaskHandlers
 from helpers.contextmanagers import open_db
 from helpers.status_helpers import status_color
-from helpers.ui_helpers import text_alignment
 from models.task import Task
 from models.task_table_config import TASK_TABLE_COLUMNS, TaskTableColumn
 from utils.path_utils import DB_FILE
@@ -54,7 +53,7 @@ class TaskTableModel(QAbstractTableModel):
             return value
 
         if role == Qt.ItemDataRole.TextAlignmentRole:
-            return column.alignment or text_alignment("left")
+            return column.alignment
 
         if role == Qt.ItemDataRole.CheckStateRole and isinstance(value, bool):
             return Qt.CheckState.Checked if value else Qt.CheckState.Unchecked
