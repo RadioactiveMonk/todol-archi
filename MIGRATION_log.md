@@ -280,3 +280,45 @@ Intégration projet en cours (progressive).
 - Fin des imports croisés et des modules partiellement initialisés
 - Tests IPython validés ✅
 
+
+## 📅 Date : 5 mai 2025
+## 🎯 Objectif : Clarifier, regrouper et structurer les modules `helpers/` et `utils/`
+
+---
+
+## ✅ Réorganisations effectuées :
+
+### 🔁 `utils/`
+- `csv_utils.py` → renommé en `export_utils.py`
+- `init_db.py` → renommé en `db_initializer.py`
+- `delegate_utils.py` → contenu déplacé vers `helpers/ui/table_view_config.py`
+- `view_utils.py` → contenu fusionné dans `helpers/ui/table_view_config.py`
+
+---
+
+### 🧠 Simplification des helpers UI :
+- Création du dossier `helpers/ui/` :
+  - `icon_loader.py`
+  - `signal_connectors.py`
+  - `table_view_config.py`
+  - `ui_helpers.py`
+
+---
+
+### 🧭 Nettoyage des utilitaires thématiques :
+- `category_utils.py` → déplacé dans `helpers/settings_helpers.py`
+- `ui_theme_utils.py` → déplacé dans `helpers/settings_helpers.py`
+
+---
+
+### 🧱 Centralisation des constantes UI :
+- `ui_geometry_utils.py` → déplacé dans `ui/constants/geometry.py`
+- `ui_text_utils.py` → déplacé dans `ui/constants/text.py`
+
+---
+
+## 🔒 Notes :
+- Tous les modules testés après déplacement ✅
+- Imports corrigés localement
+- Préparation possible à des patterns avancés (`Strategy`, `Factory`) pour plus tard
+
