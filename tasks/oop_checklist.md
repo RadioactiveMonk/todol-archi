@@ -1,7 +1,5 @@
-from pathlib import Path
 
-# Contenu de la checklist pour le "Bloc Objet pur"
-content = """# ✅ Bloc Objet Pur – Checklist de transition (Mai 2025)
+✅ Bloc Objet Pur – Checklist de transition (Mai 2025)
 
 ## 🎯 Objectif
 Représenter l’application en Python pur, en modélisant chaque composant (tableau, tâche, état global...) indépendamment de PySide.  
@@ -54,8 +52,3 @@ Un noyau applicatif **vivant et cohérent** sans interface, capable d’être ex
 
 """
 
-# Enregistrement dans un fichier .md
-path = Path("/mnt/data/checklist_bloc_objet_pur.md")
-path.write_text(content)
-
-path.name
