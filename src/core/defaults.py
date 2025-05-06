@@ -1,15 +1,13 @@
 from typing import Any
 
 from core.log_manager import logger
-from utils.ui_theme_utils import DEFAULT_THEME
 
 # =====================================
 # DOMAIN DEFAULTS
 # =====================================
 NO_ID: int = -1
-
-# Category
 DEFAULT_CATEGORIES: list[str] = ["General", "Work", "Hobbies"]
+DEFAULT_THEME: str = "default"
 
 # Settings
 DEFAULT_SETTINGS: dict[str, Any] = {
