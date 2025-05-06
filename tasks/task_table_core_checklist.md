@@ -44,9 +44,9 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 
 ## 5. Pythonic touch
 
-- [ ] `__len__()` → `len(table)` donne `row_count`
-- [ ] `__getitem__()` → `table[0]` retourne une ligne
-- [ ] `__iter__()` → itérable sur les tâches
+- [x] `__len__()` → `len(table)` donne `row_count`
+- [x] `__getitem__()` → `table[0]` retourne une ligne
+- [x] `__iter__()` → itérable sur les tâches
 
 ---
 
