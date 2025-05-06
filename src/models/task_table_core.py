@@ -46,10 +46,9 @@ class TaskTable:
        """
         return self.row_count
 
-    def __getitem__(self, index: int) -> Task:
-        """Returns the task for given index
-"""
-        return self._tasks[index]
+    def __getitem__(self, index: int | slice) -> Task | list[Task]:
+   """Returns a task by its index or a list of tasks by a given slice (e.g.: index = [0:5]"""
+    return self._tasks[index]
 
     @property
     def row_count(self) -> int:
