@@ -34,6 +34,7 @@ class TaskTable:
 
         return self.to_console_str()
 
+    @property
     def row_count(self) -> int:
         """
         Returns the number of rows (tasks) in the task table.
@@ -44,6 +45,7 @@ class TaskTable:
         """
         return len(self._tasks)
 
+    @property
     def column_count(self) -> int:
         """
         Returns the number of columns in the task table.
