@@ -15,14 +15,14 @@ from PySide6.QtWidgets import (
 from core.defaults import DEFAULT_STATUS
 from helpers.contextmanagers import open_db
 from models.task import Task
-from ui.controls.category_selector import CategorySelector
-from ui.controls.expiration_selector import ExpirationSelector
-from utils.path_utils import DB_FILE
 from ui.constants.geometry import (
     EDIT_TASK_DIALOG_TITLE,
     TASK_DIALOG_GEOMETRY,
     TASK_DIALOG_TITLE,
 )
+from ui.controls.category_selector import CategorySelector
+from ui.controls.expiration_selector import ExpirationSelector
+from utils.path_utils import DB_FILE
 
 
 class AddTaskDialog(QDialog):
