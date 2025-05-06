@@ -47,7 +47,8 @@ class TaskTable:
         return self.row_count
 
     def __getitem__(self, index: int) -> Task:
-        """Returns the task for given index"""
+        """Returns the task for given index
+"""
         return self._tasks[index]
 
     @property
