@@ -29,7 +29,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 - [x] `.to_console_str()` → vue en texte
 - [x] `.to_matrix()` → structure exportable
 - [ ] `.to_dicts()` ou `.to_json()` ?
-- [ ] `__repr__()` clair et compact
+- [x] `__repr__()` clair et compact
 
 ---
 
