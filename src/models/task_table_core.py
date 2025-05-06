@@ -248,6 +248,9 @@ class TaskTable:
         return False
 
 
+    def remove_by_id(self, task_id: int) -> bool:                 
+        return self.remove_tasks((task_id,))
+
 
     def to_matrix(self) -> list[list[str]]:
         """
