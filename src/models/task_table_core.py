@@ -41,6 +41,11 @@ class TaskTable:
         """
         return f"<TaskTable rows={self.row_count} cols={self.column_count}>"
 
+    def __len__(self) -> int:
+        """Returns length of the table (number of rows)
+       """
+        return self.row_count
+
     @property
     def row_count(self) -> int:
         """
