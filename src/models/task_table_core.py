@@ -1,4 +1,4 @@
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Sequence
 
 from core.log_manager import logger
 from models.task import Task
@@ -8,7 +8,9 @@ from models.task_table_column import TaskTableColumn
 class TaskTable:
     """Representation of the task table. Columns, rows, cells, ..."""
 
-    def __init__(self, tasks: List[Task], columns: List[TaskTableColumn]) -> None:
+    def __init__(
+        self, tasks: Sequence[Task], columns: Sequence[TaskTableColumn]
+    ) -> None:
         """
         Initialize the TaskTableCore object.
 
@@ -24,8 +26,8 @@ class TaskTable:
         None
         """
 
-        self._tasks = tasks
-        self._columns = columns
+        self._tasks = list(tasks)
+        self._columns = list(columns)
 
     def __str__(self) -> str:
         """
@@ -56,6 +58,52 @@ class TaskTable:
             The total number of columns.
         """
         return len(self._columns)
+
+    @property
+    def column_names(self) -> List[str]:
+        """
+        Retrieves the names of all columns in the table.
+
+        Returns:
+            List[str]: A list of column names.
+        """
+        return [col.name for col in self._columns]
+
+    @property
+    def column_fields(self) -> List[str]:
+        """
+        Retrieves a list of field names from the columns.
+
+        Returns:
+            List[str]: A list of field names extracted from the column objects.
+        """
+
+        return [col.field for col in self._columns]
+
+    def headers(
+        self, as_tuple: Optional[bool] = False
+    ) -> list[str] | list[tuple[str, str]]:
+        """
+        Generate a list of column headers for the task table.
+
+        Parameters
+        ----------
+        as_tuple : bool, optional
+            If True, returns a list of tuples where each tuple contains the column
+            name and its corresponding field. If False, returns a list of column
+            names only. Default is False.
+
+        Returns
+        -------
+        list of str or list of tuple of str
+            If `as_tuple` is False, returns a list of column names as strings.
+            If `as_tuple` is True, returns a list of tuples, where each tuple
+            contains the column name and its corresponding field.
+        """
+
+        if as_tuple:
+            return [(col.name, col.field) for col in self._columns]
+        return [col.name for col in self._columns]
 
     def get_cell_value(self, row_index: int, col_index: int) -> Any:
         """
