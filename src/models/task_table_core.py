@@ -50,6 +50,10 @@ class TaskTable:
    """Returns a task by its index or a list of tasks by a given slice (e.g.: index = slice(0, 5)"""
     return self._tasks[index]
 
+    def __iter__(self):
+        """Allows the task table to be iterable"""
+        return iter(self._tasks)
+
     @property
     def row_count(self) -> int:
         """
