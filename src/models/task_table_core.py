@@ -207,6 +207,24 @@ class TaskTable:
         return True
     
     def remove_tasks(self, task_ids: tuple[int]) -> bool:
+        """
+        Remove tasks from the task list based on their IDs.
+
+        Parameters
+        ----------
+        task_ids : tuple[int]
+            A tuple of task IDs to be removed from the task list.
+
+        Returns
+        -------
+        bool
+            True if at least one task was removed, False otherwise.
+
+        Raises
+        ------
+        ValueError
+            If no task IDs are provided.
+        """
         remaining_tasks = []
         removed_ids = []
 
