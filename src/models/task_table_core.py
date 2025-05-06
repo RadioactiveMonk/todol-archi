@@ -181,6 +181,56 @@ class TaskTable:
             logger.error(e)
             raise
 
+    def add_task(self, task: Task) -> bool:
+        """
+        Add a task to the task list.
+
+        Parameters
+        ----------
+        task : Task
+            The task object to be added. Must be an instance of the Task class.
+
+        Returns
+        -------
+        bool
+            True if the task was successfully added, False if the task type is invalid.
+
+        Notes
+        -----
+        Logs a warning if the provided task is not an instance of the Task class.
+        """
+
+        if not isinstance(task, Task):
+            logger.warning("Invalid task type provided. %r", task)
+            return False
+        self._tasks.append(task)
+        return True
+    
+    def remove_tasks(self, task_ids: tuple[int]) -> bool:
+        remaining_tasks = []
+        removed_ids = []
+
+        if not task_ids:
+            logger.warning("No task ID given", task_ids)
+            raise ValueError("You must provide at least one task ID")
+
+        for task in self._tasks:
+            if task.id in task_ids:
+                removed_ids.append(task.id)
+            else:
+                remaining_tasks.append(task)
+
+        self._tasks = remaining_tasks
+
+        if removed_ids:
+            logger.info("Removed tasks with IDs: %s", removed_ids)
+            return True
+
+        logger.info("No matching task IDs found to remove: %s", task_ids)
+        return False
+
+
+
     def to_matrix(self) -> list[list[str]]:
         """
         Converts the tasks and their attributes into a 2D matrix representation.

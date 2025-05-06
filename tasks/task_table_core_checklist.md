@@ -9,15 +9,15 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 ## 1. Propriétés & accès structurés
 
 - [x] `row_count` et `column_count` en `@property`
-- [ ] Ajouter `columns_names` / `columns_fields`
-- [ ] Ajouter une méthode `.headers()` pour l’export
+- [x] Ajouter `columns_names` / `columns_fields`
+- [x] Ajouter une méthode `.headers()` pour l’export
 
 ---
 
 ## 2. Méthodes métier
 
-- [ ] `.add_task(task: Task)`
-- [ ] `.remove_task(index: int)` ou `.remove_by_id(id)`
+- [x] `.add_task(task: Task)`
+- [x] `.remove_task(index: int)` ou `.remove_by_id(id)`
 - [ ] `.filter_by(**criteria)`
 - [ ] `.sort_by(column: str, reverse=False)`
 
