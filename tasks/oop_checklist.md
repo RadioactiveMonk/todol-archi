@@ -12,7 +12,7 @@ Découpler totalement la logique métier de la couche UI.
 - [x] Créer `TaskTable` en Python pur (`task_table_core.py`)
 - [x] Ajouter les méthodes d’accès : `get_cell_value()`, `row_count`, `column_count`, etc.
 - [x] Ajouter un mini test ou démonstration en console
-- [ ] Une méthode d’affichage texte (to_matrix() ou to_console_str()) 
+- [x] Une méthode d’affichage texte (to_matrix() ou to_console_str()) 
 
 ---
 

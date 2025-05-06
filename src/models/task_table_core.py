@@ -27,6 +27,13 @@ class TaskTable:
         self._tasks = tasks
         self._columns = columns
 
+    def __str__(self) -> str:
+        """
+        Returns a string representation of the object for console output.
+        """
+
+        return self.to_console_str()
+
     def row_count(self) -> int:
         """
         Returns the number of rows (tasks) in the task table.
@@ -66,8 +73,8 @@ class TaskTable:
 
         Notes
         -----
-        This method assumes that `_tasks` is a list of task objects and `_columns` 
-        is a list of column objects, where each column object has a `field` attribute 
+        This method assumes that `_tasks` is a list of task objects and `_columns`
+        is a list of column objects, where each column object has a `field` attribute
         that corresponds to an attribute of the task object.
         """
         task = self._tasks[row_index]
@@ -123,3 +130,37 @@ class TaskTable:
         except IndexError as e:
             logger.error(e)
             raise
+
+    def to_matrix(self) -> list[list[str]]:
+        """
+        Converts the tasks and their attributes into a 2D matrix representation.
+        Columns without corresponding fields in Task are skipped.
+        """
+        matrix = []
+        for task in self._tasks:
+            row = []
+            for column in self._columns:
+                if hasattr(task, column.field):
+                    value = getattr(task, column.field)
+                    row.append(str(value))
+            matrix.append(row)
+        return matrix
+
+    def to_console_str(self) -> str:
+        """
+        Converts the task table data into a formatted string suitable for console output.
+
+        Returns
+        -------
+        str
+            A string representation of the task table, where the first line contains
+            the column headers separated by " | ", and subsequent lines contain the
+            rows of data formatted in the same way.
+        """
+        headers = [
+            col.name for col in self._columns if hasattr(self._tasks[0], col.field)
+        ]
+        rows = self.to_matrix()
+        lines = [" | ".join(headers)]
+        lines += [" | ".join(row) for row in rows]
+        return "\n".join(lines)
