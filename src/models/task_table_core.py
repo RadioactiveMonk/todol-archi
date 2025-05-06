@@ -248,7 +248,10 @@ class TaskTable:
         return False
 
 
-    def remove_by_id(self, task_id: int) -> bool:                 
+    def remove_by_id(self, task_id: int) -> bool:
+        """
+        Removes a single task by its ID
+        """        
         return self.remove_tasks((task_id,))
 
 
