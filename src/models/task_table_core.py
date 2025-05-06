@@ -36,6 +36,11 @@ class TaskTable:
 
         return self.to_console_str()
 
+    def __repr__(self) -> str:
+        """Returns a description of the object 'TaskTable'. 
+        """
+        return f"<TaskTable rows={self.row_count} cols={self.column_count}>"
+
     @property
     def row_count(self) -> int:
         """
