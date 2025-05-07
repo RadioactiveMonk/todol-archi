@@ -1,5 +1,5 @@
 - [ ] Améliorer comment_filepath.py
-- [ ] Faire un dossier tools/ pour les scripts utilitaires plutôt que scripts/
+- [x] Faire un dossier tools/ pour les scripts utilitaires plutôt que scripts/
 - [ ] Améliorer replace imports
 
 
