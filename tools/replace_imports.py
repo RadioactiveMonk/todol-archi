@@ -33,7 +33,7 @@ def parse_args() -> Tuple[Dict[str, str], bool]:
     parser.add_argument("old", help="Text to replace")
     parser.add_argument("new", help="New text")
     parser.add_argument("--dry-run", action="store_true", help="Preview changes without applying them")
-    args = parser.parse_args()
+    args = parser.parse_args()  #. parse_args() est interne à .ArgumentParser() 
     return {args.old: args.new}, args.dry_run
 
 
