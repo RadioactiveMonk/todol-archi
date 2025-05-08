@@ -50,7 +50,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 
 ## 5.1 Méthodes sympas
 
-- [ ] Ajouter TaskTable.max_table_tasks(n)
+- [ ] Ajouter.sliced pour head et tail
       → Pour preview console/export/pagination
 
 ---
