@@ -37,13 +37,11 @@ class TaskTable:
         return self.to_console_str()
 
     def __repr__(self) -> str:
-        """Returns a description of the object 'TaskTable'. 
-        """
+        """Returns a description of the object 'TaskTable'."""
         return f"<TaskTable rows={self.row_count} cols={self.column_count}>"
 
     def __len__(self) -> int:
-        """Returns length of the table (number of rows)
-       """
+        """Returns length of the table (number of rows)"""
         return self.row_count
 
     def __getitem__(self, index: int | slice) -> Task | list[Task]:
@@ -58,7 +56,7 @@ class TaskTable:
     def row_count(self) -> int:
         """
         Returns the number of rows (tasks) in the task table.
-        
+
         Returns
         -------
         int
@@ -224,7 +222,7 @@ class TaskTable:
             return False
         self._tasks.append(task)
         return True
-    
+
     def remove_tasks(self, task_ids: tuple[int]) -> bool:
         """
         Remove tasks from the task list based on their IDs.
@@ -266,13 +264,36 @@ class TaskTable:
         logger.info("No matching task IDs found to remove: %s", task_ids)
         return False
 
-
     def remove_by_id(self, task_id: int) -> bool:
         """
         Removes a single task by its ID
-        """        
+        """
         return self.remove_tasks((task_id,))
 
+    def filter_by(self, **criteria) -> "TaskTable":
+        """
+        Returns a new TaskTable containing only tasks matching all given field=value criteria.
+        """
+        if not criteria:
+            logger.info("No filter criteria provided. Returning original table")
+            return TaskTable(self._tasks, self._columns)
+
+        filtered = []
+
+        for task in self._tasks:
+            if all(
+                getattr(task, field, None) == value for field, value in criteria.items()
+            ):
+                filtered.append(task)
+
+        logger.info(
+            "Filtered tasks: %d match(es) for criteria %s", len(filtered), criteria
+        )
+
+        return TaskTable(filtered, self._columns)
+
+    def sort_by(self, field: str, reverse: bool = False) -> List[Task]:
+        return list()
 
     def to_matrix(self) -> list[list[str]]:
         """
