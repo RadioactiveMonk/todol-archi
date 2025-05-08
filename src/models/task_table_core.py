@@ -47,8 +47,8 @@ class TaskTable:
         return self.row_count
 
     def __getitem__(self, index: int | slice) -> Task | list[Task]:
-   """Returns a task by its index or a list of tasks by a given slice (e.g.: index = slice(0, 5)"""
-    return self._tasks[index]
+        """Returns a task by its index or a list of tasks by a given slice (e.g.: index = slice(0, 5)"""
+        return self._tasks[index]
 
     def __iter__(self):
         """Allows the task table to be iterable"""

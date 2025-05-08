@@ -12,16 +12,16 @@ Fonctionnalités :
 - Utilise difflib pour générer un diff lisible
 
 Exemples :
-    python replace_imports.py "from PyQt6" "from PySide6"
-    python replace_imports.py "foo" "bar" --dry-run
+    python replace_imports.py "foo" "bar" (replace)
+    python replace_imports.py "foo" "bar" --dry-run (preview)
 
-Auteur : Seb + ChatGPT
+Auteur : doyouDance + ChatGPT
 """
 
-from pathlib import Path
-from typing import Dict, Tuple
 import argparse
 import difflib
+from pathlib import Path
+from typing import Dict, Tuple
 
 
 def parse_args() -> Tuple[Dict[str, str], bool]:
@@ -49,13 +49,12 @@ def show_diff(file: Path, original: str, modified: str) -> None:
         tofile="modified",
         lineterm=""
     )
-    for line in diff:
+    for line in sorted(diff):
         if line.startswith("+") and not line.startswith("+++"):
-            print(f"\u001b[32m{line}\u001b[0m")  # Vert = ajout
+            print(f"\u001b[32m{line}\u001b[0m") # Vert = ajout
         elif line.startswith("-") and not line.startswith("---"):
             print(f"\u001b[31m{line}\u001b[0m")  # Rouge = suppression
-        else:
-            print(line)
+        
 
 
 def apply_replacements(replacements: Dict[str, str], dry_run: bool = False, src_dir: Path = Path("src")) -> None:
