@@ -48,6 +48,11 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 - [x] `__getitem__()` → `table[0]` retourne une ligne
 - [x] `__iter__()` → itérable sur les tâches
 
+## 5.1 Méthodes sympas
+
+- [ ] Ajouter TaskTable.max_table_tasks(n)
+      → Pour preview console/export/pagination
+
 ---
 
 ## 6. Préparation aux tests
