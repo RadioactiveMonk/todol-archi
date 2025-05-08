@@ -287,7 +287,7 @@ class TaskTable:
                 filtered.append(task)
 
         logger.info(
-            "Filtered tasks: %d match(es) for criteria %s", len(filtered), criteria
+            f"Filtered tasks: {len(filtered)} match(es) for criteria {criteria}"
         )
 
         return TaskTable(filtered, self._columns)
