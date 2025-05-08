@@ -19,7 +19,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 - [x] `.add_task(task: Task)`
 - [x] `.remove_task(index: int)` ou `.remove_by_id(id)`
 - [x] `.filter_by(**criteria)`
-- [ ] `.sort_by(column: str, reverse=False)`
+- [x] `.sort_by(column: str, reverse=False)`
 
 ---
 
