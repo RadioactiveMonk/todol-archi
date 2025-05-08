@@ -292,8 +292,24 @@ class TaskTable:
 
         return TaskTable(filtered, self._columns)
 
-    def sort_by(self, field: str, reverse: bool = False) -> List[Task]:
-        return list()
+    def sort_by(self, field: str, reverse: bool = False) -> "TaskTable":
+        """
+        Returns a new TaskTable sorted by a given task attribute.
+        """
+        if not field:
+            logger.warning("No field provided for sorting. Returning original table.")
+            return TaskTable(self._tasks, self._columns)
+
+        try:
+            sorted_tasks = sorted(
+                self._tasks, key=lambda task: getattr(task, field), reverse=reverse
+            )
+        except AttributeError:
+            logger.error(f"Field '{field}' not found in Task.")
+            return TaskTable(self._tasks, self._columns)
+
+        logger.info(f"Sorted tasks by '{field}' (reverse={reverse}).")
+        return TaskTable(sorted_tasks, self._columns)
 
     def to_matrix(self) -> list[list[str]]:
         """
