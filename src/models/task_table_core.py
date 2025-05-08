@@ -58,6 +58,7 @@ class TaskTable:
     def row_count(self) -> int:
         """
         Returns the number of rows (tasks) in the task table.
+        
         Returns
         -------
         int
