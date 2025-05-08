@@ -30,7 +30,6 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 - [x] `.to_matrix()` → structure exportable
 - [ ] `.to_dicts()` ou `.to_json()` ?
 - [x] `__repr__()` clair et compact
-- [ ] getter setter 
 
 ---
 
