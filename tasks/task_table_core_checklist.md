@@ -35,6 +35,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 
 ## 4. Validation / robustesse
 
+- [x] Préparer des exceptions custom pour plus de clarté et de modularité (custom_exceptions.py)
 - [ ] Gérer les index invalides proprement
 - [ ] Ajouter des assertions / exceptions claires
 - [ ] Tester les cas limites : 0 tâche, 0 colonne
