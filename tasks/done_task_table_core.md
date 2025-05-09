@@ -50,7 +50,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 
 ## 5.1 Méthodes sympas
 
-- [x] Ajouter.sliced pour head et tail
+- [x] Ajouter .sliced pour head et tail
       → Pour preview console/export/pagination
 - [ ] __delitem__() et refonte .remove (plus tard, géré dans les vues)
 - [ ] __setitem__() et alias update task  (plus tard, géré dans les vues)
