@@ -28,7 +28,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 - [x] `__str__()` pour affichage lisible
 - [x] `.to_console_str()` → vue en texte
 - [x] `.to_matrix()` → structure exportable
-- [ ] `.to_dicts()` ou `.to_json()` ?
+- [x] `.to_dicts()` ou `.to_json()` ?
 - [x] `__repr__()` clair et compact
 
 ---
@@ -60,7 +60,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 
 - [x] `.get_tasks()` ou `.all()` pour accès clair
 - [ ] Méthode `.sample()` pour jeux de données fictifs
-- [ ] Gérer des cas d’erreurs simples à simuler
+- [x] Gérer des cas d’erreurs simples à simuler
 
 ---
 
