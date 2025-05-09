@@ -97,6 +97,17 @@ class TaskTable:
 
         return [col.field for col in self._columns]
 
+    def all(self) -> list[Task]:
+        """
+        Returns all tasks in the task table.
+
+        Returns
+        -------
+        list[Task]
+            A list of all Task objects in the task table.
+        """
+        return self._tasks
+
     def headers(
         self, as_tuple: Optional[bool] = False
     ) -> list[str] | list[tuple[str, str]]:
