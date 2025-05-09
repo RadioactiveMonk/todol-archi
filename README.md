@@ -104,7 +104,7 @@ src/
 │   │       └── system.qss
 │   ├── theme
 │   │   ├── __init__.py
-|   |   ├── style_loader.py
+│   │   ├── style_loader.py
 │   │   └── themes.json
 │   ├── __init__.py
 │   └── main_window.py
@@ -119,7 +119,6 @@ src/
 └── main.py
 
 20 directories, 77 files
-
 ```
 
 
