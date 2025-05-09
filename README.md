@@ -103,7 +103,8 @@ src/
 │   │       ├── default.qss
 │   │       └── system.qss
 │   ├── theme
-│   │   ├── style_loader.py
+│   │   ├── __init__.py
+|   |   ├── style_loader.py
 │   │   └── themes.json
 │   ├── __init__.py
 │   └── main_window.py
