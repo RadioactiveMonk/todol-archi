@@ -8,3 +8,6 @@
 2025-05-05 18:16:40.281 | DEBUG    | contextmanagers:open_settings:44 | 9054 - Accessing settings file in mode 'r': /home/doyoudance/Desktop/Projects/todol-archi/data/settings.json
 2025-05-08 17:58:26.363 | INFO     | task_table_core:filter_by:289 | 4208 - Filtered tasks: %d match(es) for criteria %s
 2025-05-08 18:05:14.049 | INFO     | task_table_core:filter_by:289 | 4825 - Filtered tasks: 2 match(es) for criteria {'category': 'Work'}
+2025-05-09 13:43:26.294 | WARNING  | task_table_core:get_cell_value:152 | 9128 - Tried to access invalid cell: ((0, 99))
+2025-05-09 13:48:45.555 | INFO     | task_table_core:to_console_str:348 | 9244 - No tasks available to display.
+2025-05-09 13:53:46.414 | INFO     | task_table_core:to_console_str:342 | 9400 - No tasks available to display.

@@ -144,9 +144,16 @@ class TaskTable:
         is a list of column objects, where each column object has a `field` attribute
         that corresponds to an attribute of the task object.
         """
-        task = self._tasks[row_index]
-        column = self._columns[col_index]
-        return getattr(task, column.field)
+        try:
+            task = self._tasks[row_index]
+            column = self._columns[col_index]
+            return getattr(task, column.field)
+        except IndexError:
+            logger.warning(f"Tried to access invalid cell: ({row_index, col_index})")
+            return None
+        except Exception as e:
+            logger.error(f"Unexpected error: {e}")
+            return None
 
     def get_column_name(self, index: int) -> str:
         """
@@ -329,14 +336,12 @@ class TaskTable:
     def to_console_str(self) -> str:
         """
         Converts the task table data into a formatted string suitable for console output.
-
-        Returns
-        -------
-        str
-            A string representation of the task table, where the first line contains
-            the column headers separated by " | ", and subsequent lines contain the
-            rows of data formatted in the same way.
         """
+        if not self._tasks:
+            headers = [col.name for col in self._columns]
+            logger.info("No tasks available to display.")
+            return " | ".join(headers) + "\n[Empty Table]"
+
         headers = [
             col.name for col in self._columns if hasattr(self._tasks[0], col.field)
         ]
@@ -344,3 +349,4 @@ class TaskTable:
         lines = [" | ".join(headers)]
         lines += [" | ".join(row) for row in rows]
         return "\n".join(lines)
+
