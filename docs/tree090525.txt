@@ -1,24 +1,3 @@
-# 🧠 Todol-Archi
-
-Version modulaire et refactorisée de Todol-Pro.  
-Expérimentation de patterns avancés (Factory, SOLID, Inversion de dépendance, etc.)
-
-## Objectifs
-
-- 🔁 Repenser la structure du projet pour plus de clarté et de réutilisabilité
-- 🏭 Implémenter des factories pour tous les composants majeurs
-- 🧩 Modulariser au maximum chaque élément (UI, logique, backend)
-- 🧪 Faciliter les tests et les extensions futures
-
-## Base
-
-- PySide6
-- SQLite
-- Architecture modulaire orientée objets
-
-## Structure non définitive (09-05-25)
-
-```bash
 src/
 ├── config
 │   └── __init__.py
@@ -118,8 +97,3 @@ src/
 └── main.py
 
 20 directories, 77 files
-
-```
-
-
-

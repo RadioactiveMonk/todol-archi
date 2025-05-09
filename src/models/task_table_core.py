@@ -433,16 +433,16 @@ class TaskTable:
 
     def tail(self, n: int = 5) -> "TaskTable":
         """
-            Returns the last `n` rows of the task table.
+        Returns the last `n` rows of the task table.
 
-            Parameters
-            ----------
-            n : int, optional
-                The number of rows to return. Default is 5.
+        Parameters
+        ----------
+        n : int, optional
+            The number of rows to return. Default is 5.
 
-            Returns
-            -------
-            TaskTable
-                A new TaskTable instance containing the last `n` rows.
-            """
+        Returns
+        -------
+        TaskTable
+            A new TaskTable instance containing the last `n` rows.
+        """
         return TaskTable(self._tasks[-n:], self._columns)

@@ -29,11 +29,15 @@ def parse_args() -> Tuple[Dict[str, str], bool]:
     Récupère les arguments passés en ligne de commande.
     Retourne un dictionnaire de remplacement + un booléen dry-run.
     """
-    parser = argparse.ArgumentParser(description="Replace imports or text in Python files.")
+    parser = argparse.ArgumentParser(
+        description="Replace imports or text in Python files."
+    )
     parser.add_argument("old", help="Text to replace")
     parser.add_argument("new", help="New text")
-    parser.add_argument("--dry-run", action="store_true", help="Preview changes without applying them")
-    args = parser.parse_args()  #. parse_args() est interne à .ArgumentParser() 
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Preview changes without applying them"
+    )
+    args = parser.parse_args()  # . parse_args() est interne à .ArgumentParser()
     return {args.old: args.new}, args.dry_run
 
 
@@ -47,17 +51,18 @@ def show_diff(file: Path, original: str, modified: str) -> None:
         modified.splitlines(),
         fromfile="original",
         tofile="modified",
-        lineterm=""
+        lineterm="",
     )
     for line in sorted(diff):
         if line.startswith("+") and not line.startswith("+++"):
-            print(f"\u001b[32m{line}\u001b[0m") # Vert = ajout
+            print(f"\u001b[32m{line}\u001b[0m")  # Vert = ajout
         elif line.startswith("-") and not line.startswith("---"):
             print(f"\u001b[31m{line}\u001b[0m")  # Rouge = suppression
-        
 
 
-def apply_replacements(replacements: Dict[str, str], dry_run: bool = False, src_dir: Path = Path("src")) -> None:
+def apply_replacements(
+    replacements: Dict[str, str], dry_run: bool = False, src_dir: Path = Path("src")
+) -> None:
     """
     Parcourt tous les fichiers .py du dossier et applique les remplacements demandés.
     Affiche les changements et applique si ce n'est pas un dry-run.
