@@ -400,16 +400,6 @@ class TaskTable:
         lines += [" | ".join(row) for row in rows]
         return "\n".join(lines)
 
-    def sample(self, n: int = 3) -> "TaskTable":
-        """
-        Returns a new TaskTable with n random tasks.
-        """
-        if n <= 0:
-            return TaskTable([], self._columns)
-
-        sampled_tasks = random.sample(self._tasks, min(n, len(self._tasks)))
-        return TaskTable(sampled_tasks, self._columns)
-
     def to_dicts(self) -> list[dict]:
         """
         Returns a list of dictionaries representing each task, with fields matching
@@ -457,3 +447,14 @@ class TaskTable:
             A new TaskTable instance containing the last `n` rows.
         """
         return TaskTable(self._tasks[-n:], self._columns)
+
+    def sample(self, n: int = 3) -> "TaskTable":
+        """
+        Returns a new TaskTable with n random tasks.
+        """
+        if n <= 0:
+            return TaskTable([], self._columns)
+
+        sampled_tasks = random.sample(self._tasks, min(n, len(self._tasks)))
+        return TaskTable(sampled_tasks, self._columns)
+    
