@@ -35,4 +35,58 @@
 ---
 
 ## 🌱 Remarque :
-Ce bloc initie une architecture centrée sur le domaine (domain-driven), où l’interface n’est qu’une vue projetée du modèle.
+Ce bloc initie une architecture centrée sur le domaine (domain-driven), où l’interface 
+n’est qu’une vue projetée du modèle.
+
+
+========================================================================================
+## 📅 Date : 9 mai 2025
+## 🎯 Objectif
+Rendre le modèle `TaskTable` stable, défensif et exploitable dans tous les cas de figure.
+
+---
+
+## 🔐 Sécurisations ajoutées
+
+### ✅ Robustesse de navigation
+- `get_cell_value(row, col)` protégé contre les `IndexError`
+- Log clair en cas d’accès invalide
+- Retour neutre (`None`) si cellule inaccessible
+
+### ✅ Cas limites gérés
+- Zéro tâche → affichage clair `[Empty Table]`
+- Zéro colonne → matrice = lignes vides
+- Méthodes `to_matrix()` et `to_console_str()` tolérantes à tous les cas
+
+---
+
+## 🔍 Validation douce des critères
+- `filter_by(...)` log les champs inconnus, les ignore proprement
+- `sort_by(...)` vérifie la validité du champ, log en cas d'erreur
+
+---
+
+## 🧰 Fonctions métiers ajoutées
+
+- `to_dicts()` → export propre des données (filtré selon les colonnes)
+- `all()` → accès clair à toutes les tâches
+- `head(n)` / `tail(n)` → manipulation partielle du tableau
+
+---
+
+## 🧪 Tests interactifs validés
+- `table.head(3).to_dicts()`
+- `table[3]` → accès direct à une tâche
+- `filter_by(done=True)` → champ ignoré, logué, pas de crash
+- Enchaînements confirmés (`.head().filter_by(...)`, etc.)
+
+---
+
+## 🧠 Statut
+Le bloc `TaskTable` est désormais :
+- solide
+- testable
+- lisible
+- complet pour les usages métier
+
+Prêt à être exposé dans l’UI ou testé avec `pytest`.
