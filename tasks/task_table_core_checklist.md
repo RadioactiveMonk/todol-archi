@@ -52,7 +52,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 
 - [ ] Ajouter.sliced pour head et tail
       → Pour preview console/export/pagination
-- [ ] __delitem__() 
+- [ ] __delitem__() et refonte .remove 
 ---
 
 ## 6. Préparation aux tests
