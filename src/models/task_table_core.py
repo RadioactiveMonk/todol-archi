@@ -1,3 +1,4 @@
+import random
 from typing import Any, List, Optional, Sequence
 
 from core.log_manager import logger
@@ -398,6 +399,16 @@ class TaskTable:
         lines = [" | ".join(headers)]
         lines += [" | ".join(row) for row in rows]
         return "\n".join(lines)
+
+    def sample(self, n: int = 3) -> "TaskTable":
+        """
+        Returns a new TaskTable with n random tasks.
+        """
+        if n <= 0:
+            return TaskTable([], self._columns)
+
+        sampled_tasks = random.sample(self._tasks, min(n, len(self._tasks)))
+        return TaskTable(sampled_tasks, self._columns)
 
     def to_dicts(self) -> list[dict]:
         """
