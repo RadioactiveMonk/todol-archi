@@ -323,6 +323,14 @@ class TaskTable:
         Converts the tasks and their attributes into a 2D matrix representation.
         Columns without corresponding fields in Task are skipped.
         """
+        if not self._tasks:
+            logger.info("No tasks available")
+            return []
+
+        if not self._columns:
+            logger.info("No columns available")
+            return [[] for _ in self._tasks]
+
         matrix = []
         for task in self._tasks:
             row = []
@@ -349,4 +357,3 @@ class TaskTable:
         lines = [" | ".join(headers)]
         lines += [" | ".join(row) for row in rows]
         return "\n".join(lines)
-
