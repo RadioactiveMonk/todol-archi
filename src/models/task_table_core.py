@@ -296,13 +296,19 @@ class TaskTable:
             logger.info("No filter criteria provided. Returning original table")
             return TaskTable(self._tasks, self._columns)
 
-        filtered = []
+        for field in criteria:
+            if not hasattr(self._tasks[0], field):
+                logger.warning(f"filter_by(): ignored unknown field '{field}'")
 
-        for task in self._tasks:
+        filtered = [
+            task
+            for task in self._tasks
             if all(
-                getattr(task, field, None) == value for field, value in criteria.items()
-            ):
-                filtered.append(task)
+                getattr(task, field, None) == value
+                for field, value in criteria.items()
+                if hasattr(task, field)
+            )
+        ]
 
         logger.info(
             f"Filtered tasks: {len(filtered)} match(es) for criteria {criteria}"
@@ -312,10 +318,34 @@ class TaskTable:
 
     def sort_by(self, field: str, reverse: bool = False) -> "TaskTable":
         """
-        Returns a new TaskTable sorted by a given task attribute.
+        Sorts the tasks in the table by a specified field.
+
+        Parameters
+        ----------
+        field : str
+            The field name to sort the tasks by.
+        reverse : bool, optional
+            If True, sorts in descending order. Default is False.
+
+        Returns
+        -------
+        TaskTable
+            A new TaskTable instance with tasks sorted by the specified field.
+
+        Notes
+        -----
+        If the field does not exist on the Task objects or the field is not given, a warning is logged,
+        and the original TaskTable is returned.
+
         """
         if not field:
             logger.warning("No field provided for sorting. Returning original table.")
+            return TaskTable(self._tasks, self._columns)
+
+        if not hasattr(self._tasks[0], field):
+            logger.warning(
+                f"sort_by(): field '{field}' not found in Task. Returning original."
+            )
             return TaskTable(self._tasks, self._columns)
 
         try:
@@ -368,3 +398,51 @@ class TaskTable:
         lines = [" | ".join(headers)]
         lines += [" | ".join(row) for row in rows]
         return "\n".join(lines)
+
+    def to_dicts(self) -> list[dict]:
+        """
+        Returns a list of dictionaries representing each task, with fields matching
+        the current TaskTable columns (only those that exist on each Task).
+        """
+        dicts = []
+
+        for task in self._tasks:
+            row = {}
+            for col in self._columns:
+                if hasattr(task, col.field):
+                    row[col.field] = getattr(task, col.field)
+            dicts.append(row)
+
+        return dicts
+
+    def head(self, n: int = 5) -> "TaskTable":
+        """
+        Returns the first `n` rows of the task table.
+
+        Parameters
+        ----------
+        n : int, optional
+            The number of rows to return. Default is 5.
+
+        Returns
+        -------
+        TaskTable
+            A new TaskTable instance containing the first `n` rows.
+        """
+        return TaskTable(self._tasks[:n], self._columns)
+
+    def tail(self, n: int = 5) -> "TaskTable":
+        """
+            Returns the last `n` rows of the task table.
+
+            Parameters
+            ----------
+            n : int, optional
+                The number of rows to return. Default is 5.
+
+            Returns
+            -------
+            TaskTable
+                A new TaskTable instance containing the last `n` rows.
+            """
+        return TaskTable(self._tasks[-n:], self._columns)

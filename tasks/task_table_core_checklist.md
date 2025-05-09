@@ -50,15 +50,15 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 
 ## 5.1 Méthodes sympas
 
-- [ ] Ajouter.sliced pour head et tail
+- [x] Ajouter.sliced pour head et tail
       → Pour preview console/export/pagination
-- [ ] __delitem__() et refonte .remove 
-- [ ] __setitem__() et alias update task 
+- [ ] __delitem__() et refonte .remove (plus tard, géré dans les vues)
+- [ ] __setitem__() et alias update task  (plus tard, géré dans les vues)
 ---
 
 ## 6. Préparation aux tests
 
-- [ ] `.get_tasks()` ou `.all()` pour accès clair
+- [x] `.get_tasks()` ou `.all()` pour accès clair
 - [ ] Méthode `.sample()` pour jeux de données fictifs
 - [ ] Gérer des cas d’erreurs simples à simuler
 
