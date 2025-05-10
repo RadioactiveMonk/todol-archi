@@ -28,7 +28,7 @@
 ## Bonus — Explorations futures (Branche expérimentale)
 
 > Concepts avancés ou usages spécifiques
-
+[ ] Faire des diagrammes UML
 [ ] Ajouter structures avancées : deque, NamedTuple, contextlib, asyncio, yield...
 [ ] Design patterns, architecture orientée objet, ...
 
