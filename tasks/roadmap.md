@@ -1,4 +1,4 @@
-# 🗺️ Roadmap – Fin Bloc B et suite (Mai 2025)
+# 🗺️ Roadmap – Fin Bloc C et suite (Mai 2025)
 
 ## ✅ Étapes terminées
 - `TaskTable` Python pur (terminé)
@@ -29,14 +29,6 @@
 
 ---
 
-## 🔄 Bloc D à venir : Adaptateurs Qt
-
-- [ ] `TaskTableAdapter(QAbstractTableModel)` pour connecter `TaskTable` à Qt
-- [ ] Vue `QTableView` reliée uniquement à ce modèle
-- [ ] Pilotage via `AppLogic`
-
----
-
 ## 🔮 Et ensuite ?
 
 Une fois `TaskTable` et `AppLogic` solides :
@@ -44,3 +36,15 @@ Une fois `TaskTable` et `AppLogic` solides :
 - 🟡 `DatabaseManager` : à séparer proprement
 - 🟡 `Task` : ajustable si besoin
 - 🟡 `AppConfig` / `ThemeManager` : à modéliser si utile
+
+
+## 🔄 Bloc D à venir : Adaptateurs Qt
+
+➡️ À ne commencer **qu'une fois tous les objets métier sont bien modélisés** (TaskTable, AppLogic, Task, SettingsManager, etc.).
+➡️ Objectif : pont clair entre la logique métier finalisée et l’interface graphique Qt.
+
+- [ ] `TaskTableAdapter(QAbstractTableModel)` pour connecter `TaskTable` à Qt
+- [ ] Vue `QTableView` reliée uniquement à ce modèle
+- [ ] Pilotage via `AppLogic`
+
+---
