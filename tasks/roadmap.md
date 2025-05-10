@@ -29,7 +29,7 @@
 
 ---
 
-## 🔄 Bloc C à venir : Adaptateurs Qt
+## 🔄 Bloc D à venir : Adaptateurs Qt
 
 - [ ] `TaskTableAdapter(QAbstractTableModel)` pour connecter `TaskTable` à Qt
 - [ ] Vue `QTableView` reliée uniquement à ce modèle
