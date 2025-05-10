@@ -1,4 +1,4 @@
-# 🗺️ Roadmap – Fin Bloc C et suite (Mai 2025)
+# 🗺️ Roadmap – Fin Bloc B et entrée en Bloc C (Mai 2025)
 
 ## ✅ Étapes terminées
 - `TaskTable` Python pur (terminé)
