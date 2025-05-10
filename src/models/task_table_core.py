@@ -7,7 +7,7 @@ from models.task_table_column import TaskTableColumn
 
 
 class TaskTable:
-    """Representation of the task table. Columns, rows, cells, ..."""
+    """Representation of the task table. Columns, rows, headers ..."""
 
     def __init__(
         self, tasks: Sequence[Task], columns: Sequence[TaskTableColumn]
