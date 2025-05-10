@@ -24,15 +24,7 @@ Découpler totalement la logique métier de la couche UI.
 
 ---
 
-## 🧭 3. Adaptateurs vers Qt (plus tard)
-
-- [ ] Créer `TaskTableAdapter` → transforme un `TaskTable` en `QAbstractTableModel`
-- [ ] Créer une vue (`QTableView`) branchée uniquement à ce modèle
-- [ ] Tester le pont métier ↔ interface
-
----
-
-## 🧪 4. Tests ou consoles de simulation
+## 🧪 3. Tests ou consoles de simulation
 
 - [ ] Créer un mini script console pour manipuler `TaskTable`
 - [ ] Simuler un tri ou un filtre sans interface

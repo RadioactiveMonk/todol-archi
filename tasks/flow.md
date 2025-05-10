@@ -7,7 +7,6 @@
 
 > Préparer un socle propre, testable, et modulaire
 
-
 ## Bloc B — Organisation claire des responsabilités
 
 > Clarifier ce qui relève du domaine, de l’UI, de la DB...
