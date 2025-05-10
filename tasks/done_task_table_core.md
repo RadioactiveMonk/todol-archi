@@ -59,7 +59,7 @@ Support idéal pour pratiquer les bonnes pratiques orientées objet.
 ## 6. Préparation aux tests
 
 - [x] `.get_tasks()` ou `.all()` pour accès clair
-- [ ] Méthode `.sample()` pour jeux de données fictifs
+- [x] Méthode `.sample()` pour jeux de données fictifs
 - [x] Gérer des cas d’erreurs simples à simuler
 
 ---

@@ -1,131 +1,46 @@
-✅ TODO.md — Plan de refactoring structuré (progressif & pédagogique)
+# 🗺️ Roadmap – Fin Bloc B et suite (Mai 2025)
 
-
----
-
-Bloc A — Stabilisation & helpers fondamentaux
-
-> Préparer un socle propre, testable, et modulaire
-
-
-
-[x] Nettoyer le code mort, les print, les logs temporaires
-
-[x] Créer dossier helpers/ et y isoler les fonctions clés :
-
-[x] dataclass_to_dict()
-
-[x] status_label()
-
-[x] Valider reload_all.py et l'accès IPython
-
-[x] Créer une Task propre
-
-[x] @dataclass complète
-
-[x] Préparer base task_core si besoin (en branche task-core-exp)
-
+## ✅ Étapes terminées
+- `TaskTable` Python pur (terminé)
+- Comportements métier intégrés
+- Représentation console, slice, export
 
 ---
 
-Bloc B — Organisation claire des responsabilités
+## 🔥 Étape actuelle : `AppLogic` (Coordination métier)
 
-> Clarifier ce qui relève du domaine, de l’UI, de la DB...
+**Fichier :** `core/app_logic.py`
 
+- [ ] Gérer l’état global de l’app : filtres actifs, tri, sélection
+- [ ] Méthodes métier : `add_task()`, `toggle_status()`, `apply_filter()`, etc.
+- [ ] Lien clair entre `AppLogic` et `TaskTableCore`
 
-
-[x] Nettoyer default_values.py
-
-[x] Distinguer : status_constants, default_*, core.*, cached_utils, ...
-
-[x] Regroupement dans utils/, tri
-
-[x] Centraliser la config du projet :
-
-[x] Makefile unifié (test, format, lint...)
-
-[x] dev.sh vs Makefile
-
-[x] pyproject.toml pour pytest/ruff/config
-
-
-
+🎯 Objectif : un chef d’orchestre indépendant de toute interface graphique.
 
 ---
 
-## Bloc C — Refactoring Pythonic & bonnes pratiques
+## 🧪 Étape suivante (optionnelle) : Mini script console
 
-> Rendre le code élégant, DRY, et idiomatique
+**Fichier :** `scripts/demo_text_mode.py` ou `main.py`
 
-[x] apply_column_config(view)
-
-[x] Ajouter visible, tooltip, flags dynamiques dans TaskTableColumn
-    
-[x] SettingsManager
-
-[o] Pydantic ? Pre commit hooks
-
-[ ] Ajouter des propriétés @property, __str__, __repr__
-
-[ ] Ajouter safe_get(dict, key, default)
-
-[x] Ajouter log_task() pour trace propre
-
-[ ] Ajouter format_datetime() helper lisible
-
-[ ] Préparer l'usage de *args, **kwargs, @staticmethod où pertinent
-
-[ ] Créer contextmanagers.py utiles
-
-
+- [ ] Instancier `AppLogic` ou `TaskTable`
+- [ ] Afficher les tâches via `.to_console_str()`
+- [ ] Tester les ajouts, tris, suppressions, filtres
 
 ---
 
-Bloc D — UI / UX (affichage et interactions)
+## 🔄 Bloc C à venir : Adaptateurs Qt
 
-> Rendre l'application agréable à l’usage
-
-
-[ ] Améliorer TaskTableModel avec helpers
-
-[ ] Ajouter recherche et filtres
-
-[ ] Ajuster l’UI pour l’affichage dynamique (fond, hover...)
-
-[ ] Regrouper les helpers UI dans ui_helpers.py
-
+- [ ] `TaskTableAdapter(QAbstractTableModel)` pour connecter `TaskTable` à Qt
+- [ ] Vue `QTableView` reliée uniquement à ce modèle
+- [ ] Pilotage via `AppLogic`
 
 ---
 
-Bloc E — Tests, packaging, intégration
+## 🔮 Et ensuite ?
 
-> Valider, tester, distribuer proprement
-
-[ ] Phase 5 : Réactivation de pytest
-
-[ ] Ajouter tests unitaires pour les helpers
-
-[ ] Tester 
-
-[ ] Ajouter tests d’intégration (add → delete)
-
-[ ] Packaging clean
-
-[ ] pyproject.toml complet
-
-[ ] entry_point CLI ?
-
-[ ] README & badge CI
-
-
-
-
----
-
-Bonus — Explorations futures (Branche expérimentale)
-
-> Concepts avancés ou usages spécifiques
-
-[ ] Ajouter structures avancées : deque, NamedTuple, contextlib, asyncio, yield...
-
-
+Une fois `TaskTable` et `AppLogic` solides :
+- ✅ `SettingsManager` : déjà structuré
+- 🟡 `DatabaseManager` : à séparer proprement
+- 🟡 `Task` : ajustable si besoin
+- 🟡 `AppConfig` / `ThemeManager` : à modéliser si utile
