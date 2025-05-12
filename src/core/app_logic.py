@@ -31,6 +31,12 @@ class AppLogic:
         self.sort_column = column
         self.sort_reverse = reverse
 
+    def toggle_task_status(self) -> None:
+        pass
+
+    def edit_task(self) -> None:
+        pass
+
     def refresh_view(self) -> TaskTable:
         """Combine filtres, tris, etc. et retourne une vue actuelle"""
         filtered_tasks = self.task_table.filter_by(**self.filters)

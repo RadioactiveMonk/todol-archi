@@ -11,7 +11,7 @@
 
 **Fichier :** `core/app_logic.py`
 
-- [ ] Gérer l’état global de l’app : filtres actifs, tri, sélection
+- [x] Gérer l’état global de l’app : filtres actifs, tri, sélection
 - [ ] Méthodes métier : `add_task()`, `toggle_status()`, `apply_filter()`, etc.
 - [ ] Lien clair entre `AppLogic` et `TaskTableCore`
 
