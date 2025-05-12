@@ -10,17 +10,21 @@ from models.task_core import TaskCore
 class Task(TaskCore):
     """Représente une tâche complète avec affichage, helpers et validations."""
 
-    # --------- Propriétés utiles ---------
+    # --------- Méthodes métier ---------
 
-    @property
-    def is_completed(self) -> bool:
-        """Alias plus lisible pour completed."""
-        return self.completed
+    def toggle_status(self) -> None:
+        """
+        Toggles the completion status of the task.
+        """
+        self.completed = not self.completed
 
-    @is_completed.setter
-    def is_completed(self, value: bool) -> None:
-        """Permet de modifier completed via l'alias."""
-        self.completed = bool(value)
+    def update_fields(self, updates: dict[str, Any]) -> None:
+        """Update the task with provided attribute and value in dict format"""
+        for key, value in updates.items():
+            if hasattr(self, key):
+                setattr(self, key, value)
+            else:
+                logger.warning(f"Ignored unknown field for task: {key}")
 
     # --------- Conversions ---------
 

@@ -1,5 +1,6 @@
-from typing import Optional
+from typing import Any, Optional
 
+from core.log_manager import logger
 from models.task import Task
 from models.task_table_column import TaskTableColumn
 from models.task_table_core import TaskTable
@@ -21,11 +22,27 @@ class AppLogic:
     def remove_task_by_id(self, task_id: int) -> None:
         self.task_table.remove_by_id(task_id)
 
-    def toggle_task_status(self) -> None:
-        pass
+    def toggle_task_status(self, task_id: int) -> bool:
+        """Toggle the 'completed' state of the task and return the new state."""
+        if not task_id:
+            logger.warning("No task ID provided")
+            raise ValueError("Task ID must be provided")
 
-    def edit_task(self) -> None:
-        pass
+        for task in self.task_table.all():
+            if task.id == task_id:
+                task.toggle_status()
+                return task.completed
+
+        logger.warning(f"No task found with ID {task_id}")
+        raise ValueError(f"Task with ID {task_id} not found")
+
+    def edit_task(self, task_id: int, updates: dict[str, Any]) -> bool:
+        """Update the task with provided ID with provided attribute and value in dict format"""
+        for task in self.task_table.all():
+            if task.id == task_id:
+                task.update_fields(updates)
+                return True
+        return False
 
     def apply_filter(self, **criteria) -> None:
         self.filters = criteria
