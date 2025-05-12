@@ -19,8 +19,8 @@ Découpler totalement la logique métier de la couche UI.
 ## 🧱 2. Cœur logique de l’app
 
 - [x] Créer un fichier `app_logic.py` (ou `core/app_logic.py`)
-- [ ] Gérer l’état global (filtres actifs, thème, sélection…)
-- [ ] Définir les actions “métier” (ajouter tâche, changer statut, etc.)
+- [x] Gérer l’état global (filtres actifs, thème, sélection…)
+- [ ] Définir les actions “métier” (ajouter tâche, changer statut, edit_task etc)
 
 ---
 
