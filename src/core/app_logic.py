@@ -56,7 +56,7 @@ class AppLogic:
 
     def refresh_view(self) -> TaskTable:
         """Combine filtres, tris, etc. et retourne une vue actuelle"""
-        filtered_tasks = self.task_table.filter_by(**self.filters)
+        filtered_tasks = self.get_filtered_tasks()
         if self.sort_column is not None:
             filtered_tasks.sort(
                 key=lambda t: getattr(t, self.sort_column),  # type: ignore[arg-type]
