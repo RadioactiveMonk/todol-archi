@@ -291,7 +291,12 @@ class TaskTable:
 
     def filter_by(self, **criteria) -> list[Task]:
         """
-        Returns a new TaskTable containing only tasks matching all given field=value criteria.
+        Filters the tasks and returns a list of matching Task objects.
+
+        Returns
+        -------
+        list[Task]
+            A list of Task objects that match the criteria.
         """
         if not criteria:
             logger.info("No filter criteria provided. Returning original table")
