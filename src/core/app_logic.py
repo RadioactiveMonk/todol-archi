@@ -21,6 +21,12 @@ class AppLogic:
     def remove_task_by_id(self, task_id: int) -> None:
         self.task_table.remove_by_id(task_id)
 
+    def toggle_task_status(self) -> None:
+        pass
+
+    def edit_task(self) -> None:
+        pass
+
     def apply_filter(self, **criteria) -> None:
         self.filters = criteria
 
@@ -30,12 +36,6 @@ class AppLogic:
     def sort_tasks(self, column: str, reverse: bool = False) -> None:
         self.sort_column = column
         self.sort_reverse = reverse
-
-    def toggle_task_status(self) -> None:
-        pass
-
-    def edit_task(self) -> None:
-        pass
 
     def refresh_view(self) -> TaskTable:
         """Combine filtres, tris, etc. et retourne une vue actuelle"""
