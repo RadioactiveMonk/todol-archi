@@ -289,13 +289,13 @@ class TaskTable:
         """
         return self.remove_tasks((task_id,))
 
-    def filter_by(self, **criteria) -> "TaskTable":
+    def filter_by(self, **criteria) -> list[Task]:
         """
         Returns a new TaskTable containing only tasks matching all given field=value criteria.
         """
         if not criteria:
             logger.info("No filter criteria provided. Returning original table")
-            return TaskTable(self._tasks, self._columns)
+            return self._tasks.copy()
 
         for field in criteria:
             if not hasattr(self._tasks[0], field):
@@ -315,50 +315,7 @@ class TaskTable:
             f"Filtered tasks: {len(filtered)} match(es) for criteria {criteria}"
         )
 
-        return TaskTable(filtered, self._columns)
-
-    def sort_by(self, field: str, reverse: bool = False) -> "TaskTable":
-        """
-        Sorts the tasks in the table by a specified field.
-
-        Parameters
-        ----------
-        field : str
-            The field name to sort the tasks by.
-        reverse : bool, optional
-            If True, sorts in descending order. Default is False.
-
-        Returns
-        -------
-        TaskTable
-            A new TaskTable instance with tasks sorted by the specified field.
-
-        Notes
-        -----
-        If the field does not exist on the Task objects or the field is not given, a warning is logged,
-        and the original TaskTable is returned.
-
-        """
-        if not field:
-            logger.warning("No field provided for sorting. Returning original table.")
-            return TaskTable(self._tasks, self._columns)
-
-        if not hasattr(self._tasks[0], field):
-            logger.warning(
-                f"sort_by(): field '{field}' not found in Task. Returning original."
-            )
-            return TaskTable(self._tasks, self._columns)
-
-        try:
-            sorted_tasks = sorted(
-                self._tasks, key=lambda task: getattr(task, field), reverse=reverse
-            )
-        except AttributeError:
-            logger.error(f"Field '{field}' not found in Task.")
-            return TaskTable(self._tasks, self._columns)
-
-        logger.info(f"Sorted tasks by '{field}' (reverse={reverse}).")
-        return TaskTable(sorted_tasks, self._columns)
+        return filtered
 
     def to_matrix(self) -> list[list[str]]:
         """
@@ -457,4 +414,3 @@ class TaskTable:
 
         sampled_tasks = random.sample(self._tasks, min(n, len(self._tasks)))
         return TaskTable(sampled_tasks, self._columns)
-    
