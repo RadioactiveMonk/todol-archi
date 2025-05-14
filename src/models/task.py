@@ -12,11 +12,11 @@ class Task(TaskCore):
 
     # --------- Validations ---------
 
-    def __setattr__(self, name: str, value: Any) -> None:
-        IMMUTABLE_FIELDS = {"id", "created_at"}
-        if name in IMMUTABLE_FIELDS and hasattr(self, name):
-            raise AttributeError(f"Field '{name}' is read-only after creation")
-        super().__setattr__(name, value)
+    # def __setattr__(self, name: str, value: Any) -> None:
+    #     IMMUTABLE_FIELDS = {"id", "created_at"}
+    #     if name in IMMUTABLE_FIELDS and hasattr(self, name):
+    #         raise AttributeError(f"Field '{name}' is read-only after creation")
+    #     super().__setattr__(name, value)
 
     # --------- Méthodes métier ---------
 

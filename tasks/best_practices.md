@@ -9,10 +9,10 @@
 
 ## 🔬 1. Tests interactifs (IPython)
 
-- [ ] Instancier `AppLogic` avec des tâches fictives
-- [ ] Tester les méthodes : `add_task()`, `toggle_task_status()`, `edit_task()`
-- [ ] Tester filtres, tri, sélection
-- [ ] Vérifier le rendu via `.refresh_view().to_console_str()`
+- [x] Instancier `AppLogic` avec des tâches fictives
+- [x] Tester les méthodes : `add_task()`, `toggle_task_status()`, `edit_task()`
+- [x] Tester filtres, tri, (sélection)
+- [x] Vérifier le rendu via `.refresh_view().to_console_str()` (fonctionne mais affichage bancal)
 
 ---
 
