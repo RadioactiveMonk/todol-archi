@@ -10,14 +10,6 @@ from models.task_core import TaskCore
 class Task(TaskCore):
     """Représente une tâche complète avec affichage, helpers et validations."""
 
-    # --------- Validations ---------
-
-    # def __setattr__(self, name: str, value: Any) -> None:
-    #     IMMUTABLE_FIELDS = {"id", "created_at"}
-    #     if name in IMMUTABLE_FIELDS and hasattr(self, name):
-    #         raise AttributeError(f"Field '{name}' is read-only after creation")
-    #     super().__setattr__(name, value)
-
     # --------- Méthodes métier ---------
 
     def toggle_status(self) -> None:
