@@ -18,3 +18,5 @@
 2025-05-14 12:27:53.325 | INFO     | task_table_core:filter_by:319 | 5252 - Filtered tasks: 1 match(es) for criteria {'category': 'Courses'}
 2025-05-14 12:28:49.245 | INFO     | task_table_core:filter_by:319 | 5252 - Filtered tasks: 1 match(es) for criteria {'category': 'Courses'}
 2025-05-14 12:29:22.778 | INFO     | task_table_core:filter_by:302 | 5252 - No filter criteria provided. Returning original table
+2025-05-15 14:24:21.802 | INFO     | task_table_core:remove_tasks:290 | 27160 - Removed tasks with IDs: %s
+2025-05-15 14:24:21.806 | INFO     | task_table_core:filter_by:312 | 27160 - No filter criteria provided. Returning original table
