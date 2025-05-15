@@ -34,10 +34,10 @@
 
 ## 💡 4. Méthodes orientées sélection (préparation UI)
 
-- [ ] `get_selected_task()`
-- [ ] `edit_selected_task()`
-- [ ] `delete_selected_tasks()`
-- [ ] `check_task()` ou équivalent
+- [x] `get_selected_task()`
+- [x] `edit_selected_task()`
+- [x] `delete_selected_tasks()`
+- [ ] `check_task()` ou équivalent (non util)
 
 ---
 
