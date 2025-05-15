@@ -29,6 +29,22 @@ class TaskCore:
     #         raise AttributeError(f"Field '{name}' is read-only after creation")
     #     super().__setattr__(name, value)
 
+    # === Dunder Mifflin ===
+
+    def __eq__(self, other: object) -> bool:
+        """
+        Determine if two TaskCore instances are equal based on their 'id' attribute.
+
+        Args:
+            other (object): The object to compare with the current instance.
+        Returns:
+            bool: True if 'other' is a TaskCore instance with the same 'id', False otherwise.
+        """
+
+        if not isinstance(other, TaskCore):
+            return NotImplemented
+        return self.id == other.id
+
     @classmethod
     def from_dict(cls, data: dict) -> "TaskCore":
         """
