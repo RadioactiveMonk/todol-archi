@@ -60,6 +60,19 @@ class AppLogic:
             return False
         return self.task_table.remove_by_id(self.selected_task_id)
 
+    def select_task(self, task_id: Optional[int]) -> None:
+        """
+        Sets the selected task ID for future operations like edit or delete.
+
+        Args:
+            task_id (Optional[int]): The ID of the task to select. If None, clears the selection.
+
+        Returns:
+            None
+        """
+        
+        self.selected_task_id = task_id
+
     def toggle_task_status(self, task_id: int) -> bool:
         """
         Toggles the completion status of a task with the given task ID.
