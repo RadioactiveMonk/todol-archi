@@ -28,7 +28,7 @@ class AppLogic:
             logger.warning("No task ID provided")
             raise ValueError("Task ID must be provided")
 
-        for task in self.task_table.all():
+        for task in self.task_table:
             if task.id == task_id:
                 task.toggle_status()
                 return task.completed
@@ -38,7 +38,7 @@ class AppLogic:
 
     def edit_task(self, task_id: int, updates: dict[str, Any]) -> bool:
         """Update the task with provided ID with provided attribute and value in dict format"""
-        for task in self.task_table.all():
+        for task in self.task_table:
             if task.id == task_id:
                 task.update_fields(updates)
                 return True

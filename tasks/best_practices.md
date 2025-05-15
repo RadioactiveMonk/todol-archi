@@ -26,7 +26,7 @@
 
 ## 🧼 3. Pythonic touch & améliorations
 
-- [ ] Ajouter `__contains__`, `__bool__`, ou `__eq__` si utile
+- [x] Ajouter `__contains__`, `__bool__`, ou `__eq__` si utile
 - [ ] Harmoniser les noms / docs / signatures
 - [ ] Alléger certaines fonctions métier
 

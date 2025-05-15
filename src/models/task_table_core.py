@@ -53,6 +53,27 @@ class TaskTable:
         """Allows the task table to be iterable"""
         return iter(self._tasks)
 
+    def __contains__(self, task: Task) -> bool:
+        """
+        Check if a given Task instance exists in the task table.
+
+        Args:
+            task (Task): The Task object to check for membership.
+        Returns:
+            bool: True if the task is present in the task table, False otherwise.
+        """
+
+        return task in self._tasks
+
+    def __bool__(self) -> bool:
+        """
+        Return True if the task collection is non-empty, otherwise False.
+        This method allows instances of the class to be evaluated in boolean contexts,
+        such as in conditionals or with the built-in bool() function. It returns True
+        if there are any tasks present in the internal _tasks attribute.
+        """
+        return bool(self._tasks)
+
     @property
     def row_count(self) -> int:
         """
@@ -97,17 +118,6 @@ class TaskTable:
         """
 
         return [col.field for col in self._columns]
-
-    def all(self) -> list[Task]:
-        """
-        Returns all tasks in the task table.
-
-        Returns
-        -------
-        list[Task]
-            A list of all Task objects in the task table.
-        """
-        return self._tasks
 
     def headers(
         self, as_tuple: Optional[bool] = False
