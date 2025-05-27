@@ -23,9 +23,9 @@
 
 **Fichier :** `scripts/demo_text_mode.py` ou `main.py`
 
-- [ ] Instancier `AppLogic` ou `TaskTable`
-- [ ] Afficher les tâches via `.to_console_str()`
-- [ ] Tester les ajouts, tris, suppressions, filtres
+- [x] Instancier `AppLogic` ou `TaskTable`
+- [x] Afficher les tâches via `.to_console_str()`
+- [x] Tester les ajouts, tris, suppressions, filtres
 
 ---
 
