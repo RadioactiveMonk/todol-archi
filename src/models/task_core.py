@@ -12,7 +12,7 @@ from core.defaults import (
 
 @dataclass
 class TaskCore:
-    """Représente une tâche de l'application."""
+    """Represents a base task object with core attributes only."""
 
     id: Optional[int] = None
     title: str = DEFAULT_TITLE
@@ -21,54 +21,35 @@ class TaskCore:
     expiration: str = DEFAULT_EXPIRATION
     notes: str = DEFAULT_NOTES
 
-    # --------- Validations ---------
-
-    # def __setattr__(self, name: str, value: Any) -> None:
-    #     IMMUTABLE_FIELDS = {"id", "created_at"}
-    #     if name in IMMUTABLE_FIELDS and hasattr(self, name):
-    #         raise AttributeError(f"Field '{name}' is read-only after creation")
-    #     super().__setattr__(name, value)
-
-    # === Dunder Mifflin ===
-
     def __eq__(self, other: object) -> bool:
-        """
-        Determine if two TaskCore instances are equal based on their 'id' attribute.
+        """Check equality based on the 'id' attribute.
 
         Args:
-            other (object): The object to compare with the current instance.
-        Returns:
-            bool: True if 'other' is a TaskCore instance with the same 'id', False otherwise.
-        """
+            other (object): Object to compare.
 
+        Returns:
+            bool: True if both objects are TaskCore with the same ID, else False.
+        """
         if not isinstance(other, TaskCore):
             return NotImplemented
         return self.id == other.id
 
     @classmethod
     def from_dict(cls, data: dict) -> "TaskCore":
-        """
-        Convert a task in dict format to a class instance 'TaskCore'
+        """Create a TaskCore instance from a dictionary.
 
-        Parameters
-        ----------
-        data : dict
-            task datas (id, title, ...)
+        Args:
+            data (dict): Task data with fields matching TaskCore.
 
-        Returns
-        -------
-        TaskCore: cls
-            an instance of the class TaskCore from 'data'
+        Returns:
+            TaskCore: An instance built from the provided data.
         """
         return cls(**data)
 
     def to_dict(self) -> Dict[str, Any]:
-        """
-        Convert the class instance to a dictionnary
+        """Convert the TaskCore instance to a dictionary.
 
-        Returns
-        -------
-        Dict[str, Any]
-            the task in a dict format
+        Returns:
+            Dict[str, Any]: Dictionary representation of the task.
         """
         return asdict(self)

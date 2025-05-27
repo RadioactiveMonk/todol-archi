@@ -7,164 +7,140 @@ from models.task_table_column import TaskTableColumn
 
 
 class TaskTable:
-    """Representation of the task table. Columns, rows, headers ..."""
+    """Represents the task table (rows, columns, and associated operations)."""
 
     def __init__(
         self, tasks: Sequence[Task], columns: Sequence[TaskTableColumn]
     ) -> None:
+        """Initialize the TaskTable with a list of tasks and columns.
+
+        Args:
+            tasks (Sequence[Task]): List of Task instances.
+            columns (Sequence[TaskTableColumn]): List of column definitions.
         """
-        Initialize the TaskTableCore object.
-
-        Parameters
-        ----------
-        tasks : List[Task]
-            A list of Task objects representing the tasks to be managed.
-        columns : List[TaskTableColumn]
-            A list of TaskTableColumn objects representing the columns in the task table.
-
-        Returns
-        -------
-        None
-        """
-
         self._tasks = list(tasks)
         self._columns = list(columns)
 
     def __str__(self) -> str:
-        """
-        Returns a string representation of the object for console output.
-        """
+        """String representation suitable for console output.
 
+        Returns:
+            str: Formatted string of the task table.
+        """
         return self.to_console_str()
 
     def __repr__(self) -> str:
-        """Returns a description of the object 'TaskTable'."""
+        """Debug representation of the TaskTable.
+
+        Returns:
+            str: Developer-friendly string.
+        """
         return f"<TaskTable rows={self.row_count} cols={self.column_count}>"
 
     def __len__(self) -> int:
-        """Returns length of the table (number of rows)"""
+        """Return number of tasks (rows).
+
+        Returns:
+            int: Number of rows.
+        """
         return self.row_count
 
     def __getitem__(self, index: int | slice) -> Task | list[Task]:
-        """Returns a task by its index or a list of tasks by a given slice (e.g.: index = slice(0, 5)"""
+        """Get a task or a list of tasks by index or slice.
+
+        Args:
+            index (int | slice): Index or slice of tasks.
+
+        Returns:
+            Task | list[Task]: Task(s) from the table.
+        """
         return self._tasks[index]
 
     def __iter__(self):
-        """Allows the task table to be iterable"""
+        """Allow iteration over the tasks.
+
+        Returns:
+            Iterator[Task]: Iterator over task list.
+        """
         return iter(self._tasks)
 
     def __contains__(self, task: Task) -> bool:
-        """
-        Check if a given Task instance exists in the task table.
+        """Check if a task exists in the table.
 
         Args:
-            task (Task): The Task object to check for membership.
-        Returns:
-            bool: True if the task is present in the task table, False otherwise.
-        """
+            task (Task): Task instance.
 
+        Returns:
+            bool: True if present, False otherwise.
+        """
         return task in self._tasks
 
     def __bool__(self) -> bool:
-        """
-        Return True if the task collection is non-empty, otherwise False.
-        This method allows instances of the class to be evaluated in boolean contexts,
-        such as in conditionals or with the built-in bool() function. It returns True
-        if there are any tasks present in the internal _tasks attribute.
+        """Evaluate if the table is non-empty.
+
+        Returns:
+            bool: True if contains tasks.
         """
         return bool(self._tasks)
 
     @property
     def row_count(self) -> int:
-        """
-        Returns the number of rows (tasks) in the task table.
+        """Get the number of tasks.
 
-        Returns
-        -------
-        int
-            The number of tasks in the task table.
+        Returns:
+            int: Number of rows.
         """
         return len(self._tasks)
 
     @property
     def column_count(self) -> int:
-        """
-        Returns the number of columns in the task table.
+        """Get the number of columns.
 
-        Returns
-        -------
-        int
-            The total number of columns.
+        Returns:
+            int: Number of columns.
         """
         return len(self._columns)
 
     @property
     def column_names(self) -> List[str]:
-        """
-        Retrieves the names of all columns in the table.
+        """Get all column names.
 
         Returns:
-            List[str]: A list of column names.
+            List[str]: Column name list.
         """
         return [col.name for col in self._columns]
 
     @property
     def column_fields(self) -> List[str]:
-        """
-        Retrieves a list of field names from the columns.
+        """Get all field names from columns.
 
         Returns:
-            List[str]: A list of field names extracted from the column objects.
+            List[str]: Column field list.
         """
-
         return [col.field for col in self._columns]
 
-    def headers(
-        self, as_tuple: Optional[bool] = False
-    ) -> list[str] | list[tuple[str, str]]:
+    def headers(self, as_tuple: bool = False) -> list[str] | list[tuple[str, str]]:
+        """Return column headers.
+
+        Args:
+            as_tuple (bool, optional): Whether to return as (name, field) tuples.
+
+        Returns:
+            list[str] | list[tuple[str, str]]: List of headers.
         """
-        Generate a list of column headers for the task table.
-
-        Parameters
-        ----------
-        as_tuple : bool, optional
-            If True, returns a list of tuples where each tuple contains the column
-            name and its corresponding field. If False, returns a list of column
-            names only. Default is False.
-
-        Returns
-        -------
-        list of str or list of tuple of str
-            If `as_tuple` is False, returns a list of column names as strings.
-            If `as_tuple` is True, returns a list of tuples, where each tuple
-            contains the column name and its corresponding field.
-        """
-
         if as_tuple:
             return [(col.name, col.field) for col in self._columns]
         return [col.name for col in self._columns]
 
     def get_cell_value(self, row_index: int, col_index: int) -> Any:
-        """
-        Retrieves the value of a specific cell in the task table.
+        """Retrieve a specific cell value.
 
-        Parameters
-        ----------
-        row_index : int
-            The index of the row in the task table.
-        col_index : int
-            The index of the column in the task table.
+        Args:
+            row_index (int): Row index.
+            col_index (int): Column index.
 
-        Returns
-        -------
-        Any
-            The value of the cell located at the specified row and column.
-
-        Notes
-        -----
-        This method assumes that `_tasks` is a list of task objects and `_columns`
-        is a list of column objects, where each column object has a `field` attribute
-        that corresponds to an attribute of the task object.
+        Returns:
+            Any: Cell value or None if error occurs.
         """
         try:
             task = self._tasks[row_index]
@@ -178,23 +154,16 @@ class TaskTable:
             return None
 
     def get_column_name(self, index: int) -> str:
-        """
-        Retrieve the name of a column based on its index.
+        """Get the name of a column by index.
 
-        Parameters
-        ----------
-        index : int
-            The index of the column whose name is to be retrieved.
+        Args:
+            index (int): Column index.
 
-        Returns
-        -------
-        str
-            The name of the column at the specified index.
+        Returns:
+            str: Column name.
 
-        Raises
-        ------
-        IndexError
-            If the provided index is out of range for the columns.
+        Raises:
+            IndexError: If index is invalid.
         """
         try:
             return self._columns[index].name
@@ -203,23 +172,16 @@ class TaskTable:
             raise
 
     def get_column_tooltip(self, index: int) -> Optional[str]:
-        """
-        Retrieve the tooltip of a column based on its index.
+        """Get the tooltip of a column by index.
 
-        Parameters
-        ----------
-        index : int
-            The index of the column whose tooltip is to be retrieved.
+        Args:
+            index (int): Column index.
 
-        Returns
-        -------
-        Optional[str]
-            The tooltip of the column at the specified index, or None if no tooltip is set.
+        Returns:
+            Optional[str]: Tooltip or None.
 
-        Raises
-        ------
-        IndexError
-            If the provided index is out of range for the columns.
+        Raises:
+            IndexError: If index is invalid.
         """
         try:
             return self._columns[index].tooltip
@@ -228,24 +190,14 @@ class TaskTable:
             raise
 
     def add_task(self, task: Task) -> bool:
+        """Add a task to the table.
+
+        Args:
+            task (Task): Task to add.
+
+        Returns:
+            bool: True if added, False if invalid.
         """
-        Add a task to the task list.
-
-        Parameters
-        ----------
-        task : Task
-            The task object to be added. Must be an instance of the Task class.
-
-        Returns
-        -------
-        bool
-            True if the task was successfully added, False if the task type is invalid.
-
-        Notes
-        -----
-        Logs a warning if the provided task is not an instance of the Task class.
-        """
-
         if not isinstance(task, Task):
             logger.warning("Invalid task type provided. %r", task)
             return False
@@ -253,23 +205,16 @@ class TaskTable:
         return True
 
     def remove_tasks(self, task_ids: tuple[int]) -> bool:
-        """
-        Remove tasks from the task list based on their IDs.
+        """Remove tasks by their IDs.
 
-        Parameters
-        ----------
-        task_ids : tuple[int]
-            A tuple of task IDs to be removed from the task list.
+        Args:
+            task_ids (tuple[int]): Tuple of IDs.
 
-        Returns
-        -------
-        bool
-            True if at least one task was removed, False otherwise.
+        Returns:
+            bool: True if any removed.
 
-        Raises
-        ------
-        ValueError
-            If no task IDs are provided.
+        Raises:
+            ValueError: If no IDs given.
         """
         remaining_tasks = []
         removed_ids = []
@@ -294,19 +239,21 @@ class TaskTable:
         return False
 
     def remove_by_id(self, task_id: int) -> bool:
-        """
-        Removes a single task by its ID
+        """Remove a single task by ID.
+
+        Args:
+            task_id (int): Task ID.
+
+        Returns:
+            bool: True if removed.
         """
         return self.remove_tasks((task_id,))
 
     def filter_by(self, **criteria) -> list[Task]:
-        """
-        Filters the tasks and returns a list of matching Task objects.
+        """Filter tasks based on field criteria.
 
-        Returns
-        -------
-        list[Task]
-            A list of Task objects that match the criteria.
+        Returns:
+            list[Task]: Matching tasks.
         """
         if not criteria:
             logger.info("No filter criteria provided. Returning original table")
@@ -329,13 +276,13 @@ class TaskTable:
         logger.info(
             f"Filtered tasks: {len(filtered)} match(es) for criteria {criteria}"
         )
-
         return filtered
 
     def to_matrix(self) -> list[list[str]]:
-        """
-        Converts the tasks and their attributes into a 2D matrix representation.
-        Columns without corresponding fields in Task are skipped.
+        """Convert tasks to a matrix of strings.
+
+        Returns:
+            list[list[str]]: 2D list of string values.
         """
         if not self._tasks:
             logger.info("No tasks available")
@@ -356,8 +303,10 @@ class TaskTable:
         return matrix
 
     def to_console_str(self) -> str:
-        """
-        Converts the task table data into a formatted string suitable for console output.
+        """Format task table for console display.
+
+        Returns:
+            str: Multi-line string of headers and rows.
         """
         if not self._tasks:
             headers = [col.name for col in self._columns]
@@ -373,56 +322,50 @@ class TaskTable:
         return "\n".join(lines)
 
     def to_dicts(self) -> list[dict]:
-        """
-        Returns a list of dictionaries representing each task, with fields matching
-        the current TaskTable columns (only those that exist on each Task).
+        """Convert tasks to a list of dictionaries.
+
+        Returns:
+            list[dict]: List of task dicts.
         """
         dicts = []
-
         for task in self._tasks:
             row = {}
             for col in self._columns:
                 if hasattr(task, col.field):
                     row[col.field] = getattr(task, col.field)
             dicts.append(row)
-
         return dicts
 
     def head(self, n: int = 5) -> "TaskTable":
-        """
-        Returns the first `n` rows of the task table.
+        """Return the first `n` rows.
 
-        Parameters
-        ----------
-        n : int, optional
-            The number of rows to return. Default is 5.
+        Args:
+            n (int): Number of rows. Default is 5.
 
-        Returns
-        -------
-        TaskTable
-            A new TaskTable instance containing the first `n` rows.
+        Returns:
+            TaskTable: Subtable with top rows.
         """
         return TaskTable(self._tasks[:n], self._columns)
 
     def tail(self, n: int = 5) -> "TaskTable":
-        """
-        Returns the last `n` rows of the task table.
+        """Return the last `n` rows.
 
-        Parameters
-        ----------
-        n : int, optional
-            The number of rows to return. Default is 5.
+        Args:
+            n (int): Number of rows. Default is 5.
 
-        Returns
-        -------
-        TaskTable
-            A new TaskTable instance containing the last `n` rows.
+        Returns:
+            TaskTable: Subtable with bottom rows.
         """
         return TaskTable(self._tasks[-n:], self._columns)
 
     def sample(self, n: int = 3) -> "TaskTable":
-        """
-        Returns a new TaskTable with n random tasks.
+        """Return a random sample of `n` tasks.
+
+        Args:
+            n (int): Number of tasks. Default is 3.
+
+        Returns:
+            TaskTable: Subtable with sampled rows.
         """
         if n <= 0:
             return TaskTable([], self._columns)
