@@ -1,4 +1,4 @@
-# 🧠 Todol-Archi
+# 🧠 Todol-Archi (PAUSED)
 
 Version modulaire et refactorisée de Todol-Pro.  
 Expérimentation de patterns avancés (Factory, SOLID, Inversion de dépendance, etc.)
